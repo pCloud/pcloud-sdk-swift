@@ -5,6 +5,7 @@ author: 'pCloud'
 author_url: 'http://pcloud.com'
 theme: 'apple'
 
+source_directory: 'PCloudSDKSwift'
 exclude: '**/*.h'
 # swift_version: 3.0
 clean: true
