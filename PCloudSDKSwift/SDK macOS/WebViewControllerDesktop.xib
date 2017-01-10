@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="WebViewControllerDesktop" customModule="PCloudSDKMacOS">
+            <connections>
+                <outlet property="errorLabel" destination="VMG-S7-SaZ" id="aES-sS-Hu4"/>
+                <outlet property="progressIndicator" destination="uFS-u1-5Hm" id="dlX-Ev-fkx"/>
+                <outlet property="view" destination="c22-O7-iKe" id="qtj-Ip-HqO"/>
+                <outlet property="webViewContainer" destination="PD7-En-wr6" id="fSD-9F-67e"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UcM-0g-vFY">
+                    <rect key="frame" x="14" y="13" width="112" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="1pI-J2-mqd"/>
+                        <constraint firstAttribute="height" constant="21" id="Yk6-jd-R3Q"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pQx-8Z-dTW">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="cancelButtonTapped:" target="-2" id="Pgg-hw-p7G"/>
+                    </connections>
+                </button>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="PD7-En-wr6" customClass="BorderedView" customModule="PCloudSDKMacOS">
+                    <rect key="frame" x="20" y="61" width="460" height="419"/>
+                    <subviews>
+                        <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="uFS-u1-5Hm">
+                            <rect key="frame" x="222" y="202" width="16" height="16"/>
+                        </progressIndicator>
+                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="420" translatesAutoresizingMaskIntoConstraints="NO" id="VMG-S7-SaZ">
+                            <rect key="frame" x="18" y="160" width="424" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="WvD-IP-4bJ"/>
+                            </constraints>
+                            <textFieldCell key="cell" controlSize="mini" truncatesLastVisibleLine="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" id="yeH-0d-Dnx">
+                                <font key="font" metaFont="system" size="15"/>
+                                <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="VMG-S7-SaZ" secondAttribute="trailing" constant="20" id="H8b-Dl-1RC"/>
+                        <constraint firstItem="uFS-u1-5Hm" firstAttribute="centerY" secondItem="PD7-En-wr6" secondAttribute="centerY" id="USD-Tt-UtY"/>
+                        <constraint firstItem="uFS-u1-5Hm" firstAttribute="centerX" secondItem="PD7-En-wr6" secondAttribute="centerX" id="caj-lx-Y38"/>
+                        <constraint firstItem="VMG-S7-SaZ" firstAttribute="leading" secondItem="PD7-En-wr6" secondAttribute="leading" constant="20" id="mcV-CY-QCW"/>
+                        <constraint firstItem="VMG-S7-SaZ" firstAttribute="centerY" secondItem="PD7-En-wr6" secondAttribute="centerY" id="xb8-ru-GNj"/>
+                    </constraints>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="PD7-En-wr6" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="2Y4-d3-IKj"/>
+                <constraint firstAttribute="bottom" secondItem="UcM-0g-vFY" secondAttribute="bottom" constant="20" id="BSa-qZ-4ba"/>
+                <constraint firstItem="PD7-En-wr6" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="jX0-GE-eDK"/>
+                <constraint firstItem="UcM-0g-vFY" firstAttribute="top" secondItem="PD7-En-wr6" secondAttribute="bottom" constant="20" id="tKR-ko-VIu"/>
+                <constraint firstAttribute="trailing" secondItem="PD7-En-wr6" secondAttribute="trailing" constant="20" id="tfr-qC-dWv"/>
+                <constraint firstItem="UcM-0g-vFY" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="wOn-LR-VYZ"/>
+            </constraints>
+            <point key="canvasLocation" x="271" y="67"/>
+        </customView>
+    </objects>
+</document>

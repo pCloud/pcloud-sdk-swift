@@ -1,0 +1,10 @@
+module: 'PCloudSDKSwift'
+module_version: 1.0
+
+author: 'pCloud'
+author_url: 'http://pcloud.com'
+theme: 'apple'
+
+exclude: '**/*.h'
+# swift_version: 3.0
+clean: true
