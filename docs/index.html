@@ -413,32 +413,28 @@ You can find the full documentation <a href="https://pcloud-oss.github.io/pcloud
 <pre class="highlight shell"><code><span class="gp">$ </span>gem install cocoapods
 </code></pre>
 
-<p>Then navigate to your project root and run <code>pod init</code>. This will create a file called <code>Podfile</code>. Open it and add <code>pod &#39;PCloudSDKSwift&#39;</code> to your target. Make sure it also contains <code>use_frameworks!</code>. Your Podfile should look something like this.
-&ldquo;`ruby
-use_frameworks!</p>
+<p>Then navigate to your project root and run <code>pod init</code>. This will create a file called <code>Podfile</code>. Open it and add <code>pod &#39;PCloudSDKSwift&#39;</code> to your target. Make sure it also contains <code>use_frameworks!</code>. Your Podfile should look something like this.</p>
+<pre class="highlight ruby"><code><span class="n">use_frameworks!</span>
 
-<p>target &lsquo;<YOUR_TARGET_NAME>&rsquo; do
-    pod &lsquo;PCloudSDKSwift&rsquo;
-end
-&rdquo;`</p>
+<span class="n">target</span> <span class="s1">'&lt;YOUR_TARGET_NAME&gt;'</span> <span class="k">do</span>
+    <span class="n">pod</span> <span class="s1">'PCloudSDKSwift'</span>
+<span class="k">end</span>
+</code></pre>
 
-<p>Then run the following command to install the SDK and integrate it into your project:
-<code>
-pod install
-</code></p>
+<p>Then run the following command to install the SDK and integrate it into your project:</p>
+<pre class="highlight plaintext"><code>pod install
+</code></pre>
 
-<p>Once the SDK is integrated into your project, you can pull SDK updates using the following command:
-<code>
-pod update
-</code></p>
+<p>Once the SDK is integrated into your project, you can pull SDK updates using the following command:</p>
+<pre class="highlight plaintext"><code>pod update
+</code></pre>
 <a href='#carthage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='carthage'>Carthage</h3>
 
 <p><a href="https://github.com/Carthage/Carthage">Carthage</a> is a simple, decentralized dependency manager for Cocoa. If you don&rsquo;t already use Carthage, you can check out how you can install it <a href="https://github.com/Carthage/Carthage#installing-carthage">here</a>.</p>
 
-<p>To install the pCloud Swift SDK via Carthage, you need to create a <code>Cartfile</code> in your project (This file lists the frameworks you’d like to use in your project.) with the following contents:
-<code>
-github &quot;https://github.com/pcloud-oss/pcloud-sdk-swift&quot; ~&gt; 1.0.1
-</code></p>
+<p>To install the pCloud Swift SDK via Carthage, you need to create a <code>Cartfile</code> in your project (This file lists the frameworks you’d like to use in your project.) with the following contents:</p>
+<pre class="highlight plaintext"><code>github "https://github.com/pcloud-oss/pcloud-sdk-swift" ~&gt; 1.0.1
+</code></pre>
 
 <p>Then, run the following command (This will fetch dependencies into a <code>Carthage/Checkouts</code> folder and build each one):</p>
 <a href='#ios' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='ios'>iOS</h5>
@@ -447,15 +443,13 @@ github &quot;https://github.com/pcloud-oss/pcloud-sdk-swift&quot; ~&gt; 1.0.1
 
 <p>In the Project Navigator in Xcode, select your project, then select your target, then navigate to <strong>General</strong> &gt; <strong>Linked Frameworks and Libraries</strong>, and drag and drop <code>PCloudSDKSwift.framework</code> from <code>Carthage/Build/iOS</code>.</p>
 
-<p>Then, on your application targets’ <strong>Build Phases</strong> settings tab, click the <strong>+</strong> button and choose <strong>New Run Script Phase</strong>. In the newly-created <strong>Run Script</strong> section, add the following code to the script body area:
-<code>
-/usr/local/bin/carthage copy-frameworks
-</code></p>
+<p>Then, on your application targets’ <strong>Build Phases</strong> settings tab, click the <strong>+</strong> button and choose <strong>New Run Script Phase</strong>. In the newly-created <strong>Run Script</strong> section, add the following code to the script body area:</p>
+<pre class="highlight plaintext"><code>/usr/local/bin/carthage copy-frameworks
+</code></pre>
 
-<p>Then navigate to the <strong>Input Files</strong> section and add the path to the framework:
-<code>
-$(SRCROOT)/Carthage/Build/iOS/PCloudSDKSwift.framework
-</code></p>
+<p>Then navigate to the <strong>Input Files</strong> section and add the path to the framework:</p>
+<pre class="highlight plaintext"><code>$(SRCROOT)/Carthage/Build/iOS/PCloudSDKSwift.framework
+</code></pre>
 <a href='#macos' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='macos'>macOS</h5>
 <pre class="highlight shell"><code>carthage update --platform Mac
 </code></pre>
@@ -556,42 +550,39 @@ You can manually create a <code>PCloudClient</code> instance with an access toke
 </code></pre>
 <a href='#working-with-the-network-tasks' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='working-with-the-network-tasks'>Working with the network tasks</h3>
 
-<p>The SDK comes with the most common API requests predefined and has exposed them through the <code>PCloudClient</code> instance as methods. Each method returns a non-running task object representing the API request. Once you have obtained a task, you can assign callback blocks to it and start it. Once a task completes it produces a result object defined like this:
-<code>swift
-enum Result&lt;T&gt; {
-  case success(T)
-  case failure(Error)
-}
-</code></p>
+<p>The SDK comes with the most common API requests predefined and has exposed them through the <code>PCloudClient</code> instance as methods. Each method returns a non-running task object representing the API request. Once you have obtained a task, you can assign callback blocks to it and start it. Once a task completes it produces a result object defined like this:</p>
+<pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="nf">success</span><span class="p">(</span><span class="kt">T</span><span class="p">)</span>
+  <span class="k">case</span> <span class="nf">failure</span><span class="p">(</span><span class="kt">Error</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
 
 <p>There are three types of tasks:</p>
 <a href='#calltask' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='calltask'>CallTask</h5>
 
-<p>Performs an RPC request. On success produces the pre-parsed response of the request. On failure, either an API error or an <code>NSError</code> object from the underlying <code>NSURLSessionTask</code>.
-&ldquo;`swift
-import PCloudSDKSwift</p>
+<p>Performs an RPC request. On success produces the pre-parsed response of the request. On failure, either an API error or an <code>NSError</code> object from the underlying <code>NSURLSessionTask</code>.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PCloudSDKSwift</span>
 
-<p>client.createFolder(named: <q>Movies</q>, inFolder: Folder.root)
-    .setCompletionBlock { result in
-        // Handle result
-    }
-    .start()
-&rdquo;`</p>
+<span class="n">client</span><span class="o">.</span><span class="nf">createFolder</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"Movies"</span><span class="p">,</span> <span class="nv">inFolder</span><span class="p">:</span> <span class="kt">Folder</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">setCompletionBlock</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+        <span class="c1">// Handle result</span>
+    <span class="p">}</span>
+    <span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre>
 <a href='#uploadtask' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='uploadtask'>UploadTask</h5>
 
-<p>Performs an upload. On success produces the metadata of the uploaded file. On failure, either an API error or an <code>NSError</code> object from the underlying <code>NSURLSessionTask</code>.
-&ldquo;`swift
-import PCloudSDKSwift</p>
+<p>Performs an upload. On success produces the metadata of the uploaded file. On failure, either an API error or an <code>NSError</code> object from the underlying <code>NSURLSessionTask</code>.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PCloudSDKSwift</span>
 
-<p>client.upload(fromFileAt: <q>file:///path/to/file</q>, toFolder: Folder.root, asFileNamed: <q>song.mp3</q>)
-    .setProgressBlock { uploaded, total in
-        // Handle progress
-    }
-    .setCompletionBlock { result in
-        // Handle result
-    }
-    .start()
-&rdquo;`</p>
+<span class="n">client</span><span class="o">.</span><span class="nf">upload</span><span class="p">(</span><span class="nv">fromFileAt</span><span class="p">:</span> <span class="s">"file:///path/to/file"</span><span class="p">,</span> <span class="nv">toFolder</span><span class="p">:</span> <span class="kt">Folder</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="nv">asFileNamed</span><span class="p">:</span> <span class="s">"song.mp3"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">setProgressBlock</span> <span class="p">{</span> <span class="n">uploaded</span><span class="p">,</span> <span class="n">total</span> <span class="k">in</span>
+        <span class="c1">// Handle progress</span>
+    <span class="p">}</span>
+    <span class="o">.</span><span class="n">setCompletionBlock</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+        <span class="c1">// Handle result</span>
+    <span class="p">}</span>
+    <span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre>
 <a href='#downloadtask' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='downloadtask'>DownloadTask</h5>
 
 <p>Downloads a file. On success, produces the URL of the downloaded file. On failure, produces an <code>NSError</code> either from the underlying <code>NSURLSessionTask</code>, or a file system related error from the <code>NSFileManager</code>.</p>
