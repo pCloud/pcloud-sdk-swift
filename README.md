@@ -1,7 +1,7 @@
 # pCloud Swift SDK
 
 The official pCloud Swift SDK for iOS and macOS for integration with the [pCloud API](https://docs.pcloud.com/).
-You can find the full documentation [here](https://github.com/PUT/URL/HERE).
+You can find the full documentation [here](https://pcloud-oss.github.io/pcloud-sdk-swift).
 
 ---
 
@@ -302,5 +302,5 @@ An example app can be found in the [Example_iOS]() folder. The example app demon
 
 ## Documentation
 
-* [pCloud Swift SDK](https://PUT/GITHUB/PAGE/URL)
+* [pCloud Swift SDK](https://pcloud-oss.github.io/pcloud-sdk-swift)
 * [pCloud API](https://docs.pcloud.com/)
