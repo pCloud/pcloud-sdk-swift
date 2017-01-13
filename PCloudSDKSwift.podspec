@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = 'PCloudSDKSwift'
-  s.version               = '1.0.1'
+  s.version               = '1.0.2'
   s.summary               = 'Swift SDK for the pCloud API'
   s.homepage              = 'https://github.com/pcloud-oss/pcloud-sdk-swift'
   s.license               = 'MIT'
@@ -17,8 +17,8 @@ Pod::Spec.new do |s|
   s.ios.public_header_files = 'PCloudSDKSwift/Source/**/*.h'
   s.osx.public_header_files = 'PCloudSDKSwift/Source/**/*.h'
 
-  s.osx.source_files = "PCloudSDKSwift/Source/**/*.{swift,h}", "PCloudSDKSwift/Source/SDK\ macOS/**/*.swift"
-  s.ios.source_files = "PCloudSDKSwift/Source/**/*.{swift,h}", "PCloudSDKSwift/Source/SDK\ iOS/**/*.swift"
+  s.osx.source_files = "PCloudSDKSwift/Source/**/*.{swift,h}", "PCloudSDKSwift/SDK\ macOS/**/*.swift"
+  s.ios.source_files = "PCloudSDKSwift/Source/**/*.{swift,h}", "PCloudSDKSwift/SDK\ iOS/**/*.swift"
 
   s.requires_arc = true
 end
