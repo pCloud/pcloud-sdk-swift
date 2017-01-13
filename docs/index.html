@@ -422,11 +422,11 @@ You can find the full documentation <a href="https://pcloud-oss.github.io/pcloud
 </code></pre>
 
 <p>Then run the following command to install the SDK and integrate it into your project:</p>
-<pre class="highlight plaintext"><code>pod install
+<pre class="highlight shell"><code>pod install
 </code></pre>
 
 <p>Once the SDK is integrated into your project, you can pull SDK updates using the following command:</p>
-<pre class="highlight plaintext"><code>pod update
+<pre class="highlight shell"><code>pod update
 </code></pre>
 <a href='#carthage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='carthage'>Carthage</h3>
 
@@ -444,11 +444,11 @@ You can find the full documentation <a href="https://pcloud-oss.github.io/pcloud
 <p>In the Project Navigator in Xcode, select your project, then select your target, then navigate to <strong>General</strong> &gt; <strong>Linked Frameworks and Libraries</strong>, and drag and drop <code>PCloudSDKSwift.framework</code> from <code>Carthage/Build/iOS</code>.</p>
 
 <p>Then, on your application targets’ <strong>Build Phases</strong> settings tab, click the <strong>+</strong> button and choose <strong>New Run Script Phase</strong>. In the newly-created <strong>Run Script</strong> section, add the following code to the script body area:</p>
-<pre class="highlight plaintext"><code>/usr/local/bin/carthage copy-frameworks
+<pre class="highlight shell"><code>/usr/local/bin/carthage copy-frameworks
 </code></pre>
 
 <p>Then navigate to the <strong>Input Files</strong> section and add the path to the framework:</p>
-<pre class="highlight plaintext"><code>$(SRCROOT)/Carthage/Build/iOS/PCloudSDKSwift.framework
+<pre class="highlight shell"><code><span class="k">$(</span>SRCROOT<span class="k">)</span>/Carthage/Build/iOS/PCloudSDKSwift.framework
 </code></pre>
 <a href='#macos' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='macos'>macOS</h5>
 <pre class="highlight shell"><code>carthage update --platform Mac
