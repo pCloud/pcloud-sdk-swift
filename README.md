@@ -59,6 +59,7 @@ $ gem install cocoapods
 ```
 
 Then navigate to your project root and run `pod init`. This will create a file called `Podfile`. Open it and add `pod 'PCloudSDKSwift'` to your target. Make sure it also contains `use_frameworks!`. Your Podfile should look something like this.
+
 ```ruby
 use_frameworks!
 
@@ -68,12 +69,14 @@ end
 ```
 
 Then run the following command to install the SDK and integrate it into your project:
-```
+
+```bash
 pod install
 ```
 
 Once the SDK is integrated into your project, you can pull SDK updates using the following command:
-```
+
+```bash
 pod update
 ```
 
@@ -82,6 +85,7 @@ pod update
 [Carthage](https://github.com/Carthage/Carthage) is a simple, decentralized dependency manager for Cocoa. If you don't already use Carthage, you can check out how you can install it [here](https://github.com/Carthage/Carthage#installing-carthage).
 
 To install the pCloud Swift SDK via Carthage, you need to create a `Cartfile` in your project (This file lists the frameworks you’d like to use in your project.) with the following contents:
+
 ```
 github "https://github.com/pcloud-oss/pcloud-sdk-swift" ~> 1.0.1
 ```
@@ -94,20 +98,24 @@ Then, run the following command (This will fetch dependencies into a `Carthage/C
 ```bash
 carthage update --platform iOS
 ```
+
 In the Project Navigator in Xcode, select your project, then select your target, then navigate to **General** > **Linked Frameworks and Libraries**, and drag and drop `PCloudSDKSwift.framework` from `Carthage/Build/iOS`.
 
 Then, on your application targets’ **Build Phases** settings tab, click the **+** button and choose **New Run Script Phase**. In the newly-created **Run Script** section, add the following code to the script body area:
-```
+
+```bash
 /usr/local/bin/carthage copy-frameworks
 ```
 
 Then navigate to the **Input Files** section and add the path to the framework:
-```
+
+```bash
 $(SRCROOT)/Carthage/Build/iOS/PCloudSDKSwift.framework
 ```
 
 
 ##### macOS
+
 ```bash
 carthage update --platform Mac
 ```
@@ -132,6 +140,7 @@ The SDK has a pre-defined flow for obtaining an access token. It opens a web vie
 In the app delegate:
 
 ##### iOS
+
 ```swift
 import PCloudSDKSwift
 
@@ -141,6 +150,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ```
 
 ##### macOS
+
 ```swift
 import PCloudSDKSwift
 
@@ -231,6 +241,7 @@ let client = PCloud.sharedClient // When using the authorization flow
 ### Working with the network tasks
 
 The SDK comes with the most common API requests predefined and has exposed them through the `PCloudClient` instance as methods. Each method returns a non-running task object representing the API request. Once you have obtained a task, you can assign callback blocks to it and start it. Once a task completes it produces a result object defined like this:
+
 ```swift
 enum Result<T> {
   case success(T)
@@ -242,6 +253,7 @@ There are three types of tasks:
 
 ##### CallTask
 Performs an RPC request. On success produces the pre-parsed response of the request. On failure, either an API error or an `NSError` object from the underlying `NSURLSessionTask`.
+
 ```swift
 import PCloudSDKSwift
 
@@ -254,6 +266,7 @@ client.createFolder(named: "Movies", inFolder: Folder.root)
 
 ##### UploadTask
 Performs an upload. On success produces the metadata of the uploaded file. On failure, either an API error or an `NSError` object from the underlying `NSURLSessionTask`.
+
 ```swift
 import PCloudSDKSwift
 
