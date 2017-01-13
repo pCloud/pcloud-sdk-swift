@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.license               = 'MIT'
   s.author                = 'pCloud'
 
-  s.source               = { :git => "https://github.com/pcloud-oss/pcloud-sdk-swift", :tag => "#{s.version}" }
+  s.source               = { :git => "https://github.com/pcloud-oss/pcloud-sdk-swift.git", :tag => "#{s.version}" }
 
   s.osx.deployment_target = '10.11'
   s.ios.deployment_target = '9.0'
