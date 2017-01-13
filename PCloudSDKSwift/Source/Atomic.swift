@@ -9,7 +9,7 @@
 import Foundation
 
 /// An object providing atomic access to an underlying value.
-public class Atomic<T> {
+public final class Atomic<T> {
 	// The lock controlling access to this instance's value.
 	private let lock = Lock()
 	// The underlying value of this instance.

@@ -10,7 +10,7 @@ import Foundation
 
 /// A non-reusable mediator managing a task for obtaining an address for a resource, and a task for downloading the resource from
 /// the produced address. Intended for simple use cases. Only use on the main thread.
-public class DownloadTask: Cancellable {
+public final class DownloadTask: Cancellable {
 	public typealias AddressProvider = (@escaping (Result<URL>) -> Void) -> Cancellable
 	public typealias OperationBuilder = (URL) -> DownloadOperation
 	
