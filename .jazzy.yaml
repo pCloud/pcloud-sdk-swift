@@ -5,6 +5,9 @@ author: 'pCloud'
 author_url: 'http://pcloud.com'
 theme: 'apple'
 
+readme: 'README.md'
+github_url: 'https://github.com/pcloud-oss/pcloud-sdk-swift'
+
 source_directory: 'PCloudSDKSwift'
 exclude: '**/*.h'
 # swift_version: 3.0
