@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ApiResponseView Struct Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/ApiResponseView" class="dashAnchor"></a>
+    <a title="ApiResponseView Struct Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">PCloudSDKSwift Docs</a> (88% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">PCloudSDKSwift Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ApiResponseView Struct Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AnyCancellationToken.html">AnyCancellationToken</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ApiTaskController.html">ApiTaskController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Atomic.html">Atomic</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CallTask.html">CallTask</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DownloadTask.html">DownloadTask</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Lock.html">Lock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PCloud.html">PCloud</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PCloudClient.html">PCloudClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/URLSessionBasedCallOperation.html">URLSessionBasedCallOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/URLSessionBasedDownloadOperation.html">URLSessionBasedDownloadOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/URLSessionBasedNetworkOperation.html">URLSessionBasedNetworkOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/URLSessionBasedUploadOperation.html">URLSessionBasedUploadOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/URLSessionEventHub.html">URLSessionEventHub</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UploadTask.html">UploadTask</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/WebViewControllerMobile.html">WebViewControllerMobile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/WebViewControllerPresenterMobile.html">WebViewControllerPresenterMobile</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Content.html">Content</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Content/Metadata.html">– Metadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkOperationState.html">NetworkOperationState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Result.html">Result</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Scheme.html">Scheme</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F14PCloudSDKSwiftoi2eeFTCVS_4File8MetadataS1__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F14PCloudSDKSwiftoi2eeFTCVS_4User8MetadataS1__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F14PCloudSDKSwiftoi2eeFTCVS_8FileLink8MetadataS1__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F14PCloudSDKSwiftoi2eeFTOVS_4File5MediaS1__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F14PCloudSDKSwiftoi2eeFTOVVS_4Call7Command9ParameterS2__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F14PCloudSDKSwiftoi2eeFTOVVS_6Upload7Request4BodyS2__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F14PCloudSDKSwiftoi2eeFTVVS_4Call7CommandS1__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F14PCloudSDKSwiftoi2eeFTVVS_4Call7RequestS1__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F14PCloudSDKSwiftoi2eeFTVVS_6Upload7RequestS1__Sb">==(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Authenticator.html">Authenticator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/CallOperation.html">CallOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Cancellable.html">Cancellable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DownloadOperation.html">DownloadOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/HostProvider.html">HostProvider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NetworkOperation.html">NetworkOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OAuthAuthorizationFlowView.html">OAuthAuthorizationFlowView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Parser.html">Parser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/URLSessionObserver.html">URLSessionObserver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UploadOperation.html">UploadOperation</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/ApiResponseView.html">ApiResponseView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AudioMetadataParser.html">AudioMetadataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Call.html">Call</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Call/Command.html">– Command</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Call/Request.html">– Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ContentListParser.html">ContentListParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Download.html">Download</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Download/Request.html">– Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/File.html">File</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/File/Media.html">– Media</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/File/Metadata.html">– Metadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FileIconParser.html">FileIconParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FileLink.html">FileLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FileLink/Metadata.html">– Metadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FileLinkMetadataParser.html">FileLinkMetadataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FileMetadataParser.html">FileMetadataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Folder.html">Folder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Folder/Permissions.html">– Permissions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Folder/Ownership.html">– Ownership</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Folder/Metadata.html">– Metadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FolderMetadataParser.html">FolderMetadataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ImageMetadataParser.html">ImageMetadataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Keychain.html">Keychain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/OAuth.html">OAuth</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/OAuth/Result.html">– Result</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/OAuth/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/OAuthAccessTokenBasedAuthenticator.html">OAuthAccessTokenBasedAuthenticator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi.html">PCloudApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/RawError.html">– RawError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/UserInfo.html">– UserInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/ListFolder.html">– ListFolder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/CreateFolder.html">– CreateFolder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/RenameFolder.html">– RenameFolder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/MoveFolder.html">– MoveFolder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/DeleteFolderRecursive.html">– DeleteFolderRecursive</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/UploadFile.html">– UploadFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/CopyFile.html">– CopyFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/RenameFile.html">– RenameFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/MoveFile.html">– MoveFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/DeleteFile.html">– DeleteFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/GetFileLink.html">– GetFileLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/GetThumbnailLink.html">– GetThumbnailLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudApi/GetThumbnailsLinks.html">– GetThumbnailsLinks</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLSessionDispatch.html">URLSessionDispatch</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Upload.html">Upload</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Upload/Request.html">– Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/User.html">User</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/User/Metadata.html">– Metadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UserMetadataParser.html">UserMetadataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/VideoMetadataParser.html">VideoMetadataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/VoidCancellationToken.html">VoidCancellationToken</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ApiResponseView</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                </div>
+              </div>
+            <p>Utility wrapper around the API response dictionary, providing convenient interface for accessing typed values.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV14PCloudSDKSwift15ApiResponseView11rawResponseGVs10DictionarySSP__"></a>
+                    <a name="//apple_ref/swift/Property/rawResponse" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV14PCloudSDKSwift15ApiResponseView11rawResponseGVs10DictionarySSP__">rawResponse</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The underlying API response.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">rawResponse</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseViewcFGVs10DictionarySSP__S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseViewcFGVs10DictionarySSP__S0_">init(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a view with an API response.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">rawResponse</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView5valueurFSSGSqx_"></a>
+                    <a name="//apple_ref/swift/Method/value(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView5valueurFSSGSqx_">value(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Accesses the value associated with a given key, forcefully casts it to this function&rsquo;s return value and returns it.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">value</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A key for the value.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The value cast to T, or <code>nil</code> if nothing is mapped against <code>key</code>.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView8intOrNilFSSGSqSi_"></a>
+                    <a name="//apple_ref/swift/Method/intOrNil(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView8intOrNilFSSGSqSi_">intOrNil(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView9boolOrNilFSSGSqSb_"></a>
+                    <a name="//apple_ref/swift/Method/boolOrNil(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView9boolOrNilFSSGSqSb_">boolOrNil(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView11stringOrNilFSSGSqSS_"></a>
+                    <a name="//apple_ref/swift/Method/stringOrNil(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView11stringOrNilFSSGSqSS_">stringOrNil(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView10floatOrNilFSSGSqSf_"></a>
+                    <a name="//apple_ref/swift/Method/floatOrNil(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView10floatOrNilFSSGSqSf_">floatOrNil(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView9uintOrNilFSSGSqSu_"></a>
+                    <a name="//apple_ref/swift/Method/uintOrNil(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView9uintOrNilFSSGSqSu_">uintOrNil(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView11uint32OrNilFSSGSqVs6UInt32_"></a>
+                    <a name="//apple_ref/swift/Method/uint32OrNil(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView11uint32OrNilFSSGSqVs6UInt32_">uint32OrNil(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView11uint64OrNilFSSGSqVs6UInt64_"></a>
+                    <a name="//apple_ref/swift/Method/uint64OrNil(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView11uint64OrNilFSSGSqVs6UInt64_">uint64OrNil(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView15dictionaryOrNilFSSGSqGVs10DictionarySSP___"></a>
+                    <a name="//apple_ref/swift/Method/dictionaryOrNil(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView15dictionaryOrNilFSSGSqGVs10DictionarySSP___">dictionaryOrNil(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView3intFSSSi"></a>
+                    <a name="//apple_ref/swift/Method/int(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView3intFSSSi">int(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView4boolFSSSb"></a>
+                    <a name="//apple_ref/swift/Method/bool(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView4boolFSSSb">bool(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView6stringFSSSS"></a>
+                    <a name="//apple_ref/swift/Method/string(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView6stringFSSSS">string(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView5floatFSSSf"></a>
+                    <a name="//apple_ref/swift/Method/float(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView5floatFSSSf">float(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView4uintFSSSu"></a>
+                    <a name="//apple_ref/swift/Method/uint(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView4uintFSSSu">uint(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView6uint32FSSVs6UInt32"></a>
+                    <a name="//apple_ref/swift/Method/uint32(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView6uint32FSSVs6UInt32">uint32(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView6uint64FSSVs6UInt64"></a>
+                    <a name="//apple_ref/swift/Method/uint64(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView6uint64FSSVs6UInt64">uint64(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14PCloudSDKSwift15ApiResponseView10dictionaryFSSGVs10DictionarySSP__"></a>
+                    <a name="//apple_ref/swift/Method/dictionary(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14PCloudSDKSwift15ApiResponseView10dictionaryFSSGVs10DictionarySSP__">dictionary(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="http://pcloud.com" target="_blank" rel="external">pCloud</a>. All rights reserved. (Last updated: 2017-01-13)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
