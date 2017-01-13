@@ -296,7 +296,7 @@ Each API method in the SDK is defined in the `PCloudApi` namespace as a separate
 
 ## Examples
 
-An example app can be found in the [Example_iOS]() folder. The example app demonstrates how to authenticate a user and how to list a user`s files and folders.
+An example app can be found in the [Example_iOS](https://github.com/pcloud-oss/pcloud-sdk-swift/tree/master/Example_iOS) folder. The example app demonstrates how to authenticate a user and how to list a user`s files and folders.
 
 ---
 
