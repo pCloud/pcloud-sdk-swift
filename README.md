@@ -83,7 +83,6 @@ pod update
 
 To install the pCloud Swift SDK via Carthage, you need to create a `Cartfile` in your project (This file lists the frameworks you’d like to use in your project.) with the following contents:
 ```
-# PCloudSDKSwift
 github "https://github.com/pcloud-oss/pcloud-sdk-swift" ~> 1.0.1
 ```
 
