@@ -1,7 +1,7 @@
 # pCloud Swift SDK
 
 The official pCloud Swift SDK for iOS and macOS for integration with the [pCloud API](https://docs.pcloud.com/).
-You can find the full documentation [here](https://pcloud-oss.github.io/pcloud-sdk-swift).
+You can find the full documentation [here](https://pcloud.github.io/pcloud-sdk-swift).
 
 ---
 
@@ -87,7 +87,7 @@ pod update
 To install the pCloud Swift SDK via Carthage, you need to create a `Cartfile` in your project (This file lists the frameworks you’d like to use in your project.) with the following contents:
 
 ```
-github "https://github.com/pcloud-oss/pcloud-sdk-swift" ~> 1.0.1
+github "https://github.com/pcloud/pcloud-sdk-swift" ~> 1.0.1
 ```
 
 Then, run the following command (This will fetch dependencies into a `Carthage/Checkouts` folder and build each one):
@@ -308,11 +308,11 @@ Each API method in the SDK is defined in the `PCloudApi` namespace as a separate
 
 ## Examples
 
-An example app can be found in the [Example_iOS](https://github.com/pcloud-oss/pcloud-sdk-swift/tree/master/Example_iOS) folder. The example app demonstrates how to authenticate a user and how to list a user`s files and folders.
+An example app can be found in the [Example_iOS](https://github.com/pcloud/pcloud-sdk-swift/tree/master/Example_iOS) folder. The example app demonstrates how to authenticate a user and how to list a user`s files and folders.
 
 ---
 
 ## Documentation
 
-* [pCloud Swift SDK](https://pcloud-oss.github.io/pcloud-sdk-swift)
+* [pCloud Swift SDK](https://pcloud.github.io/pcloud-sdk-swift)
 * [pCloud API](https://docs.pcloud.com/)
