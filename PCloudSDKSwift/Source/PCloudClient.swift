@@ -73,6 +73,17 @@ public extension PCloudClient {
 		return controller.call(PCloudApi.MoveFolder(folderId: folderId, destinationFolderId: destinationFolderId))
 	}
 	
+	/// Creates and returns a task for copying a folder.
+	///
+	/// - parameter folderId: The unique identifier of the folder to copy.
+	/// - parameter destinationFolderId: The unique identifier of the destination folder.
+	/// - returns: A task producing a `Folder.Metadata` object on success.
+	func copyFolder(_ folderId: UInt64,
+	                toFolder destinationFolderId: UInt64,
+	                onConflict nameConflictPolicy: PCloudApi.CopyFolder.NameConflictPolicy = .skip) -> CallTask<PCloudApi.CopyFolder> {
+		return controller.call(PCloudApi.CopyFolder(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: nameConflictPolicy))
+	}
+	
 	/// Creates and returns a task for deleting a folder along with all of its children recursively.
 	///
 	/// - parameter folderId: The unique identifier of the folder to delete.
