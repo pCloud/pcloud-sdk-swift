@@ -76,6 +76,45 @@ extension PCloudApiTests {
 		validate(command, against: moveFolderCommand(folderId: folderId, destinationFolderId: destinationFolderId))
 	}
 	
+	func testCreatesCorrectCopyFolderCommandWithConflictPolictyOverwrite() {
+		// Given
+		let folderId: UInt64 = 44
+		let destinationFolderId: UInt64 = 99
+		let conflictPolicy: PCloudApi.CopyFolder.NameConflictPolicy = .overwrite
+		
+		// When
+		let command = PCloudApi.CopyFolder(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: conflictPolicy).createCommand()
+		
+		// Expect
+		validate(command, against: copyFolderCommand(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: conflictPolicy))
+	}
+	
+	func testCreatesCorrectCopyFolderCommandWithConflictPolicySkip() {
+		// Given
+		let folderId: UInt64 = 12
+		let destinationFolderId: UInt64 = 34
+		let conflictPolicy: PCloudApi.CopyFolder.NameConflictPolicy = .skip
+		
+		// When
+		let command = PCloudApi.CopyFolder(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: conflictPolicy).createCommand()
+		
+		// Expect
+		validate(command, against: copyFolderCommand(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: conflictPolicy))
+	}
+	
+	func testCreatesCorrectCopyFolderCommandWithConflictPolicyFail() {
+		// Given
+		let folderId: UInt64 = 4
+		let destinationFolderId: UInt64 = 66
+		let conflictPolicy: PCloudApi.CopyFolder.NameConflictPolicy = .fail
+		
+		// When
+		let command = PCloudApi.CopyFolder(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: conflictPolicy).createCommand()
+		
+		// Expect
+		validate(command, against: copyFolderCommand(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: conflictPolicy))
+	}
+	
 	func testCreatesCorrectDeleteFolderRecursiveCommand() {
 		// Given
 		let folderId: UInt64 = 42
@@ -239,6 +278,23 @@ extension PCloudApiTests {
 			.number(name: "folderid", value: folderId),
 			.number(name: "tofolderid", value: destinationFolderId)
 		])
+	}
+	
+	func copyFolderCommand(folderId: UInt64, destinationFolderId: UInt64, nameConflictPolicy: PCloudApi.CopyFolder.NameConflictPolicy) -> Call.Command {
+		var parameters: [Call.Command.Parameter] = [
+			timeFormatParameter,
+			iconFormatParameter,
+			.number(name: "folderid", value: folderId),
+			.number(name: "tofolderid", value: destinationFolderId)
+		]
+		
+		switch nameConflictPolicy {
+		case .overwrite: break
+		case .skip: parameters.append(.boolean(name: "skipexisting", value: true))
+		case .fail: parameters.append(.boolean(name: "noover", value: true))
+		}
+		
+		return Call.Command(name: "copyfolder", parameters: parameters)
 	}
 	
 	func deleteFolderRecursiveCommand(folderId: UInt64) -> Call.Command {

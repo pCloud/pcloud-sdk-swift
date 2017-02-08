@@ -257,6 +257,74 @@ public extension PCloudApi {
 	}
 	
 	
+	/// Copies a folder and returns the new folder. During copying, folders with the same name will be automatically merged.
+	public struct CopyFolder: PCloudApiMethod {
+		/// How file name conflicts should be handled during copying.
+		public enum NameConflictPolicy {
+			/// Overwrite files in the destination with those from the source.
+			case overwrite
+			/// Don't copy any files from the source if they already exist at the destination.
+			case skip
+			/// Fail when a name conflict occurs.
+			case fail
+		}
+		
+		/// The unique identifier of the folder to copy.
+		public let folderId: UInt64
+		/// The unique identifier of the destination folder.
+		public let destinationFolderId: UInt64
+		/// How file name conflicts should be handled.
+		public let nameConflictPolicy: NameConflictPolicy
+		
+		public var requiresAuthentication: Bool {
+			return true
+		}
+		
+		/// - parameter folderId: The unique identifier of the folder to move.
+		/// - parameter destinationFolderId: The unique identifier of the destination folder.
+		/// - parameter nameConflictPolicy: How file name conflicts should be handled.
+		public init(folderId: UInt64, destinationFolderId: UInt64, nameConflictPolicy: NameConflictPolicy) {
+			self.folderId = folderId
+			self.destinationFolderId = destinationFolderId
+			self.nameConflictPolicy = nameConflictPolicy
+		}
+		
+		public func createCommand() -> Call.Command {
+			var parameters: [Call.Command.Parameter] = [
+				defaultIconFormatParameter,
+				defaultTimeFormatParameter,
+				.number(name: "folderid", value: folderId),
+				.number(name: "tofolderid", value: destinationFolderId)
+			]
+			
+			switch nameConflictPolicy {
+			case .overwrite: break
+			case .skip: parameters.append(.boolean(name: "skipexisting", value: true))
+			case .fail: parameters.append(.boolean(name: "noover", value: true))
+			}
+			
+			return Call.Command(name: "copyfolder", parameters: parameters)
+		}
+		
+		public func createResponseParser() -> ([String : Any]) throws -> Folder.Metadata {
+			return {
+				try self.throwError(in: $0, methodSpecificError: Error.init)
+				let meta = ApiResponseView($0).dictionary("metadata")
+				return try FolderMetadataParser().parse(meta)
+			}
+		}
+		
+		/// Errors specific to copying a folder.
+		public enum Error: Int, Swift.Error {
+			/// A file with the same name already exists at the same level in the destination tree.
+			/// Can only be returned when conflict policy is `NameConflictPolicy.fail`.
+			case fileAlreadyExists = 2004
+			/// The user has exceeded their available storage quota and this action is not allowed.
+			case userIsOverQuota = 2008
+		}
+	}
+	
+	
 	/// Deletes a folder tree.
 	public struct DeleteFolderRecursive: PCloudApiMethod {
 		/// The unique identifier of the root of the folder tree to delete.
