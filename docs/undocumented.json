@@ -240,28 +240,28 @@
     },
     {
       "file": "/Users/esembidi/Documents/Projects/sdk-swift/PCloudSDKSwift/Source/PCloudApi.swift",
-      "line": 638,
+      "line": 706,
       "symbol": "PCloudApi.GetThumbnailsLinks.fileIds",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/esembidi/Documents/Projects/sdk-swift/PCloudSDKSwift/Source/PCloudApi.swift",
-      "line": 639,
+      "line": 707,
       "symbol": "PCloudApi.GetThumbnailsLinks.thumbnailSize",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/esembidi/Documents/Projects/sdk-swift/PCloudSDKSwift/Source/PCloudApi.swift",
-      "line": 640,
+      "line": 708,
       "symbol": "PCloudApi.GetThumbnailsLinks.crop",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/esembidi/Documents/Projects/sdk-swift/PCloudSDKSwift/Source/PCloudApi.swift",
-      "line": 646,
+      "line": 714,
       "symbol": "PCloudApi.GetThumbnailsLinks.init(fileIds:thumbnailSize:crop:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
