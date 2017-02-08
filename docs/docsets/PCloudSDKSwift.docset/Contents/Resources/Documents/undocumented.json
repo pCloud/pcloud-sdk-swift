@@ -226,42 +226,42 @@
     },
     {
       "file": "/Users/esembidi/Documents/Projects/sdk-swift/PCloudSDKSwift/Source/PCloudApi.swift",
-      "line": 34,
+      "line": 36,
       "symbol": "PCloudApi.RawError.code",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/esembidi/Documents/Projects/sdk-swift/PCloudSDKSwift/Source/PCloudApi.swift",
-      "line": 35,
+      "line": 37,
       "symbol": "PCloudApi.RawError.reason",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/esembidi/Documents/Projects/sdk-swift/PCloudSDKSwift/Source/PCloudApi.swift",
-      "line": 706,
+      "line": 694,
       "symbol": "PCloudApi.GetThumbnailsLinks.fileIds",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/esembidi/Documents/Projects/sdk-swift/PCloudSDKSwift/Source/PCloudApi.swift",
-      "line": 707,
+      "line": 695,
       "symbol": "PCloudApi.GetThumbnailsLinks.thumbnailSize",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/esembidi/Documents/Projects/sdk-swift/PCloudSDKSwift/Source/PCloudApi.swift",
-      "line": 708,
+      "line": 696,
       "symbol": "PCloudApi.GetThumbnailsLinks.crop",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/esembidi/Documents/Projects/sdk-swift/PCloudSDKSwift/Source/PCloudApi.swift",
-      "line": 714,
+      "line": 702,
       "symbol": "PCloudApi.GetThumbnailsLinks.init(fileIds:thumbnailSize:crop:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
