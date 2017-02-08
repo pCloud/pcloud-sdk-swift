@@ -25,6 +25,8 @@ public struct PCloudApi {
 		case logInFailed = 2000
 		/// The user is not allowed to perform the requested operation. This may be due to insufficient folder permissions.
 		case accessDenied = 2003
+		/// The user has exceeded their available storage quota and this action is not allowed.
+		case userIsOverQuota = 2008
 		/// Internal server error. Try again later.
 		case internalError = 5000
 	}
@@ -198,8 +200,6 @@ public extension PCloudApi {
 			case folderAlreadyExists = 2004
 			/// The folder does not exist.
 			case folderDoesNotExist = 2005
-			/// The user has exceeded their available storage quota and this action is not allowed.
-			case userIsOverQuota = 2008
 			/// One does not simply rename the root folder.
 			case cannotRenameRootFolder = 2042
 		}
@@ -247,8 +247,6 @@ public extension PCloudApi {
 			case folderAlreadyExists = 2004
 			/// The folder does not exist.
 			case folderDoesNotExist = 2005
-			/// The user has exceeded their available storage quota and this action is not allowed.
-			case userIsOverQuota = 2008
 			/// Cannot move a shared folder into another shared folder.
 			case cannotMoveSharedFolderIntoAnotherSharedFolder = 2023
 			/// Cannot move a folder into a subfolder of itself.
@@ -319,8 +317,6 @@ public extension PCloudApi {
 			/// A file with the same name already exists at the same level in the destination tree.
 			/// Can only be returned when conflict policy is `NameConflictPolicy.fail`.
 			case fileAlreadyExists = 2004
-			/// The user has exceeded their available storage quota and this action is not allowed.
-			case userIsOverQuota = 2008
 		}
 	}
 	
@@ -419,8 +415,6 @@ public extension PCloudApi {
 			case invalidName = 2001
 			/// The requested parent folder does not exist.
 			case parentFolderDoesNotExist = 2005
-			/// The user has exceeded their available storage quota and this action is not allowed.
-			case userIsOverQuota = 2008
 		}
 	}
 	
@@ -472,8 +466,6 @@ public extension PCloudApi {
 			case componentOfParentDirectoryDoesNotExist = 2002
 			/// A file with the same name already exists.
 			case fileAlreadyExists = 2004
-			/// The user has exceeded their available storage quota and this action is not allowed.
-			case userIsOverQuota = 2008
 			/// The requested file does not exist.
 			case fileDoesNotExist = 2009
 		}
@@ -518,8 +510,6 @@ public extension PCloudApi {
 		public enum Error: Int, Swift.Error {
 			/// The requested name is invalid.
 			case invalidName = 2001
-			/// The user has exceeded their available storage quota and this action is not allowed.
-			case userIsOverQuota = 2008
 			/// The requested file does not exist.
 			case fileDoesNotExist = 2009
 		}
@@ -566,8 +556,6 @@ public extension PCloudApi {
 			case componentOfParentDirectoryDoesNotExist = 2002
 			/// The requested destination folder does not exist.
 			case folderDoesNotExist = 2005
-			/// The user has exceeded their available storage quota and this action is not allowed.
-			case userIsOverQuota = 2008
 			/// The requested file does not exist.
 			case fileDoesNotExist = 2009
 		}
