@@ -36,7 +36,7 @@ You can find the full documentation [here](https://pcloud.github.io/pcloud-sdk-s
 
 ### Register your application
 
-In order to use this SDK, you have to register your application in the [pCloud App Console](https://PUT/OUT/APP/CONSOLE/URL). Take note of the app key in the main page of your application once you create it.
+In order to use this SDK, you have to register your application in the [pCloud App Console](https://docs.pcloud.com/my_apps/). Take note of the app key in the main page of your application once you create it.
 
 ### Set up your application
 
