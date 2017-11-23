@@ -33,6 +33,8 @@ public final class URLSessionEventHub: NSObject {
 		return observers.value[task.taskIdentifier]
 	}
 	
+	override public init() {}
+	
 	/// Assigns an observer for a specific `URLSessionTask`. This unassigns the previous observer to the provided task.
 	/// The new observer will receive all callbacks for `task` until it is explicitly removed from this instance, or, if
 	/// `task` completes. A task is considered completed when 

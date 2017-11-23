@@ -13,7 +13,7 @@ public final class URLSessionBasedCallOperation: URLSessionBasedNetworkOperation
 	/// Initializes an operation with a task.
 	///
 	/// - parameter task: A backing data task in a suspended state.
-	init(task: URLSessionDataTask) {
+	public init(task: URLSessionDataTask) {
 		super.init(task: task)
 		
 		// Assign callbacks.
@@ -62,6 +62,6 @@ extension URLSessionBasedCallOperation: CallOperation {
 
 extension URLSessionBasedCallOperation: CustomStringConvertible {
 	public var description: String {
-		return "\(state), id=\(id), response=\(response)"
+		return "\(state), id=\(id), response=\(response as Any)"
 	}
 }

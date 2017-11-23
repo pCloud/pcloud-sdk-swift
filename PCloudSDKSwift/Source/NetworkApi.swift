@@ -56,6 +56,11 @@ public struct Call {
 		
 		/// Parameters to this command.
 		public var parameters: [Parameter]
+		
+		public init(name: String, parameters: [Parameter]) {
+			self.name = name
+			self.parameters = parameters
+		}
 	}
 	
 	/// Combines all the necessary input to execute a pCloud API call.
@@ -65,6 +70,11 @@ public struct Call {
 		
 		/// An API host name.
 		public var hostName: String
+		
+		public init(command: Command, hostName: String) {
+			self.command = command
+			self.hostName = hostName
+		}
 	}
 }
 
@@ -108,6 +118,12 @@ public struct Upload {
 		
 		/// An API host name.
 		public var hostName: String
+		
+		public init(command: Call.Command, body: Body, hostName: String) {
+			self.command = command
+			self.body = body
+			self.hostName = hostName
+		}
 	}
 }
 
@@ -152,6 +168,11 @@ public struct Download {
 		
 		/// A block computing the destination of the downloaded file from its temporary location.
 		public var destination: (URL) -> URL
+		
+		public init(resourceAddress: URL, destination: @escaping (URL) -> URL) {
+			self.resourceAddress = resourceAddress
+			self.destination = destination
+		}
 	}
 }
 

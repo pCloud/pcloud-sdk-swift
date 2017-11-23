@@ -41,7 +41,7 @@ public final class DownloadTask: Cancellable {
 	/// - parameter addressProvider: A block obtaining a resource address asynchronously. When the task completes, the completion block passed
 	/// as the parameter to this block should be called on the main thread. Referenced strongly by the task.
 	/// - parameter operationBuilder: A block creating a download operation from a resource address. Referenced strongly by the task.
-	init(addressProvider: @escaping AddressProvider, operationBuilder: @escaping OperationBuilder) {
+	public init(addressProvider: @escaping AddressProvider, operationBuilder: @escaping OperationBuilder) {
 		self.addressProvider = addressProvider
 		self.operationBuilder = operationBuilder
 	}
@@ -134,7 +134,7 @@ public final class DownloadTask: Cancellable {
 extension DownloadTask: CustomStringConvertible {
 	public var description: String {
 		if let operation = operation {
-			return "\(operation.state), id=\(operation.id), progress=\(operation.numberOfBytesReceived) / \(operation.totalNumberOfBytesToReceive), response=\(operation.response)"
+			return "\(operation.state), id=\(operation.id), progress=\(operation.numberOfBytesReceived) / \(operation.totalNumberOfBytesToReceive), response=\(operation.response as Any)"
 		}
 		
 		return "ACQUIRING RESOURCE ADDRESS"

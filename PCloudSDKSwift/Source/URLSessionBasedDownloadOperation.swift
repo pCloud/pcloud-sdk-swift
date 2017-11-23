@@ -14,7 +14,7 @@ public final class URLSessionBasedDownloadOperation: URLSessionBasedNetworkOpera
 	///
 	/// - parameter task: A backing download task in a suspended state.
 	/// - parameter destination: A block computing the destination of the downloaded file from its temporary location.
-	init(task: URLSessionDownloadTask, destination: @escaping (URL) -> URL) {
+	public init(task: URLSessionDownloadTask, destination: @escaping (URL) -> URL) {
 		super.init(task: task)
 		
 		// Assign callbacks.
@@ -91,6 +91,6 @@ extension URLSessionBasedDownloadOperation: DownloadOperation {
 
 extension URLSessionBasedDownloadOperation: CustomStringConvertible {
 	public var description: String {
-		return "\(state), id=\(id), progress=\(numberOfBytesReceived) / \(totalNumberOfBytesToReceive), response=\(response)"
+		return "\(state), id=\(id), progress=\(numberOfBytesReceived) / \(totalNumberOfBytesToReceive), response=\(response as Any)"
 	}
 }

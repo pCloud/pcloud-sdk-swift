@@ -33,8 +33,13 @@ public struct PCloudApi {
 	
 	/// An API error code with a short description of the error. Used for uncommon/unnamed errors.
 	public struct RawError: Swift.Error {
-		public let code: Int
-		public let reason: String?
+		public var code: Int
+		public var reason: String?
+		
+		init(code: Int, reason: String?) {
+			self.code = code
+			self.reason = reason
+		}
 	}
 }
 
@@ -44,6 +49,8 @@ public struct PCloudApi {
 public extension PCloudApi {
 	/// Returns metadata about the user.
 	public struct UserInfo: PCloudApiMethod {
+		public init() {}
+		
 		public var requiresAuthentication: Bool {
 			return true
 		}

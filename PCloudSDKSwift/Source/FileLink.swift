@@ -11,14 +11,14 @@ import Foundation
 /// FileLink namespace.
 public struct FileLink {
 	/// An address to a remote resource in pCloud. Available for a specific time interval.
-	public class Metadata {
+	open class Metadata {
 		/// The address of the resource.
 		public let address: URL
 		/// When `address` becomes unreachable.
 		public let expirationDate: Date
 		
 		/// Initializes a file link with an address and expiration date.
-		init(address: URL, expirationDate: Date) {
+		public init(address: URL, expirationDate: Date) {
 			self.address = address
 			self.expirationDate = expirationDate
 		}
@@ -26,13 +26,13 @@ public struct FileLink {
 }
 
 extension FileLink.Metadata: CustomStringConvertible {
-	public var description: String {
+	open var description: String {
 		return address.description
 	}
 }
 
 extension FileLink.Metadata: Hashable {
-	public var hashValue: Int {
+	open var hashValue: Int {
 		return address.hashValue ^ expirationDate.hashValue
 	}
 }
@@ -44,6 +44,8 @@ public func ==(lhs: FileLink.Metadata, rhs: FileLink.Metadata) -> Bool {
 
 /// Parses `Array<FileLink.Metadata>` from a pCloud API response dictionary.
 public struct FileLinkMetadataParser: Parser {
+	public init() {}
+	
 	public func parse(_ input: [String: Any]) throws -> [FileLink.Metadata] {
 		let view = ApiResponseView(input)
 		let hosts = input["hosts"] as! [String]

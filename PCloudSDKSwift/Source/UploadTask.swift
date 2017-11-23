@@ -93,6 +93,6 @@ public final class UploadTask<Method: PCloudApiMethod>: Cancellable {
 
 extension UploadTask: CustomStringConvertible {
 	public var description: String {
-		return "\(operation.state), id=\(operation.id), progress=\(operation.numberOfBytesSent) / \(operation.totalNumberOfBytesToSend), response=\(operation.response)"
+		return "\(operation.state), id=\(operation.id), progress=\(operation.numberOfBytesSent) / \(operation.totalNumberOfBytesToSend), response=\(operation.response as Any)"
 	}
 }

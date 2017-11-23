@@ -20,7 +20,7 @@ public final class AnyCancellationToken {
 	/// Creates a new token.
 	///
 	/// - parameter body: A block to forward the `cancel()` invocation to. The block is released when `cancel()` is invoked.
-	init(body: (() -> Void)? = nil) {
+	public init(body: (() -> Void)? = nil) {
 		self.body = body
 	}
 }

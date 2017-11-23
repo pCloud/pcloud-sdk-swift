@@ -13,7 +13,7 @@ public final class URLSessionBasedUploadOperation: URLSessionBasedNetworkOperati
 	/// Initializes an operation with a task.
 	///
 	/// - parameter task: A backing upload task in a suspended state.
-	init(task: URLSessionUploadTask) {
+	public init(task: URLSessionUploadTask) {
 		super.init(task: task)
 		
 		// Assign callbacks.
@@ -81,6 +81,6 @@ extension URLSessionBasedUploadOperation: UploadOperation {
 
 extension URLSessionBasedUploadOperation: CustomStringConvertible {
 	public var description: String {
-		return "\(state), id=\(id), progress=\(numberOfBytesSent) / \(totalNumberOfBytesToSend), response=\(response)"
+		return "\(state), id=\(id), progress=\(numberOfBytesSent) / \(totalNumberOfBytesToSend), response=\(response as Any)"
 	}
 }

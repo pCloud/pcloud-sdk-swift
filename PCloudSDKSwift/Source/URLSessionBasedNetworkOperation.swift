@@ -10,26 +10,26 @@ import Foundation
 
 /// Base class for network operations backed by `URLSessionTask`. Conforms to `NetworkOperation`. Forwards `URLSessionObserver` callbacks to blocks.
 public class URLSessionBasedNetworkOperation<T> {
-	let task: URLSessionTask // The backing task.
-	var taskResponse: T? // The task response. Non-nil when the task completes.
+	public let task: URLSessionTask // The backing task.
+	public var taskResponse: T? // The task response. Non-nil when the task completes.
 	
 	// A block to call on a specific queue when notifyCompletion() is called by subclasses.
-	var completion: (callback: (T) -> Void, queue: DispatchQueue?)?
+	public var completion: (callback: (T) -> Void, queue: DispatchQueue?)?
 	
 	// Blocks corresponding to URLSessionObserver callbacks. Each one is named after the method it is called inside.
-	var didSendBodyData: ((Int64, Int64) -> Void)?
-	var didComplete: ((Error?) -> Void)?
-	var didReceiveData: ((Data) -> Void)?
-	var didFinishDownloading: ((URL) -> Void)?
-	var didWriteData: ((Int64, Int64) -> Void)?
+	public var didSendBodyData: ((Int64, Int64) -> Void)?
+	public var didComplete: ((Error?) -> Void)?
+	public var didReceiveData: ((Data) -> Void)?
+	public var didFinishDownloading: ((URL) -> Void)?
+	public var didWriteData: ((Int64, Int64) -> Void)?
 	
-	init(task: URLSessionTask) {
+	public init(task: URLSessionTask) {
 		self.task = task
 	}
 	
 	// If the completion tuple exists, calls the block on the queue passing the provided response as argument to the block.
 	// If queue is nil, calls the block on the main queue. Used by subclasses. 
-	func notifyCompletion(response: T) {
+	public func notifyCompletion(response: T) {
 		if let completion = completion {
 			(completion.queue ?? .main).async {
 				completion.callback(response)

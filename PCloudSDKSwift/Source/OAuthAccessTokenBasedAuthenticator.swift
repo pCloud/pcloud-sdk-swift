@@ -15,7 +15,7 @@ public struct OAuthAccessTokenBasedAuthenticator {
 	/// Initializes a new authenticator with an access token.
 	///
 	/// - parameter accessToken: An OAuth2 access token.
-	init(accessToken: String) {
+	public init(accessToken: String) {
 		self.accessToken = accessToken
 	}
 }

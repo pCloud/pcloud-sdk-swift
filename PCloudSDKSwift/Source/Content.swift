@@ -16,7 +16,7 @@ public enum Content {
 	case folder(Folder.Metadata)
 	
 	/// Base class for a folder content item in pCloud with common fields for files and folders.
-	public class Metadata {
+	open class Metadata {
 		/// The unique identifier of this content item.
 		public let id: UInt64
 		/// The name of this content item as it appears in the file system.
@@ -109,22 +109,45 @@ public struct File {
 		
 		/// Audio-file-specific metadata.
 		public struct AudioMetadata {
-			public let title: String?
-			public let artist: String?
-			public let album: String?
-			public let genre: String?
-			public let trackno: Int?
+			public var title: String?
+			public var artist: String?
+			public var album: String?
+			public var genre: String?
+			public var trackno: Int?
+			
+			public init() {}
+			
+			public init(title: String?, artist: String?, album: String?, genre: String?, trackno: Int?) {
+				self.title = title
+				self.artist = artist
+				self.album = album
+				self.genre = genre
+				self.trackno = trackno
+			}
 		}
 		
 		/// Video-file-specific metadata.
 		public struct VideoMetadata {
-			public let resolution: CGSize?
-			public let duration: Float?
+			public var resolution: CGSize?
+			public var duration: Float?
+			
+			public init() {}
+			
+			public init(resolution: CGSize?, duration: Float?) {
+				self.resolution = resolution
+				self.duration = duration
+			}
 		}
 		
 		/// Image-file-specific metadata.
 		public struct ImageMetadata {
-			public let resolution: CGSize?
+			public var resolution: CGSize?
+			
+			public init() {}
+			
+			public init(resolution: CGSize?) {
+				self.resolution = resolution
+			}
 		}
 		
 		/// A file type.
@@ -175,7 +198,7 @@ public struct File {
 	}
 	
 	/// A pCloud file.
-	public class Metadata: Content.Metadata {
+	open class Metadata: Content.Metadata {
 		/// The file category.
 		public let media: Media
 		/// The size of the file in bytes.
@@ -223,9 +246,9 @@ public struct File {
 	}
 }
 
-public extension File.Metadata {
+extension File.Metadata {
 	/// `true` if this file's media is `Media.uncategorized`, `false` otherwise.
-	var isUncategorized: Bool {
+	open var isUncategorized: Bool {
 		if case .uncategorized = media {
 			return true
 		}
@@ -234,7 +257,7 @@ public extension File.Metadata {
 	}
 	
 	/// `true` if this file's media is `Media.audio`, `false` otherwise.
-	var isAudio: Bool {
+	open var isAudio: Bool {
 		if case .audio(_) = media {
 			return true
 		}
@@ -243,7 +266,7 @@ public extension File.Metadata {
 	}
 	
 	/// `true` if this file's media is `Media.image`, `false` otherwise.
-	var isImage: Bool {
+	open var isImage: Bool {
 		if case .image(_) = media {
 			return true
 		}
@@ -252,7 +275,7 @@ public extension File.Metadata {
 	}
 	
 	/// `true` if this file's media is `Media.video`, `false` otherwise.
-	var isVideo: Bool {
+	open var isVideo: Bool {
 		if case .video(_) = media {
 			return true
 		}
@@ -261,7 +284,7 @@ public extension File.Metadata {
 	}
 	
 	/// `true` if this file's media is `Media.document`, `false` otherwise.
-	var isDocument: Bool {
+	open var isDocument: Bool {
 		if case .document = media {
 			return true
 		}
@@ -270,7 +293,7 @@ public extension File.Metadata {
 	}
 	
 	/// `true` if this file's media is `Media.archive`, `false` otherwise.
-	var isArchive: Bool {
+	open var isArchive: Bool {
 		if case .archive = media {
 			return true
 		}
@@ -279,7 +302,7 @@ public extension File.Metadata {
 	}
 	
 	/// The audio metadata of this file. Non-`nil` only when this file's media is `Media.audio`.
-	var audioMetadata: File.Media.AudioMetadata? {
+	open var audioMetadata: File.Media.AudioMetadata? {
 		if case .audio(let meta) = media {
 			return meta
 		}
@@ -288,7 +311,7 @@ public extension File.Metadata {
 	}
 	
 	/// The image metadata of this file. Non-`nil` only when this file's media is `image`.
-	var imageMetadata: File.Media.ImageMetadata? {
+	open var imageMetadata: File.Media.ImageMetadata? {
 		if case .image(let meta) = media {
 			return meta
 		}
@@ -297,7 +320,7 @@ public extension File.Metadata {
 	}
 	
 	/// The video metadata of this file. Non-`nil` only when this file's media is `vidoe`.
-	var videoMetadata: File.Media.VideoMetadata? {
+	open var videoMetadata: File.Media.VideoMetadata? {
 		if case .video(let meta) = media {
 			return meta
 		}
@@ -308,19 +331,27 @@ public extension File.Metadata {
 
 extension File.Media.ImageMetadata: CustomStringConvertible {
 	public var description: String {
-		return "\(resolution?.width)x\(resolution?.height)"
+		if let resolution = resolution {
+			return "\(resolution.width)x\(resolution.height)"
+		}
+		
+		return "nil"
 	}
 }
 
 extension File.Media.VideoMetadata: CustomStringConvertible {
 	public var description: String {
-		return "\(duration) s"
+		if let duration = duration {
+			return "\(duration) s"
+		}
+		
+		return "nil"
 	}
 }
 
 extension File.Media.AudioMetadata: CustomStringConvertible {
 	public var description: String {
-		return "\(artist) - \(title)"
+		return "\(artist as Any) - \(title as Any)"
 	}
 }
 
@@ -381,7 +412,7 @@ public func ==(lhs: File.Media, rhs: File.Media) -> Bool {
 }
 
 extension File.Metadata: CustomStringConvertible {
-	public var description: String {
+	open var description: String {
 		return "id=\(id), name=\(name), parent=\(parentFolderId), hash=\(hash), size=\(size), \(media)"
 	}
 }
@@ -391,7 +422,7 @@ public func ==(lhs: File.Metadata, rhs: File.Metadata) -> Bool {
 }
 
 extension File.Metadata: Hashable {
-	public var hashValue: Int {
+	open var hashValue: Int {
 		return id.hashValue
 	}
 }
@@ -406,13 +437,22 @@ public struct Folder {
 	/// Folder permissions apply to folders not owned by the users that access them. They are controlled by the owner of the folder.
 	public struct Permissions {
 		/// Users can access this folder's metadata and the metadata of its children recursively.
-		public var canRead: Bool
+		public var canRead = true
 		/// Users can create folders, upload files and copy files and folders to this folder.
-		public var canCreate: Bool
+		public var canCreate = false
 		/// Users can modify the content of files inside this folder. Files and folders can also be renamed.
-		public var canModify: Bool
+		public var canModify = false
 		/// Users can delete and move content inside this folder.
-		public var canDelete: Bool
+		public var canDelete = false
+		
+		public init() {}
+		
+		public init(canRead: Bool, canCreate: Bool, canModify: Bool, canDelete: Bool) {
+			self.canRead = canRead
+			self.canCreate = canCreate
+			self.canModify = canModify
+			self.canDelete = canDelete
+		}
 	}
 	
 	public enum Ownership {
@@ -423,7 +463,7 @@ public struct Folder {
 	}
 	
 	/// A pCloud folder.
-	public class Metadata: Content.Metadata {
+	open class Metadata: Content.Metadata {
 		/// The ownerwhip of this folder.
 		public let ownership: Ownership
 		/// This folder's immediate children.
@@ -451,9 +491,9 @@ public struct Folder {
 	}
 }
 
-public extension Folder.Metadata {
+extension Folder.Metadata {
 	/// `true` if the user accessing this folder is its owner, `false` otherwise.
-	var isOwnedByUser: Bool {
+	open var isOwnedByUser: Bool {
 		if case .ownedByUser = ownership {
 			return true
 		}
@@ -461,13 +501,8 @@ public extension Folder.Metadata {
 		return false
 	}
 	
-	/// `true` if the user accessing this folder is not its owner, `false` otherwise.
-	var isNotOwnedByUser: Bool {
-		return !isOwnedByUser
-	}
-	
 	/// The folder permissions assigned to this folder by its owner. Non-`nil` only when the user accessing this folder is not its owner.
-	var permissions: Folder.Permissions? {
+	open var permissions: Folder.Permissions? {
 		if case .notOwnedByUser(let permissions) = ownership {
 			return permissions
 		}
@@ -499,13 +534,15 @@ extension Folder.Ownership: CustomStringConvertible {
 }
 
 extension Folder.Metadata: CustomStringConvertible {
-	public var description: String {
+	open var description: String {
 		return "id=\(id), name=\(name), parent=\(parentFolderId), \(ownership), contains \(contents.count) items"
 	}
 }
 
 /// Parses `File.Media.Icon` from a pCloud API response dictionary.
 public struct FileIconParser: Parser {
+	public init() {}
+	
 	public func parse(_ input: [String: Any]) throws -> File.Media.Icon {
 		let view = ApiResponseView(input)
 		
@@ -538,6 +575,8 @@ public struct FileIconParser: Parser {
 
 /// Parses `File.Media.ImageMetadata` from a pCloud API response dictionary.
 public struct ImageMetadataParser: Parser {
+	public init() {}
+	
 	public func parse(_ input: [String : Any]) throws -> File.Media.ImageMetadata {
 		let view = ApiResponseView(input)
 		
@@ -555,6 +594,8 @@ public struct ImageMetadataParser: Parser {
 
 /// Parses `File.Media.VideoMetadata` from a pCloud API response dictionary.
 public struct VideoMetadataParser: Parser {
+	public init() {}
+	
 	public func parse(_ input: [String : Any]) throws -> File.Media.VideoMetadata {
 		let view = ApiResponseView(input)
 		
@@ -580,6 +621,8 @@ public struct VideoMetadataParser: Parser {
 
 /// Parses `File.Media.AudioMetadata` from a pCloud API response dictionary.
 public struct AudioMetadataParser: Parser {
+	public init() {}
+	
 	public func parse(_ input: [String : Any]) throws -> File.Media.AudioMetadata {
 		let view = ApiResponseView(input)
 		return File.Media.AudioMetadata(title: view.stringOrNil("title"),
@@ -592,6 +635,8 @@ public struct AudioMetadataParser: Parser {
 
 /// Parses `File.Metadata` from a pCloud API response dictionary.
 public struct FileMetadataParser: Parser {
+	public init() {}
+	
 	public func parse(_ input: [String : Any]) throws -> File.Metadata {
 		let view = ApiResponseView(input)
 		
@@ -625,6 +670,8 @@ public struct FileMetadataParser: Parser {
 
 /// Parses `Array<Content>` from a pCloud API response dictionary.
 public struct ContentListParser: Parser {
+	public init() {}
+	
 	public func parse(_ input: [[String : Any]]) throws -> [Content] {
 		let fileParser = FileMetadataParser()
 		let folderParser = FolderMetadataParser()
@@ -643,6 +690,8 @@ public struct ContentListParser: Parser {
 
 /// Parses `Folder.Metadata` from a pCloud API response dictionary.
 public struct FolderMetadataParser: Parser {
+	public init() {}
+	
 	public func parse(_ input: [String : Any]) throws -> Folder.Metadata {
 		let view = ApiResponseView(input)
 		

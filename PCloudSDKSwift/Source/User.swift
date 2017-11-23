@@ -11,7 +11,7 @@ import Foundation
 /// User namespace.
 public struct User {
 	/// A pCloud user.
-	public class Metadata {
+	open class Metadata {
 		/// The unique identifier of this user.
 		public let id: UInt64
 		/// The email address this user has registered with.
@@ -35,14 +35,14 @@ public struct User {
 }
 
 extension User.Metadata: CustomStringConvertible {
-	public var description: String {
+	open var description: String {
 		let quotaProgress = (Float(usedQuota) / Float(availableQuota)) * 100
 		return "id=\(id), email=\(emailAddress), verified=\(isEmailVerified), quota=\(usedQuota) / \(availableQuota); \(quotaProgress)%"
 	}
 }
 
 extension User.Metadata: Hashable {
-	public var hashValue: Int {
+	open var hashValue: Int {
 		return id.hashValue
 	}
 }
@@ -54,6 +54,8 @@ public func ==(lhs: User.Metadata, rhs: User.Metadata) -> Bool {
 
 /// Parses `User.Metadata` from a pCloud API response dictionary.
 public struct UserMetadataParser: Parser {
+	public init() {}
+	
 	public func parse(_ input: [String: Any]) throws -> User.Metadata {
 		let view = ApiResponseView(input)
 		

@@ -82,6 +82,6 @@ public final class CallTask<Method: PCloudApiMethod>: Cancellable {
 
 extension CallTask: CustomStringConvertible {
 	public var description: String {
-		return "\(operation.state), id=\(operation.id), response=\(operation.response)"
+		return "\(operation.state), id=\(operation.id), response=\(operation.response as Any)"
 	}
 }
