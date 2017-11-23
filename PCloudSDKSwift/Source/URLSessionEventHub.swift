@@ -73,32 +73,32 @@ public final class URLSessionEventHub: NSObject {
 // MARK:- Conforming to URLSession delegate protocols.
 
 extension URLSessionEventHub: URLSessionTaskDelegate {
-	public func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
+	@objc public func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
 		self[task]?.urlSession(session, task: task, didSendBodyData: bytesSent, totalBytesSent: totalBytesSent, totalBytesExpectedToSend: totalBytesExpectedToSend)
 	}
 	
-	public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+	@objc public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
 		// Remove the observer and forward this callback to it.
 		set(nil, for: task)?.urlSession(session, task: task, didCompleteWithError: error)
 	}
 }
 
 extension URLSessionEventHub: URLSessionDataDelegate {
-	public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+	@objc public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
 		self[dataTask]?.urlSession(session, dataTask: dataTask, didReceive: data)
 	}
 }
 
 extension URLSessionEventHub: URLSessionDownloadDelegate {
-	public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+	@objc public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
 		self[downloadTask]?.urlSession(session, downloadTask: downloadTask, didFinishDownloadingTo: location)
 	}
 	
-	public func urlSession(_ session: URLSession,
-	                       downloadTask: URLSessionDownloadTask,
-	                       didWriteData bytesWritten: Int64,
-	                       totalBytesWritten: Int64,
-	                       totalBytesExpectedToWrite: Int64) {
+	@objc public func urlSession(_ session: URLSession,
+								 downloadTask: URLSessionDownloadTask,
+								 didWriteData bytesWritten: Int64,
+								 totalBytesWritten: Int64,
+								 totalBytesExpectedToWrite: Int64) {
 		self[downloadTask]?.urlSession(session,
 		                               downloadTask: downloadTask,
 		                               didWriteData: bytesWritten,

@@ -169,7 +169,7 @@ final class URLSessionBasedUploadOperationTests: XCTestCase, URLSessionBasedOper
 		let task = createDataTask(session: session)
 		let invokeExpectation = expectation(description: "to invoke progress block")
 		
-		operation.setProgressBlock(queue: .main) { _ in
+		operation.setProgressBlock(queue: .main) { _,_  in
 			invokeExpectation.fulfill()
 		}
 		
@@ -339,7 +339,7 @@ final class URLSessionBasedDownloadOperationTests: XCTestCase, URLSessionBasedOp
 		let task = createDownloadTask(session: session)
 		let invokeExpectation = expectation(description: "to invoke progress block")
 		
-		operation.setProgressBlock(queue: .main) { _ in
+		operation.setProgressBlock(queue: .main) { _,_  in
 			invokeExpectation.fulfill()
 		}
 		
@@ -461,7 +461,7 @@ extension URLSessionBasedOperationTestCase {
 	func testInvokesCallbackBlockOnDidSendBodyData<T>(session: URLSession, operation: URLSessionBasedNetworkOperation<T>) {
 		// Given
 		var invoked = false
-		operation.didSendBodyData = { _ in invoked = true }
+		operation.didSendBodyData = { _, _ in invoked = true }
 		
 		// When
 		operation.urlSession(session, task: createDataTask(session: session), didSendBodyData: 0, totalBytesSent: 0, totalBytesExpectedToSend: 0)
@@ -509,7 +509,7 @@ extension URLSessionBasedOperationTestCase {
 	func testInvokesCallbackBlockOnDidWriteData<T>(session: URLSession, operation: URLSessionBasedNetworkOperation<T>) {
 		// Given
 		var invoked = false
-		operation.didWriteData = { _ in invoked = true }
+		operation.didWriteData = { _, _ in invoked = true }
 		
 		// When
 		operation.urlSession(session, downloadTask: createDownloadTask(session: session), didWriteData: 0, totalBytesWritten: 0, totalBytesExpectedToWrite: 0)

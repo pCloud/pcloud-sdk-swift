@@ -113,7 +113,7 @@ final class OAuthTests: XCTestCase {
 		let view = AuthorizationFlowViewMock()
 		
 		// When
-		OAuth.performAuthorizationFlow(view: view, appKey: "", storeToken: { _ in }) { _ in }
+		OAuth.performAuthorizationFlow(view: view, appKey: "", storeToken: { _,_  in }) { _ in }
 		
 		// Expect
 		XCTAssert(view.presentInvoked, "should present web view")
@@ -125,7 +125,7 @@ final class OAuthTests: XCTestCase {
 		let url = URL(string: "https://google.com")!
 		
 		// When
-		OAuth.performAuthorizationFlow(view: view, appKey: "", storeToken: { _ in }) { _ in
+		OAuth.performAuthorizationFlow(view: view, appKey: "", storeToken: { _,_  in }) { _ in
 			// Expect
 			XCTFail("should not invoke completion block")
 		}
@@ -143,7 +143,7 @@ final class OAuthTests: XCTestCase {
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
 		// When
-		OAuth.performAuthorizationFlow(view: view, appKey: "", storeToken: { _ in }) { result in
+		OAuth.performAuthorizationFlow(view: view, appKey: "", storeToken: { _,_  in }) { result in
 			// Expect
 			invokeExpectation.fulfill()
 			
@@ -165,7 +165,7 @@ final class OAuthTests: XCTestCase {
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
 		// When
-		OAuth.performAuthorizationFlow(view: view, appKey: "foo", storeToken: { _ in }) { _ in
+		OAuth.performAuthorizationFlow(view: view, appKey: "foo", storeToken: { _,_  in }) { _ in
 			// Expect
 			invokeExpectation.fulfill()
 		}

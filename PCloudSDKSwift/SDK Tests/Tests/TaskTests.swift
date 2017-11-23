@@ -211,7 +211,7 @@ final class UploadTaskTests: XCTestCase {
 		let invokeExpectation = expectation(description: "to invoke progress block")
 		
 		// Given
-		task.setProgressBlock { _ in
+		task.setProgressBlock { _,_  in
 			// Expect
 			invokeExpectation.fulfill()
 			XCTAssert(Thread.isMainThread, "expected block to be invoked on the main thread")
@@ -300,7 +300,7 @@ final class DownloadTaskTest: XCTestCase {
 		
 		// Given
 		let address = URL(string: "http://google.com")!
-		let task = createTask(addressProviderResult: .success(address)).setProgressBlock { _ in
+		let task = createTask(addressProviderResult: .success(address)).setProgressBlock { _,_  in
 			// Expect
 			invokeExpectation.fulfill()
 		}

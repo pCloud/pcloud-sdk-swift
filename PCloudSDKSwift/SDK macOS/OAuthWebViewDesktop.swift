@@ -74,7 +74,7 @@ public final class WebViewControllerDesktop: NSViewController {
 		// Change to Bundle.main when compiling the SDK's source files in your target. Also don't forget to copy the .xib file to your product.
 		let bundle = Bundle(identifier: "com.pcloud.swiftsdk-macos")
 		
-		super.init(nibName: "WebViewControllerDesktop", bundle: bundle)!
+		super.init(nibName: NSNib.Name(rawValue: "WebViewControllerDesktop"), bundle: bundle)
 	}
 	
 	required public init?(coder: NSCoder) {
