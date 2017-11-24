@@ -1,5 +1,5 @@
 //
-//  ApiTaskControllerTests.swift
+//  APITaskControllerTests.swift
 //  PCloudSDKSwift
 //
 //  Created by Todor Pitekov on 03/01/2017
@@ -11,8 +11,8 @@ import XCTest
 @testable import PCloudSDKSwift
 
 
-final class ApiTaskControllerTests: XCTestCase {
-	var controller: ApiTaskController!
+final class APITaskControllerTests: XCTestCase {
+	var controller: APITaskController!
 	var dispatcher: OperationDispatcher!
 	var authenticator: AuthenticatorMock!
 	var hostProvider: HostProviderMock!
@@ -28,7 +28,7 @@ final class ApiTaskControllerTests: XCTestCase {
 		hostProvider = HostProviderMock()
 		hostProvider.defaultHostName = "domain.com"
 		
-		controller = ApiTaskController(hostProvider: hostProvider,
+		controller = APITaskController(hostProvider: hostProvider,
 		                               authenticator: authenticator,
 		                               callDispatcher: dispatcher.callOperation,
 		                               uploadDispatcher: dispatcher.uploadOperation,
@@ -45,7 +45,7 @@ final class ApiTaskControllerTests: XCTestCase {
 	}
 }
 
-extension ApiTaskControllerTests {
+extension APITaskControllerTests {
 	func testAuthenticatesCallCommandsRequiringAuthentication() {
 		// Given
 		var command = VoidApiMethod()
@@ -122,7 +122,7 @@ extension ApiTaskControllerTests {
 		hostProvider.defaultHostName = "domain.com"
 		
 		// When
-		_ = controller.call(PCloudApi.UserInfo())
+		_ = controller.call(PCloudAPI.UserInfo())
 		
 		// Expect
 		guard let request = dispatcher.lastCallRequest else {
@@ -138,7 +138,7 @@ extension ApiTaskControllerTests {
 		hostProvider.defaultHostName = "domain.com"
 		
 		// When
-		_ = controller.upload(PCloudApi.UploadFile(name: "krokodil", parentFolderId: 0, modificationDate: nil), body: .data(Data()))
+		_ = controller.upload(PCloudAPI.UploadFile(name: "krokodil", parentFolderId: 0, modificationDate: nil), body: .data(Data()))
 		
 		// Expect
 		guard let request = dispatcher.lastUploadRequest else {

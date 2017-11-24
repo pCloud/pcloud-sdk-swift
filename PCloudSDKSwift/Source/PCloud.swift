@@ -52,7 +52,7 @@ public final class PCloud {
 		let uploadDispatcher = URLSessionDispatch.uploadOperationBuilder(scheme: .https, session: session, delegate: eventHub)
 		let downloadDispatcher = URLSessionDispatch.downloadOperationBuilder(session: session, delegate: eventHub)
 		
-		return PCloudClient(controller: ApiTaskController(hostProvider: "api.pcloud.com",
+		return PCloudClient(controller: APITaskController(hostProvider: "api.pcloud.com",
 		                                                  authenticator: authenticator,
 		                                                  callDispatcher: callDispatcher,
 		                                                  uploadDispatcher: uploadDispatcher,

@@ -8,15 +8,15 @@
 
 import Foundation
 
-/// Wrapper around `ApiTaskController` providing convenient interface to common API methods.
+/// Wrapper around `APITaskController` providing convenient interface to common API methods.
 public final class PCloudClient {
 	/// The underlying task controller.
-	public let controller: ApiTaskController
+	public let controller: APITaskController
 	
 	/// Initializes a new instance.
 	///
 	/// - parameter controller: The controller that will create API tasks for this instance.
-	public init(controller: ApiTaskController) {
+	public init(controller: APITaskController) {
 		self.controller = controller
 	}
 }
@@ -28,8 +28,8 @@ public extension PCloudClient {
 	/// Creates and returns a task for fetching user metadata.
 	///
 	/// - returns: A task producing a `User.Metadata` object on success.
-	func fetchUserInfo() -> CallTask<PCloudApi.UserInfo> {
-		return controller.call(PCloudApi.UserInfo())
+	func fetchUserInfo() -> CallTask<PCloudAPI.UserInfo> {
+		return controller.call(PCloudAPI.UserInfo())
 	}
 }
 
@@ -42,8 +42,8 @@ public extension PCloudClient {
 	/// - parameter folderId: The unique identifier of the folder to fetch.
 	/// - parameter recursive: Pass `false` to fetch only the immediate children of the folder. Pass `true` to fetch the full folder tree of the folder.
 	/// - returns: A task producing a `Folder.Metadata` object on success.
-	func listFolder(_ folderId: UInt64, recursively recursive: Bool) -> CallTask<PCloudApi.ListFolder> {
-		return controller.call(PCloudApi.ListFolder(folderId: folderId, recursive: recursive))
+	func listFolder(_ folderId: UInt64, recursively recursive: Bool) -> CallTask<PCloudAPI.ListFolder> {
+		return controller.call(PCloudAPI.ListFolder(folderId: folderId, recursive: recursive))
 	}
 	
 	/// Creates and returns a task for creating a folder.
@@ -51,8 +51,8 @@ public extension PCloudClient {
 	/// - parameter name: A name for the new folder.
 	/// - parameter folderId: The unique identifier of the parent folder.
 	/// - returns: A task producing a `Folder.Metadata` object on success.
-	func createFolder(named name: String, inFolder folderId: UInt64) -> CallTask<PCloudApi.CreateFolder> {
-		return controller.call(PCloudApi.CreateFolder(name: name, parentFolderId: folderId))
+	func createFolder(named name: String, inFolder folderId: UInt64) -> CallTask<PCloudAPI.CreateFolder> {
+		return controller.call(PCloudAPI.CreateFolder(name: name, parentFolderId: folderId))
 	}
 	
 	/// Creates and returns a task for renaming a folder.
@@ -60,8 +60,8 @@ public extension PCloudClient {
 	/// - parameter folderId: The unique identifier of the folder to rename.
 	/// - parameter newName: The new name for the folder.
 	/// - returns: A task producing a `Folder.Metadata` object on success.
-	func renameFolder(_ folderId: UInt64, to newName: String) -> CallTask<PCloudApi.RenameFolder> {
-		return controller.call(PCloudApi.RenameFolder(folderId: folderId, newName: newName))
+	func renameFolder(_ folderId: UInt64, to newName: String) -> CallTask<PCloudAPI.RenameFolder> {
+		return controller.call(PCloudAPI.RenameFolder(folderId: folderId, newName: newName))
 	}
 	
 	/// Creates and returns a task for moving a folder.
@@ -69,8 +69,8 @@ public extension PCloudClient {
 	/// - parameter folderId: The unique identifier of the folder to move.
 	/// - parameter destinationFolderId: The unique identifier of the destination folder.
 	/// - returns: A task producing a `Folder.Metadata` object on success.
-	func moveFolder(_ folderId: UInt64, toFolder destinationFolderId: UInt64) -> CallTask<PCloudApi.MoveFolder> {
-		return controller.call(PCloudApi.MoveFolder(folderId: folderId, destinationFolderId: destinationFolderId))
+	func moveFolder(_ folderId: UInt64, toFolder destinationFolderId: UInt64) -> CallTask<PCloudAPI.MoveFolder> {
+		return controller.call(PCloudAPI.MoveFolder(folderId: folderId, destinationFolderId: destinationFolderId))
 	}
 	
 	/// Creates and returns a task for copying a folder.
@@ -80,16 +80,16 @@ public extension PCloudClient {
 	/// - returns: A task producing a `Folder.Metadata` object on success.
 	func copyFolder(_ folderId: UInt64,
 	                toFolder destinationFolderId: UInt64,
-	                onConflict nameConflictPolicy: PCloudApi.CopyFolder.NameConflictPolicy = .skip) -> CallTask<PCloudApi.CopyFolder> {
-		return controller.call(PCloudApi.CopyFolder(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: nameConflictPolicy))
+	                onConflict nameConflictPolicy: PCloudAPI.CopyFolder.NameConflictPolicy = .skip) -> CallTask<PCloudAPI.CopyFolder> {
+		return controller.call(PCloudAPI.CopyFolder(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: nameConflictPolicy))
 	}
 	
 	/// Creates and returns a task for deleting a folder along with all of its children recursively.
 	///
 	/// - parameter folderId: The unique identifier of the folder to delete.
 	/// - returns: A task producing a `Folder.Metadata` object on success.
-	func deleteFolderRecursively(_ folderId: UInt64) -> CallTask<PCloudApi.DeleteFolderRecursive> {
-		return controller.call(PCloudApi.DeleteFolderRecursive(folderId: folderId))
+	func deleteFolderRecursively(_ folderId: UInt64) -> CallTask<PCloudAPI.DeleteFolderRecursive> {
+		return controller.call(PCloudAPI.DeleteFolderRecursive(folderId: folderId))
 	}
 }
 
@@ -105,8 +105,8 @@ public extension PCloudClient {
 	/// - parameter date: The date to use as the modification date for the file when creating it in the file system. Passing `nil` will create the file
 	/// with the current date as the modification date.
 	/// - returns: A task producing a `File.Metadata` object on success.
-	func upload(_ data: Data, toFolder folderId: UInt64, asFileNamed name: String, withModificationDate date: Date? = nil) -> UploadTask<PCloudApi.UploadFile> {
-		return controller.upload(PCloudApi.UploadFile(name: name, parentFolderId: folderId, modificationDate: date), body: .data(data))
+	func upload(_ data: Data, toFolder folderId: UInt64, asFileNamed name: String, withModificationDate date: Date? = nil) -> UploadTask<PCloudAPI.UploadFile> {
+		return controller.upload(PCloudAPI.UploadFile(name: name, parentFolderId: folderId, modificationDate: date), body: .data(data))
 	}
 	
 	/// Creates and returns a task for uploading a file from a local file.
@@ -117,8 +117,8 @@ public extension PCloudClient {
 	/// - parameter date: The date to use as the modification date for the file when creating it in the file system. Passing `nil` will create the file
 	/// with the current date as the modification date.
 	/// - returns: A task producing a `File.Metadata` object on success.
-	func upload(fromFileAt path: URL, toFolder folderId: UInt64, asFileNamed name: String, withModificationDate date: Date? = nil) -> UploadTask<PCloudApi.UploadFile> {
-		return controller.upload(PCloudApi.UploadFile(name: name, parentFolderId: folderId, modificationDate: date), body: .file(path))
+	func upload(fromFileAt path: URL, toFolder folderId: UInt64, asFileNamed name: String, withModificationDate date: Date? = nil) -> UploadTask<PCloudAPI.UploadFile> {
+		return controller.upload(PCloudAPI.UploadFile(name: name, parentFolderId: folderId, modificationDate: date), body: .file(path))
 	}
 	
 	/// Creates and returns a task for copying a file.
@@ -127,8 +127,8 @@ public extension PCloudClient {
 	/// - parameter destinationFolderId: The unique identifier of the destination folder.
 	/// - parameter overwrite: Whether to overwrite (`true`) a file with the same name in the destination folder, or to fail (`false`, the default).
 	/// - returns: A task producing a `File.Metadata` object on success.
-	func copyFile(_ fileId: UInt64, toFolder destinationFolderId: UInt64, overwrite: Bool = false) -> CallTask<PCloudApi.CopyFile> {
-		return controller.call(PCloudApi.CopyFile(fileId: fileId, destinationFolderId: destinationFolderId, overwrite: overwrite))
+	func copyFile(_ fileId: UInt64, toFolder destinationFolderId: UInt64, overwrite: Bool = false) -> CallTask<PCloudAPI.CopyFile> {
+		return controller.call(PCloudAPI.CopyFile(fileId: fileId, destinationFolderId: destinationFolderId, overwrite: overwrite))
 	}
 	
 	/// Creates and returns a task for renaming a file.
@@ -136,8 +136,8 @@ public extension PCloudClient {
 	/// - parameter fileId: The unique identifier of the file to rename.
 	/// - parameter name: The new name for the file.
 	/// - returns: A task producing a `File.Metadata` object on success.
-	func renameFile(_ fileId: UInt64, to name: String) -> CallTask<PCloudApi.RenameFile> {
-		return controller.call(PCloudApi.RenameFile(fileId: fileId, newName: name))
+	func renameFile(_ fileId: UInt64, to name: String) -> CallTask<PCloudAPI.RenameFile> {
+		return controller.call(PCloudAPI.RenameFile(fileId: fileId, newName: name))
 	}
 	
 	/// Creates and returns a task for moving a file.
@@ -145,24 +145,24 @@ public extension PCloudClient {
 	/// - parameter fileId: The unique identifier of the file to move.
 	/// - parameter destinationFolderId: The unique identifier of the destination folder.
 	/// - returns: A task producing a `File.Metadata` object on success.
-	func moveFile(_ fileId: UInt64, toFolder destinationFolderId: UInt64) -> CallTask<PCloudApi.MoveFile> {
-		return controller.call(PCloudApi.MoveFile(fileId: fileId, destinationFolderId: destinationFolderId))
+	func moveFile(_ fileId: UInt64, toFolder destinationFolderId: UInt64) -> CallTask<PCloudAPI.MoveFile> {
+		return controller.call(PCloudAPI.MoveFile(fileId: fileId, destinationFolderId: destinationFolderId))
 	}
 	
 	/// Creates and returns a task for deleting a file.
 	///
 	/// - parameter fileId: The unique identifier of the file to delete.
 	/// - returns: A task producing a `File.Metadata` object on success.
-	func deleteFile(_ fileId: UInt64) -> CallTask<PCloudApi.DeleteFile> {
-		return controller.call(PCloudApi.DeleteFile(fileId: fileId))
+	func deleteFile(_ fileId: UInt64) -> CallTask<PCloudAPI.DeleteFile> {
+		return controller.call(PCloudAPI.DeleteFile(fileId: fileId))
 	}
 	
 	/// Creates and returns a task for generating a link from which a file can be downloaded.
 	///
 	/// - parameter fileId: The unique identifier of the file.
 	/// - returns: A task producing an `Array<FileLink.Metadata>` object on success.
-	func getFileLink(forFile fileId: UInt64) -> CallTask<PCloudApi.GetFileLink> {
-		return controller.call(PCloudApi.GetFileLink(fileId: fileId))
+	func getFileLink(forFile fileId: UInt64) -> CallTask<PCloudAPI.GetFileLink> {
+		return controller.call(PCloudAPI.GetFileLink(fileId: fileId))
 	}
 	
 	/// Creates and returns a task for generating a link from which a thumbnail for a file can be downloaded. Only files with `hasThumbnail` set to `true`
@@ -174,8 +174,8 @@ public extension PCloudClient {
 	/// - parameter forceExactThumbnailSize: Whether to enforce `thumbnailSize` (`true`) by potentially cropping parts
 	/// of the image, or to allow width or height (but not both) to be smaller than the requested size. Aspect ratio is always preserved.
 	/// - returns: A task producing an `Array<FileLink.Metadata>` object on success.
-	func getThumbnailLink(forFile fileId: UInt64, thumbnailSize: CGSize, forceExactThumbnailSize: Bool = false) -> CallTask<PCloudApi.GetThumbnailLink> {
-		return controller.call(PCloudApi.GetThumbnailLink(fileId: fileId, thumbnailSize: thumbnailSize, crop: forceExactThumbnailSize))
+	func getThumbnailLink(forFile fileId: UInt64, thumbnailSize: CGSize, forceExactThumbnailSize: Bool = false) -> CallTask<PCloudAPI.GetThumbnailLink> {
+		return controller.call(PCloudAPI.GetThumbnailLink(fileId: fileId, thumbnailSize: thumbnailSize, crop: forceExactThumbnailSize))
 	}
 	
 	/// Creates and returns a task for generating thumbnail links for multiple files. Logically equivalent to calling `getThumbnailLink()` for multiple files.
@@ -188,8 +188,8 @@ public extension PCloudClient {
 	/// of the images, or to allow width or height (but not both) to be smaller than the requested size. Aspect ratio is always preserved.
 	/// - returns: A task producing a `Dictionary<UInt64, Result<Array<FileLink.Metadata>>>` object on success. The keys in the dictionary are the file
 	/// identifiers passed as input to this method. Each file identifier is mapped against the result of aquiring a thumbnail link for that file.
-	func getThumbnailLinks(forFiles fileIds: Set<UInt64>, thumbnailSize: CGSize, forceExactThumbnailSize: Bool = false) -> CallTask<PCloudApi.GetThumbnailsLinks> {
-		return controller.call(PCloudApi.GetThumbnailsLinks(fileIds: fileIds, thumbnailSize: thumbnailSize, crop: forceExactThumbnailSize))
+	func getThumbnailLinks(forFiles fileIds: Set<UInt64>, thumbnailSize: CGSize, forceExactThumbnailSize: Bool = false) -> CallTask<PCloudAPI.GetThumbnailsLinks> {
+		return controller.call(PCloudAPI.GetThumbnailsLinks(fileIds: fileIds, thumbnailSize: thumbnailSize, crop: forceExactThumbnailSize))
 	}
 	
 	/// Creates and returns a task for downloading a file from a `URL`.

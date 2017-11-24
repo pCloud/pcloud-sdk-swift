@@ -1,5 +1,5 @@
 //
-//  PCloudApi.swift
+//  PCloudAPI.swift
 //  PCloudSDKSwift
 //
 //  Created by Todor Pitekov on 03/01/2017
@@ -8,8 +8,8 @@
 
 import Foundation
 
-/// PCloudApi namespace.
-public struct PCloudApi {
+/// PCloudAPI namespace.
+public struct PCloudAPI {
 	// Default parameters for all commands.
 	
 	// Makes all date-related fields in the response unix timestamps.
@@ -46,7 +46,7 @@ public struct PCloudApi {
 
 // MARK:- User/account-related methods.
 
-public extension PCloudApi {
+public extension PCloudAPI {
 	/// Returns metadata about the user.
 	public struct UserInfo: PCloudApiMethod {
 		public init() {}
@@ -71,7 +71,7 @@ public extension PCloudApi {
 
 // MARK:- Methods related to folder operations.
 
-public extension PCloudApi {
+public extension PCloudAPI {
 	/// Returns metadata for a folder and its contents.
 	public struct ListFolder: PCloudApiMethod {
 		/// The identifier of the folder to list.
@@ -367,7 +367,7 @@ public extension PCloudApi {
 
 // MARK:- Methods related to file operations.
 
-public extension PCloudApi {
+public extension PCloudAPI {
 	/// Creates a file from the body of this method and returns its metadata.
 	public struct UploadFile: PCloudApiMethod {
 		/// The name of the file.
@@ -671,7 +671,7 @@ public extension PCloudApi {
 			return Call.Command(name: "getthumblink", parameters: [
 				defaultTimeFormatParameter,
 				.number(name: "fileid", value: fileId),
-				.string(name: "size", value: PCloudApi.formatThumbnailSize(thumbnailSize)),
+				.string(name: "size", value: PCloudAPI.formatThumbnailSize(thumbnailSize)),
 				.boolean(name: "crop", value: crop)
 			])
 		}
@@ -716,7 +716,7 @@ public extension PCloudApi {
 			return Call.Command(name: "getthumbslinks", parameters: [
 				defaultTimeFormatParameter,
 				.string(name: "fileids", value: fileIds.map { "\($0)" }.joined(separator: ",")),
-				.string(name: "size", value: PCloudApi.formatThumbnailSize(thumbnailSize)),
+				.string(name: "size", value: PCloudAPI.formatThumbnailSize(thumbnailSize)),
 				.boolean(name: "crop", value: crop)
 			])
 		}
@@ -790,10 +790,10 @@ extension PCloudApiMethod {
 			throw error
 		}
 		
-		if let error = PCloudApi.Error(rawValue: result) {
+		if let error = PCloudAPI.Error(rawValue: result) {
 			throw error
 		}
 		
-		throw PCloudApi.RawError(code: result, reason: view.stringOrNil("error"))
+		throw PCloudAPI.RawError(code: result, reason: view.stringOrNil("error"))
 	}
 }

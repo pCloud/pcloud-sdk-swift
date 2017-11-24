@@ -1,5 +1,5 @@
 //
-//  NetworkApi.swift
+//  NetworkAPI.swift
 //  PCloudSDKSwift
 //
 //  Created by Todor Pitekov on 03/01/2017

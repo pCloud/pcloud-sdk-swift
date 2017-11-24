@@ -1,5 +1,5 @@
 //
-//  ApiTaskController.swift
+//  APITaskController.swift
 //  PCloudSDKSwift
 //
 //  Created by Todor Pitekov on 03/01/2017
@@ -9,7 +9,7 @@
 import Foundation
 
 /// Dispatches network tasks for pCloud API methods.
-public final class ApiTaskController {
+public final class APITaskController {
 	/// Builds a `CallOperation` from a `Call.Request`.
 	public typealias CallDispatcher = (Call.Request) -> CallOperation
 	/// Builds an `UploadOperation` from an `Upload.Request`.

@@ -1,5 +1,5 @@
 //
-//  PCloudApiTests.swift
+//  PCloudAPITests.swift
 //  PCloudSDKSwift
 //
 //  Created by Todor Pitekov on 03/01/2017
@@ -9,7 +9,7 @@
 import XCTest
 @testable import PCloudSDKSwift
 
-final class PCloudApiTests: XCTestCase {
+final class PCloudAPITests: XCTestCase {
 	let timeFormatParameter = Call.Command.Parameter.string(name: "timeformat", value: "timestamp")
 	let iconFormatParameter = Call.Command.Parameter.string(name: "iconformat", value: "id")
 	
@@ -19,10 +19,10 @@ final class PCloudApiTests: XCTestCase {
 }
 
 // MARK:- Command construction tests
-extension PCloudApiTests {
+extension PCloudAPITests {
 	func testCreatesCorrectUserInfoCommand() {
 		// When
-		let command = PCloudApi.UserInfo().createCommand()
+		let command = PCloudAPI.UserInfo().createCommand()
 		
 		// Expect
 		validate(command, against: userInfoCommand())
@@ -34,7 +34,7 @@ extension PCloudApiTests {
 		let recursive = true
 		
 		// When
-		let command = PCloudApi.ListFolder(folderId: folderId, recursive: recursive).createCommand()
+		let command = PCloudAPI.ListFolder(folderId: folderId, recursive: recursive).createCommand()
 		
 		// Expect
 		validate(command, against: listFolderCommand(folderId: folderId, recursive: recursive))
@@ -46,7 +46,7 @@ extension PCloudApiTests {
 		let folderId: UInt64 = 4
 		
 		// When
-		let command = PCloudApi.CreateFolder(name: name, parentFolderId: folderId).createCommand()
+		let command = PCloudAPI.CreateFolder(name: name, parentFolderId: folderId).createCommand()
 		
 		// Expect
 		validate(command, against: createFolderCommand(name: name, folderId: folderId))
@@ -58,7 +58,7 @@ extension PCloudApiTests {
 		let name = "fancy folder name"
 		
 		// When
-		let command = PCloudApi.RenameFolder(folderId: folderId, newName: name).createCommand()
+		let command = PCloudAPI.RenameFolder(folderId: folderId, newName: name).createCommand()
 		
 		// Expect
 		validate(command, against: renameFolderCommand(folderId: folderId, name: name))
@@ -70,7 +70,7 @@ extension PCloudApiTests {
 		let destinationFolderId: UInt64 = 42
 		
 		// When
-		let command = PCloudApi.MoveFolder(folderId: folderId, destinationFolderId: destinationFolderId).createCommand()
+		let command = PCloudAPI.MoveFolder(folderId: folderId, destinationFolderId: destinationFolderId).createCommand()
 		
 		// Expect
 		validate(command, against: moveFolderCommand(folderId: folderId, destinationFolderId: destinationFolderId))
@@ -80,10 +80,10 @@ extension PCloudApiTests {
 		// Given
 		let folderId: UInt64 = 44
 		let destinationFolderId: UInt64 = 99
-		let conflictPolicy: PCloudApi.CopyFolder.NameConflictPolicy = .overwrite
+		let conflictPolicy: PCloudAPI.CopyFolder.NameConflictPolicy = .overwrite
 		
 		// When
-		let command = PCloudApi.CopyFolder(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: conflictPolicy).createCommand()
+		let command = PCloudAPI.CopyFolder(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: conflictPolicy).createCommand()
 		
 		// Expect
 		validate(command, against: copyFolderCommand(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: conflictPolicy))
@@ -93,10 +93,10 @@ extension PCloudApiTests {
 		// Given
 		let folderId: UInt64 = 12
 		let destinationFolderId: UInt64 = 34
-		let conflictPolicy: PCloudApi.CopyFolder.NameConflictPolicy = .skip
+		let conflictPolicy: PCloudAPI.CopyFolder.NameConflictPolicy = .skip
 		
 		// When
-		let command = PCloudApi.CopyFolder(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: conflictPolicy).createCommand()
+		let command = PCloudAPI.CopyFolder(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: conflictPolicy).createCommand()
 		
 		// Expect
 		validate(command, against: copyFolderCommand(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: conflictPolicy))
@@ -106,10 +106,10 @@ extension PCloudApiTests {
 		// Given
 		let folderId: UInt64 = 4
 		let destinationFolderId: UInt64 = 66
-		let conflictPolicy: PCloudApi.CopyFolder.NameConflictPolicy = .fail
+		let conflictPolicy: PCloudAPI.CopyFolder.NameConflictPolicy = .fail
 		
 		// When
-		let command = PCloudApi.CopyFolder(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: conflictPolicy).createCommand()
+		let command = PCloudAPI.CopyFolder(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: conflictPolicy).createCommand()
 		
 		// Expect
 		validate(command, against: copyFolderCommand(folderId: folderId, destinationFolderId: destinationFolderId, nameConflictPolicy: conflictPolicy))
@@ -120,7 +120,7 @@ extension PCloudApiTests {
 		let folderId: UInt64 = 42
 		
 		// When
-		let command = PCloudApi.DeleteFolderRecursive(folderId: folderId).createCommand()
+		let command = PCloudAPI.DeleteFolderRecursive(folderId: folderId).createCommand()
 		
 		// Expect
 		validate(command, against: deleteFolderRecursiveCommand(folderId: folderId))
@@ -132,7 +132,7 @@ extension PCloudApiTests {
 		let name = "fancy file name"
 		
 		// When
-		let command = PCloudApi.UploadFile(name: name, parentFolderId: folderId, modificationDate: nil).createCommand()
+		let command = PCloudAPI.UploadFile(name: name, parentFolderId: folderId, modificationDate: nil).createCommand()
 		
 		// Expect
 		validate(command, against: uploadFileCommand(name: name, parentFolderId: folderId, modificationDate: nil))
@@ -145,7 +145,7 @@ extension PCloudApiTests {
 		let date = Date()
 		
 		// When
-		let command = PCloudApi.UploadFile(name: name, parentFolderId: folderId, modificationDate: date).createCommand()
+		let command = PCloudAPI.UploadFile(name: name, parentFolderId: folderId, modificationDate: date).createCommand()
 		
 		// Expect
 		validate(command, against: uploadFileCommand(name: name, parentFolderId: folderId, modificationDate: date))
@@ -158,7 +158,7 @@ extension PCloudApiTests {
 		let overwrite = true
 		
 		// When
-		let command = PCloudApi.CopyFile(fileId: fileId, destinationFolderId: folderId, overwrite: overwrite).createCommand()
+		let command = PCloudAPI.CopyFile(fileId: fileId, destinationFolderId: folderId, overwrite: overwrite).createCommand()
 		
 		// Expect
 		validate(command, against: copyFileCommand(fileId: fileId, destinationFolderId: folderId, overwrite: overwrite))
@@ -170,7 +170,7 @@ extension PCloudApiTests {
 		let name = "fancy new name"
 		
 		// When
-		let command = PCloudApi.RenameFile(fileId: fileId, newName: name).createCommand()
+		let command = PCloudAPI.RenameFile(fileId: fileId, newName: name).createCommand()
 		
 		// Expect
 		validate(command, against: renameFileCommand(fileId: fileId, name: name))
@@ -182,7 +182,7 @@ extension PCloudApiTests {
 		let folderId: UInt64 = 42
 		
 		// When
-		let command = PCloudApi.MoveFile(fileId: fileId, destinationFolderId: folderId).createCommand()
+		let command = PCloudAPI.MoveFile(fileId: fileId, destinationFolderId: folderId).createCommand()
 		
 		// Expect
 		validate(command, against: moveFileCommand(fileId: fileId, destinationFolderId: folderId))
@@ -193,7 +193,7 @@ extension PCloudApiTests {
 		let fileId: UInt64 = 324
 		
 		// When
-		let command = PCloudApi.DeleteFile(fileId: fileId).createCommand()
+		let command = PCloudAPI.DeleteFile(fileId: fileId).createCommand()
 		
 		// Expect
 		validate(command, against: deleteFileCommand(fileId: fileId))
@@ -204,7 +204,7 @@ extension PCloudApiTests {
 		let fileId: UInt64 = 453
 		
 		// When
-		let command = PCloudApi.GetFileLink(fileId: fileId).createCommand()
+		let command = PCloudAPI.GetFileLink(fileId: fileId).createCommand()
 		
 		// Expect
 		validate(command, against: getFileLinkCommand(fileId: fileId))
@@ -217,7 +217,7 @@ extension PCloudApiTests {
 		let crop = true
 		
 		// When
-		let command = PCloudApi.GetThumbnailLink(fileId: fileId, thumbnailSize: thumbnailSize, crop: crop).createCommand()
+		let command = PCloudAPI.GetThumbnailLink(fileId: fileId, thumbnailSize: thumbnailSize, crop: crop).createCommand()
 		
 		// Expect
 		validate(command, against: getThumbnailLinkCommand(fileId: fileId, thumbnailSize: thumbnailSize, crop: crop))
@@ -230,7 +230,7 @@ extension PCloudApiTests {
 		let crop = true
 		
 		// When
-		let command = PCloudApi.GetThumbnailsLinks(fileIds: fileIds, thumbnailSize: thumbnailSize, crop: crop).createCommand()
+		let command = PCloudAPI.GetThumbnailsLinks(fileIds: fileIds, thumbnailSize: thumbnailSize, crop: crop).createCommand()
 		
 		// Expect
 		validate(command, against: getThumbnailsLinksCommand(fileIds: fileIds, thumbnailSize: thumbnailSize, crop: crop))
@@ -239,7 +239,7 @@ extension PCloudApiTests {
 
 
 // MARK:- Commands
-extension PCloudApiTests {
+extension PCloudAPITests {
 	func userInfoCommand() -> Call.Command {
 		return Call.Command(name: "userinfo", parameters: [])
 	}
@@ -280,7 +280,7 @@ extension PCloudApiTests {
 		])
 	}
 	
-	func copyFolderCommand(folderId: UInt64, destinationFolderId: UInt64, nameConflictPolicy: PCloudApi.CopyFolder.NameConflictPolicy) -> Call.Command {
+	func copyFolderCommand(folderId: UInt64, destinationFolderId: UInt64, nameConflictPolicy: PCloudAPI.CopyFolder.NameConflictPolicy) -> Call.Command {
 		var parameters: [Call.Command.Parameter] = [
 			timeFormatParameter,
 			iconFormatParameter,
