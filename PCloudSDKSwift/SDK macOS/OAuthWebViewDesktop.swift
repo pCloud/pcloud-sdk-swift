@@ -146,7 +146,7 @@ extension WebViewControllerDesktop {
 }
 
 // A simple view with a border. Clients of the class can control border color and width. 
-final class BorderedView: NSView {
+public final class BorderedView: NSView {
 	public var borderWidth: CGFloat = 0 {
 		didSet {
 			if borderWidth != oldValue {
