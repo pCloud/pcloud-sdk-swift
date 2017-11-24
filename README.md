@@ -28,7 +28,7 @@ You can find the full documentation [here](https://pcloud.github.io/pcloud-sdk-s
 
 - iOS 9.0+
 - macOS 10.11+
-- Xcode 8.0+
+- Xcode 9.0+
 
 ---
 
