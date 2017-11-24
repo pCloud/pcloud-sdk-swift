@@ -435,23 +435,41 @@ public struct Folder {
 	
 	/// Folder permissions.
 	/// Folder permissions apply to folders not owned by the users that access them. They are controlled by the owner of the folder.
-	public struct Permissions {
+	public struct Permissions: OptionSet {
+		public let rawValue: Int
 		/// Users can access this folder's metadata and the metadata of its children recursively.
-		public var canRead = true
+		public static let read = Permissions(rawValue: 0)
 		/// Users can create folders, upload files and copy files and folders to this folder.
-		public var canCreate = false
+		public static let create = Permissions(rawValue: 1 << 0)
 		/// Users can modify the content of files inside this folder. Files and folders can also be renamed.
-		public var canModify = false
+		public static let modify = Permissions(rawValue: 1 << 1)
 		/// Users can delete and move content inside this folder.
-		public var canDelete = false
+		public static let delete = Permissions(rawValue: 1 << 2)
 		
-		public init() {}
+		public init(rawValue: Int) {
+			self.rawValue = rawValue
+		}
 		
 		public init(canRead: Bool, canCreate: Bool, canModify: Bool, canDelete: Bool) {
-			self.canRead = canRead
-			self.canCreate = canCreate
-			self.canModify = canModify
-			self.canDelete = canDelete
+			var permissions: Permissions = []
+			
+			if canRead {
+				permissions.insert(.read)
+			}
+			
+			if canCreate {
+				permissions.insert(.create)
+			}
+			
+			if canModify {
+				permissions.insert(.modify)
+			}
+			
+			if canDelete {
+				permissions.insert(.delete)
+			}
+			
+			self = permissions
 		}
 	}
 	
@@ -508,6 +526,29 @@ extension Folder.Metadata {
 		}
 		
 		return nil
+	}
+}
+
+extension Folder.Permissions {
+	public var canRead: Bool {
+		return self.contains(.read)
+	}
+	
+	public var canCreate: Bool {
+		return self.contains(.create)
+	}
+	
+	public var canModify: Bool {
+		return self.contains(.modify)
+	}
+	
+	public var canDelete: Bool {
+		return self.contains(.delete)
+	}
+	
+	// `true` if contains `.create`, `.modify` or `.delete`, otherwise `false`.
+	public var canEdit: Bool {
+		return canCreate || canModify || canDelete
 	}
 }
 
