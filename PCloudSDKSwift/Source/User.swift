@@ -57,12 +57,10 @@ public struct UserMetadataParser: Parser {
 	public init() {}
 	
 	public func parse(_ input: [String: Any]) throws -> User.Metadata {
-		let view = ApiResponseView(input)
-		
-		return User.Metadata(id: view.uint64("userid"),
-		                     emailAddress: view.string("email"),
-		                     isEmailVerified: view.bool("emailverified"),
-		                     usedQuota: view.uint64("usedquota"),
-		                     availableQuota: view.uint64("quota"))
+		return User.Metadata(id: input.uint64("userid"),
+		                     emailAddress: input.string("email"),
+		                     isEmailVerified: input.bool("emailverified"),
+		                     usedQuota: input.uint64("usedquota"),
+		                     availableQuota: input.uint64("quota"))
 	}
 }

@@ -104,7 +104,7 @@ public extension PCloudAPI {
 		public func createResponseParser() -> ([String : Any]) throws -> Folder.Metadata {
 			return {
 				try self.throwError(in: $0, methodSpecificError: Error.init)
-				let meta = ApiResponseView($0).dictionary("metadata")
+				let meta = $0.dictionary("metadata")
 				return try FolderMetadataParser().parse(meta)
 			}
 		}
@@ -138,7 +138,7 @@ public extension PCloudAPI {
 		public func createResponseParser() -> ([String : Any]) throws -> Folder.Metadata {
 			return {
 				try self.throwError(in: $0, methodSpecificError: Error.init)
-				let meta = ApiResponseView($0).dictionary("metadata")
+				let meta = $0.dictionary("metadata")
 				return try FolderMetadataParser().parse(meta)
 			}
 		}
@@ -243,7 +243,7 @@ public extension PCloudAPI {
 		public func createResponseParser() -> ([String : Any]) throws -> Folder.Metadata {
 			return {
 				try self.throwError(in: $0, methodSpecificError: Error.init)
-				let meta = ApiResponseView($0).dictionary("metadata")
+				let meta = $0.dictionary("metadata")
 				return try FolderMetadataParser().parse(meta)
 			}
 		}
@@ -314,7 +314,7 @@ public extension PCloudAPI {
 		public func createResponseParser() -> ([String : Any]) throws -> Folder.Metadata {
 			return {
 				try self.throwError(in: $0, methodSpecificError: Error.init)
-				let meta = ApiResponseView($0).dictionary("metadata")
+				let meta = $0.dictionary("metadata")
 				return try FolderMetadataParser().parse(meta)
 			}
 		}
@@ -462,7 +462,7 @@ public extension PCloudAPI {
 		public func createResponseParser() -> ([String : Any]) throws -> File.Metadata {
 			return {
 				try self.throwError(in: $0, methodSpecificError: Error.init)
-				let meta = ApiResponseView($0).dictionary("metadata")
+				let meta = $0.dictionary("metadata")
 				return try FileMetadataParser().parse(meta)
 			}
 		}
@@ -508,7 +508,7 @@ public extension PCloudAPI {
 		public func createResponseParser() -> ([String : Any]) throws -> File.Metadata {
 			return {
 				try self.throwError(in: $0, methodSpecificError: Error.init)
-				let meta = ApiResponseView($0).dictionary("metadata")
+				let meta = $0.dictionary("metadata")
 				return try FileMetadataParser().parse(meta)
 			}
 		}
@@ -552,7 +552,7 @@ public extension PCloudAPI {
 		public func createResponseParser() -> ([String : Any]) throws -> File.Metadata {
 			return {
 				try self.throwError(in: $0, methodSpecificError: Error.init)
-				let meta = ApiResponseView($0).dictionary("metadata")
+				let meta = $0.dictionary("metadata")
 				return try FileMetadataParser().parse(meta)
 			}
 		}
@@ -593,7 +593,7 @@ public extension PCloudAPI {
 		public func createResponseParser() -> ([String : Any]) throws -> File.Metadata {
 			return {
 				try self.throwError(in: $0, methodSpecificError: Error.init)
-				let meta = ApiResponseView($0).dictionary("metadata")
+				let meta = $0.dictionary("metadata")
 				return try FileMetadataParser().parse(meta)
 			}
 		}
@@ -729,8 +729,7 @@ public extension PCloudAPI {
 				let parser = FileLinkMetadataParser()
 				
 				for entry in thumbEntries {
-					let view = ApiResponseView(entry)
-					let fileId = view.uint64("fileid")
+					let fileId = entry.uint64("fileid")
 					
 					do {
 						try self.throwError(in: entry, methodSpecificError: Error.init)
@@ -779,8 +778,7 @@ extension PCloudApiMethod {
 	// and if it is different from 0, it attempts to create and throw a named error object from it. If that
 	// fails, it creates a RawError.
 	func throwError(in input: [String: Any], methodSpecificError: (Int) -> Error?) throws {
-		let view = ApiResponseView(input)
-		let result = view.int("result")
+		let result = input.int("result")
 		
 		guard result != 0 else {
 			return
@@ -794,6 +792,6 @@ extension PCloudApiMethod {
 			throw error
 		}
 		
-		throw PCloudAPI.RawError(code: result, reason: view.stringOrNil("error"))
+		throw PCloudAPI.RawError(code: result, reason: input.stringOrNil("error"))
 	}
 }

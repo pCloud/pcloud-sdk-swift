@@ -23,34 +23,36 @@ public protocol Parser {
 	func parse(_ input: Input) throws -> Output
 }
 
-/// Utility wrapper around the API response dictionary, providing convenient interface for accessing typed values.
-public struct ApiResponseView {
-	/// The underlying API response.
-	public let rawResponse: [String: Any]
-	
-	/// Initializes a view with an API response.
-	public init(_ rawResponse: [String: Any]) {
-		self.rawResponse = rawResponse
-	}
+// Utility extension around the API response dictionary, providing convenient interface for accessing typed values.
+public extension Dictionary where Key == String, Value == Any {
 	
 	/// Accesses the value associated with a given key, forcefully casts it to this function's return value and returns it.
 	///
 	/// - parameter key: A key for the value.
 	/// - returns: The value cast to T, or `nil` if nothing is mapped against `key`.
-	public func value<T>(_ key: String) -> T? { return rawResponse[key] as! T? }
+	func value<T>(_ key: String) -> T? { return self[key] as! T? }
 	
-	// Strongly typed variants of value<T>(:). All of them are named after the type of value they return.
+	func intOrNil(_ key: String) -> Int? { return value(key) }
+	func boolOrNil(_ key: String) -> Bool? { return value(key) }
+	func stringOrNil(_ key: String) -> String? { return value(key) }
 	
-	public func intOrNil(_ key: String) -> Int? { return value(key) }
-	public func boolOrNil(_ key: String) -> Bool? { return value(key) }
-	public func stringOrNil(_ key: String) -> String? { return value(key) }
-	public func floatOrNil(_ key: String) -> Float? { return value(key) }
-	public func uintOrNil(_ key: String) -> UInt? { return value(key) }
-	public func uint32OrNil(_ key: String) -> UInt32? { return value(key) }
-	public func uint64OrNil(_ key: String) -> UInt64? {
-		guard let value = rawResponse[key] else {
-			return nil
+	func floatOrNil(_ key: String) -> Float? {
+		guard let value = self[key] else { return nil }
+		
+		// A float might be parsed as an NSNumber by the JSON parser.
+		if let value = value as? NSNumber {
+			return value.floatValue
 		}
+		
+		return (value as! Float)
+		
+	}
+	
+	func uintOrNil(_ key: String) -> UInt? { return value(key) }
+	func uint32OrNil(_ key: String) -> UInt32? { return value(key) }
+	
+	func uint64OrNil(_ key: String) -> UInt64? {
+		guard let value = self[key] else { return nil }
 		
 		// A uint64 may be parsed as an NSNumber by the JSON parser.
 		if let value = value as? NSNumber {
@@ -60,14 +62,18 @@ public struct ApiResponseView {
 		return (value as! UInt64)
 	}
 	
-	public func dictionaryOrNil(_ key: String) -> [String: Any]? { return value(key) }
+	func numberOrNil(_ key: String) -> NSNumber? { return value(key) }
+	func dictionaryOrNil(_ key: String) -> [String: Any]? { return value(key) }
 	
-	public func int(_ key: String) -> Int { return value(key)! }
-	public func bool(_ key: String) -> Bool { return value(key)! }
-	public func string(_ key: String) -> String { return value(key)! }
-	public func float(_ key: String) -> Float { return value(key)! }
-	public func uint(_ key: String) -> UInt { return value(key)! }
-	public func uint32(_ key: String) -> UInt32 { return value(key)! }
-	public func uint64(_ key: String) -> UInt64 { return uint64OrNil(key)! }
-	public func dictionary(_ key: String) -> [String: Any] { return value(key)! }
+	
+	
+	func int(_ key: String) -> Int { return value(key)! }
+	func bool(_ key: String) -> Bool { return value(key)! }
+	func string(_ key: String) -> String { return value(key)! }
+	func float(_ key: String) -> Float { return floatOrNil(key)! }
+	func uint(_ key: String) -> UInt { return value(key)! }
+	func uint32(_ key: String) -> UInt32 { return value(key)! }
+	func uint64(_ key: String) -> UInt64 { return uint64OrNil(key)! }
+	func number(_ key: String) -> NSNumber { return value(key)! }
+	func dictionary(_ key: String) -> [String: Any] { return value(key)! }
 }

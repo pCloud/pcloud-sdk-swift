@@ -47,10 +47,9 @@ public struct FileLinkMetadataParser: Parser {
 	public init() {}
 	
 	public func parse(_ input: [String: Any]) throws -> [FileLink.Metadata] {
-		let view = ApiResponseView(input)
 		let hosts = input["hosts"] as! [String]
-		let path = view.string("path")
-		let expirationTimestamp = view.uint32("expires")
+		let path = input.string("path")
+		let expirationTimestamp = input.uint32("expires")
 		
 		return hosts.map { host in
 			var components = URLComponents()

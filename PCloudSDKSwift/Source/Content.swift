@@ -544,9 +544,7 @@ public struct FileIconParser: Parser {
 	public init() {}
 	
 	public func parse(_ input: [String: Any]) throws -> File.Media.Icon {
-		let view = ApiResponseView(input)
-		
-		switch view.int("icon") {
+		switch input.int("icon") {
 		case 0: return .unknown
 		case 1: return .image
 		case 2: return .video
@@ -578,10 +576,8 @@ public struct ImageMetadataParser: Parser {
 	public init() {}
 	
 	public func parse(_ input: [String : Any]) throws -> File.Media.ImageMetadata {
-		let view = ApiResponseView(input)
-		
 		let resolution: CGSize? = {
-			if let width = view.intOrNil("width"), let height = view.intOrNil("height") {
+			if let width = input.intOrNil("width"), let height = input.intOrNil("height") {
 				return CGSize(width: width, height: height)
 			}
 			
@@ -597,10 +593,8 @@ public struct VideoMetadataParser: Parser {
 	public init() {}
 	
 	public func parse(_ input: [String : Any]) throws -> File.Media.VideoMetadata {
-		let view = ApiResponseView(input)
-		
 		let resolution: CGSize? = {
-			if let width = view.intOrNil("width"), let height = view.intOrNil("height") {
+			if let width = input.intOrNil("width"), let height = input.intOrNil("height") {
 				return CGSize(width: width, height: height)
 			}
 			
@@ -608,7 +602,7 @@ public struct VideoMetadataParser: Parser {
 		}()
 		
 		let duration: Float? = {
-			guard let stringValue = view.stringOrNil("duration") else {
+			guard let stringValue = input.stringOrNil("duration") else {
 				return nil
 			}
 			
@@ -624,12 +618,11 @@ public struct AudioMetadataParser: Parser {
 	public init() {}
 	
 	public func parse(_ input: [String : Any]) throws -> File.Media.AudioMetadata {
-		let view = ApiResponseView(input)
-		return File.Media.AudioMetadata(title: view.stringOrNil("title"),
-		                                artist: view.stringOrNil("artist"),
-		                                album: view.stringOrNil("album"),
-		                                genre: view.stringOrNil("genre"),
-		                                trackno: view.intOrNil("trackno"))
+		return File.Media.AudioMetadata(title: input.stringOrNil("title"),
+		                                artist: input.stringOrNil("artist"),
+		                                album: input.stringOrNil("album"),
+		                                genre: input.stringOrNil("genre"),
+		                                trackno: input.intOrNil("trackno"))
 	}
 }
 
@@ -638,10 +631,8 @@ public struct FileMetadataParser: Parser {
 	public init() {}
 	
 	public func parse(_ input: [String : Any]) throws -> File.Metadata {
-		let view = ApiResponseView(input)
-		
 		let media: File.Media = try {
-			switch view.int("category") {
+			switch input.int("category") {
 			case 0: return .uncategorized
 			case 1: return .image(try ImageMetadataParser().parse(input))
 			case 2: return .video(try VideoMetadataParser().parse(input))
@@ -652,19 +643,19 @@ public struct FileMetadataParser: Parser {
 			}
 		}()
 		
-		return File.Metadata(id: view.uint64("fileid"),
-		                     name: view.string("name"),
-		                     parentFolderId: view.uint64("parentfolderid"),
-		                     createdTime: view.uint32("created"),
-		                     modifiedTime: view.uint32("modified"),
-		                     isShared: view.boolOrNil("isshared") ?? false,
+		return File.Metadata(id: input.uint64("fileid"),
+		                     name: input.string("name"),
+		                     parentFolderId: input.uint64("parentfolderid"),
+		                     createdTime: input.uint32("created"),
+		                     modifiedTime: input.uint32("modified"),
+		                     isShared: input.boolOrNil("isshared") ?? false,
 		                     icon: try FileIconParser().parse(input),
 		                     media: media,
-		                     size: view.uint64("size"),
-		                     contentType: view.string("contenttype"),
-		                     hash: view.uint64("hash"),
-		                     isOwnedByUser: view.bool("ismine"),
-		                     hasThumbnail: view.boolOrNil("thumb") ?? false)
+		                     size: input.uint64("size"),
+		                     contentType: input.string("contenttype"),
+		                     hash: input.uint64("hash"),
+		                     isOwnedByUser: input.bool("ismine"),
+		                     hasThumbnail: input.boolOrNil("thumb") ?? false)
 	}
 }
 
@@ -677,9 +668,7 @@ public struct ContentListParser: Parser {
 		let folderParser = FolderMetadataParser()
 		
 		return try input.map { entry in
-			let view = ApiResponseView(entry)
-			
-			if view.bool("isfolder") {
+			if entry.bool("isfolder") {
 				return .folder(try folderParser.parse(entry))
 			}
 			
@@ -693,17 +682,15 @@ public struct FolderMetadataParser: Parser {
 	public init() {}
 	
 	public func parse(_ input: [String : Any]) throws -> Folder.Metadata {
-		let view = ApiResponseView(input)
-		
 		let ownership: Folder.Ownership = {
-			if view.bool("ismine") {
+			if input.bool("ismine") {
 				return .ownedByUser
 			}
 			
-			return .notOwnedByUser(Folder.Permissions(canRead: view.bool("canread"),
-			                                          canCreate: view.bool("cancreate"),
-			                                          canModify: view.bool("canmodify"),
-			                                          canDelete: view.bool("candelete")))
+			return .notOwnedByUser(Folder.Permissions(canRead: input.bool("canread"),
+			                                          canCreate: input.bool("cancreate"),
+			                                          canModify: input.bool("canmodify"),
+			                                          canDelete: input.bool("candelete")))
 		}()
 		
 		let contents: [Content] = try {
@@ -714,12 +701,12 @@ public struct FolderMetadataParser: Parser {
 			return []
 		}()
 		
-		return Folder.Metadata(id: view.uint64("folderid"),
-		                       name: view.string("name"),
-		                       parentFolderId: view.uint64OrNil("parentfolderid") ?? 0,
-		                       createdTime: view.uint32("created"),
-		                       modifiedTime: view.uint32("modified"),
-		                       isShared: view.boolOrNil("isshared") ?? false,
+		return Folder.Metadata(id: input.uint64("folderid"),
+		                       name: input.string("name"),
+		                       parentFolderId: input.uint64OrNil("parentfolderid") ?? 0,
+		                       createdTime: input.uint32("created"),
+		                       modifiedTime: input.uint32("modified"),
+		                       isShared: input.boolOrNil("isshared") ?? false,
 		                       ownership: ownership,
 		                       contents: contents)
 	}
