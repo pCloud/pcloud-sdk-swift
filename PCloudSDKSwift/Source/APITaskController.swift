@@ -69,7 +69,7 @@ public final class APITaskController {
 	/// - parameter method: An object defining input and output for this call.
 	/// - parameter hostName: An API host name. When `nil`, the controller will fall back to its host provider.
 	/// - returns: A non-running task that can execute the call.
-	public func call<T: PCloudApiMethod>(_ method: T, onHost hostName: String? = nil) -> CallTask<T> {
+	public func call<T: PCloudAPIMethod>(_ method: T, onHost hostName: String? = nil) -> CallTask<T> {
 		let command = method.createCommand()
 		let request = buildCallRequest(command: command, hostName: hostName, authenticate: method.requiresAuthentication)
 		let operation = callDispatcher(request)
@@ -83,7 +83,7 @@ public final class APITaskController {
 	/// - parameter body: The data to upload.
 	/// - parameter hostName: An API host name. When `nil`, the controller will fall back to its host provider.
 	/// - returns: A non-running task that can execute the upload.
-	public func upload<T: PCloudApiMethod>(_ method: T, body: Upload.Request.Body, onHost hostName: String? = nil) -> UploadTask<T> {
+	public func upload<T: PCloudAPIMethod>(_ method: T, body: Upload.Request.Body, onHost hostName: String? = nil) -> UploadTask<T> {
 		let command = method.createCommand()
 		let request = buildUploadRequest(command: command, body: body, hostName: hostName, authenticate: method.requiresAuthentication)
 		let operation = uploadDispatcher(request)

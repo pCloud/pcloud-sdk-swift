@@ -48,7 +48,7 @@ final class APITaskControllerTests: XCTestCase {
 extension APITaskControllerTests {
 	func testAuthenticatesCallCommandsRequiringAuthentication() {
 		// Given
-		var command = VoidApiMethod()
+		var command = VoidAPIMethod()
 		command.requiresAuthentication = true
 		
 		// When
@@ -65,7 +65,7 @@ extension APITaskControllerTests {
 	
 	func testDoesNotAuthenticateCallCommandsNotRequiringAuthentication() {
 		// Given
-		var command = VoidApiMethod()
+		var command = VoidAPIMethod()
 		command.requiresAuthentication = false
 		
 		// When
@@ -82,7 +82,7 @@ extension APITaskControllerTests {
 	
 	func testAuthenticatesUploadCommandRequiringAuthentication() {
 		// Given
-		var command = VoidApiMethod()
+		var command = VoidAPIMethod()
 		command.requiresAuthentication = true
 		
 		// When
@@ -102,7 +102,7 @@ extension APITaskControllerTests {
 		let authParameter: Call.Command.Parameter = .string(name: "What's the password, member?", value: "Yeah, I member!")
 		authenticator.authenticationParameters = [authParameter]
 		
-		var command = VoidApiMethod()
+		var command = VoidAPIMethod()
 		command.requiresAuthentication = false
 		
 		// When

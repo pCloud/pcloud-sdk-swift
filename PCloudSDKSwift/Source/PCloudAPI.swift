@@ -92,7 +92,7 @@ public struct PCloudAPI {
 
 public extension PCloudAPI {
 	/// Returns metadata about the user.
-	public struct UserInfo: PCloudApiMethod {
+	public struct UserInfo: PCloudAPIMethod {
 		public typealias Error = NullError
 		
 		public init() {}
@@ -122,7 +122,7 @@ public extension PCloudAPI {
 
 public extension PCloudAPI {
 	/// Returns metadata for a folder and its contents.
-	public struct ListFolder: PCloudApiMethod {
+	public struct ListFolder: PCloudAPIMethod {
 		/// The identifier of the folder to list.
 		public let folderId: UInt64
 		
@@ -170,7 +170,7 @@ public extension PCloudAPI {
 	
 	
 	/// Creates a folder and returns its metadata.
-	public struct CreateFolder: PCloudApiMethod {
+	public struct CreateFolder: PCloudAPIMethod {
 		/// The name of the new folder.
 		public let name: String
 		/// The unique identifier of the parent folder.
@@ -220,7 +220,7 @@ public extension PCloudAPI {
 	
 	
 	/// Renames a folder and returns its updated metadata.
-	public struct RenameFolder: PCloudApiMethod {
+	public struct RenameFolder: PCloudAPIMethod {
 		/// The unique identifier of the folder to rename.
 		public let folderId: UInt64
 		/// The new name of the folder.
@@ -272,7 +272,7 @@ public extension PCloudAPI {
 	
 	
 	/// Moves a folder and returns its updated metadata.
-	public struct MoveFolder: PCloudApiMethod {
+	public struct MoveFolder: PCloudAPIMethod {
 		/// The unique identifier of the folder to move.
 		public let folderId: UInt64
 		/// The unique identifier of the destination folder.
@@ -324,7 +324,7 @@ public extension PCloudAPI {
 	
 	
 	/// Copies a folder and returns the new folder. During copying, folders with the same name will be automatically merged.
-	public struct CopyFolder: PCloudApiMethod {
+	public struct CopyFolder: PCloudAPIMethod {
 		/// How file name conflicts should be handled during copying.
 		public enum NameConflictPolicy {
 			/// Overwrite files in the destination with those from the source.
@@ -393,7 +393,7 @@ public extension PCloudAPI {
 	
 	
 	/// Deletes a folder tree.
-	public struct DeleteFolderRecursive: PCloudApiMethod {
+	public struct DeleteFolderRecursive: PCloudAPIMethod {
 		/// The unique identifier of the root of the folder tree to delete.
 		public let folderId: UInt64
 		
@@ -435,7 +435,7 @@ public extension PCloudAPI {
 
 public extension PCloudAPI {
 	/// Creates a file from the body of this method and returns its metadata.
-	public struct UploadFile: PCloudApiMethod {
+	public struct UploadFile: PCloudAPIMethod {
 		/// The name of the file.
 		public let name: String
 		/// The unique identifier of the parent folder.
@@ -495,7 +495,7 @@ public extension PCloudAPI {
 	}
 	
 	/// Copies a file and returns its updated metadata.
-	public struct CopyFile: PCloudApiMethod {
+	public struct CopyFile: PCloudAPIMethod {
 		/// The unique identifier of the file to copy.
 		public let fileId: UInt64
 		/// The unique identifier of the destination folder.
@@ -551,7 +551,7 @@ public extension PCloudAPI {
 	}
 	
 	/// Renames a file and returns its updated metadata.
-	public struct RenameFile: PCloudApiMethod {
+	public struct RenameFile: PCloudAPIMethod {
 		/// The unique identifier of the file to rename.
 		public let fileId: UInt64
 		/// The new name of the file.
@@ -598,7 +598,7 @@ public extension PCloudAPI {
 	}
 	
 	/// Moves a file and returns its updated metadata.
-	public struct MoveFile: PCloudApiMethod {
+	public struct MoveFile: PCloudAPIMethod {
 		/// The unique identifier of the file to move.
 		public let fileId: UInt64
 		/// The unique identifier of the destination folder.
@@ -647,7 +647,7 @@ public extension PCloudAPI {
 	}
 	
 	/// Deletes a file and returns its metadata.
-	public struct DeleteFile: PCloudApiMethod {
+	public struct DeleteFile: PCloudAPIMethod {
 		/// The unique identifier of the file to delete.
 		public let fileId: UInt64
 		
@@ -687,7 +687,7 @@ public extension PCloudAPI {
 	}
 	
 	/// Generates and returns links to a file. The first link in the return value is considered the best for this client.
-	public struct GetFileLink: PCloudApiMethod {
+	public struct GetFileLink: PCloudAPIMethod {
 		/// The unique identifier of the file to get a link to.
 		public let fileId: UInt64
 		
@@ -725,7 +725,7 @@ public extension PCloudAPI {
 	}
 	
 	/// Generates and returns links to a file's thumbnail. The first link in the return value is considered the best for this client.
-	public struct GetThumbnailLink: PCloudApiMethod {
+	public struct GetThumbnailLink: PCloudAPIMethod {
 		/// The unique identifier of the file to get a thumbnail link to.
 		public let fileId: UInt64
 		/// The requested size of the thumbnail.
@@ -784,7 +784,7 @@ public extension PCloudAPI {
 	/// Generates and returns links to thumbnails for multiple files. Logically equivalent to calling `GetThumbnailLink` multiple times.
 	/// The return value is a dictionary mapping a file identifier to the result of acquiring thumbnail links for that file.
 	/// All error codes and input parameters from `GetThumbnailLink` apply for this method as well.
-	public struct GetThumbnailsLinks: PCloudApiMethod {
+	public struct GetThumbnailsLinks: PCloudAPIMethod {
 		public typealias Error = NullError
 		
 		public let fileIds: Set<UInt64>
@@ -859,7 +859,7 @@ public struct NullError: RawRepresentable {
 
 
 /// An object defining input and output for a call to the pCloud API.
-public protocol PCloudApiMethod {
+public protocol PCloudAPIMethod {
 	/// The type of the return value of a method.
 	associatedtype Value
 	/// The type of the object describing errors from this method.
@@ -898,7 +898,7 @@ extension PCloudAPI.Error {
 	}
 }
 
-extension PCloudApiMethod {
+extension PCloudAPIMethod {
 	public func tryParseError(in input: [String: Any]) -> PCloudAPI.Error<Self.Error>? {
 		return PCloudAPI.Error<Self.Error>(apiResponse: input)
 	}

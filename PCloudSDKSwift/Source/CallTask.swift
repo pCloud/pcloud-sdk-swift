@@ -22,7 +22,7 @@ public enum CallError<MethodError> {
 
 
 /// Executes a network call to the pCloud API and produces an object on success from the API response.
-public final class CallTask<Method: PCloudApiMethod>: Cancellable {
+public final class CallTask<Method: PCloudAPIMethod>: Cancellable {
 	public typealias Parser = Method.Parser
 	
 	// The underlying operation executing the network call.

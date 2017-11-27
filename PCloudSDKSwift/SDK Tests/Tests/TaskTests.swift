@@ -11,7 +11,7 @@ import XCTest
 
 final class CallTaskTests: XCTestCase {
 	var operation: CallOperationMock!
-	var task: CallTask<VoidApiMethod>!
+	var task: CallTask<VoidAPIMethod>!
 	
 	override func setUp() {
 		super.setUp()
@@ -20,7 +20,7 @@ final class CallTaskTests: XCTestCase {
 		task = createTask(parser: { _ in })
 	}
 	
-	func createTask(parser: @escaping ([String: Any]) throws -> Void) -> CallTask<VoidApiMethod> {
+	func createTask(parser: @escaping ([String: Any]) throws -> Void) -> CallTask<VoidAPIMethod> {
 		return CallTask(operation: operation, responseParser: parser)
 	}
 	
@@ -111,7 +111,7 @@ final class CallTaskTests: XCTestCase {
 
 final class UploadTaskTests: XCTestCase {
 	var operation: UploadOperationMock!
-	var task: UploadTask<VoidApiMethod>!
+	var task: UploadTask<VoidAPIMethod>!
 	
 	override func setUp() {
 		super.setUp()
@@ -120,7 +120,7 @@ final class UploadTaskTests: XCTestCase {
 		task = createTask(parser: { _ in })
 	}
 	
-	func createTask(parser: @escaping ([String: Any]) throws -> Void) -> UploadTask<VoidApiMethod> {
+	func createTask(parser: @escaping ([String: Any]) throws -> Void) -> UploadTask<VoidAPIMethod> {
 		return UploadTask(operation: operation, responseParser: parser)
 	}
 	
@@ -346,7 +346,7 @@ final class DownloadTaskTest: XCTestCase {
 }
 
 
-struct VoidApiMethod: PCloudApiMethod {
+struct VoidAPIMethod: PCloudAPIMethod {
 	typealias Error = NullError
 	
 	var requiresAuthentication: Bool = false
