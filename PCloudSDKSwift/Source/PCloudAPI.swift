@@ -17,28 +17,72 @@ public struct PCloudAPI {
 	// Makes all "icon" fields in the response integers.
 	fileprivate static let defaultIconFormatParameter = Call.Command.Parameter.string(name: "iconformat", value: "id")
 	
-	/// Common API errors.
-	public enum Error: Int, Swift.Error {
+	/// Authentication-related API errors.
+	public enum AuthError: Int {
 		/// Authorization is required for this call.
 		case logInRequired = 1000
 		/// Authorization failed due to invalid login credentials. This may be because of an expired or invalidated token.
 		case logInFailed = 2000
+	}
+	
+	/// Permission/access-related API errors.
+	public enum PermissionError: Int {
 		/// The user is not allowed to perform the requested operation. This may be due to insufficient folder permissions.
 		case accessDenied = 2003
 		/// The user has exceeded their available storage quota and this action is not allowed.
 		case userIsOverQuota = 2008
-		/// Internal server error. Try again later.
-		case internalError = 5000
 	}
 	
-	/// An API error code with a short description of the error. Used for uncommon/unnamed errors.
-	public struct RawError: Swift.Error {
-		public var code: Int
-		public var reason: String?
+	/// An API error.
+	public enum Error<MethodError: RawRepresentable>: RawRepresentable, Swift.Error where MethodError.RawValue == Int {
+		/// Authentication-related error.
+		case authError(AuthError)
+		/// Permission/access-related error.
+		case permissionError(PermissionError)
+		/// Error related to the method
+		case methodError(MethodError)
+		/// The API is rate limiting this client.
+		case rateLimitError
+		/// The API cannot currently handle the request. Try again later.
+		case serverInternalError(Int, String?)
+		/// Unspecified API error.
+		case other(Int, String?)
 		
-		init(code: Int, reason: String?) {
-			self.code = code
-			self.reason = reason
+		public var rawValue: Int {
+			switch self {
+			case .authError(let error): return error.rawValue
+			case .permissionError(let error): return error.rawValue
+			case .methodError(let error): return error.rawValue
+			case .rateLimitError: return 4000
+			case .serverInternalError(let code, _): return code
+			case .other(let code, _): return code
+			}
+		}
+		
+		/// Initializes an API error with an API result code and error message.
+		/// Initialization fails if `code` is 0.
+		public init?(code: Int, message: String? = nil) {
+			guard code != 0 else {
+				return nil
+			}
+			
+			if let authError = AuthError(rawValue: code) {
+				self = .authError(authError)
+			} else if let permissionError = PermissionError(rawValue: code) {
+				self = .permissionError(permissionError)
+			} else if let methodError = MethodError(rawValue: code) {
+				self = .methodError(methodError)
+			} else if code == 4000 {
+				self = .rateLimitError
+			} else if 5000...5999 ~= code {
+				self = .serverInternalError(code, message)
+			} else {
+				self = .other(code, message)
+			}
+		}
+		
+		public init?(rawValue: Int) {
+			self.init(code: rawValue)
 		}
 	}
 }
@@ -49,6 +93,8 @@ public struct PCloudAPI {
 public extension PCloudAPI {
 	/// Returns metadata about the user.
 	public struct UserInfo: PCloudApiMethod {
+		public typealias Error = NullError
+		
 		public init() {}
 		
 		public var requiresAuthentication: Bool {
@@ -57,7 +103,10 @@ public extension PCloudAPI {
 		
 		public func createResponseParser() -> ([String: Any]) throws -> User.Metadata {
 			return {
-				try self.throwError(in: $0, methodSpecificError: { _ in nil })
+				if let error = self.tryParseError(in: $0) {
+					throw error
+				}
+				
 				return try UserMetadataParser().parse($0)
 			}
 		}
@@ -103,7 +152,10 @@ public extension PCloudAPI {
 		
 		public func createResponseParser() -> ([String : Any]) throws -> Folder.Metadata {
 			return {
-				try self.throwError(in: $0, methodSpecificError: Error.init)
+				if let error = self.tryParseError(in: $0) {
+					throw error
+				}
+				
 				let meta = $0.dictionary("metadata")
 				return try FolderMetadataParser().parse(meta)
 			}
@@ -137,7 +189,10 @@ public extension PCloudAPI {
 		
 		public func createResponseParser() -> ([String : Any]) throws -> Folder.Metadata {
 			return {
-				try self.throwError(in: $0, methodSpecificError: Error.init)
+				if let error = self.tryParseError(in: $0) {
+					throw error
+				}
+				
 				let meta = $0.dictionary("metadata")
 				return try FolderMetadataParser().parse(meta)
 			}
@@ -184,7 +239,10 @@ public extension PCloudAPI {
 		
 		public func createResponseParser() -> ([String : Any]) throws -> Folder.Metadata {
 			return {
-				try self.throwError(in: $0, methodSpecificError: Error.init)
+				if let error = self.tryParseError(in: $0) {
+					throw error
+				}
+				
 				let meta = $0["metadata"] as! [String: Any]
 				return try FolderMetadataParser().parse(meta)
 			}
@@ -242,7 +300,10 @@ public extension PCloudAPI {
 		
 		public func createResponseParser() -> ([String : Any]) throws -> Folder.Metadata {
 			return {
-				try self.throwError(in: $0, methodSpecificError: Error.init)
+				if let error = self.tryParseError(in: $0) {
+					throw error
+				}
+				
 				let meta = $0.dictionary("metadata")
 				return try FolderMetadataParser().parse(meta)
 			}
@@ -313,7 +374,10 @@ public extension PCloudAPI {
 		
 		public func createResponseParser() -> ([String : Any]) throws -> Folder.Metadata {
 			return {
-				try self.throwError(in: $0, methodSpecificError: Error.init)
+				if let error = self.tryParseError(in: $0) {
+					throw error
+				}
+				
 				let meta = $0.dictionary("metadata")
 				return try FolderMetadataParser().parse(meta)
 			}
@@ -350,7 +414,9 @@ public extension PCloudAPI {
 		
 		public func createResponseParser() -> ([String : Any]) throws -> Void {
 			return {
-				try self.throwError(in: $0, methodSpecificError: Error.init)
+				if let error = self.tryParseError(in: $0) {
+					throw error
+				}
 			}
 		}
 		
@@ -410,7 +476,10 @@ public extension PCloudAPI {
 		
 		public func createResponseParser() -> ([String : Any]) throws -> File.Metadata {
 			return {
-				try self.throwError(in: $0, methodSpecificError: Error.init)
+				if let error = self.tryParseError(in: $0) {
+					throw error
+				}
+				
 				let meta = $0["metadata"] as! [[String: Any]]
 				return try FileMetadataParser().parse(meta[0])
 			}
@@ -461,7 +530,10 @@ public extension PCloudAPI {
 		
 		public func createResponseParser() -> ([String : Any]) throws -> File.Metadata {
 			return {
-				try self.throwError(in: $0, methodSpecificError: Error.init)
+				if let error = self.tryParseError(in: $0) {
+					throw error
+				}
+				
 				let meta = $0.dictionary("metadata")
 				return try FileMetadataParser().parse(meta)
 			}
@@ -507,7 +579,10 @@ public extension PCloudAPI {
 		
 		public func createResponseParser() -> ([String : Any]) throws -> File.Metadata {
 			return {
-				try self.throwError(in: $0, methodSpecificError: Error.init)
+				if let error = self.tryParseError(in: $0) {
+					throw error
+				}
+				
 				let meta = $0.dictionary("metadata")
 				return try FileMetadataParser().parse(meta)
 			}
@@ -551,7 +626,10 @@ public extension PCloudAPI {
 		
 		public func createResponseParser() -> ([String : Any]) throws -> File.Metadata {
 			return {
-				try self.throwError(in: $0, methodSpecificError: Error.init)
+				if let error = self.tryParseError(in: $0) {
+					throw error
+				}
+				
 				let meta = $0.dictionary("metadata")
 				return try FileMetadataParser().parse(meta)
 			}
@@ -592,7 +670,10 @@ public extension PCloudAPI {
 		
 		public func createResponseParser() -> ([String : Any]) throws -> File.Metadata {
 			return {
-				try self.throwError(in: $0, methodSpecificError: Error.init)
+				if let error = self.tryParseError(in: $0) {
+					throw error
+				}
+				
 				let meta = $0.dictionary("metadata")
 				return try FileMetadataParser().parse(meta)
 			}
@@ -628,7 +709,10 @@ public extension PCloudAPI {
 		
 		public func createResponseParser() -> ([String : Any]) throws -> [FileLink.Metadata] {
 			return {
-				try self.throwError(in: $0, methodSpecificError: Error.init)
+				if let error = self.tryParseError(in: $0) {
+					throw error
+				}
+				
 				return try FileLinkMetadataParser().parse($0)
 			}
 		}
@@ -658,8 +742,8 @@ public extension PCloudAPI {
 		/// have thumbnails generated for them.
 		/// - parameter thumbnailSize: The required size of the thumbnail. The width must be between 16 and 2048.
 		///	The height must be between 16 and 1024. And both width and height must be divisible by either 4 or 5
-		/// - parameter crop: Whether to enforce `thumbnailSize` (`true`) by potentially cropping parts
-		/// of the image, or to allow width or height (but not both) to be smaller than the requested size (`false`).
+		/// - parameter crop: Whether to enforce `thumbnailSize` by potentially cropping parts
+		/// of the image (`true`), or to allow width or height (but not both) to be smaller than the requested size (`false`).
 		/// Aspect ratio is always preserved.
 		public init(fileId: UInt64, thumbnailSize: CGSize, crop: Bool) {
 			self.fileId = fileId
@@ -678,7 +762,10 @@ public extension PCloudAPI {
 		
 		public func createResponseParser() -> ([String : Any]) throws -> [FileLink.Metadata] {
 			return {
-				try self.throwError(in: $0, methodSpecificError: Error.init)
+				if let error = self.tryParseError(in: $0) {
+					throw error
+				}
+				
 				return try FileLinkMetadataParser().parse($0)
 			}
 		}
@@ -698,6 +785,8 @@ public extension PCloudAPI {
 	/// The return value is a dictionary mapping a file identifier to the result of acquiring thumbnail links for that file.
 	/// All error codes and input parameters from `GetThumbnailLink` apply for this method as well.
 	public struct GetThumbnailsLinks: PCloudApiMethod {
+		public typealias Error = NullError
+		
 		public let fileIds: Set<UInt64>
 		public let thumbnailSize: CGSize
 		public let crop: Bool
@@ -706,6 +795,13 @@ public extension PCloudAPI {
 			return true
 		}
 		
+		/// - parameter fileIds: The unique identifiers of the files to get thumbnail links to. Only files with `hasThumbnail` set to `true`
+		/// can have thumbnails generated for them.
+		/// - parameter thumbnailSize: The required size of each thumbnail. The width must be between 16 and 2048.
+		///	The height must be between 16 and 1024. And both width and height must be divisible by either 4 or 5
+		/// - parameter crop: Whether to enforce `thumbnailSize` by potentially cropping parts
+		/// of the image (`true`), or to allow width or height (but not both) to be smaller than the requested size (`false`).
+		/// Aspect ratio is always preserved.
 		public init(fileIds: Set<UInt64>, thumbnailSize: CGSize, crop: Bool) {
 			self.fileIds = fileIds
 			self.thumbnailSize = thumbnailSize
@@ -723,7 +819,10 @@ public extension PCloudAPI {
 		
 		public func createResponseParser() -> ([String : Any]) throws -> [UInt64: Result<[FileLink.Metadata]>] {
 			return {
-				try self.throwError(in: $0, methodSpecificError: Error.init)
+				if let error = self.tryParseError(in: $0) {
+					throw error
+				}
+				
 				let thumbEntries = $0["thumbs"] as! [[String: Any]]
 				var result: [UInt64: Result<[FileLink.Metadata]>] = [:]
 				let parser = FileLinkMetadataParser()
@@ -732,7 +831,10 @@ public extension PCloudAPI {
 					let fileId = entry.uint64("fileid")
 					
 					do {
-						try self.throwError(in: entry, methodSpecificError: Error.init)
+						if let error = PCloudAPI.Error<GetThumbnailLink.Error>(apiResponse: entry) {
+							throw error
+						}
+						
 						result[fileId] = .success(try parser.parse(entry))
 					} catch {
 						result[fileId] = .failure(error)
@@ -750,11 +852,23 @@ public extension PCloudAPI {
 	}
 }
 
+/// A dummy RawRepresentable that cannot be initialized.
+public struct NullError: RawRepresentable {
+	public let rawValue: Int
+	
+	public init?(rawValue: Int) {
+		return nil
+	}
+}
+
 
 /// An object defining input and output for a call to the pCloud API.
 public protocol PCloudApiMethod {
 	/// The type of the return value of a method.
 	associatedtype Value
+	/// The type of the object describing errors from this method.
+	associatedtype Error: RawRepresentable where Error.RawValue == Int
+	
 	/// A block computing the return value of a method from an API response dictionary.
 	typealias Parser = ([String: Any]) throws -> Value
 	
@@ -773,25 +887,23 @@ public protocol PCloudApiMethod {
 	func createCommand() -> Call.Command
 }
 
+
+extension PCloudAPI.Error {
+	/// Initializes an API error by parsing an API response.
+	/// Initialization fails if the result code is 0.
+	public init?(apiResponse: [String: Any]) {
+		let resultCode = apiResponse.int("result")
+		
+		guard let error = PCloudAPI.Error<MethodError>(code: resultCode, message: apiResponse.stringOrNil("error")) else {
+			return nil
+		}
+		
+		self = error
+	}
+}
+
 extension PCloudApiMethod {
-	// Utility method for error checking API responses. It takes the "result" field's value from the response
-	// and if it is different from 0, it attempts to create and throw a named error object from it. If that
-	// fails, it creates a RawError.
-	func throwError(in input: [String: Any], methodSpecificError: (Int) -> Error?) throws {
-		let result = input.int("result")
-		
-		guard result != 0 else {
-			return
-		}
-		
-		if let error = methodSpecificError(result) {
-			throw error
-		}
-		
-		if let error = PCloudAPI.Error(rawValue: result) {
-			throw error
-		}
-		
-		throw PCloudAPI.RawError(code: result, reason: input.stringOrNil("error"))
+	public func tryParseError(in input: [String: Any]) -> PCloudAPI.Error<Self.Error>? {
+		return PCloudAPI.Error<Self.Error>(apiResponse: input)
 	}
 }
