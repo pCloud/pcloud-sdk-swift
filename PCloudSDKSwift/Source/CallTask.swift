@@ -8,6 +8,19 @@
 
 import Foundation
 
+/// An error combining API and network layer errors.
+public enum CallError<MethodError> {
+	case authError(PCloudAPI.AuthError)
+	case permissionError(PCloudAPI.PermissionError)
+	case rateLimitError
+	case methodError(MethodError)
+	case internalServerError(Int, String?)
+	case otherAPIError(Int, String?)
+	case clientError(Error)
+	case protocolError(Error)
+}
+
+
 /// Executes a network call to the pCloud API and produces an object on success from the API response.
 public final class CallTask<Method: PCloudApiMethod>: Cancellable {
 	public typealias Parser = Method.Parser
@@ -36,25 +49,25 @@ public final class CallTask<Method: PCloudApiMethod>: Cancellable {
 	/// - parameter block: A block called on the main thread with the result of the task.
 	/// - returns: This task.
 	@discardableResult
-	public func setCompletionBlock(_ block: @escaping (Result<Method.Value, Error>) -> Void) -> CallTask {
+	public func setCompletionBlock(_ block: @escaping (Result<Method.Value, CallError<Method.Error>>) -> Void) -> CallTask {
 		let parse = self.parse
 		
 		// Parse the response on a background queue.
 		operation.setCompletionBlock(queue: .global()) { response in
 			// Compute the response.
-			let result: Result<Method.Value, Error> = {
+			let result: Result<Method.Value, CallError<Method.Error>> = {
 				switch response {
 				case .success(let response):
 					do {
 						return .success(try parse(response))
 					} catch {
-						return .failure(error)
+						return .failure(.clientError(error))
 					}
 					
 				case .failure(let error):
 					switch error {
-					case .clientError(let ce): return .failure(ce)
-					case .protocolError(let pe): return .failure(pe)
+					case .clientError(let ce): return .failure(.clientError(ce))
+					case .protocolError(let pe): return .failure(.protocolError(pe))
 					}
 				}
 			}()

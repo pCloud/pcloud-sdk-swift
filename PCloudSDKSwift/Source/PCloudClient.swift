@@ -206,25 +206,4 @@ public extension PCloudClient {
 		
 		return controller.download(addressProvider: addressProvider, destination: destination)
 	}
-	
-	/// Creates and returns a task for downloading a file from a file identifier.
-	///
-	/// - parameter fileId: The unique identifier of the file to download.
-	/// - parameter destination: A block computing the download destination of the file from its temporary location. The block is referenced strongly
-	/// by the task returned from this method and the thread on which it will be called is undefined.
-	/// - returns: A task producing a `URL` on success which is the local path of the downloaded file.
-	func downloadFile(_ fileId: UInt64, to destination: @escaping (URL) -> URL) -> DownloadTask {
-		let addressProvider: DownloadTask.AddressProvider = { [weak self] completion in
-			let task = self?.getFileLink(forFile: fileId).setCompletionBlock { result in
-				switch result {
-				case .success(let links): completion(.success(links[0].address))
-				case .failure(let error): completion(.failure(error))
-				}
-			}.start()
-			
-			return AnyCancellationToken { task?.cancel() }
-		}
-		
-		return controller.download(addressProvider: addressProvider, destination: destination)
-	}
 }
