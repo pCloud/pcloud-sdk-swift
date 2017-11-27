@@ -98,14 +98,6 @@ final class CallTaskTests: XCTestCase {
 		XCTAssert(operation.cancelInvoked, "operation should have been cancelled")
 		XCTAssert(task.isCancelled, "task should have its cancelled status updated")
 	}
-	
-	func testTaskIsCancelledAfterCancel() {
-		// When
-		task.cancel()
-		
-		// Expect
-		XCTAssert(task.isCancelled, "task should be cancelled")
-	}
 }
 
 
@@ -139,14 +131,6 @@ final class UploadTaskTests: XCTestCase {
 		// Expect
 		XCTAssert(operation.cancelInvoked, "operation should have been cancelled")
 		XCTAssert(task.isCancelled, "task should have its cancelled status updated")
-	}
-	
-	func testTaskIsCancelledAfterCancel() {
-		// When
-		task.cancel()
-		
-		// Expect
-		XCTAssert(task.isCancelled, "task should be cancelled")
 	}
 	
 	func testCompletesWithSuccessWhenOperationCompletesWithSuccessAndParserDoesNotFail() {
@@ -227,34 +211,44 @@ final class UploadTaskTests: XCTestCase {
 
 final class DownloadTaskTest: XCTestCase {
 	var operation: DownloadOperationMock!
+	var task: DownloadTask!
 	
 	override func setUp() {
 		super.setUp()
 		
 		operation = DownloadOperationMock()
+		task = DownloadTask(operation: operation)
 	}
 	
-	func createTask(addressProviderResult result: Result<URL, Error>) -> DownloadTask {
-		return DownloadTask(addressProvider: { complete in
-			complete(result)
-			return VoidCancellationToken()
-		}, operationBuilder: { _ in
-			return self.operation
-		})
-	}
-	
-	func testCompletesWithFailureWhenAddressProviderFails() {
-		let invokeExpectation = expectation(description: "to invoke completion")
+	func testEnqueuesOperationOnStart() {
+		// When
+		task.start()
 		
-		// Given
-		let task = createTask(addressProviderResult: .failure(NSError.void())).setCompletionBlock { result in
+		// Expect
+		XCTAssert(operation.enqueueInvoked, "operation should have been enqueued")
+	}
+	
+	func testCancelsOperationOnCancel() {
+		// When
+		task.cancel()
+		
+		// Expect
+		XCTAssert(operation.cancelInvoked, "operation should have been cancelled")
+	}
+	
+	func testCompletesWithSuccessWhenDownloadSucceeds() {
+		let invokeExpectation = expectation(description: "to call completion block")
+		
+		task.setCompletionBlock { result in
 			// Expect
 			invokeExpectation.fulfill()
-			XCTAssert(result.isFailure, "invalid download result; expected failure, got \(result)")
+			XCTAssert(Thread.isMainThread, "block should be called on the main thread")
+			XCTAssert(result.isSuccess, "download task should succeed when operation succeeds")
 		}
 		
 		// When
 		task.start()
+		operation.invokeCompletion(response: .success(URL(fileURLWithPath: "/dev/null")))
 		
 		waitForExpectations(timeout: 1, handler: nil)
 	}
@@ -262,11 +256,10 @@ final class DownloadTaskTest: XCTestCase {
 	func testCompletesWithFailureWhenDownloadFails() {
 		let invokeExpectation = expectation(description: "to invoke completion")
 		
-		// Given
-		let address = URL(string: "http://google.com")!
-		let task = createTask(addressProviderResult: .success(address)).setCompletionBlock { result in
+		task.setCompletionBlock { result in
 			// Expect
 			invokeExpectation.fulfill()
+			XCTAssert(Thread.isMainThread, "block should be called on the main thread")
 			XCTAssert(result.isFailure, "invalid download result; expected failure, got \(result)")
 		}
 		
@@ -277,30 +270,10 @@ final class DownloadTaskTest: XCTestCase {
 		waitForExpectations(timeout: 1, handler: nil)
 	}
 	
-	func testCompletesWithSuccessWhenDownloadCompletesWithSuccess() {
-		let invokeExpectation = expectation(description: "to invoke completion")
-		
-		// Given
-		let address = URL(string: "http://google.com")!
-		let task = createTask(addressProviderResult: .success(address)).setCompletionBlock { result in
-			// Expect
-			invokeExpectation.fulfill()
-			XCTAssert(result.isSuccess, "invalid download result; expected success, got \(result)")
-		}
-		
-		// When
-		task.start()
-		operation.invokeCompletion(response: .success(address))
-		
-		waitForExpectations(timeout: 1, handler: nil)
-	}
-	
 	func testInvokesProgressBlockWhenDownloadProgresses() {
 		let invokeExpectation = expectation(description: "to invoke progress block")
 		
-		// Given
-		let address = URL(string: "http://google.com")!
-		let task = createTask(addressProviderResult: .success(address)).setProgressBlock { _,_  in
+		task.setProgressBlock { _,_  in
 			// Expect
 			invokeExpectation.fulfill()
 		}
@@ -310,38 +283,6 @@ final class DownloadTaskTest: XCTestCase {
 		operation.invokeProgress(written: 0, total: 0)
 		
 		waitForExpectations(timeout: 1, handler: nil)
-	}
-	
-	func testCancelsAddressProviderOnCancelDuringAddressProviding() {
-		let invokeExpectation = expectation(description: "to invoke cancel on cancellation token")
-		
-		// Given
-		let task = DownloadTask(addressProvider: { _ in
-			return AnyCancellationToken {
-				invokeExpectation.fulfill()
-			}
-		}, operationBuilder: { _ in
-			return self.operation
-		})
-		
-		// When
-		task.start()
-		task.cancel()
-		
-		waitForExpectations(timeout: 1, handler: nil)
-	}
-	
-	func testCancelsDownloadOperationOnCancelDuringDownload() {
-		// Given
-		let address = URL(string: "http://google.com")!
-		let task = createTask(addressProviderResult: .success(address))
-		
-		// When
-		task.start()
-		task.cancel()
-		
-		// Expect
-		XCTAssert(operation.isCancelled, "operation should have been cancelled")
 	}
 }
 

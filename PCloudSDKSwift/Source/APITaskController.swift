@@ -91,20 +91,15 @@ public final class APITaskController {
 		return UploadTask(operation: operation, responseParser: responseParser)
 	}
 	
-	/// Creates and returns a download task given an address provider and a destination.
+	/// Creates and returns a download task given a resource address and a destination.
 	///
-	/// - parameter addressProvider: A block obtaining a resource address asynchronously. When the task completes, the completion block passed
-	/// as the parameter to this block should be called on the main thread. Referenced strongly by the task.
-	/// - parameter operationBuilder: A block creating a download operation from a resource address. Referenced strongly by the task.
+	/// - parameter address: A remote URL pointing to the resource to download.
+	/// - parameter destination: A block computing the final location of the downloaded file from its temporary one. The block is referenced strongly
+	/// by the task returned from this method and the thread on which it will be called is undefined.
 	/// - returns: A non-running task that can execute the download.
-	public func download(addressProvider: @escaping DownloadTask.AddressProvider, destination: @escaping (URL) -> URL) -> DownloadTask {
-		let downloadDispatcher = self.downloadDispatcher
-		
-		let operationBuilder: (URL) -> DownloadOperation = { address in
-			let request = Download.Request(resourceAddress: address, destination: destination)
-			return downloadDispatcher(request)
-		}
-		
-		return DownloadTask(addressProvider: addressProvider, operationBuilder: operationBuilder)
+	public func download(from address: URL, to destination: @escaping (URL) -> URL) -> DownloadTask {
+		let request = Download.Request(resourceAddress: address, destination: destination)
+		let operation = downloadDispatcher(request)
+		return DownloadTask(operation: operation)
 	}
 }

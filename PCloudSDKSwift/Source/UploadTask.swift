@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Executes an upload to the pCloud API and produces an object on success from the API response.
+/// Executes an upload to the pCloud API.
 public final class UploadTask<Method: PCloudAPIMethod>: Cancellable {
 	public typealias Parser = Method.Parser
 	

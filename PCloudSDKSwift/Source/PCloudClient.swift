@@ -199,11 +199,6 @@ public extension PCloudClient {
 	/// by the task returned from this method and the thread on which it will be called is undefined.
 	/// - returns: A task producing a `URL` on success which is the local path of the downloaded file.
 	func downloadFile(from address: URL, to destination: @escaping (URL) -> URL) -> DownloadTask {
-		let addressProvider: DownloadTask.AddressProvider = { completion in
-			completion(.success(address))
-			return VoidCancellationToken()
-		}
-		
-		return controller.download(addressProvider: addressProvider, destination: destination)
+		return controller.download(from: address, to: destination)
 	}
 }
