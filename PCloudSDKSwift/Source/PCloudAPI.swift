@@ -817,27 +817,23 @@ public extension PCloudAPI {
 			])
 		}
 		
-		public func createResponseParser() -> ([String : Any]) throws -> [UInt64: Result<[FileLink.Metadata], Swift.Error>] {
+		public func createResponseParser() -> ([String : Any]) throws -> [UInt64: Result<[FileLink.Metadata], PCloudAPI.Error<GetThumbnailLink.Error>>] {
 			return {
 				if let error = self.tryParseError(in: $0) {
 					throw error
 				}
 				
 				let thumbEntries = $0["thumbs"] as! [[String: Any]]
-				var result: [UInt64: Result<[FileLink.Metadata], Swift.Error>] = [:]
+				var result: [UInt64: Result<[FileLink.Metadata], PCloudAPI.Error<GetThumbnailLink.Error>>] = [:]
 				let parser = FileLinkMetadataParser()
 				
 				for entry in thumbEntries {
 					let fileId = entry.uint64("fileid")
 					
-					do {
-						if let error = PCloudAPI.Error<GetThumbnailLink.Error>(apiResponse: entry) {
-							throw error
-						}
-						
-						result[fileId] = .success(try parser.parse(entry))
-					} catch {
+					if let error = PCloudAPI.Error<GetThumbnailLink.Error>(apiResponse: entry) {
 						result[fileId] = .failure(error)
+					} else {
+						result[fileId] = .success(try parser.parse(entry))
 					}
 				}
 				
