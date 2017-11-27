@@ -86,7 +86,7 @@ public final class DownloadTask: Cancellable {
 			
 			switch response {
 			case .success(let address): me.download(from: address)
-			case .failure(let error): me.complete(result: .failure(error))
+			case .failure(let error): me.complete(result: .failure(.clientError(error)))
 			}
 		}
 		

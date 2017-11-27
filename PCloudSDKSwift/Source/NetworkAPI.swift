@@ -38,10 +38,17 @@ public protocol NetworkOperation: Cancellable {
 }
 
 
+/// An error from a network operation.
+public enum NetworkOperationError {
+	case clientError(Error)
+	case protocolError(Error)
+}
+
+
 /// Call namespace.
 public struct Call {
 	/// A result from executing a pCloud API call.
-	public typealias Response = Result<[String: Any], Error>
+	public typealias Response = Result<[String: Any], NetworkOperationError>
 	
 	/// A pCloud API command. Describes what the API should do.
 	public struct Command {
@@ -97,7 +104,7 @@ public protocol CallOperation: NetworkOperation {
 /// Upload namespace.
 public struct Upload {
 	/// A result from executing an upload to pCloud.
-	public typealias Response = Result<[String: Any], Error>
+	public typealias Response = Result<[String: Any], NetworkOperationError>
 	
 	/// Combines all the necessary input to execute an upload to pCloud.
 	public struct Request {
@@ -159,7 +166,7 @@ public protocol UploadOperation: NetworkOperation {
 /// Download namespace.
 public struct Download {
 	/// A result from executing a download from pCloud.
-	public typealias Response = Result<URL, Error>
+	public typealias Response = Result<URL, NetworkOperationError>
 	
 	/// Combines all the necessary input to execute a download.
 	public struct Request {

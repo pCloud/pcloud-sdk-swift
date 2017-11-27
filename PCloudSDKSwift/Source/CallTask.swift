@@ -52,7 +52,10 @@ public final class CallTask<Method: PCloudApiMethod>: Cancellable {
 					}
 					
 				case .failure(let error):
-					return .failure(error)
+					switch error {
+					case .clientError(let ce): return .failure(ce)
+					case .protocolError(let pe): return .failure(pe)
+					}
 				}
 			}()
 			

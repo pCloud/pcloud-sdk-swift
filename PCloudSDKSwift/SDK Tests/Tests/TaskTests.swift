@@ -55,7 +55,7 @@ final class CallTaskTests: XCTestCase {
 		}
 		
 		// When
-		operation.invokeCompletion(response: .failure(NSError.void()))
+		operation.invokeCompletion(response: .failure(.clientError(NSError.void())))
 		
 		waitForExpectations(timeout: 1, handler: nil)
 	}
@@ -77,7 +77,7 @@ final class CallTaskTests: XCTestCase {
 		}
 		
 		// When
-		operation.invokeCompletion(response: .failure(NSError.void()))
+		operation.invokeCompletion(response: .failure(.clientError(NSError.void())))
 		
 		waitForExpectations(timeout: 1, handler: nil)
 	}
@@ -180,7 +180,7 @@ final class UploadTaskTests: XCTestCase {
 		}
 		
 		// When
-		operation.invokeCompletion(response: .failure(NSError.void()))
+		operation.invokeCompletion(response: .failure(.clientError(NSError.void())))
 		
 		waitForExpectations(timeout: 1, handler: nil)
 	}
@@ -202,7 +202,7 @@ final class UploadTaskTests: XCTestCase {
 		}
 		
 		// When
-		operation.invokeCompletion(response: .failure(NSError.void()))
+		operation.invokeCompletion(response: .failure(.clientError(NSError.void())))
 		
 		waitForExpectations(timeout: 1, handler: nil)
 	}
@@ -272,7 +272,7 @@ final class DownloadTaskTest: XCTestCase {
 		
 		// When
 		task.start()
-		operation.invokeCompletion(response: .failure(NSError.void()))
+		operation.invokeCompletion(response: .failure(.clientError(NSError.void())))
 		
 		waitForExpectations(timeout: 1, handler: nil)
 	}

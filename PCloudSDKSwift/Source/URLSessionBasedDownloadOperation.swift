@@ -21,7 +21,7 @@ public final class URLSessionBasedDownloadOperation: URLSessionBasedNetworkOpera
 		// Expecting that didFinishDownloading will be called before didComplete and that both callbacks will be called
 		// on the same thread.
 		
-		var moveResult: Result<URL, Error>?
+		var moveResult: Result<URL, NetworkOperationError>?
 		
 		didFinishDownloading = { path in
 			// Compute destination.
@@ -32,7 +32,7 @@ public final class URLSessionBasedDownloadOperation: URLSessionBasedNetworkOpera
 				try FileManager.default.moveItem(at: path, to: finalPath)
 				moveResult = .success(finalPath)
 			} catch {
-				moveResult = .failure(error)
+				moveResult = .failure(.clientError(error))
 			}
 		}
 		
@@ -44,7 +44,7 @@ public final class URLSessionBasedDownloadOperation: URLSessionBasedNetworkOpera
 			// Compute response.
 			let response: Download.Response = {
 				if let error = error {
-					return .failure(error)
+					return .failure(.clientError(error))
 				}
 				
 				return moveResult!

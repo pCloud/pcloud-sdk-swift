@@ -374,7 +374,7 @@ final class URLSessionBasedDownloadOperationTests: XCTestCase, URLSessionBasedOp
 		operation.urlSession(session, task: task, didCompleteWithError: nil)
 		
 		// Expect
-		validateResponse(in: operation, against: .failure(NSError.void()))
+		validateResponse(in: operation, against: .failure(.clientError(NSError.void())))
 	}
 	
 	func test_completeOperationWithError_expectOperationAssignsFailureResult() {
@@ -386,7 +386,7 @@ final class URLSessionBasedDownloadOperationTests: XCTestCase, URLSessionBasedOp
 		operation.urlSession(session, task: task, didCompleteWithError: NSError.void())
 		
 		// Expect
-		validateResponse(in: operation, against: .failure(NSError.void()))
+		validateResponse(in: operation, against: .failure(.clientError(NSError.void())))
 	}
 	
 	func test_completeOperationWithFile_expectItInvokesItsCompletionBlock() {

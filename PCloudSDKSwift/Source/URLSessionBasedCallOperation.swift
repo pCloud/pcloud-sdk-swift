@@ -33,11 +33,15 @@ public final class URLSessionBasedCallOperation: URLSessionBasedNetworkOperation
 			// Compute response.
 			let response: Call.Response = {
 				if let error = error {
-					return .failure(error)
+					return .failure(.clientError(error))
 				}
 				
-				let parsedData = try! JSONSerialization.jsonObject(with: responseData, options: []) as! [String: Any]
-				return .success(parsedData)
+				do {
+					let json = try JSONSerialization.jsonObject(with: responseData, options: []) as! [String: Any]
+					return .success(json)
+				} catch {
+					return .failure(.clientError(error))
+				}
 			}()
 			
 			// Complete.
