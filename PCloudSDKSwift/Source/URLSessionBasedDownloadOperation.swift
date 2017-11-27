@@ -21,7 +21,7 @@ public final class URLSessionBasedDownloadOperation: URLSessionBasedNetworkOpera
 		// Expecting that didFinishDownloading will be called before didComplete and that both callbacks will be called
 		// on the same thread.
 		
-		var moveResult: Result<URL>?
+		var moveResult: Result<URL, Error>?
 		
 		didFinishDownloading = { path in
 			// Compute destination.

@@ -186,7 +186,7 @@ public extension PCloudClient {
 	///	The height must be between 16 and 1024. And both width and height must be divisible by either 4 or 5
 	/// - parameter forceExactThumbnailSize: Whether to enforce `thumbnailSize` (`true`) by potentially cropping parts
 	/// of the images, or to allow width or height (but not both) to be smaller than the requested size. Aspect ratio is always preserved.
-	/// - returns: A task producing a `Dictionary<UInt64, Result<Array<FileLink.Metadata>>>` object on success. The keys in the dictionary are the file
+	/// - returns: A task producing a `Dictionary<UInt64, Result<Array<FileLink.Metadata>, Error>>` object on success. The keys in the dictionary are the file
 	/// identifiers passed as input to this method. Each file identifier is mapped against the result of aquiring a thumbnail link for that file.
 	func getThumbnailLinks(forFiles fileIds: Set<UInt64>, thumbnailSize: CGSize, forceExactThumbnailSize: Bool = false) -> CallTask<PCloudAPI.GetThumbnailsLinks> {
 		return controller.call(PCloudAPI.GetThumbnailsLinks(fileIds: fileIds, thumbnailSize: thumbnailSize, crop: forceExactThumbnailSize))

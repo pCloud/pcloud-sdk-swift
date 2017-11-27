@@ -817,14 +817,14 @@ public extension PCloudAPI {
 			])
 		}
 		
-		public func createResponseParser() -> ([String : Any]) throws -> [UInt64: Result<[FileLink.Metadata]>] {
+		public func createResponseParser() -> ([String : Any]) throws -> [UInt64: Result<[FileLink.Metadata], Swift.Error>] {
 			return {
 				if let error = self.tryParseError(in: $0) {
 					throw error
 				}
 				
 				let thumbEntries = $0["thumbs"] as! [[String: Any]]
-				var result: [UInt64: Result<[FileLink.Metadata]>] = [:]
+				var result: [UInt64: Result<[FileLink.Metadata], Swift.Error>] = [:]
 				let parser = FileLinkMetadataParser()
 				
 				for entry in thumbEntries {

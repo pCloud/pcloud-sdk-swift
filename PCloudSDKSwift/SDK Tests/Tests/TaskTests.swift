@@ -234,7 +234,7 @@ final class DownloadTaskTest: XCTestCase {
 		operation = DownloadOperationMock()
 	}
 	
-	func createTask(addressProviderResult result: Result<URL>) -> DownloadTask {
+	func createTask(addressProviderResult result: Result<URL, Error>) -> DownloadTask {
 		return DownloadTask(addressProvider: { complete in
 			complete(result)
 			return VoidCancellationToken()
@@ -347,6 +347,8 @@ final class DownloadTaskTest: XCTestCase {
 
 
 struct VoidApiMethod: PCloudApiMethod {
+	typealias Error = NullError
+	
 	var requiresAuthentication: Bool = false
 	
 	func createCommand() -> Call.Command {

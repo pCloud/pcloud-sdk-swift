@@ -41,7 +41,7 @@ public protocol NetworkOperation: Cancellable {
 /// Call namespace.
 public struct Call {
 	/// A result from executing a pCloud API call.
-	public typealias Response = Result<[String: Any]>
+	public typealias Response = Result<[String: Any], Error>
 	
 	/// A pCloud API command. Describes what the API should do.
 	public struct Command {
@@ -97,7 +97,7 @@ public protocol CallOperation: NetworkOperation {
 /// Upload namespace.
 public struct Upload {
 	/// A result from executing an upload to pCloud.
-	public typealias Response = Result<[String: Any]>
+	public typealias Response = Result<[String: Any], Error>
 	
 	/// Combines all the necessary input to execute an upload to pCloud.
 	public struct Request {
@@ -159,7 +159,7 @@ public protocol UploadOperation: NetworkOperation {
 /// Download namespace.
 public struct Download {
 	/// A result from executing a download from pCloud.
-	public typealias Response = Result<URL>
+	public typealias Response = Result<URL, Error>
 	
 	/// Combines all the necessary input to execute a download.
 	public struct Request {

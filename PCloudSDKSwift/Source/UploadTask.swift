@@ -36,13 +36,13 @@ public final class UploadTask<Method: PCloudApiMethod>: Cancellable {
 	/// - parameter block: A block called on the main thread with the result of the task.
 	/// - returns: This task.
 	@discardableResult
-	public func setCompletionBlock(_ block: @escaping (Result<Method.Value>) -> Void) -> UploadTask {
+	public func setCompletionBlock(_ block: @escaping (Result<Method.Value, Error>) -> Void) -> UploadTask {
 		let parse = self.parse
 		
 		// Parse the response on a background queue.
 		operation.setCompletionBlock(queue: .global()) { response in
 			// Compute the response.
-			let result: Result<Method.Value> = {
+			let result: Result<Method.Value, Error> = {
 				switch response {
 				case .success(let response):
 					do {
