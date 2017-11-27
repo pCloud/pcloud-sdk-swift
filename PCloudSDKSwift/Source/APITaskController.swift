@@ -94,10 +94,11 @@ public final class APITaskController {
 	/// Creates and returns a download task given a resource address and a destination.
 	///
 	/// - parameter address: A remote URL pointing to the resource to download.
-	/// - parameter destination: A block computing the final location of the downloaded file from its temporary one. The block is referenced strongly
-	/// by the task returned from this method and the thread on which it will be called is undefined.
+	/// - parameter destination: A block called with the temporary location of the downloaded file on disk.
+	/// The block must either move or open the file for reading before it returns, otherwise the file gets deleted.
+	/// The block should return the new location of the file.
 	/// - returns: A non-running task that can execute the download.
-	public func download(from address: URL, to destination: @escaping (URL) -> URL) -> DownloadTask {
+	public func download(from address: URL, to destination: @escaping (URL) throws -> URL) -> DownloadTask {
 		let request = Download.Request(resourceAddress: address, destination: destination)
 		let operation = downloadDispatcher(request)
 		return DownloadTask(operation: operation)

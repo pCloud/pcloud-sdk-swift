@@ -297,6 +297,10 @@ final class URLSessionBasedDownloadOperationTests: XCTestCase, URLSessionBasedOp
 		}
 	}
 	
+	func createOperation(destinationBlock: @escaping (URL) throws -> URL) -> URLSessionBasedDownloadOperation {
+		return URLSessionBasedDownloadOperation(task: createDownloadTask(session: session), destination: destinationBlock)
+	}
+	
 	func createOperation(destination: URL? = nil) -> URLSessionBasedDownloadOperation {
 		let destination = destination ?? defaultDestinationFilePath()
 		return URLSessionBasedDownloadOperation(task: createDownloadTask(session: session)) { _ in return destination }
@@ -350,33 +354,6 @@ final class URLSessionBasedDownloadOperationTests: XCTestCase, URLSessionBasedOp
 		waitForExpectations(timeout: 1, handler: nil)
 	}
 	
-	func test_completeOperationWithFileAndSuccessfullyMoveItToDestination_expectOperationAssignsSuccessfulResult() {
-		// Given
-		let operation = createOperation()
-		let task = createDownloadTask(session: session)
-		createFile(at: downloadFilePath())
-		
-		// When
-		operation.urlSession(session, downloadTask: task, didFinishDownloadingTo: downloadFilePath())
-		operation.urlSession(session, task: task, didCompleteWithError: nil)
-		
-		// Expect
-		validateResponse(in: operation, against: .success(defaultDestinationFilePath()))
-	}
-	
-	func test_completeOperationWithFileAndFailToMoveItToDestination_expectOperationAssignsFailureResult() {
-		// Given
-		let operation = createOperation()
-		let task = createDownloadTask(session: session)
-		
-		// When
-		operation.urlSession(session, downloadTask: task, didFinishDownloadingTo: downloadFilePath())
-		operation.urlSession(session, task: task, didCompleteWithError: nil)
-		
-		// Expect
-		validateResponse(in: operation, against: .failure(.clientError(NSError.void())))
-	}
-	
 	func test_completeOperationWithError_expectOperationAssignsFailureResult() {
 		// Given
 		let operation = createOperation()
@@ -425,19 +402,21 @@ final class URLSessionBasedDownloadOperationTests: XCTestCase, URLSessionBasedOp
 		waitForExpectations(timeout: 1, handler: nil)
 	}
 	
-	func test_onDidFinishDownloading_expectOperationToMoveFile() {
+	func test_onDidFinishDownloading_expectOperationToCallDestinationBlock() {
 		// Given
-		let operation = createOperation()
+		let invokeExpectation = expectation(description: "to invoke destination block")
+		let operation = createOperation(destinationBlock: { path in
+			// Expect
+			invokeExpectation.fulfill()
+			return path
+		})
+		
 		let task = createDownloadTask(session: session)
-		let downloadFilePath = self.downloadFilePath()
-		createFile(at: downloadFilePath)
 		
 		// When
-		operation.urlSession(session, downloadTask: task, didFinishDownloadingTo: downloadFilePath)
+		operation.urlSession(session, downloadTask: task, didFinishDownloadingTo: downloadFilePath())
 		
-		// Expect
-		XCTAssert(!FileManager.default.fileExists(atPath: downloadFilePath.path), "file should not exist at its download location")
-		XCTAssert(FileManager.default.fileExists(atPath: defaultDestinationFilePath().path), "file should exist at its destination location")
+		waitForExpectations(timeout: 1, handler: nil)
 	}
 }
 

@@ -13,8 +13,10 @@ public final class URLSessionBasedDownloadOperation: URLSessionBasedNetworkOpera
 	/// Initializes an operation with a task and destination.
 	///
 	/// - parameter task: A backing download task in a suspended state.
-	/// - parameter destination: A block computing the destination of the downloaded file from its temporary location.
-	public init(task: URLSessionDownloadTask, destination: @escaping (URL) -> URL) {
+	/// - parameter destination: A block called with the temporary location of the downloaded file on disk.
+	/// The block must either move or open the file for reading before it returns, otherwise the file gets deleted.
+	/// The block should return the new location of the file.
+	public init(task: URLSessionDownloadTask, destination: @escaping (URL) throws -> URL) {
 		super.init(task: task)
 		
 		// Assign callbacks.
@@ -24,13 +26,8 @@ public final class URLSessionBasedDownloadOperation: URLSessionBasedNetworkOpera
 		var moveResult: Result<URL, NetworkOperationError>?
 		
 		didFinishDownloading = { path in
-			// Compute destination.
-			let finalPath = destination(path)
-			
-			// Attempt to move the file to its final destination.
 			do {
-				try FileManager.default.moveItem(at: path, to: finalPath)
-				moveResult = .success(finalPath)
+				moveResult = .success(try destination(path))
 			} catch {
 				moveResult = .failure(.clientError(error))
 			}

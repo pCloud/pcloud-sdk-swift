@@ -195,10 +195,11 @@ public extension PCloudClient {
 	/// Creates and returns a task for downloading a file from a `URL`.
 	///
 	/// - parameter address: The resource address.
-	/// - parameter destination: A block computing the download destination of the file from its temporary location. The block is referenced strongly
-	/// by the task returned from this method and the thread on which it will be called is undefined.
+	/// - parameter destination: A block called with the temporary location of the downloaded file on disk.
+	/// The block must either move or open the file for reading before it returns, otherwise the file gets deleted.
+	/// The block should return the new location of the file.
 	/// - returns: A task producing a `URL` on success which is the local path of the downloaded file.
-	func downloadFile(from address: URL, to destination: @escaping (URL) -> URL) -> DownloadTask {
+	func downloadFile(from address: URL, to destination: @escaping (URL) throws -> URL) -> DownloadTask {
 		return controller.download(from: address, to: destination)
 	}
 }

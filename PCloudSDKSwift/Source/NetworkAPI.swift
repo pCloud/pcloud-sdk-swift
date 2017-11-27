@@ -173,10 +173,12 @@ public struct Download {
 		/// The remote address of the resource to download.
 		public var resourceAddress: URL
 		
-		/// A block computing the destination of the downloaded file from its temporary location.
-		public var destination: (URL) -> URL
+		/// A block called with the temporary location of the file on disk. The block must either move
+		/// the file or open it for reading, otherwise the file gets deleted after the block returns.
+		/// The block should return the new path of the file.
+		public var destination: (URL) throws -> URL
 		
-		public init(resourceAddress: URL, destination: @escaping (URL) -> URL) {
+		public init(resourceAddress: URL, destination: @escaping (URL) throws -> URL) {
 			self.resourceAddress = resourceAddress
 			self.destination = destination
 		}
