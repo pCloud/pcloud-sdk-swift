@@ -494,6 +494,171 @@ public extension PCloudAPI {
 		}
 	}
 	
+	
+	/// Creates an upload session which can be used to upload a file over several requests. Returns the identifier of the upload.
+	public struct CreateUpload: PCloudAPIMethod {
+		/// The total size of the data to upload (if available).
+		public let expectedFileSize: UInt64?
+		
+		public var requiresAuthentication: Bool {
+			return true
+		}
+		
+		/// - parameter expectedFileSize: The total size of the data to upload.
+		public init(expectedFileSize: UInt64? = nil) {
+			self.expectedFileSize = expectedFileSize
+		}
+		
+		public func createCommand() -> Call.Command {
+			var parameters: [Call.Command.Parameter] = []
+			
+			if let fileSize = expectedFileSize {
+				parameters.append(.number(name: "filesize", value: fileSize))
+			}
+			
+			return Call.Command(name: "upload_create", parameters: parameters)
+		}
+		
+		public func createResponseParser() -> ([String : Any]) throws -> Result<UInt64, PCloudAPI.Error<NullError>> {
+			return { response in
+				if let error = self.tryParseError(in: response) {
+					return .failure(error)
+				}
+				
+				return .success(response.uint64("uploadid"))
+			}
+		}
+	}
+	
+	
+	/// Fetches the state of an upload session.
+	public struct GetUploadInfo: PCloudAPIMethod {
+		/// The identifier of the upload session.
+		public let uploadId: UInt64
+		
+		public var requiresAuthentication: Bool {
+			return true
+		}
+		
+		/// - parameter uploadId: An upload session identifier.
+		public init(uploadId: UInt64) {
+			self.uploadId = uploadId
+		}
+		
+		public func createCommand() -> Call.Command {
+			return Call.Command(name: "upload_info", parameters: [.number(name: "uploadid", value: uploadId)])
+		}
+		
+		public func createResponseParser() -> ([String : Any]) throws -> Result<UploadInfo, PCloudAPI.Error<NullError>> {
+			return { response in
+				if let error = self.tryParseError(in: response) {
+					return .failure(error)
+				}
+				
+				return .success(try UploadInfoParser().parse(response))
+			}
+		}
+	}
+	
+	
+	/// Writes data to an upload session.
+	public struct WriteToUpload: PCloudAPIMethod {
+		/// The identifier of the upload session.
+		public let uploadId: UInt64
+		/// The offset at which to write data.
+		public let offset: UInt64
+		
+		public var requiresAuthentication: Bool {
+			return true
+		}
+		
+		/// - parameter uploadId: An upload session identifier.
+		/// - parameter offset: An offset at which to write data.
+		public init(uploadId: UInt64, offset: UInt64) {
+			self.uploadId = uploadId
+			self.offset = offset
+		}
+		
+		public func createCommand() -> Call.Command {
+			return Call.Command(name: "upload_write", parameters: [.number(name: "uploadid", value: uploadId),
+																   .number(name: "uploadoffset", value: offset)])
+		}
+		
+		public func createResponseParser() -> ([String : Any]) throws -> Result<Void, PCloudAPI.Error<NullError>> {
+			return { response in
+				if let error = self.tryParseError(in: response) {
+					return .failure(error)
+				}
+				
+				return .success(())
+			}
+		}
+	}
+	
+	
+	/// Commits an upload session into a file and returns the created file metadata.
+	public struct SaveUpload: PCloudAPIMethod {
+		public enum ConflictResolutionPolicy {
+			case rename
+			case alwaysOverwrite
+			case overwriteFileHash(UInt64)
+		}
+		
+		public let uploadId: UInt64
+		public let parentFolderId: UInt64
+		public let fileName: String
+		public let fileModificationDate: Date?
+		public let conflictResolutionPolicy: ConflictResolutionPolicy
+		
+		public var requiresAuthentication: Bool {
+			return true
+		}
+		
+		public init(uploadId: UInt64, parentFolderId: UInt64, fileName: String, fileModificationDate: Date?, onConflict: ConflictResolutionPolicy) {
+			self.uploadId = uploadId
+			self.parentFolderId = parentFolderId
+			self.fileName = fileName
+			self.fileModificationDate = fileModificationDate
+			self.conflictResolutionPolicy = onConflict
+		}
+		
+		public func createCommand() -> Call.Command {
+			var parameters: [Call.Command.Parameter] = [defaultIconFormatParameter,
+														defaultTimeFormatParameter,
+														.number(name: "uploadid", value: uploadId),
+														.number(name: "folderid", value: parentFolderId),
+														.string(name: "name", value: fileName)]
+			
+			if let date = fileModificationDate {
+				parameters.append(.number(name: "mtime", value: UInt64(date.timeIntervalSince1970)))
+			}
+			
+			switch conflictResolutionPolicy {
+			case .rename:
+				parameters.append(.boolean(name: "renameifexists", value: true))
+				
+			case .overwriteFileHash(let hash):
+				parameters.append(.number(name: "ifhash", value: hash))
+				
+			case .alwaysOverwrite:
+				break
+			}
+			
+			return Call.Command(name: "upload_save", parameters: parameters)
+		}
+		
+		public func createResponseParser() -> ([String : Any]) throws -> Result<File.Metadata, PCloudAPI.Error<NullError>> {
+			return { response in
+				if let error = self.tryParseError(in: response) {
+					return .failure(error)
+				}
+				
+				return .success(try FileMetadataParser().parse(response))
+			}
+		}
+	}
+	
+	
 	/// Copies a file and returns its updated metadata.
 	public struct CopyFile: PCloudAPIMethod {
 		/// The unique identifier of the file to copy.
