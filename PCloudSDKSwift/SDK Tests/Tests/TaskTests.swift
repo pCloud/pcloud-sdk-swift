@@ -137,7 +137,7 @@ final class UploadTaskTests: XCTestCase {
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
 		// Given
-		task.setCompletionBlock { result in
+		task.addCompletionBlock { result in
 			// Expect
 			invokeExpectation.fulfill()
 			
@@ -155,7 +155,7 @@ final class UploadTaskTests: XCTestCase {
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
 		// Given
-		task.setCompletionBlock { result in
+		task.addCompletionBlock { result in
 			// Expect
 			invokeExpectation.fulfill()
 			
@@ -177,7 +177,7 @@ final class UploadTaskTests: XCTestCase {
 			throw NSError.void()
 		})
 		
-		task.setCompletionBlock { result in
+		task.addCompletionBlock { result in
 			// Expect
 			invokeExpectation.fulfill()
 			
@@ -195,7 +195,7 @@ final class UploadTaskTests: XCTestCase {
 		let invokeExpectation = expectation(description: "to invoke progress block")
 		
 		// Given
-		task.setProgressBlock { _,_  in
+		task.addProgressBlock { _,_  in
 			// Expect
 			invokeExpectation.fulfill()
 			XCTAssert(Thread.isMainThread, "expected block to be invoked on the main thread")

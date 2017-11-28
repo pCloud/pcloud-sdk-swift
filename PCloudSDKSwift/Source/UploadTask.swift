@@ -11,11 +11,13 @@ import Foundation
 /// Executes an upload to the pCloud API.
 public final class UploadTask<Method: PCloudAPIMethod>: Cancellable {
 	public typealias Parser = Method.Parser
+	public typealias CompletionBlock = (Result<Method.Value, CallError<Method.Error>>) -> Void
 	
 	// The underlying operation executing the upload.
 	fileprivate let operation: UploadOperation
-	// A block taking a response dictionary and producing an object.
-	fileprivate let parse: Parser
+	
+	fileprivate let lock = Lock()
+	fileprivate var completionBlocks: [CompletionBlock] = []
 	
 	/// `true` if `cancel()` has been invoked on this instance, `false` otherwise.
 	public var isCancelled: Bool {
@@ -28,16 +30,6 @@ public final class UploadTask<Method: PCloudAPIMethod>: Cancellable {
 	/// - parameter responseParser: A block parsing an object from a response dictionary.
 	public init(operation: UploadOperation, responseParser: @escaping Parser) {
 		self.operation = operation
-		parse = responseParser
-	}
-	
-	/// Assigns a completion block to this instance to be called when the task completes either successfully or with a failure.
-	///
-	/// - parameter block: A block called on the main thread with the result of the task.
-	/// - returns: This task.
-	@discardableResult
-	public func setCompletionBlock(_ block: @escaping (Result<Method.Value, CallError<Method.Error>>) -> Void) -> UploadTask {
-		let parse = self.parse
 		
 		// Parse the response on a background queue.
 		operation.addCompletionBlock(queue: .global()) { response in
@@ -52,7 +44,7 @@ public final class UploadTask<Method: PCloudAPIMethod>: Cancellable {
 					
 				case .success(let payload):
 					do {
-						return try parse(payload).replacingError { error in
+						return try responseParser(payload).replacingError { error in
 							CallError<Method.Error>(apiError: error)
 						}
 					} catch {
@@ -61,22 +53,40 @@ public final class UploadTask<Method: PCloudAPIMethod>: Cancellable {
 				}
 			}()
 			
-			// Notify.
-			DispatchQueue.main.async {
-				block(result)
+			// Notify observers.
+			let completionBlocks: [CompletionBlock] = self.lock.inCriticalScope {
+				defer { self.completionBlocks.removeAll() }
+				return self.completionBlocks
 			}
+			
+			DispatchQueue.main.async {
+				for block in completionBlocks {
+					block(result)
+				}
+			}
+		}
+	}
+	
+	/// Adds a completion block to this instance to be called when the task completes either successfully or with a failure.
+	///
+	/// - parameter block: A block called on the main thread with the result of the task.
+	/// - returns: This task.
+	@discardableResult
+	public func addCompletionBlock(_ block: @escaping CompletionBlock) -> UploadTask {
+		lock.inCriticalScope {
+			completionBlocks.append(block)
 		}
 		
 		return self
 	}
 	
-	/// Assigns a progress block to this instance to be called continuously as data is being uploaded.
+	/// Adds a progress block to this instance to be called continuously as data is being uploaded.
 	///
 	/// - parameter block: A block called on the main thread with the number of uploaded bytes and the total number of bytes to upload as
 	/// first and second arguments, respectively. Called each time the number of uploaded bytes changes.
 	/// - returns: This task.
 	@discardableResult
-	public func setProgressBlock(_ block: @escaping (Int64, Int64) -> Void) -> UploadTask {
+	public func addProgressBlock(_ block: @escaping (Int64, Int64) -> Void) -> UploadTask {
 		operation.addProgressBlock(queue: .main, block)
 		return self
 	}
