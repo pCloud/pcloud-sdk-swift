@@ -53,7 +53,7 @@ public extension Result {
 public extension Result {
 	/// If `.success`, replaces the payload in this instance with the one returned by the `transform` block,
 	/// otherwise does nothing.
-	func replacingPayload<U>(_ transform: (T) throws -> U) rethrows -> Result<U, E> {
+	func replacingPayload<T2>(_ transform: (T) throws -> T2) rethrows -> Result<T2, E> {
 		switch self {
 		case .success(let payload): return .success(try transform(payload))
 		case .failure(let error): return .failure(error)
@@ -62,7 +62,7 @@ public extension Result {
 	
 	/// If `.failure`, replaces the error in this instance with the one returned by the `transform` block,
 	/// otherwise does nothing.
-	func replacingError<U>(_ transform: (E) throws -> U) rethrows -> Result<T, U> {
+	func replacingError<E2>(_ transform: (E) throws -> E2) rethrows -> Result<T, E2> {
 		switch self {
 		case .success(let payload): return .success(payload)
 		case .failure(let error): return .failure(try transform(error))
