@@ -15,8 +15,8 @@ class NetworkOperationMock {
 }
 
 extension NetworkOperationMock: NetworkOperation {
-	var id: String {
-		return "42"
+	var id: Int {
+		return 42
 	}
 	
 	var state: NetworkOperationState {

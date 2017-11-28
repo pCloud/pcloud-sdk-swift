@@ -40,8 +40,8 @@ public class URLSessionBasedNetworkOperation<T> {
 
 
 extension URLSessionBasedNetworkOperation: NetworkOperation {
-	public var id: String {
-		return "\(task.taskIdentifier)"
+	public var id: Int {
+		return task.taskIdentifier
 	}
 	
 	public var state: NetworkOperationState {

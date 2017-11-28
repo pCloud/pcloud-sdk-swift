@@ -27,7 +27,7 @@ public enum NetworkOperationState {
 /// Base interface for a network operation.
 public protocol NetworkOperation: Cancellable {
 	/// Unique identifier of the operation.
-	var id: String { get }
+	var id: Int { get }
 	
 	/// Current state of the operation.
 	var state: NetworkOperationState { get }
