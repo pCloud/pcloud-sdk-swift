@@ -48,15 +48,16 @@ public final class PCloud {
 		let authenticator = OAuthAccessTokenBasedAuthenticator(accessToken: accessToken)
 		let eventHub = URLSessionEventHub()
 		let session = URLSession(configuration: .default, delegate: eventHub, delegateQueue: nil)
-		let callDispatcher = URLSessionBasedNetworkOperationUtilities.createCallOperationBuilder(scheme: .https, session: session, delegate: eventHub)
-		let uploadDispatcher = URLSessionBasedNetworkOperationUtilities.createUploadOperationBuilder(scheme: .https, session: session, delegate: eventHub)
-		let downloadDispatcher = URLSessionBasedNetworkOperationUtilities.createDownloadOperationBuilder(session: session, delegate: eventHub)
+		let callOperationBuilder = URLSessionBasedNetworkOperationUtilities.createCallOperationBuilder(scheme: .https, session: session, delegate: eventHub)
+		let uploadOperationBuilder = URLSessionBasedNetworkOperationUtilities.createUploadOperationBuilder(scheme: .https, session: session, delegate: eventHub)
+		let downloadOperationBuilder = URLSessionBasedNetworkOperationUtilities.createDownloadOperationBuilder(session: session, delegate: eventHub)
+		let hostName = "api.pcloud.com"
 		
-		return PCloudClient(controller: APITaskController(hostProvider: "api.pcloud.com",
-		                                                  authenticator: authenticator,
-		                                                  callDispatcher: callDispatcher,
-		                                                  uploadDispatcher: uploadDispatcher,
-		                                                  downloadDispatcher: downloadDispatcher))
+		let callTaskBuilder = PCloudAPICallTaskBuilder(hostProvider: hostName, authenticator: authenticator, operationBuilder: callOperationBuilder)
+		let uploadTaskBuilder = PCloudAPIUploadTaskBuilder(hostProvider: hostName, authenticator: authenticator, operationBuilder: uploadOperationBuilder)
+		let downloadTaskBuilder = PCloudAPIDownloadTaskBuilder(hostProvider: hostName, authenticator: authenticator, operationBuilder: downloadOperationBuilder)
+		
+		return PCloudClient(callTaskBuilder: callTaskBuilder, uploadTaskBuilder: uploadTaskBuilder, downloadTaskBuilder: downloadTaskBuilder)
 	}
 	
 	/// Clears the global pCloud client and deletes all tokens.

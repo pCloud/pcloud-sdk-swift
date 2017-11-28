@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		98A4D90F1FCD60B300847B5B /* CallError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D90E1FCD60B300847B5B /* CallError.swift */; };
 		98A4D9111FCD89CB00847B5B /* URLSessionTaskBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D9101FCD89CB00847B5B /* URLSessionTaskBuilder.swift */; };
+		98A4D9141FCDAB9900847B5B /* APITaskBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D9131FCDAB9900847B5B /* APITaskBuilding.swift */; };
 		A5B4F5EB1DB6295C0081F125 /* PCloudSDKSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B4F5E11DB6295C0081F125 /* PCloudSDKSwift.framework */; };
 		D05BE9DA1E1670B10021E7F3 /* AnyCancellationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9BD1E1670B10021E7F3 /* AnyCancellationToken.swift */; };
 		D05BE9DB1E1670B10021E7F3 /* APITaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9BE1E1670B10021E7F3 /* APITaskController.swift */; };
@@ -96,6 +97,7 @@
 /* Begin PBXFileReference section */
 		98A4D90E1FCD60B300847B5B /* CallError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CallError.swift; path = Source/CallError.swift; sourceTree = "<group>"; };
 		98A4D9101FCD89CB00847B5B /* URLSessionTaskBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLSessionTaskBuilder.swift; path = Source/URLSessionTaskBuilder.swift; sourceTree = "<group>"; };
+		98A4D9131FCDAB9900847B5B /* APITaskBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APITaskBuilding.swift; path = Source/APITaskBuilding.swift; sourceTree = "<group>"; };
 		A5B4F5E11DB6295C0081F125 /* PCloudSDKSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PCloudSDKSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B4F5EA1DB6295C0081F125 /* SDK Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SDK Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01340DF1DF9889D0098A0A7 /* PCloudSDKSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PCloudSDKSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,6 +239,7 @@
 			children = (
 				D05BE9BD1E1670B10021E7F3 /* AnyCancellationToken.swift */,
 				D05BE9BE1E1670B10021E7F3 /* APITaskController.swift */,
+				98A4D9131FCDAB9900847B5B /* APITaskBuilding.swift */,
 				D05BE9BF1E1670B10021E7F3 /* Atomic.swift */,
 				D05BE9C01E1670B10021E7F3 /* Authenticator.swift */,
 				D05BE9C11E1670B10021E7F3 /* CallTask.swift */,
@@ -458,6 +461,7 @@
 				98A4D9111FCD89CB00847B5B /* URLSessionTaskBuilder.swift in Sources */,
 				D05BE9E31E1670B10021E7F3 /* HostProvider.swift in Sources */,
 				D05BE9F41E1670B10021E7F3 /* URLSessionEventHub.swift in Sources */,
+				98A4D9141FCDAB9900847B5B /* APITaskBuilding.swift in Sources */,
 				D05BE9F51E1670B10021E7F3 /* User.swift in Sources */,
 				D05BE9DD1E1670B10021E7F3 /* Authenticator.swift in Sources */,
 				D05BE9EF1E1670B10021E7F3 /* URLSessionBasedCallOperation.swift in Sources */,
