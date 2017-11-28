@@ -18,11 +18,11 @@ public final class URLSessionBasedCallOperation: URLSessionBasedNetworkOperation
 		
 		// Assign callbacks.
 		
-		var responseData = Data()
+		var responseBody = Data()
 		
 		didReceiveData = { data in
 			// Build response data.
-			responseData.append(data)
+			responseBody.append(data)
 		}
 		
 		didComplete = { [weak self] error in
@@ -37,7 +37,7 @@ public final class URLSessionBasedCallOperation: URLSessionBasedNetworkOperation
 				}
 				
 				do {
-					let json = try JSONSerialization.jsonObject(with: responseData, options: []) as! [String: Any]
+					let json = try JSONSerialization.jsonObject(with: responseBody, options: []) as! [String: Any]
 					return .success(json)
 				} catch {
 					return .failure(.clientError(error))
