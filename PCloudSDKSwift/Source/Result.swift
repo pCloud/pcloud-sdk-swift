@@ -50,6 +50,26 @@ public extension Result {
 	}
 }
 
+public extension Result {
+	/// If `.success`, replaces the payload in this instance with the one returned by the `transform` block,
+	/// otherwise does nothing.
+	func replacingPayload<U>(_ transform: (T) throws -> U) rethrows -> Result<U, E> {
+		switch self {
+		case .success(let payload): return .success(try transform(payload))
+		case .failure(let error): return .failure(error)
+		}
+	}
+	
+	/// If `.failure`, replaces the error in this instance with the one returned by the `transform` block,
+	/// otherwise does nothing.
+	func replacingError<U>(_ transform: (E) throws -> U) rethrows -> Result<T, U> {
+		switch self {
+		case .success(let payload): return .success(payload)
+		case .failure(let error): return .failure(try transform(error))
+		}
+	}
+}
+
 extension Result: CustomStringConvertible {
 	public var description: String {
 		switch self {
