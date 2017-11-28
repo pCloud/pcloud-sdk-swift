@@ -3,7 +3,7 @@
 //  PCloudSDKSwift
 //
 //  Created by Todor Pitekov on 03/01/2017
-//  Copyright © 2016 pCloud LTD. All rights reserved.
+//  Copyright © 2017 pCloud LTD. All rights reserved.
 //
 
 import UIKit
