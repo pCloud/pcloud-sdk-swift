@@ -56,7 +56,13 @@ public struct URLSessionTaskBuilder {
 	}
 	
 	public static func createDownloadTask(request: Download.Request, session: URLSession) -> URLSessionDownloadTask {
-		return session.downloadTask(with: request.resourceAddress)
+		var urlRequest = URLRequest(url: request.resourceAddress)
+		
+		if let timeoutInterval = request.timeoutInterval {
+			urlRequest.timeoutInterval = timeoutInterval
+		}
+		
+		return session.downloadTask(with: urlRequest)
 	}
 	
 	// Functions for encoding command parameter values to percent encoded strings.

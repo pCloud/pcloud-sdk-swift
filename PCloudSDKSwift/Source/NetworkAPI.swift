@@ -188,9 +188,14 @@ public struct Download {
 		/// The block should return the new path of the file.
 		public var destination: (URL) throws -> URL
 		
-		public init(resourceAddress: URL, destination: @escaping (URL) throws -> URL) {
+		/// The maximum amount of time (in seconds) that an operation's load activity can execute
+		/// while the operation is running.
+		public var timeoutInterval: TimeInterval?
+		
+		public init(resourceAddress: URL, destination: @escaping (URL) throws -> URL, timeoutInterval: TimeInterval? = nil) {
 			self.resourceAddress = resourceAddress
 			self.destination = destination
+			self.timeoutInterval = timeoutInterval
 		}
 	}
 }
