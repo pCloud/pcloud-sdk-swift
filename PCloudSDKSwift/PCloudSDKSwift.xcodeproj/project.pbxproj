@@ -11,6 +11,7 @@
 		98A4D9111FCD89CB00847B5B /* URLSessionTaskBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D9101FCD89CB00847B5B /* URLSessionTaskBuilder.swift */; };
 		98A4D9141FCDAB9900847B5B /* APITaskBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D9131FCDAB9900847B5B /* APITaskBuilding.swift */; };
 		98A4D9171FCDB32200847B5B /* APITaskBuildingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D9151FCDB2E700847B5B /* APITaskBuildingTests.swift */; };
+		98A4D9191FCDC5CB00847B5B /* UploadInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D9181FCDC5CB00847B5B /* UploadInfo.swift */; };
 		A5B4F5EB1DB6295C0081F125 /* PCloudSDKSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B4F5E11DB6295C0081F125 /* PCloudSDKSwift.framework */; };
 		D05BE9DA1E1670B10021E7F3 /* AnyCancellationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9BD1E1670B10021E7F3 /* AnyCancellationToken.swift */; };
 		D05BE9DC1E1670B10021E7F3 /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9BF1E1670B10021E7F3 /* Atomic.swift */; };
@@ -97,6 +98,7 @@
 		98A4D9101FCD89CB00847B5B /* URLSessionTaskBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLSessionTaskBuilder.swift; path = Source/URLSessionTaskBuilder.swift; sourceTree = "<group>"; };
 		98A4D9131FCDAB9900847B5B /* APITaskBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APITaskBuilding.swift; path = Source/APITaskBuilding.swift; sourceTree = "<group>"; };
 		98A4D9151FCDB2E700847B5B /* APITaskBuildingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITaskBuildingTests.swift; sourceTree = "<group>"; };
+		98A4D9181FCDC5CB00847B5B /* UploadInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadInfo.swift; path = Source/UploadInfo.swift; sourceTree = "<group>"; };
 		A5B4F5E11DB6295C0081F125 /* PCloudSDKSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PCloudSDKSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B4F5EA1DB6295C0081F125 /* SDK Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SDK Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01340DF1DF9889D0098A0A7 /* PCloudSDKSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PCloudSDKSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,6 +268,7 @@
 				D05BE9D81E1670B10021E7F3 /* User.swift */,
 				D05BE9D91E1670B10021E7F3 /* VoidCancellationToken.swift */,
 				98A4D90E1FCD60B300847B5B /* CallError.swift */,
+				98A4D9181FCDC5CB00847B5B /* UploadInfo.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				D05BE9ED1E1670B10021E7F3 /* Result.swift in Sources */,
 				D05BE9DA1E1670B10021E7F3 /* AnyCancellationToken.swift in Sources */,
 				D05BE9EC1E1670B10021E7F3 /* PCloudClient.swift in Sources */,
+				98A4D9191FCDC5CB00847B5B /* UploadInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
