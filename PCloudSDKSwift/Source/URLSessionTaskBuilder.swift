@@ -45,6 +45,10 @@ public struct URLSessionTaskBuilder {
 		urlRequest.httpMethod = HTTPMethod.post
 		urlRequest.setValue("applicaton/octet-stream", forHTTPHeaderField: "Content-Type")
 		
+		if let timeoutInterval = request.timeoutInterval {
+			urlRequest.timeoutInterval = timeoutInterval
+		}
+		
 		switch request.body {
 		case .file(let url): return session.uploadTask(with: urlRequest, fromFile: url)
 		case .data(let data): return session.uploadTask(with: urlRequest, from: data)

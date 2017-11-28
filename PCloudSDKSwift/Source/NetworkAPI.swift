@@ -82,7 +82,7 @@ public struct Call {
 		/// while the operation is running.
 		public var timeoutInterval: TimeInterval?
 		
-		public init(command: Command, hostName: String, timeoutInterval: TimeInterval?) {
+		public init(command: Command, hostName: String, timeoutInterval: TimeInterval? = nil) {
 			self.command = command
 			self.hostName = hostName
 			self.timeoutInterval = timeoutInterval
@@ -131,10 +131,15 @@ public struct Upload {
 		/// An API host name.
 		public var hostName: String
 		
-		public init(command: Call.Command, body: Body, hostName: String) {
+		/// The maximum amount of time (in seconds) that an operation's load activity can execute
+		/// while the operation is running.
+		public var timeoutInterval: TimeInterval?
+		
+		public init(command: Call.Command, body: Body, hostName: String, timeoutInterval: TimeInterval? = nil) {
 			self.command = command
 			self.body = body
 			self.hostName = hostName
+			self.timeoutInterval = timeoutInterval
 		}
 	}
 }
