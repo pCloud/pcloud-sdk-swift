@@ -45,8 +45,7 @@ public final class URLSessionBasedUploadOperation: URLSessionBasedNetworkOperati
 			}()
 			
 			// Complete.
-			me.taskResponse = response
-			me.notifyCompletion(response: response)
+			me.complete(response: response)
 		}
 	}
 }
@@ -65,8 +64,8 @@ extension URLSessionBasedUploadOperation: UploadOperation {
 	}
 	
 	@discardableResult
-	public func setCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Upload.Response) -> Void) -> URLSessionBasedUploadOperation {
-		completion = (block, queue)
+	public func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Upload.Response) -> Void) -> URLSessionBasedUploadOperation {
+		addCompletionHandler((block, queue))
 		return self
 	}
 	

@@ -91,12 +91,12 @@ public protocol CallOperation: NetworkOperation {
 	/// The result from executing the API call. Exists only when `state` is `NetworkOperationState.completed`.
 	var response: Call.Response? { get }
 	
-	/// Assigns a block to be called on a specific queue when the operation receives its response.
+	/// Adds a block to be called on a specific queue when the operation receives its response.
 	///
 	/// - parameter queue: A queue to call `block` on. If `nil`, the queue on which `block` will be called is undefined.
 	/// - parameter block: Called as soon as the operation receives its response. Referenced strongly by the operation.
 	@discardableResult
-	func setCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Call.Response) -> Void) -> Self
+	func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Call.Response) -> Void) -> Self
 }
 
 
@@ -154,12 +154,12 @@ public protocol UploadOperation: NetworkOperation {
 	@discardableResult
 	func setProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self
 	
-	/// Assigns a block to be called on a specific queue when the operation receives its response.
+	/// Adds a block to be called on a specific queue when the operation receives its response.
 	///
 	/// - parameter queue: A queue to call `block` on. If `nil`, the queue on which `block` will be called is undefined.
 	/// - parameter block: Called as soon as the operation receives its response. Referenced strongly by the operation.
 	@discardableResult
-	func setCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Upload.Response) -> Void) -> Self
+	func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Upload.Response) -> Void) -> Self
 }
 
 
@@ -205,12 +205,12 @@ public protocol DownloadOperation: NetworkOperation {
 	@discardableResult
 	func setProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self
 	
-	/// Assigns a block to be called on a specific queue when the operation receives its response.
+	/// Adds a block to be called on a specific queue when the operation receives its response.
 	///
 	/// - parameter queue: A queue to call `block` on. If `nil`, the queue on which `block` will be called is undefined.
 	/// - parameter block: Called as soon as the operation receives its response. Referenced strongly by the operation.
 	@discardableResult
-	func setCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Download.Response) -> Void) -> Self
+	func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Download.Response) -> Void) -> Self
 }
 
 

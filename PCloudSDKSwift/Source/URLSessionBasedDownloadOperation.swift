@@ -48,8 +48,7 @@ public final class URLSessionBasedDownloadOperation: URLSessionBasedNetworkOpera
 			}()
 			
 			// Complete.
-			me.taskResponse = response
-			me.notifyCompletion(response: response)
+			me.complete(response: response)
 		}
 	}
 }
@@ -68,8 +67,8 @@ extension URLSessionBasedDownloadOperation: DownloadOperation {
 	}
 	
 	@discardableResult
-	public func setCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Download.Response) -> Void) -> URLSessionBasedDownloadOperation {
-		completion = (block, queue)
+	public func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Download.Response) -> Void) -> URLSessionBasedDownloadOperation {
+		addCompletionHandler((block, queue))
 		return self
 	}
 	

@@ -42,7 +42,7 @@ public final class DownloadTask: Cancellable {
 	/// - returns: This task.
 	@discardableResult
 	public func setCompletionBlock(_ block: @escaping (Download.Response) -> Void) -> DownloadTask {
-		operation.setCompletionBlock(queue: .main, block)
+		operation.addCompletionBlock(queue: .main, block)
 		return self
 	}
 	

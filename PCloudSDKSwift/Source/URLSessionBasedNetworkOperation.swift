@@ -10,11 +10,25 @@ import Foundation
 
 /// Base class for network operations backed by `URLSessionTask`. Conforms to `NetworkOperation`. Forwards `URLSessionObserver` callbacks to blocks.
 public class URLSessionBasedNetworkOperation<T> {
-	public let task: URLSessionTask // The backing task.
-	public var taskResponse: T? // The task response. Non-nil when the task completes.
+	public typealias CompletionHandler = (callback: (T) -> Void, queue: DispatchQueue?)
+	public typealias ProgressHandler = (callback: (Int, Int) -> Void, queue: DispatchQueue?)
 	
-	// A block to call on a specific queue when notifyCompletion() is called by subclasses.
-	public var completion: (callback: (T) -> Void, queue: DispatchQueue?)?
+	public let task: URLSessionTask // The backing task.
+	
+	// The task response. Non-nil when the task completes.
+	public var taskResponse: T? {
+		return lock.inCriticalScope { _taskResponse }
+	}
+	
+	public var _taskResponse: T? // The backing storage for taskResponse. Do not access directly.
+	
+	// Blocks to call on a specific queue when notifyCompletion() is called by subclasses.
+	// Do not access directly and use the addCompletionHandler() and notifyCompletion() methods instead.
+	public var completionHandlers: [CompletionHandler] = []
+	// Blocks to call on a specific queue when notifyProgress() is called by subclasses.
+	// Do not access directly and use the addProgressHandler() and notifyProgress() methods instead.
+	public var progressHandlers: [ProgressHandler] = []
+	public let lock = Lock() // Used to protect completion and progress handlers.
 	
 	// Blocks corresponding to URLSessionObserver callbacks. Each one is named after the method it is called inside.
 	public var didSendBodyData: ((Int64, Int64) -> Void)?
@@ -27,13 +41,49 @@ public class URLSessionBasedNetworkOperation<T> {
 		self.task = task
 	}
 	
-	// If the completion tuple exists, calls the block on the queue passing the provided response as argument to the block.
-	// If queue is nil, calls the block on the main queue. Used by subclasses. 
-	public func notifyCompletion(response: T) {
-		if let completion = completion {
-			(completion.queue ?? .main).async {
-				completion.callback(response)
+	// Assigns the response to the taskResponse property, removes all completion and progress handlers and
+	// calls all completion handler blocks either on the handler's queue or on the main queue if the handler's queue is nil.
+	public func complete(response: T) {
+		let completionHandlers: [CompletionHandler] = lock.inCriticalScope {
+			defer {
+				self.completionHandlers.removeAll()
+				progressHandlers.removeAll()
 			}
+			
+			_taskResponse = response
+			return self.completionHandlers
+		}
+		
+		for handler in completionHandlers {
+			(handler.queue ?? .main).async {
+				handler.callback(response)
+			}
+		}
+	}
+	
+	// Calls all progress handler blocks with the provided arguments either on the handler's queue
+	// or on the main queue if the handler's queue is nil.
+	public func notifyProgress(units: Int, outOf totalUnits: Int) {
+		let progressHandlers = lock.inCriticalScope {
+			self.progressHandlers
+		}
+		
+		for handler in progressHandlers {
+			(handler.queue ?? .main).async {
+				handler.callback(units, totalUnits)
+			}
+		}
+	}
+	
+	public func addCompletionHandler(_ handler: CompletionHandler) {
+		lock.inCriticalScope {
+			completionHandlers.append(handler)
+		}
+	}
+	
+	public func addProgressHandler(_ handler: ProgressHandler) {
+		lock.inCriticalScope {
+			progressHandlers.append(handler)
 		}
 	}
 }
