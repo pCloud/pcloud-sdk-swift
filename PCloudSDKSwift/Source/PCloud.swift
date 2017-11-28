@@ -48,9 +48,9 @@ public final class PCloud {
 		let authenticator = OAuthAccessTokenBasedAuthenticator(accessToken: accessToken)
 		let eventHub = URLSessionEventHub()
 		let session = URLSession(configuration: .default, delegate: eventHub, delegateQueue: nil)
-		let callDispatcher = URLSessionDispatch.callOperationBuilder(scheme: .https, session: session, delegate: eventHub)
-		let uploadDispatcher = URLSessionDispatch.uploadOperationBuilder(scheme: .https, session: session, delegate: eventHub)
-		let downloadDispatcher = URLSessionDispatch.downloadOperationBuilder(session: session, delegate: eventHub)
+		let callDispatcher = URLSessionBasedNetworkOperationUtilities.createCallOperationBuilder(scheme: .https, session: session, delegate: eventHub)
+		let uploadDispatcher = URLSessionBasedNetworkOperationUtilities.createUploadOperationBuilder(scheme: .https, session: session, delegate: eventHub)
+		let downloadDispatcher = URLSessionBasedNetworkOperationUtilities.createDownloadOperationBuilder(session: session, delegate: eventHub)
 		
 		return PCloudClient(controller: APITaskController(hostProvider: "api.pcloud.com",
 		                                                  authenticator: authenticator,

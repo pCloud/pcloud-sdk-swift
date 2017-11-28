@@ -35,7 +35,7 @@
 		D05BE9F01E1670B10021E7F3 /* URLSessionBasedDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D31E1670B10021E7F3 /* URLSessionBasedDownloadOperation.swift */; };
 		D05BE9F11E1670B10021E7F3 /* URLSessionBasedNetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D41E1670B10021E7F3 /* URLSessionBasedNetworkOperation.swift */; };
 		D05BE9F21E1670B10021E7F3 /* URLSessionBasedUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D51E1670B10021E7F3 /* URLSessionBasedUploadOperation.swift */; };
-		D05BE9F31E1670B10021E7F3 /* URLSessionDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D61E1670B10021E7F3 /* URLSessionDispatch.swift */; };
+		D05BE9F31E1670B10021E7F3 /* URLSessionBasedNetworkOperationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D61E1670B10021E7F3 /* URLSessionBasedNetworkOperationUtilities.swift */; };
 		D05BE9F41E1670B10021E7F3 /* URLSessionEventHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D71E1670B10021E7F3 /* URLSessionEventHub.swift */; };
 		D05BE9F51E1670B10021E7F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D81E1670B10021E7F3 /* User.swift */; };
 		D05BE9F61E1670B10021E7F3 /* VoidCancellationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D91E1670B10021E7F3 /* VoidCancellationToken.swift */; };
@@ -64,7 +64,7 @@
 		D05BEA131E1670D30021E7F3 /* URLSessionBasedDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D31E1670B10021E7F3 /* URLSessionBasedDownloadOperation.swift */; };
 		D05BEA141E1670D30021E7F3 /* URLSessionBasedNetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D41E1670B10021E7F3 /* URLSessionBasedNetworkOperation.swift */; };
 		D05BEA151E1670D30021E7F3 /* URLSessionBasedUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D51E1670B10021E7F3 /* URLSessionBasedUploadOperation.swift */; };
-		D05BEA161E1670D30021E7F3 /* URLSessionDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D61E1670B10021E7F3 /* URLSessionDispatch.swift */; };
+		D05BEA161E1670D30021E7F3 /* URLSessionBasedNetworkOperationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D61E1670B10021E7F3 /* URLSessionBasedNetworkOperationUtilities.swift */; };
 		D05BEA171E1670D30021E7F3 /* URLSessionEventHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D71E1670B10021E7F3 /* URLSessionEventHub.swift */; };
 		D05BEA181E1670D30021E7F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D81E1670B10021E7F3 /* User.swift */; };
 		D05BEA191E1670D30021E7F3 /* VoidCancellationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D91E1670B10021E7F3 /* VoidCancellationToken.swift */; };
@@ -124,7 +124,7 @@
 		D05BE9D31E1670B10021E7F3 /* URLSessionBasedDownloadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = URLSessionBasedDownloadOperation.swift; path = Source/URLSessionBasedDownloadOperation.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D05BE9D41E1670B10021E7F3 /* URLSessionBasedNetworkOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = URLSessionBasedNetworkOperation.swift; path = Source/URLSessionBasedNetworkOperation.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D05BE9D51E1670B10021E7F3 /* URLSessionBasedUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = URLSessionBasedUploadOperation.swift; path = Source/URLSessionBasedUploadOperation.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		D05BE9D61E1670B10021E7F3 /* URLSessionDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = URLSessionDispatch.swift; path = Source/URLSessionDispatch.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		D05BE9D61E1670B10021E7F3 /* URLSessionBasedNetworkOperationUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = URLSessionBasedNetworkOperationUtilities.swift; path = Source/URLSessionBasedNetworkOperationUtilities.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D05BE9D71E1670B10021E7F3 /* URLSessionEventHub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = URLSessionEventHub.swift; path = Source/URLSessionEventHub.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D05BE9D81E1670B10021E7F3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = User.swift; path = Source/User.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D05BE9D91E1670B10021E7F3 /* VoidCancellationToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VoidCancellationToken.swift; path = Source/VoidCancellationToken.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -261,7 +261,7 @@
 				D05BE9D31E1670B10021E7F3 /* URLSessionBasedDownloadOperation.swift */,
 				D05BE9D41E1670B10021E7F3 /* URLSessionBasedNetworkOperation.swift */,
 				D05BE9D51E1670B10021E7F3 /* URLSessionBasedUploadOperation.swift */,
-				D05BE9D61E1670B10021E7F3 /* URLSessionDispatch.swift */,
+				D05BE9D61E1670B10021E7F3 /* URLSessionBasedNetworkOperationUtilities.swift */,
 				D05BE9D71E1670B10021E7F3 /* URLSessionEventHub.swift */,
 				98A4D9101FCD89CB00847B5B /* URLSessionTaskBuilder.swift */,
 				D05BE9D81E1670B10021E7F3 /* User.swift */,
@@ -462,7 +462,7 @@
 				D05BE9DD1E1670B10021E7F3 /* Authenticator.swift in Sources */,
 				D05BE9EF1E1670B10021E7F3 /* URLSessionBasedCallOperation.swift in Sources */,
 				D05BE9F01E1670B10021E7F3 /* URLSessionBasedDownloadOperation.swift in Sources */,
-				D05BE9F31E1670B10021E7F3 /* URLSessionDispatch.swift in Sources */,
+				D05BE9F31E1670B10021E7F3 /* URLSessionBasedNetworkOperationUtilities.swift in Sources */,
 				D05BE9EA1E1670B10021E7F3 /* PCloud.swift in Sources */,
 				D05BE9E61E1670B10021E7F3 /* NetworkAPI.swift in Sources */,
 				D05BE9E41E1670B10021E7F3 /* Keychain.swift in Sources */,
@@ -515,7 +515,7 @@
 				D05BEA001E1670D30021E7F3 /* Authenticator.swift in Sources */,
 				D05BEA121E1670D30021E7F3 /* URLSessionBasedCallOperation.swift in Sources */,
 				D05BEA131E1670D30021E7F3 /* URLSessionBasedDownloadOperation.swift in Sources */,
-				D05BEA161E1670D30021E7F3 /* URLSessionDispatch.swift in Sources */,
+				D05BEA161E1670D30021E7F3 /* URLSessionBasedNetworkOperationUtilities.swift in Sources */,
 				D05BEA0D1E1670D30021E7F3 /* PCloud.swift in Sources */,
 				D05BEA091E1670D30021E7F3 /* NetworkAPI.swift in Sources */,
 				D05BEA071E1670D30021E7F3 /* Keychain.swift in Sources */,
