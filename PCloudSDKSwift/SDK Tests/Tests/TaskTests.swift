@@ -17,10 +17,10 @@ final class CallTaskTests: XCTestCase {
 		super.setUp()
 		
 		operation = CallOperationMock()
-		task = createTask(parser: { _ in })
+		task = createTask(parser: { _ in .success(()) })
 	}
 	
-	func createTask(parser: @escaping ([String: Any]) throws -> Void) -> CallTask<VoidAPIMethod> {
+	func createTask(parser: @escaping ([String: Any]) throws -> Result<VoidAPIMethod.Value, PCloudAPI.Error<VoidAPIMethod.Error>>) -> CallTask<VoidAPIMethod> {
 		return CallTask(operation: operation, responseParser: parser)
 	}
 	
@@ -109,10 +109,10 @@ final class UploadTaskTests: XCTestCase {
 		super.setUp()
 		
 		operation = UploadOperationMock()
-		task = createTask(parser: { _ in })
+		task = createTask(parser: { _ in .success(()) })
 	}
 	
-	func createTask(parser: @escaping ([String: Any]) throws -> Void) -> UploadTask<VoidAPIMethod> {
+	func createTask(parser: @escaping ([String: Any]) throws -> Result<VoidAPIMethod.Value, PCloudAPI.Error<VoidAPIMethod.Error>>) -> UploadTask<VoidAPIMethod> {
 		return UploadTask(operation: operation, responseParser: parser)
 	}
 	
@@ -288,15 +288,13 @@ final class DownloadTaskTest: XCTestCase {
 
 
 struct VoidAPIMethod: PCloudAPIMethod {
-	typealias Error = NullError
-	
 	var requiresAuthentication: Bool = false
 	
 	func createCommand() -> Call.Command {
 		return Call.Command(name: "nop", parameters: [])
 	}
 	
-	func createResponseParser() -> ([String : Any]) throws -> Void {
-		return { _ in }
+	func createResponseParser() -> ([String : Any]) throws -> Result<Void, PCloudAPI.Error<NullError>> {
+		return { _ in .success(()) }
 	}
 }
