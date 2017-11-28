@@ -8,18 +8,6 @@
 
 import Foundation
 
-/// An error combining API and network layer errors.
-public enum CallError<MethodError> {
-	case authError(PCloudAPI.AuthError)
-	case permissionError(PCloudAPI.PermissionError)
-	case rateLimitError
-	case methodError(MethodError)
-	case internalServerError(Int, String?)
-	case otherAPIError(Int, String?)
-	case clientError(Error)
-	case protocolError(Error)
-}
-
 
 /// Executes a network call to the pCloud API.
 public final class CallTask<Method: PCloudAPIMethod>: Cancellable {
@@ -57,17 +45,19 @@ public final class CallTask<Method: PCloudAPIMethod>: Cancellable {
 			// Compute the response.
 			let result: Result<Method.Value, CallError<Method.Error>> = {
 				switch response {
-				case .success(let response):
+				case .failure(.clientError(let error)):
+					return .failure(.clientError(error))
+					
+				case .failure(.protocolError(let error)):
+					return .failure(.protocolError(error))
+					
+				case .success(let payload):
 					do {
-						return .success(try parse(response))
+						return try parse(payload).replacingError { error in
+							CallError<Method.Error>(apiError: error)
+						}
 					} catch {
 						return .failure(.clientError(error))
-					}
-					
-				case .failure(let error):
-					switch error {
-					case .clientError(let ce): return .failure(.clientError(ce))
-					case .protocolError(let pe): return .failure(.protocolError(pe))
 					}
 				}
 			}()
