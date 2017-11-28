@@ -27,6 +27,10 @@ public struct URLSessionTaskBuilder {
 		urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 		urlRequest.httpBody = query.data(using: .utf8, allowLossyConversion: false)
 		
+		if let timeoutInterval = request.timeoutInterval {
+			urlRequest.timeoutInterval = timeoutInterval
+		}
+		
 		return session.dataTask(with: urlRequest)
 	}
 	

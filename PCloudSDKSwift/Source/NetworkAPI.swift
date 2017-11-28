@@ -78,9 +78,14 @@ public struct Call {
 		/// An API host name.
 		public var hostName: String
 		
-		public init(command: Command, hostName: String) {
+		/// The maximum amount of time (in seconds) that an operation's load activity can execute
+		/// while the operation is running.
+		public var timeoutInterval: TimeInterval?
+		
+		public init(command: Command, hostName: String, timeoutInterval: TimeInterval?) {
 			self.command = command
 			self.hostName = hostName
+			self.timeoutInterval = timeoutInterval
 		}
 	}
 }
