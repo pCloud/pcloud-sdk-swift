@@ -91,7 +91,7 @@ extension UploadOperationMock: UploadOperation {
 	}
 	
 	@discardableResult
-	func setProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self {
+	func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self {
 		progressBlocks.append(block)
 		return self
 	}
@@ -135,7 +135,7 @@ extension DownloadOperationMock: DownloadOperation {
 	}
 	
 	@discardableResult
-	func setProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self {
+	func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self {
 		progressBlocks.append(block)
 		return self
 	}

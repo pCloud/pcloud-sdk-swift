@@ -32,7 +32,7 @@ public final class DownloadTask: Cancellable {
 	/// - returns: This task.
 	@discardableResult
 	public func setProgressBlock(_ block: @escaping (Int64, Int64) -> Void) -> DownloadTask {
-		operation.setProgressBlock(queue: .main, block)
+		operation.addProgressBlock(queue: .main, block)
 		return self
 	}
 	

@@ -23,6 +23,10 @@ public final class URLSessionBasedDownloadOperation: URLSessionBasedNetworkOpera
 		// Expecting that didFinishDownloading will be called before didComplete and that both callbacks will be called
 		// on the same thread.
 		
+		didWriteData = { [weak self] written, total in
+			self?.notifyProgress(units: written, outOf: total)
+		}
+		
 		var moveResult: Result<URL, NetworkOperationError>?
 		
 		didFinishDownloading = { path in
@@ -73,14 +77,8 @@ extension URLSessionBasedDownloadOperation: DownloadOperation {
 	}
 	
 	@discardableResult
-	public func setProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> URLSessionBasedDownloadOperation {
-		// Call the progress block on the main queue unless explicitly requested otherwise.
-		didWriteData = { written, total in
-			(queue ?? .main).async {
-				block(written, total)
-			}
-		}
-		
+	public func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> URLSessionBasedDownloadOperation {
+		addProgressHandler((block, queue))
 		return self
 	}
 }

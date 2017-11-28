@@ -169,7 +169,7 @@ final class URLSessionBasedUploadOperationTests: XCTestCase, URLSessionBasedOper
 		let task = createDataTask(session: session)
 		let invokeExpectation = expectation(description: "to invoke progress block")
 		
-		operation.setProgressBlock(queue: .main) { _,_  in
+		operation.addProgressBlock(queue: .main) { _,_  in
 			invokeExpectation.fulfill()
 		}
 		
@@ -343,7 +343,7 @@ final class URLSessionBasedDownloadOperationTests: XCTestCase, URLSessionBasedOp
 		let task = createDownloadTask(session: session)
 		let invokeExpectation = expectation(description: "to invoke progress block")
 		
-		operation.setProgressBlock(queue: .main) { _,_  in
+		operation.addProgressBlock(queue: .main) { _,_  in
 			invokeExpectation.fulfill()
 		}
 		

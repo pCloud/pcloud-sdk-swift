@@ -77,7 +77,7 @@ public final class UploadTask<Method: PCloudAPIMethod>: Cancellable {
 	/// - returns: This task.
 	@discardableResult
 	public func setProgressBlock(_ block: @escaping (Int64, Int64) -> Void) -> UploadTask {
-		operation.setProgressBlock(queue: .main, block)
+		operation.addProgressBlock(queue: .main, block)
 		return self
 	}
 	

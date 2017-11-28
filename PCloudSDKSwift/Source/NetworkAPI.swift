@@ -146,13 +146,13 @@ public protocol UploadOperation: NetworkOperation {
 	/// The total number of bytes to upload.
 	var totalNumberOfBytesToSend: Int64 { get }
 	
-	/// Assigns a block to be called on a specific queue when `numberOfBytesSent` changes.
+	/// Adds a block to be called on a specific queue when `numberOfBytesSent` changes.
 	///
 	/// - parameter queue: A queue to call `block` on. If `nil`, the queue on which `block` will be called is undefined.
 	/// - parameter block: A block called with the number of bytes currently uploaded and the total number of bytes to upload as first
 	/// and second input arguments respectivly. Referenced strongly by the operation.
 	@discardableResult
-	func setProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self
+	func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self
 	
 	/// Adds a block to be called on a specific queue when the operation receives its response.
 	///
@@ -197,13 +197,13 @@ public protocol DownloadOperation: NetworkOperation {
 	/// The total number of bytes to download.
 	var totalNumberOfBytesToReceive: Int64 { get }
 	
-	/// Assigns a block to be called on a specific queue when `numberOfBytesReceived` changes.
+	/// Adds a block to be called on a specific queue when `numberOfBytesReceived` changes.
 	///
 	/// - parameter queue: A queue to call `block` on. If `nil`, the queue on which `block` will be called is undefined.
 	/// - parameter block: A block called with the number of bytes currently uploaded and the total number of bytes to upload as first
 	/// and second input arguments respectivly. Referenced strongly by the operation.
 	@discardableResult
-	func setProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self
+	func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self
 	
 	/// Adds a block to be called on a specific queue when the operation receives its response.
 	///

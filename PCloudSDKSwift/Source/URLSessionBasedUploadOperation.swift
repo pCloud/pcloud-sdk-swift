@@ -18,6 +18,10 @@ public final class URLSessionBasedUploadOperation: URLSessionBasedNetworkOperati
 		
 		// Assign callbacks.
 		
+		didSendBodyData = { [weak self] sent, total in
+			self?.notifyProgress(units: sent, outOf: total)
+		}
+		
 		var responseData = Data()
 		
 		didReceiveData = { data in
@@ -70,14 +74,8 @@ extension URLSessionBasedUploadOperation: UploadOperation {
 	}
 	
 	@discardableResult
-	public func setProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> URLSessionBasedUploadOperation {
-		didSendBodyData = { sent, total in
-			// Call the progress block on the main queue unless explicitly requested otherwise.
-			(queue ?? .main).async {
-				block(sent, total)
-			}
-		}
-		
+	public func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> URLSessionBasedUploadOperation {
+		addProgressHandler((block, queue))
 		return self
 	}
 }

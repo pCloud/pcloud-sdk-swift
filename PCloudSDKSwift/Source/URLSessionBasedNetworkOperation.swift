@@ -11,7 +11,7 @@ import Foundation
 /// Base class for network operations backed by `URLSessionTask`. Conforms to `NetworkOperation`. Forwards `URLSessionObserver` callbacks to blocks.
 public class URLSessionBasedNetworkOperation<T> {
 	public typealias CompletionHandler = (callback: (T) -> Void, queue: DispatchQueue?)
-	public typealias ProgressHandler = (callback: (Int, Int) -> Void, queue: DispatchQueue?)
+	public typealias ProgressHandler = (callback: (Int64, Int64) -> Void, queue: DispatchQueue?)
 	
 	public let task: URLSessionTask // The backing task.
 	
@@ -63,7 +63,7 @@ public class URLSessionBasedNetworkOperation<T> {
 	
 	// Calls all progress handler blocks with the provided arguments either on the handler's queue
 	// or on the main queue if the handler's queue is nil.
-	public func notifyProgress(units: Int, outOf totalUnits: Int) {
+	public func notifyProgress(units: Int64, outOf totalUnits: Int64) {
 		let progressHandlers = lock.inCriticalScope {
 			self.progressHandlers
 		}
