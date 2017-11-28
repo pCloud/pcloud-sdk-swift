@@ -150,32 +150,3 @@ extension APITaskControllerTests {
 	}
 }
 
-final class OperationDispatcher {
-	var lastCallRequest: Call.Request?
-	var lastUploadRequest: Upload.Request?
-	var lastDownloadRequest: Download.Request?
-	
-	func callOperation(from request: Call.Request) -> CallOperation {
-		lastCallRequest = request
-		return CallOperationMock()
-	}
-	
-	func uploadOperation(from request: Upload.Request) -> UploadOperation {
-		lastUploadRequest = request
-		return UploadOperationMock()
-	}
-	
-	func downloadOperation(from request: Download.Request) -> DownloadOperation {
-		lastDownloadRequest = request
-		return DownloadOperationMock()
-	}
-}
-
-final class AuthenticatorMock: Authenticator {
-	var authenticationParameters: [Call.Command.Parameter] = []
-}
-
-final class HostProviderMock: HostProvider {
-	var defaultHostName: String = ""
-}
-

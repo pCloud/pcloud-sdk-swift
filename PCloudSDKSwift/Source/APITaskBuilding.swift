@@ -31,9 +31,9 @@ public struct PCloudAPICallTaskBuilder {
 	/// - parameter hostNameOverride: If non-`nil`, this will override the default host name from the host provider.
 	/// - parameter timeoutInterval: The timeout interval for this call task. If `nil`, the default timeout interval will be used.
 	/// - returns: An instance of `CallTask` in suspended state.
-	public func createCallTask<T: PCloudAPIMethod>(for method: T,
-												   hostNameOverride: String? = nil,
-												   timeoutInterval: TimeInterval? = nil) -> CallTask<T> {
+	public func createTask<T: PCloudAPIMethod>(for method: T,
+											   hostNameOverride: String? = nil,
+											   timeoutInterval: TimeInterval? = nil) -> CallTask<T> {
 		var command = method.createCommand()
 		
 		if method.requiresAuthentication {
@@ -76,18 +76,21 @@ public struct PCloudAPIUploadTaskBuilder {
 	/// - parameter hostNameOverride: If non-`nil`, this will override the default host name from the host provider.
 	/// - parameter timeoutInterval: The timeout interval for this call task. If `nil`, the default timeout interval will be used.
 	/// - returns: An instance of `UploadTask` in suspended state.
-	public func createUploadTask<T: PCloudAPIMethod>(for method: T,
-													 with body: Upload.Request.Body,
-													 hostNameOverride: String? = nil,
-													 timeoutInterval: TimeInterval? = nil) -> UploadTask<T> {
-		let hostName = hostNameOverride ?? hostProvider.defaultHostName
+	public func createTask<T: PCloudAPIMethod>(for method: T,
+											   with body: Upload.Request.Body,
+											   hostNameOverride: String? = nil,
+											   timeoutInterval: TimeInterval? = nil) -> UploadTask<T> {
 		var command = method.createCommand()
 		
 		if method.requiresAuthentication {
 			command.parameters.append(contentsOf: authenticator.authenticationParameters)
 		}
 		
-		let request = Upload.Request(command: command, body: body, hostName: hostName, timeoutInterval: timeoutInterval)
+		let request = Upload.Request(command: command,
+									 body: body,
+									 hostName: hostNameOverride ?? hostProvider.defaultHostName,
+									 timeoutInterval: timeoutInterval ?? defaultTimeoutInterval)
+		
 		let operation = operationBuilder(request)
 		let responseParser = method.createResponseParser()
 		
@@ -119,10 +122,13 @@ public struct PCloudAPIDownloadTaskBuilder {
 	/// the file or open it for reading, otherwise the file gets deleted after the block returns.
 	/// The block should return the new path of the file.
 	/// - returns: An instance of `DownloadTask` in suspended state.
-	public func createDownloadTask(resourceAddress: URL,
-								   destination: @escaping (URL) throws -> URL,
-								   timeoutInterval: TimeInterval? = nil) -> DownloadTask {
-		let request = Download.Request(resourceAddress: resourceAddress, destination: destination, timeoutInterval: timeoutInterval)
+	public func createTask(resourceAddress: URL,
+						   destination: @escaping (URL) throws -> URL,
+						   timeoutInterval: TimeInterval? = nil) -> DownloadTask {
+		let request = Download.Request(resourceAddress: resourceAddress,
+									   destination: destination,
+									   timeoutInterval: timeoutInterval ?? defaultTimeoutInterval)
+		
 		let operation = operationBuilder(request)
 		return DownloadTask(operation: operation)
 	}
