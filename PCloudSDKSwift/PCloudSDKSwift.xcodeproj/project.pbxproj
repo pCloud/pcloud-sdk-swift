@@ -13,7 +13,6 @@
 		98A4D9171FCDB32200847B5B /* APITaskBuildingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D9151FCDB2E700847B5B /* APITaskBuildingTests.swift */; };
 		A5B4F5EB1DB6295C0081F125 /* PCloudSDKSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B4F5E11DB6295C0081F125 /* PCloudSDKSwift.framework */; };
 		D05BE9DA1E1670B10021E7F3 /* AnyCancellationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9BD1E1670B10021E7F3 /* AnyCancellationToken.swift */; };
-		D05BE9DB1E1670B10021E7F3 /* APITaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9BE1E1670B10021E7F3 /* APITaskController.swift */; };
 		D05BE9DC1E1670B10021E7F3 /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9BF1E1670B10021E7F3 /* Atomic.swift */; };
 		D05BE9DD1E1670B10021E7F3 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9C01E1670B10021E7F3 /* Authenticator.swift */; };
 		D05BE9DE1E1670B10021E7F3 /* CallTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9C11E1670B10021E7F3 /* CallTask.swift */; };
@@ -42,7 +41,6 @@
 		D05BE9F51E1670B10021E7F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D81E1670B10021E7F3 /* User.swift */; };
 		D05BE9F61E1670B10021E7F3 /* VoidCancellationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9D91E1670B10021E7F3 /* VoidCancellationToken.swift */; };
 		D05BE9FD1E1670D30021E7F3 /* AnyCancellationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9BD1E1670B10021E7F3 /* AnyCancellationToken.swift */; };
-		D05BE9FE1E1670D30021E7F3 /* APITaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9BE1E1670B10021E7F3 /* APITaskController.swift */; };
 		D05BE9FF1E1670D30021E7F3 /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9BF1E1670B10021E7F3 /* Atomic.swift */; };
 		D05BEA001E1670D30021E7F3 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9C01E1670B10021E7F3 /* Authenticator.swift */; };
 		D05BEA011E1670D30021E7F3 /* CallTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9C11E1670B10021E7F3 /* CallTask.swift */; };
@@ -77,7 +75,6 @@
 		D05BEA281E1B99C50021E7F3 /* WebViewControllerDesktop.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05BEA231E1B999B0021E7F3 /* WebViewControllerDesktop.xib */; };
 		D05BEA491E1B9B730021E7F3 /* NetworkOperationMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BEA3F1E1B9B730021E7F3 /* NetworkOperationMocks.swift */; };
 		D05BEA4A1E1B9B730021E7F3 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BEA401E1B9B730021E7F3 /* Utilities.swift */; };
-		D05BEA4C1E1B9B730021E7F3 /* APITaskControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BEA431E1B9B730021E7F3 /* APITaskControllerTests.swift */; };
 		D05BEA4D1E1B9B730021E7F3 /* OAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BEA441E1B9B730021E7F3 /* OAuthTests.swift */; };
 		D05BEA4E1E1B9B730021E7F3 /* PCloudAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BEA451E1B9B730021E7F3 /* PCloudAPITests.swift */; };
 		D05BEA4F1E1B9B730021E7F3 /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BEA461E1B9B730021E7F3 /* TaskTests.swift */; };
@@ -104,7 +101,6 @@
 		A5B4F5EA1DB6295C0081F125 /* SDK Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SDK Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01340DF1DF9889D0098A0A7 /* PCloudSDKSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PCloudSDKSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05BE9BD1E1670B10021E7F3 /* AnyCancellationToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = AnyCancellationToken.swift; path = Source/AnyCancellationToken.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		D05BE9BE1E1670B10021E7F3 /* APITaskController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = APITaskController.swift; path = Source/APITaskController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D05BE9BF1E1670B10021E7F3 /* Atomic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Atomic.swift; path = Source/Atomic.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D05BE9C01E1670B10021E7F3 /* Authenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Authenticator.swift; path = Source/Authenticator.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D05BE9C11E1670B10021E7F3 /* CallTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = CallTask.swift; path = Source/CallTask.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -141,7 +137,6 @@
 		D05BEA3F1E1B9B730021E7F3 /* NetworkOperationMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkOperationMocks.swift; sourceTree = "<group>"; };
 		D05BEA401E1B9B730021E7F3 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		D05BEA411E1B9B730021E7F3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "SDK Tests/Info.plist"; sourceTree = SOURCE_ROOT; };
-		D05BEA431E1B9B730021E7F3 /* APITaskControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITaskControllerTests.swift; sourceTree = "<group>"; };
 		D05BEA441E1B9B730021E7F3 /* OAuthTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthTests.swift; sourceTree = "<group>"; };
 		D05BEA451E1B9B730021E7F3 /* PCloudAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCloudAPITests.swift; sourceTree = "<group>"; };
 		D05BEA461E1B9B730021E7F3 /* TaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTests.swift; sourceTree = "<group>"; };
@@ -240,7 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				D05BE9BD1E1670B10021E7F3 /* AnyCancellationToken.swift */,
-				D05BE9BE1E1670B10021E7F3 /* APITaskController.swift */,
 				98A4D9131FCDAB9900847B5B /* APITaskBuilding.swift */,
 				D05BE9BF1E1670B10021E7F3 /* Atomic.swift */,
 				D05BE9C01E1670B10021E7F3 /* Authenticator.swift */,
@@ -289,7 +283,6 @@
 		D05BEA421E1B9B730021E7F3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				D05BEA431E1B9B730021E7F3 /* APITaskControllerTests.swift */,
 				98A4D9151FCDB2E700847B5B /* APITaskBuildingTests.swift */,
 				D05BEA441E1B9B730021E7F3 /* OAuthTests.swift */,
 				D05BEA451E1B9B730021E7F3 /* PCloudAPITests.swift */,
@@ -480,7 +473,6 @@
 				D05BE9E71E1670B10021E7F3 /* OAuth.swift in Sources */,
 				D05BE9DC1E1670B10021E7F3 /* Atomic.swift in Sources */,
 				D05BE9F21E1670B10021E7F3 /* URLSessionBasedUploadOperation.swift in Sources */,
-				D05BE9DB1E1670B10021E7F3 /* APITaskController.swift in Sources */,
 				D05BE9E11E1670B10021E7F3 /* DownloadTask.swift in Sources */,
 				98A4D90F1FCD60B300847B5B /* CallError.swift in Sources */,
 				D05BE9E91E1670B10021E7F3 /* Parser.swift in Sources */,
@@ -495,7 +487,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				98A4D9171FCDB32200847B5B /* APITaskBuildingTests.swift in Sources */,
-				D05BEA4C1E1B9B730021E7F3 /* APITaskControllerTests.swift in Sources */,
 				D05BEA4A1E1B9B730021E7F3 /* Utilities.swift in Sources */,
 				D05BEA4F1E1B9B730021E7F3 /* TaskTests.swift in Sources */,
 				D05BEA511E1B9B730021E7F3 /* URLSessionEventHubTests.swift in Sources */,
@@ -533,7 +524,6 @@
 				D05BEA0A1E1670D30021E7F3 /* OAuth.swift in Sources */,
 				D05BE9FF1E1670D30021E7F3 /* Atomic.swift in Sources */,
 				D05BEA151E1670D30021E7F3 /* URLSessionBasedUploadOperation.swift in Sources */,
-				D05BE9FE1E1670D30021E7F3 /* APITaskController.swift in Sources */,
 				D05BEA041E1670D30021E7F3 /* DownloadTask.swift in Sources */,
 				D05BEA0C1E1670D30021E7F3 /* Parser.swift in Sources */,
 				D05BEA101E1670D30021E7F3 /* Result.swift in Sources */,

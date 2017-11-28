@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Wrapper around `APITaskController` providing convenient interface to common API methods.
+/// Utility class providing convenient interface to common API methods.
 public final class PCloudClient {
 	/// The underlying builder responsible for creating call tasks.
 	public let callTaskBuilder: PCloudAPICallTaskBuilder
