@@ -32,9 +32,9 @@ public protocol NetworkOperation: Cancellable {
 	/// Current state of the operation.
 	var state: NetworkOperationState { get }
 	
-	/// Enqueues the operation to run as soon as possible if the current state of the operation is `NetworkOperationState.suspended`.
+	/// If the state of the operation is `NetworkOperationState.suspended`, enqueues it to run as soon as possible.
 	/// Does nothing otherwise.
-	func enqueue()
+	func start()
 }
 
 

@@ -96,7 +96,7 @@ public final class UploadTask<Method: PCloudAPIMethod>: Cancellable {
 	/// - returns: This task.
 	@discardableResult
 	public func start() -> UploadTask {
-		operation.enqueue()
+		operation.start()
 		return self
 	}
 	

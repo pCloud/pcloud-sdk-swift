@@ -86,7 +86,7 @@ public final class CallTask<Method: PCloudAPIMethod>: Cancellable {
 	/// - returns: This task.
 	@discardableResult
 	public func start() -> CallTask {
-		operation.enqueue()
+		operation.start()
 		return self
 	}
 	

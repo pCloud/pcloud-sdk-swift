@@ -82,12 +82,12 @@ final class CallTaskTests: XCTestCase {
 		waitForExpectations(timeout: 1, handler: nil)
 	}
 	
-	func testEnqueuesOperationOnStart() {
+	func testStartsOperationOnStart() {
 		// When
 		task.start()
 		
 		// Expect
-		XCTAssert(operation.enqueueInvoked, "operation should have been enqeued")
+		XCTAssert(operation.startInvoked, "operation should have been started")
 	}
 	
 	func testCancelsOperationOnCancel() {
@@ -116,12 +116,12 @@ final class UploadTaskTests: XCTestCase {
 		return UploadTask(operation: operation, responseParser: parser)
 	}
 	
-	func testEnqueuesOperationOnStart() {
+	func testStartsOperationOnStart() {
 		// When
 		task.start()
 		
 		// Expect
-		XCTAssert(operation.enqueueInvoked, "operation should have been enqeued")
+		XCTAssert(operation.startInvoked, "operation should have been started")
 	}
 	
 	func testCancelsOperationOnCancel() {
@@ -220,12 +220,12 @@ final class DownloadTaskTest: XCTestCase {
 		task = DownloadTask(operation: operation)
 	}
 	
-	func testEnqueuesOperationOnStart() {
+	func testStartsOperationOnStart() {
 		// When
 		task.start()
 		
 		// Expect
-		XCTAssert(operation.enqueueInvoked, "operation should have been enqueued")
+		XCTAssert(operation.startInvoked, "operation should have been started")
 	}
 	
 	func testCancelsOperationOnCancel() {

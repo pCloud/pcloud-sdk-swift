@@ -50,7 +50,7 @@ public final class DownloadTask: Cancellable {
 	/// - returns: This task.
 	@discardableResult
 	public func start() -> DownloadTask {
-		operation.enqueue()
+		operation.start()
 		return self
 	}
 	

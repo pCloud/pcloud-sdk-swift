@@ -102,7 +102,7 @@ extension URLSessionBasedNetworkOperation: NetworkOperation {
 		return state == .cancelled
 	}
 	
-	public func enqueue() {
+	public func start() {
 		task.resume()
 	}
 	

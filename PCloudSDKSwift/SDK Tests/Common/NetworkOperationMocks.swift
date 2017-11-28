@@ -10,7 +10,7 @@ import Foundation
 @testable import PCloudSDKSwift
 
 class NetworkOperationMock {
-	var enqueueInvoked = false
+	var startInvoked = false
 	var cancelInvoked = false
 }
 
@@ -27,8 +27,8 @@ extension NetworkOperationMock: NetworkOperation {
 		return cancelInvoked
 	}
 	
-	func enqueue() {
-		enqueueInvoked = true
+	func start() {
+		startInvoked = true
 	}
 	
 	func cancel() {
