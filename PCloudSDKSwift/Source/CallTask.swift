@@ -12,11 +12,13 @@ import Foundation
 /// Executes a network call to the pCloud API.
 public final class CallTask<Method: PCloudAPIMethod>: Cancellable {
 	public typealias Parser = Method.Parser
+	public typealias CompletionBlock = (Result<Method.Value, CallError<Method.Error>>) -> Void
 	
 	// The underlying operation executing the network call.
 	fileprivate let operation: CallOperation
-	// A block taking a response dictionary and producing an object.
-	fileprivate let parse: Parser
+	
+	fileprivate let lock = Lock()
+	fileprivate var completionBlocks: [CompletionBlock] = []
 	
 	/// `true` if `cancel()` has been invoked on this instance, `false` otherwise.
 	public var isCancelled: Bool {
@@ -29,16 +31,6 @@ public final class CallTask<Method: PCloudAPIMethod>: Cancellable {
 	/// - parameter responseParser: A block parsing an object from a response dictionary.
 	public init(operation: CallOperation, responseParser: @escaping Parser) {
 		self.operation = operation
-		parse = responseParser
-	}
-	
-	/// Assigns a completion block to this instance to be called when the task completes either successfully or with a failure.
-	///
-	/// - parameter block: A block called on the main thread with the result of the task.
-	/// - returns: This task.
-	@discardableResult
-	public func setCompletionBlock(_ block: @escaping (Result<Method.Value, CallError<Method.Error>>) -> Void) -> CallTask {
-		let parse = self.parse
 		
 		// Parse the response on a background queue.
 		operation.addCompletionBlock(queue: .global()) { response in
@@ -53,7 +45,7 @@ public final class CallTask<Method: PCloudAPIMethod>: Cancellable {
 					
 				case .success(let payload):
 					do {
-						return try parse(payload).replacingError { error in
+						return try responseParser(payload).replacingError { error in
 							CallError<Method.Error>(apiError: error)
 						}
 					} catch {
@@ -62,10 +54,28 @@ public final class CallTask<Method: PCloudAPIMethod>: Cancellable {
 				}
 			}()
 			
-			DispatchQueue.main.async {
-				// Notify.
-				block(result)
+			// Notify observers.
+			let completionBlocks: [CompletionBlock] = self.lock.inCriticalScope {
+				defer { self.completionBlocks.removeAll() }
+				return self.completionBlocks
 			}
+			
+			DispatchQueue.main.async {
+				for block in completionBlocks {
+					block(result)
+				}
+			}
+		}
+	}
+	
+	/// Adds a completion block to this instance to be called when the task completes either successfully or with a failure.
+	///
+	/// - parameter block: A block called on the main thread with the result of the task.
+	/// - returns: This task.
+	@discardableResult
+	public func addCompletionBlock(_ block: @escaping CompletionBlock) -> CallTask {
+		lock.inCriticalScope {
+			completionBlocks.append(block)
 		}
 		
 		return self

@@ -28,7 +28,7 @@ final class CallTaskTests: XCTestCase {
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
 		// Given
-		task.setCompletionBlock { result in
+		task.addCompletionBlock { result in
 			// Expect
 			invokeExpectation.fulfill()
 			
@@ -46,7 +46,7 @@ final class CallTaskTests: XCTestCase {
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
 		// Given
-		task.setCompletionBlock { result in
+		task.addCompletionBlock { result in
 			// Expect
 			invokeExpectation.fulfill()
 			
@@ -68,7 +68,7 @@ final class CallTaskTests: XCTestCase {
 			throw NSError.void()
 		})
 		
-		task.setCompletionBlock { result in
+		task.addCompletionBlock { result in
 			// Expect
 			invokeExpectation.fulfill()
 			
@@ -239,7 +239,7 @@ final class DownloadTaskTest: XCTestCase {
 	func testCompletesWithSuccessWhenDownloadSucceeds() {
 		let invokeExpectation = expectation(description: "to call completion block")
 		
-		task.setCompletionBlock { result in
+		task.addCompletionBlock { result in
 			// Expect
 			invokeExpectation.fulfill()
 			XCTAssert(Thread.isMainThread, "block should be called on the main thread")
@@ -256,7 +256,7 @@ final class DownloadTaskTest: XCTestCase {
 	func testCompletesWithFailureWhenDownloadFails() {
 		let invokeExpectation = expectation(description: "to invoke completion")
 		
-		task.setCompletionBlock { result in
+		task.addCompletionBlock { result in
 			// Expect
 			invokeExpectation.fulfill()
 			XCTAssert(Thread.isMainThread, "block should be called on the main thread")
@@ -273,7 +273,7 @@ final class DownloadTaskTest: XCTestCase {
 	func testInvokesProgressBlockWhenDownloadProgresses() {
 		let invokeExpectation = expectation(description: "to invoke progress block")
 		
-		task.setProgressBlock { _,_  in
+		task.addProgressBlock { _,_  in
 			// Expect
 			invokeExpectation.fulfill()
 		}

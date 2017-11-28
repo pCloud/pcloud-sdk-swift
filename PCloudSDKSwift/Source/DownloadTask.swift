@@ -25,23 +25,23 @@ public final class DownloadTask: Cancellable {
 		self.operation = operation
 	}
 	
-	/// Assigns a progress block to this instance to be called continuously as data is being downloaded.
+	/// Adds a progress block to this instance to be called continuously as data is being downloaded.
 	///
 	/// - parameter block: A block called on the main thread with the number of downloaded bytes and the total number of bytes to download as
 	/// first and second arguments, respectively. Called each time the number of downloaded bytes changes.
 	/// - returns: This task.
 	@discardableResult
-	public func setProgressBlock(_ block: @escaping (Int64, Int64) -> Void) -> DownloadTask {
+	public func addProgressBlock(_ block: @escaping (Int64, Int64) -> Void) -> DownloadTask {
 		operation.addProgressBlock(queue: .main, block)
 		return self
 	}
 	
-	/// Assigns a completion block to this instance to be called when the task completes either successfully or with a failure.
+	/// Adds a completion block to this instance to be called when the task completes either successfully or with a failure.
 	///
 	/// - parameter block: A block called on the main thread with the result of the task.
 	/// - returns: This task.
 	@discardableResult
-	public func setCompletionBlock(_ block: @escaping (Download.Response) -> Void) -> DownloadTask {
+	public func addCompletionBlock(_ block: @escaping (Download.Response) -> Void) -> DownloadTask {
 		operation.addCompletionBlock(queue: .main, block)
 		return self
 	}
