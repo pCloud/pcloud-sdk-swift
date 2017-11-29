@@ -9,7 +9,7 @@
 import Foundation
 
 /// An error combining API and network layer errors.
-public enum CallError<MethodError> {
+public enum CallError<MethodError>: Error {
 	case authError(PCloudAPI.AuthError)
 	case permissionError(PCloudAPI.PermissionError)
 	case badInputError(Int, String?)
