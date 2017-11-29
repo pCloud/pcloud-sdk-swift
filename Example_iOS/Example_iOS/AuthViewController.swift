@@ -41,7 +41,7 @@ class AuthViewController: UIViewController {
 		authButton.center = view.center
 	}
 	
-	func didTapAuthorizeButton(_: UIButton) {
+	@objc func didTapAuthorizeButton(_: UIButton) {
 		PCloud.authorize(controller: self) { result in
 			if case .success(_, _) = result {
 				self.switchToAccountContentInterface()
