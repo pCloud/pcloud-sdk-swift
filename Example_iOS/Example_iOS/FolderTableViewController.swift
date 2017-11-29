@@ -15,7 +15,7 @@ private let CellIdentifier = "FolderTableViewCell"
 class FolderTableViewController: UITableViewController {
 	fileprivate let folderId: UInt64
 	fileprivate var folderMetadata: Folder.Metadata?
-	fileprivate var listFolderTask: CallTask<PCloudApi.ListFolder>?
+	fileprivate var listFolderTask: CallTask<PCloudAPI.ListFolder>?
 	fileprivate var isPreparingContent: Bool = false
 	fileprivate var error: Error?
 	
@@ -50,7 +50,7 @@ class FolderTableViewController: UITableViewController {
 		updateTitle()
 		
         listFolderTask = PCloud.sharedClient!.listFolder(folderId, recursively: false)
-		listFolderTask!.setCompletionBlock { result in
+		listFolderTask!.addCompletionBlock { result in
 			self.isPreparingContent = false
 			
 			switch result {
