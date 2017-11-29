@@ -124,9 +124,11 @@ public struct PCloudAPIDownloadTaskBuilder {
 	/// - returns: An instance of `DownloadTask` in suspended state.
 	public func createTask(resourceAddress: URL,
 						   destination: @escaping (URL) throws -> URL,
+						   cookies: [String: String] = [:],
 						   timeoutInterval: TimeInterval? = nil) -> DownloadTask {
 		let request = Download.Request(resourceAddress: resourceAddress,
 									   destination: destination,
+									   cookies: cookies,
 									   timeoutInterval: timeoutInterval ?? defaultTimeoutInterval)
 		
 		let operation = operationBuilder(request)

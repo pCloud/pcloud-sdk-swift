@@ -178,7 +178,7 @@ public struct Download {
 	/// A result from executing a download from pCloud.
 	public typealias Response = Result<URL, NetworkOperationError>
 	
-	/// Combines all the necessary input to execute a download.
+	/// Combines all the necessary input to execute an HTTP download.
 	public struct Request {
 		/// The remote address of the resource to download.
 		public var resourceAddress: URL
@@ -192,9 +192,13 @@ public struct Download {
 		/// while the operation is running.
 		public var timeoutInterval: TimeInterval?
 		
-		public init(resourceAddress: URL, destination: @escaping (URL) throws -> URL, timeoutInterval: TimeInterval? = nil) {
+		/// Cookies to send along the HTTP request.
+		public var cookies: [String: String]
+		
+		public init(resourceAddress: URL, destination: @escaping (URL) throws -> URL, cookies: [String: String] = [:], timeoutInterval: TimeInterval? = nil) {
 			self.resourceAddress = resourceAddress
 			self.destination = destination
+			self.cookies = cookies
 			self.timeoutInterval = timeoutInterval
 		}
 	}

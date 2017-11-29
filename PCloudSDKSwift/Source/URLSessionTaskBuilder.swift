@@ -65,7 +65,25 @@ public struct URLSessionTaskBuilder {
 			urlRequest.timeoutInterval = timeoutInterval
 		}
 		
+		for (name, value) in buildHTTPHeaderFields(cookiesDictionary: request.cookies, resourceAddress: request.resourceAddress) {
+			urlRequest.addValue(value, forHTTPHeaderField: name)
+		}
+		
 		return session.downloadTask(with: urlRequest)
+	}
+	
+	public static func buildHTTPHeaderFields(cookiesDictionary: [String: String], resourceAddress: URL) -> [String: String] {
+		guard let host = resourceAddress.host else {
+			return [:]
+		}
+		
+		let path = resourceAddress.path
+		
+		let cookies = cookiesDictionary.flatMap { name, value in
+			HTTPCookie(properties: [.name: name, .value: value, .domain: host, .path: path])
+		}
+		
+		return HTTPCookie.requestHeaderFields(with: cookies)
 	}
 	
 	// Functions for encoding command parameter values to percent encoded strings.

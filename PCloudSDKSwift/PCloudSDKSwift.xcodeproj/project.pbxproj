@@ -12,6 +12,10 @@
 		98A4D9141FCDAB9900847B5B /* APITaskBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D9131FCDAB9900847B5B /* APITaskBuilding.swift */; };
 		98A4D9171FCDB32200847B5B /* APITaskBuildingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D9151FCDB2E700847B5B /* APITaskBuildingTests.swift */; };
 		98A4D9191FCDC5CB00847B5B /* UploadInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D9181FCDC5CB00847B5B /* UploadInfo.swift */; };
+		98A4D91D1FCF1DAE00847B5B /* URLSessionTaskBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D9101FCD89CB00847B5B /* URLSessionTaskBuilder.swift */; };
+		98A4D91E1FCF1DB500847B5B /* CallError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D90E1FCD60B300847B5B /* CallError.swift */; };
+		98A4D91F1FCF1DB800847B5B /* UploadInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D9181FCDC5CB00847B5B /* UploadInfo.swift */; };
+		98A4D9201FCF1DCB00847B5B /* APITaskBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D9131FCDAB9900847B5B /* APITaskBuilding.swift */; };
 		A5B4F5EB1DB6295C0081F125 /* PCloudSDKSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B4F5E11DB6295C0081F125 /* PCloudSDKSwift.framework */; };
 		D05BE9DA1E1670B10021E7F3 /* AnyCancellationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9BD1E1670B10021E7F3 /* AnyCancellationToken.swift */; };
 		D05BE9DC1E1670B10021E7F3 /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE9BF1E1670B10021E7F3 /* Atomic.swift */; };
@@ -515,6 +519,7 @@
 				D05BEA061E1670D30021E7F3 /* HostProvider.swift in Sources */,
 				D05BEA171E1670D30021E7F3 /* URLSessionEventHub.swift in Sources */,
 				D05BEA181E1670D30021E7F3 /* User.swift in Sources */,
+				98A4D9201FCF1DCB00847B5B /* APITaskBuilding.swift in Sources */,
 				D05BEA001E1670D30021E7F3 /* Authenticator.swift in Sources */,
 				D05BEA121E1670D30021E7F3 /* URLSessionBasedCallOperation.swift in Sources */,
 				D05BEA131E1670D30021E7F3 /* URLSessionBasedDownloadOperation.swift in Sources */,
@@ -524,13 +529,16 @@
 				D05BEA071E1670D30021E7F3 /* Keychain.swift in Sources */,
 				D05BEA031E1670D30021E7F3 /* Content.swift in Sources */,
 				D05BEA111E1670D30021E7F3 /* UploadTask.swift in Sources */,
+				98A4D91D1FCF1DAE00847B5B /* URLSessionTaskBuilder.swift in Sources */,
 				D05BEA081E1670D30021E7F3 /* Lock.swift in Sources */,
 				D05BEA0A1E1670D30021E7F3 /* OAuth.swift in Sources */,
 				D05BE9FF1E1670D30021E7F3 /* Atomic.swift in Sources */,
 				D05BEA151E1670D30021E7F3 /* URLSessionBasedUploadOperation.swift in Sources */,
 				D05BEA041E1670D30021E7F3 /* DownloadTask.swift in Sources */,
 				D05BEA0C1E1670D30021E7F3 /* Parser.swift in Sources */,
+				98A4D91E1FCF1DB500847B5B /* CallError.swift in Sources */,
 				D05BEA101E1670D30021E7F3 /* Result.swift in Sources */,
+				98A4D91F1FCF1DB800847B5B /* UploadInfo.swift in Sources */,
 				D05BE9FD1E1670D30021E7F3 /* AnyCancellationToken.swift in Sources */,
 				D05BEA271E1B99BA0021E7F3 /* OAuthWebViewDesktop.swift in Sources */,
 				D05BEA0F1E1670D30021E7F3 /* PCloudClient.swift in Sources */,
