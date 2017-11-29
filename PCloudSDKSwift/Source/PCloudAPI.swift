@@ -165,7 +165,7 @@ public extension PCloudAPI {
 		}
 		
 		/// Errors specific to listing a folder.
-		public enum Error: Int, Swift.Error {
+		public enum Error: Int {
 			/// The requested folder does not exist.
 			case folderDoesNotExist = 2005
 		}
@@ -211,7 +211,7 @@ public extension PCloudAPI {
 		}
 		
 		/// Errors specific to creating a folder.
-		public enum Error: Int, Swift.Error {
+		public enum Error: Int {
 			/// The requested name is invalid.
 			case invalidName = 2001
 			/// The parent folder does not exist.
@@ -261,7 +261,7 @@ public extension PCloudAPI {
 		}
 		
 		/// Errors specific to renaming a folder.
-		public enum Error: Int, Swift.Error {
+		public enum Error: Int {
 			/// The requested name is invalid.
 			case invalidName = 2001
 			/// A folder with the requested name already exists.
@@ -313,7 +313,7 @@ public extension PCloudAPI {
 		}
 		
 		/// Errors specific to moving a folder.
-		public enum Error: Int, Swift.Error {
+		public enum Error: Int {
 			/// A folder with the same name already exists.
 			case folderAlreadyExists = 2004
 			/// The folder does not exist.
@@ -387,7 +387,7 @@ public extension PCloudAPI {
 		}
 		
 		/// Errors specific to copying a folder.
-		public enum Error: Int, Swift.Error {
+		public enum Error: Int {
 			/// A file with the same name already exists at the same level in the destination tree.
 			/// Can only be returned when conflict policy is `NameConflictPolicy.fail`.
 			case fileAlreadyExists = 2004
@@ -426,7 +426,7 @@ public extension PCloudAPI {
 		}
 		
 		/// Errors specific to deleting a folder tree.
-		public enum Error: Int, Swift.Error {
+		public enum Error: Int {
 			/// The folder does not exist.
 			case folderDoesNotExist = 2005
 			/// The root folder cannot be deleted.
@@ -491,7 +491,7 @@ public extension PCloudAPI {
 		}
 		
 		/// Errors specific to uploading a file.
-		public enum Error: Int, Swift.Error {
+		public enum Error: Int {
 			/// The requested name is invalid.
 			case invalidName = 2001
 			/// The requested parent folder does not exist.
@@ -502,26 +502,12 @@ public extension PCloudAPI {
 	
 	/// Creates an upload session which can be used to upload a file over several requests. Returns the identifier of the upload.
 	public struct CreateUpload: PCloudAPIMethod {
-		/// The total size of the data to upload (if available).
-		public let expectedFileSize: UInt64?
-		
 		public var requiresAuthentication: Bool {
 			return true
 		}
 		
-		/// - parameter expectedFileSize: The total size of the data to upload.
-		public init(expectedFileSize: UInt64? = nil) {
-			self.expectedFileSize = expectedFileSize
-		}
-		
 		public func createCommand() -> Call.Command {
-			var parameters: [Call.Command.Parameter] = []
-			
-			if let fileSize = expectedFileSize {
-				parameters.append(.number(name: "filesize", value: fileSize))
-			}
-			
-			return Call.Command(name: "upload_create", parameters: parameters)
+			return Call.Command(name: "upload_create", parameters: [])
 		}
 		
 		public func createResponseParser() -> ([String : Any]) throws -> Result<UInt64, PCloudAPI.Error<NullError>> {
@@ -554,7 +540,7 @@ public extension PCloudAPI {
 			return Call.Command(name: "upload_info", parameters: [.number(name: "uploadid", value: uploadId)])
 		}
 		
-		public func createResponseParser() -> ([String : Any]) throws -> Result<UploadInfo, PCloudAPI.Error<NullError>> {
+		public func createResponseParser() -> ([String : Any]) throws -> Result<UploadInfo, PCloudAPI.Error<Error>> {
 			return { response in
 				if let error = self.tryParseError(in: response) {
 					return .failure(error)
@@ -562,6 +548,11 @@ public extension PCloudAPI {
 				
 				return .success(try UploadInfoParser().parse(response))
 			}
+		}
+		
+		public enum Error: Int {
+			/// The provided upload identifier does not exist.
+			case uploadIdDoesNotExist = 2067
 		}
 	}
 	
@@ -589,7 +580,7 @@ public extension PCloudAPI {
 																   .number(name: "uploadoffset", value: offset)])
 		}
 		
-		public func createResponseParser() -> ([String : Any]) throws -> Result<Void, PCloudAPI.Error<NullError>> {
+		public func createResponseParser() -> ([String : Any]) throws -> Result<Void, PCloudAPI.Error<Error>> {
 			return { response in
 				if let error = self.tryParseError(in: response) {
 					return .failure(error)
@@ -597,6 +588,12 @@ public extension PCloudAPI {
 				
 				return .success(())
 			}
+		}
+		
+		public enum Error: Int {
+			/// The provided upload identifier does not exist.
+			case uploadIdDoesNotExist = 2067
+			case couldNotWriteToUpload = 2068
 		}
 	}
 	
@@ -679,7 +676,7 @@ public extension PCloudAPI {
 			return Call.Command(name: "upload_save", parameters: parameters)
 		}
 		
-		public func createResponseParser() -> ([String : Any]) throws -> Result<File.Metadata, PCloudAPI.Error<NullError>> {
+		public func createResponseParser() -> ([String : Any]) throws -> Result<File.Metadata, PCloudAPI.Error<Error>> {
 			return { response in
 				if let error = self.tryParseError(in: response) {
 					return .failure(error)
@@ -687,6 +684,15 @@ public extension PCloudAPI {
 				
 				return .success(try FileMetadataParser().parse(response))
 			}
+		}
+		
+		public enum Error: Int {
+			/// The requested name is invalid.
+			case invalidName = 2001
+			/// The requested parent folder does not exist.
+			case parentFolderDoesNotExist = 2005
+			/// The provided upload identifier does not exist.
+			case uploadIdDoesNotExist = 2067
 		}
 	}
 	
@@ -737,7 +743,7 @@ public extension PCloudAPI {
 		}
 		
 		/// Errors specific to copying a file.
-		public enum Error: Int, Swift.Error {
+		public enum Error: Int {
 			/// The parent folder does not exist.
 			case componentOfParentDirectoryDoesNotExist = 2002
 			/// A file with the same name already exists.
@@ -786,7 +792,7 @@ public extension PCloudAPI {
 		}
 		
 		/// Errors specific to renaming a file.
-		public enum Error: Int, Swift.Error {
+		public enum Error: Int {
 			/// The requested name is invalid.
 			case invalidName = 2001
 			/// The requested file does not exist.
@@ -833,7 +839,7 @@ public extension PCloudAPI {
 		}
 		
 		/// Errors specific to moving a file.
-		public enum Error: Int, Swift.Error {
+		public enum Error: Int {
 			/// The parent folder does not exist.
 			case componentOfParentDirectoryDoesNotExist = 2002
 			/// The requested destination folder does not exist.
@@ -877,7 +883,7 @@ public extension PCloudAPI {
 		}
 		
 		/// Errors specific to deleting a file.
-		public enum Error: Int, Swift.Error {
+		public enum Error: Int {
 			/// The requested file does not exist.
 			case fileDoesNotExist = 2009
 		}
@@ -915,7 +921,7 @@ public extension PCloudAPI {
 		}
 		
 		/// Errors specific to generating a link a to a file.
-		public enum Error: Int, Swift.Error {
+		public enum Error: Int {
 			/// The requested file does not exist.
 			case fileDoesNotExist = 2009
 		}
@@ -968,7 +974,7 @@ public extension PCloudAPI {
 		}
 		
 		/// Errors specific to generating a thumbnail link.
-		public enum Error: Int, Swift.Error {
+		public enum Error: Int {
 			/// A thumbnail cannot be generated for the requested file. This may be because `hasThumbnail` is not `true` for this file.
 			case thumbnailCannotBeCreatedForThisFile = 1014
 			/// The requested thumbnail size is invalid.
