@@ -10,6 +10,8 @@ import Foundation
 
 /// An implementation of `Cancellable` that does nothing.
 public struct VoidCancellationToken: Cancellable {
+	public init() {}
+	
 	public var isCancelled: Bool {
 		return false
 	}
