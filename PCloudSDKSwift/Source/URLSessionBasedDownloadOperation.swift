@@ -42,6 +42,10 @@ public final class URLSessionBasedDownloadOperation: URLSessionBasedNetworkOpera
 				return
 			}
 			
+			if let error = error, me.errorIsCancellation(error) {
+				return
+			}
+			
 			// Compute response.
 			let response: Download.Response = {
 				if let error = error {

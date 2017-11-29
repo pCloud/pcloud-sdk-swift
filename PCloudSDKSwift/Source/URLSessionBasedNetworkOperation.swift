@@ -86,6 +86,11 @@ public class URLSessionBasedNetworkOperation<T> {
 			progressHandlers.append(handler)
 		}
 	}
+	
+	public func errorIsCancellation(_ err: Error) -> Bool {
+		let error = err as NSError
+		return error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled
+	}
 }
 
 

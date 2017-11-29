@@ -30,6 +30,10 @@ public final class URLSessionBasedCallOperation: URLSessionBasedNetworkOperation
 				return
 			}
 			
+			if let error = error, me.errorIsCancellation(error) {
+				return
+			}
+			
 			// Compute response.
 			let response: Call.Response = {
 				if let error = error {

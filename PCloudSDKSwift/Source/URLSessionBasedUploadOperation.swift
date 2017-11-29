@@ -34,6 +34,10 @@ public final class URLSessionBasedUploadOperation: URLSessionBasedNetworkOperati
 				return
 			}
 			
+			if let error = error, me.errorIsCancellation(error) {
+				return
+			}
+			
 			// Compute response.
 			let response: Upload.Response = {
 				if let error = error {
