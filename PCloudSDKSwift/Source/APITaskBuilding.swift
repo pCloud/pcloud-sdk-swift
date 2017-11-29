@@ -121,11 +121,21 @@ public struct PCloudAPIDownloadTaskBuilder {
 	/// - parameter destination: A block called with the temporary location of the file on disk. The block must either move
 	/// the file or open it for reading, otherwise the file gets deleted after the block returns.
 	/// The block should return the new path of the file.
+	/// - parameter downloadTag: To be passed alongside `FileLink.Metadata` resource addresses. Authenticates this client to the storage servers.
+	/// - parameter timeoutInterval: The timeout interval for this call task. If `nil`, the default timeout interval will be used.
 	/// - returns: An instance of `DownloadTask` in suspended state.
 	public func createTask(resourceAddress: URL,
 						   destination: @escaping (URL) throws -> URL,
-						   cookies: [String: String] = [:],
+						   downloadTag: String? = nil,
 						   timeoutInterval: TimeInterval? = nil) -> DownloadTask {
+		let cookies: [String: String] = {
+			if let downloadTag = downloadTag {
+				return ["dwltag": downloadTag]
+			}
+			
+			return [:]
+		}()
+		
 		let request = Download.Request(resourceAddress: resourceAddress,
 									   destination: destination,
 									   cookies: cookies,
