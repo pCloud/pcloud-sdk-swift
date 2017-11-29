@@ -39,7 +39,9 @@ public struct PCloudAPI {
 		case authError(AuthError)
 		/// Permission/access-related error.
 		case permissionError(PermissionError)
-		/// Error related to the method
+		/// Missing or incorrectly formatted parameters.
+		case badInputError(Int, String?)
+		/// Error related to the method.
 		case methodError(MethodError)
 		/// The API is rate limiting this client.
 		case rateLimitError
@@ -52,6 +54,7 @@ public struct PCloudAPI {
 			switch self {
 			case .authError(let error): return error.rawValue
 			case .permissionError(let error): return error.rawValue
+			case .badInputError(let code, _): return code
 			case .methodError(let error): return error.rawValue
 			case .rateLimitError: return 4000
 			case .serverInternalError(let code, _): return code
@@ -72,6 +75,8 @@ public struct PCloudAPI {
 				self = .permissionError(permissionError)
 			} else if let methodError = MethodError(rawValue: code) {
 				self = .methodError(methodError)
+			} else if 1000...1999 ~= code {
+				self = .badInputError(code, message)
 			} else if code == 4000 {
 				self = .rateLimitError
 			} else if 5000...5999 ~= code {

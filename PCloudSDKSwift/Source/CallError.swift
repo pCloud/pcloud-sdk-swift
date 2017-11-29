@@ -12,6 +12,7 @@ import Foundation
 public enum CallError<MethodError> {
 	case authError(PCloudAPI.AuthError)
 	case permissionError(PCloudAPI.PermissionError)
+	case badInputError(Int, String?)
 	case rateLimitError
 	case methodError(MethodError)
 	case serverInternalError(Int, String?)
@@ -30,6 +31,9 @@ extension CallError where MethodError: RawRepresentable, MethodError.RawValue ==
 			
 		case .permissionError(let permissionError):
 			self = .permissionError(permissionError)
+			
+		case let .badInputError(code, message):
+			self = .badInputError(code, message)
 			
 		case .methodError(let error):
 			self = .methodError(error)
