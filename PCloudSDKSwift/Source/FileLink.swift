@@ -16,11 +16,14 @@ public struct FileLink {
 		public let address: URL
 		/// When `address` becomes unreachable.
 		public let expirationDate: Date
+		/// A token authenticating the client requesting the file link to the storage server.
+		public let downloadTag: String
 		
 		/// Initializes a file link with an address and expiration date.
-		public init(address: URL, expirationDate: Date) {
+		public init(address: URL, expirationDate: Date, downloadTag: String) {
 			self.address = address
 			self.expirationDate = expirationDate
+			self.downloadTag = downloadTag
 		}
 	}
 }
@@ -50,6 +53,7 @@ public struct FileLinkMetadataParser: Parser {
 		let hosts = input["hosts"] as! [String]
 		let path = input.string("path")
 		let expirationTimestamp = input.uint32("expires")
+		let downloadTag = input.string("dwltag")
 		
 		return hosts.map { host in
 			var components = URLComponents()
@@ -57,7 +61,7 @@ public struct FileLinkMetadataParser: Parser {
 			components.host = host
 			components.path = path
 			
-			return FileLink.Metadata(address: components.url!, expirationDate: Date(timeIntervalSince1970: TimeInterval(expirationTimestamp)))
+			return FileLink.Metadata(address: components.url!, expirationDate: Date(timeIntervalSince1970: TimeInterval(expirationTimestamp)), downloadTag: downloadTag)
 		}
 	}
 }
