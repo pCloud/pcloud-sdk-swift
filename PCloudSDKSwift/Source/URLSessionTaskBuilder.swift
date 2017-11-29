@@ -15,6 +15,7 @@ public enum Scheme: String {
 }
 
 public struct URLSessionTaskBuilder {
+	/// Creates a `URLSessionDataTask` using a `URLSession` given a `Call.Request`.
 	public static func createDataTask(request: Call.Request, session: URLSession, scheme: Scheme) -> URLSessionDataTask {
 		// Build the URL.
 		let url = self.url(scheme: scheme.rawValue, host: request.hostName, commandName: request.command.name)
@@ -34,6 +35,7 @@ public struct URLSessionTaskBuilder {
 		return session.dataTask(with: urlRequest)
 	}
 	
+	/// Creates a `URLSessionUploadTask` using a `URLSession` given an `Upload.Request`.
 	public static func createUploadTask(request: Upload.Request, session: URLSession, scheme: Scheme) -> URLSessionUploadTask {
 		// Build a GET query.
 		let query = self.query(from: request.command.parameters, addingPercentEncoding: false)
@@ -55,6 +57,7 @@ public struct URLSessionTaskBuilder {
 		}
 	}
 	
+	/// Creates a `URLSessionDownloadTask` using a `URLSession` given a `Download.Request`.
 	public static func createDownloadTask(request: Download.Request, session: URLSession) -> URLSessionDownloadTask {
 		var urlRequest = URLRequest(url: request.resourceAddress)
 		
