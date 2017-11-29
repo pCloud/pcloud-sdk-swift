@@ -598,22 +598,49 @@ public extension PCloudAPI {
 	
 	/// Commits an upload session into a file and returns the created file metadata.
 	public struct SaveUpload: PCloudAPIMethod {
+		/// An action to take in the event of a file conflict during saving.
+		/// A file conflict can occur when attempting to save a file in a directory
+		/// where another file with the same name already exists.
 		public enum ConflictResolutionPolicy {
+			/// Change the name of the saved file by appending the conflict number to the file name stem until
+			/// an available name is found.
+			/// For example, when trying to save a file with the name "image.jpeg", the file might be saved
+			/// as "image (1).jpeg", "image (2).jpeg" and so on.
 			case rename
-			case alwaysOverwrite
-			case overwriteFileHash(UInt64)
+			
+			/// Overwrite the existing file.
+			case overwrite
+			
+			/// Overwrite the existing file only if its hash matches the one provided. If the hashes don't match, then
+			/// save the file by appending "{CONFLICTED}" to the file name stem. If the resulting name produces
+			/// a conflict, begin appending the conflict number to the file name stem until an available name is found.
+			/// This can be usefil in cases where you want to avoid race conditions in which more than one client tries to
+			/// modify the content of one file at the same time.
+			case overwriteFileHashOrRename(UInt64)
 		}
 		
+		/// The identifier of the upload session.
 		public let uploadId: UInt64
+		/// The identifier of the directory in which to save the file.
 		public let parentFolderId: UInt64
+		/// The name of the file. Note that the file might be saved with a different name depending on the conflict resolution policy.
 		public let fileName: String
+		/// The date to use as the modification date for the file when creating it in the file system. When `nil` the file will be created
+		/// with the current date as the modification date.
 		public let fileModificationDate: Date?
+		/// The action to take when file conflict occurs during saving.
 		public let conflictResolutionPolicy: ConflictResolutionPolicy
 		
 		public var requiresAuthentication: Bool {
 			return true
 		}
 		
+		/// - parameter uploadId: An upload session identifier.
+		/// - parameter parentFolderId: An identifier of the folder where to save the file.
+		/// - parameter fileName: A file name.
+		/// - parameter fileModificationDate: A date to use as the modification date for the file when creating it in the file system. When `nil`,
+		/// the file will be created with the current date as the modification date.
+		/// - parameter onConflict: An action to take if a file conflict occurs.
 		public init(uploadId: UInt64, parentFolderId: UInt64, fileName: String, fileModificationDate: Date?, onConflict: ConflictResolutionPolicy) {
 			self.uploadId = uploadId
 			self.parentFolderId = parentFolderId
@@ -637,10 +664,10 @@ public extension PCloudAPI {
 			case .rename:
 				parameters.append(.boolean(name: "renameifexists", value: true))
 				
-			case .overwriteFileHash(let hash):
+			case .overwriteFileHashOrRename(let hash):
 				parameters.append(.number(name: "ifhash", value: hash))
 				
-			case .alwaysOverwrite:
+			case .overwrite:
 				break
 			}
 			
