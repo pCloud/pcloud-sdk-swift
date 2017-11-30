@@ -258,7 +258,7 @@ Performs an RPC request. On success produces the pre-parsed response of the requ
 import PCloudSDKSwift
 
 client.createFolder(named: "Movies", inFolder: Folder.root)
-    .setCompletionBlock { result in
+    .addCompletionBlock { result in
         // Handle result
     }
     .start()
@@ -271,10 +271,10 @@ Performs an upload. On success produces the metadata of the uploaded file. On fa
 import PCloudSDKSwift
 
 client.upload(fromFileAt: "file:///path/to/file", toFolder: Folder.root, asFileNamed: "song.mp3")
-    .setProgressBlock { uploaded, total in
+    .addProgressBlock { uploaded, total in
         // Handle progress
     }
-    .setCompletionBlock { result in
+    .addCompletionBlock { result in
         // Handle result
     }
     .start()
@@ -286,14 +286,19 @@ Downloads a file. On success, produces the URL of the downloaded file. On failur
 ```swift
 import PCloudSDKSwift
 
-client.downloadFile(aFileId, to: { destinationUrl })
-    .setProgressBlock { downloaded, total in
-        // Handle progress
-    }
-    .setCompletionBlock { result in
-        // Handle result
-    }
-    .start()
+let link: FileLink.Metadata
+
+PCloud.sharedClient!.downloadFile(from: link.address, downloadTag: link.downloadTag, to: { path in
+    // Move the file
+})
+.addCompletionBlock { result in
+    // Handle completion
+}
+.addProgressBlock { written, total in
+    // Handle progress
+}
+.start()
+
 ```
 
 Once started, a task can stop if it succeeds, fails or if it is cancelled. Since tasks are not reusable, once a task stops running in any way, it can no longer be started again.
