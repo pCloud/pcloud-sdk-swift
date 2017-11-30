@@ -506,6 +506,8 @@ public extension PCloudAPI {
 			return true
 		}
 		
+		public init() {}
+		
 		public func createCommand() -> Call.Command {
 			return Call.Command(name: "upload_create", parameters: [])
 		}
