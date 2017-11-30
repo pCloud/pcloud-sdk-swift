@@ -113,6 +113,11 @@ extension URLSessionBasedNetworkOperation: NetworkOperation {
 	
 	public func cancel() {
 		task.cancel()
+		
+		lock.inCriticalScope {
+			completionHandlers.removeAll()
+			progressHandlers.removeAll()
+		}
 	}
 }
 
