@@ -948,10 +948,6 @@
                           </tbody>
                         </table>
                       </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>A task producing a <code><a href="../Structs/Folder/Metadata.html">Folder.Metadata</a></code> object on success.</p>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -1129,6 +1125,318 @@ with the current date as the modification date.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p>A task producing a <code><a href="../Structs/File/Metadata.html">File.Metadata</a></code> object on success.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A6ClientC12createUploadAA8CallTaskCyAA0A3APIV06CreateE0VGyF"></a>
+                    <a name="//apple_ref/swift/Method/createUpload()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A6ClientC12createUploadAA8CallTaskCyAA0A3APIV06CreateE0VGyF">createUpload()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates and returns a task for creating an upload session. The upload identifier produced by this method can be used to
+upload a file over multiple requests.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">createUpload</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/CallTask.html">CallTask</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/PCloudAPI.html">PCloudAPI</a></span><span class="o">.</span><span class="kt">CreateUpload</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A task producing an upload identifier (<code>UInt64</code> value) on success.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A6ClientC13getUploadInfoAA8CallTaskCyAA0A3APIV03GeteF0VGs6UInt64V03forE0_tF"></a>
+                    <a name="//apple_ref/swift/Method/getUploadInfo(forUpload:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A6ClientC13getUploadInfoAA8CallTaskCyAA0A3APIV03GeteF0VGs6UInt64V03forE0_tF">getUploadInfo(forUpload:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates and returns a task for fetching the current state of an upload session.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getUploadInfo</span><span class="p">(</span><span class="n">forUpload</span> <span class="nv">uploadId</span><span class="p">:</span> <span class="kt">UInt64</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/CallTask.html">CallTask</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/PCloudAPI.html">PCloudAPI</a></span><span class="o">.</span><span class="kt">GetUploadInfo</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>uploadId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An upload identifier.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A task producing an <code><a href="../Structs/UploadInfo.html">UploadInfo</a></code> instance on success.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A6ClientC6uploadAA10UploadTaskCyAA0A3APIV07WriteToE0VG10Foundation3URLV10fromFileAt_s6UInt64V02toE0AQ8atOffsettF"></a>
+                    <a name="//apple_ref/swift/Method/upload(fromFileAt:toUpload:atOffset:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A6ClientC6uploadAA10UploadTaskCyAA0A3APIV07WriteToE0VG10Foundation3URLV10fromFileAt_s6UInt64V02toE0AQ8atOffsettF">upload(fromFileAt:toUpload:atOffset:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates and returns a task for writing the data of a local file to an upload session.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">upload</span><span class="p">(</span><span class="n">fromFileAt</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="n">toUpload</span> <span class="nv">uploadId</span><span class="p">:</span> <span class="kt">UInt64</span><span class="p">,</span> <span class="n">atOffset</span> <span class="nv">offset</span><span class="p">:</span> <span class="kt">UInt64</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/UploadTask.html">UploadTask</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/PCloudAPI.html">PCloudAPI</a></span><span class="o">.</span><span class="kt">WriteToUpload</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>path</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The local path of the file to upload.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>uploadId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An upload identifier.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>offset</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The upload session offset at which to start writing.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A6ClientC6uploadAA10UploadTaskCyAA0A3APIV07WriteToE0VG10Foundation4DataV_s6UInt64V02toE0AP8atOffsettF"></a>
+                    <a name="//apple_ref/swift/Method/upload(_:toUpload:atOffset:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A6ClientC6uploadAA10UploadTaskCyAA0A3APIV07WriteToE0VG10Foundation4DataV_s6UInt64V02toE0AP8atOffsettF">upload(_:toUpload:atOffset:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates and returns a task for writing a <code>Data</code> instance to an upload session.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">upload</span><span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">,</span> <span class="n">toUpload</span> <span class="nv">uploadId</span><span class="p">:</span> <span class="kt">UInt64</span><span class="p">,</span> <span class="n">atOffset</span> <span class="nv">offset</span><span class="p">:</span> <span class="kt">UInt64</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/UploadTask.html">UploadTask</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/PCloudAPI.html">PCloudAPI</a></span><span class="o">.</span><span class="kt">WriteToUpload</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The data to write.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>uploadId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An upload identifier.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>offset</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The upload session offset at which to start writing.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A6ClientC10saveUploadAA8CallTaskCyAA0A3APIV04SaveE0VGs6UInt64V2id_AM8toFolderSS11asFileNamed10Foundation4DateVSg016withModificationR0AJ24ConflictResolutionPolicyO02onU0tF"></a>
+                    <a name="//apple_ref/swift/Method/saveUpload(id:toFolder:asFileNamed:withModificationDate:onConflict:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A6ClientC10saveUploadAA8CallTaskCyAA0A3APIV04SaveE0VGs6UInt64V2id_AM8toFolderSS11asFileNamed10Foundation4DateVSg016withModificationR0AJ24ConflictResolutionPolicyO02onU0tF">saveUpload(id:toFolder:asFileNamed:withModificationDate:onConflict:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates and returns a task for save an upload session as a file in the file system.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">saveUpload</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="kt">UInt64</span><span class="p">,</span>
+				<span class="n">toFolder</span> <span class="nv">parentFolderId</span><span class="p">:</span> <span class="kt">UInt64</span><span class="p">,</span>
+				<span class="n">asFileNamed</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+				<span class="n">withModificationDate</span> <span class="nv">date</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+				<span class="nv">onConflict</span><span class="p">:</span> <span class="kt"><a href="../Structs/PCloudAPI.html">PCloudAPI</a></span><span class="o">.</span><span class="kt">SaveUpload</span><span class="o">.</span><span class="kt">ConflictResolutionPolicy</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/CallTask.html">CallTask</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/PCloudAPI.html">PCloudAPI</a></span><span class="o">.</span><span class="kt">SaveUpload</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An identifier of the upload session to save.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>parentFolderId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier folder in which to save the file.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The file name to use when saving. Note this might change depending on the conflict resolution.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>onConflict</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An action to take if a file conflict occurs. Please see <code><a href="../Structs/PCloudAPI/SaveUpload.html">PCloudAPI.SaveUpload</a></code> for more info.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A task producing a <code><a href="../Structs/File/Metadata.html">File.Metadata</a></code> instance on success.</p>
                       </div>
                     </section>
                   </div>

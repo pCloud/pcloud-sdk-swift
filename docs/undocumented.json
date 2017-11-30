@@ -520,35 +520,42 @@
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/PCloudAPI.swift",
-      "line": 596,
+      "line": 509,
+      "symbol": "PCloudAPI.CreateUpload.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/PCloudAPI.swift",
+      "line": 598,
       "symbol": "PCloudAPI.WriteToUpload.Error.couldNotWriteToUpload",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/PCloudAPI.swift",
-      "line": 994,
+      "line": 996,
       "symbol": "PCloudAPI.GetThumbnailsLinks.fileIds",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/PCloudAPI.swift",
-      "line": 995,
+      "line": 997,
       "symbol": "PCloudAPI.GetThumbnailsLinks.thumbnailSize",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/PCloudAPI.swift",
-      "line": 996,
+      "line": 998,
       "symbol": "PCloudAPI.GetThumbnailsLinks.crop",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/PCloudAPI.swift",
-      "line": 1106,
+      "line": 1108,
       "symbol": "PCloudAPIMethod.tryParseError(in:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
