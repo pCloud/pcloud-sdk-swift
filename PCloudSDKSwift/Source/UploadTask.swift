@@ -103,6 +103,10 @@ public final class UploadTask<Method: PCloudAPIMethod>: Cancellable {
 	/// Interrupts and invalidates the task. An invalidated task cannot run again.
 	public func cancel() {
 		operation.cancel()
+		
+		lock.inCriticalScope {
+			completionBlocks.removeAll()
+		}
 	}
 }
 
