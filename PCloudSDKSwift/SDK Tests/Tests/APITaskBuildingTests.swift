@@ -311,7 +311,7 @@ final class PCloudAPIDownloadTaskBuilderTests: XCTestCase {
 											   operationBuilder: dispatcher.downloadOperation)
 		
 		// When
-		_ = builder.createTask(resourceAddress: URL(string: "http://dummy.com")!, destination: { $0 }, timeoutInterval: nil)
+		_ = builder.createTask(resourceAddress: URL(string: "http://dummy.com")!, timeoutInterval: nil, destination: { $0 })
 		
 		// Expect
 		guard let request = dispatcher.lastDownloadRequest else {
@@ -331,7 +331,7 @@ final class PCloudAPIDownloadTaskBuilderTests: XCTestCase {
 											   operationBuilder: dispatcher.downloadOperation)
 		
 		// When
-		_ = builder.createTask(resourceAddress: URL(string: "http://dummy.com")!, destination: { $0 }, timeoutInterval: taskTimeoutInterval)
+		_ = builder.createTask(resourceAddress: URL(string: "http://dummy.com")!, timeoutInterval: taskTimeoutInterval, destination: { $0 })
 		
 		// Expect
 		guard let request = dispatcher.lastDownloadRequest else {

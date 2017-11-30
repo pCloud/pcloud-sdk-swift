@@ -205,12 +205,12 @@ public extension PCloudClient {
 	/// Creates and returns a task for downloading a file from a `URL`.
 	///
 	/// - parameter address: The resource address.
+	/// - parameter downloadTag: To be passed alongside `FileLink.Metadata` resource addresses. Authenticates this client to the storage servers.
 	/// - parameter destination: A block called with the temporary location of the downloaded file on disk.
 	/// The block must either move or open the file for reading before it returns, otherwise the file gets deleted.
 	/// The block should return the new location of the file.
-	/// - parameter downloadTag: To be passed alongside `FileLink.Metadata` resource addresses. Authenticates this client to the storage servers.
 	/// - returns: A task producing a `URL` on success which is the local path of the downloaded file.
-	func downloadFile(from address: URL, to destination: @escaping (URL) throws -> URL, downloadTag: String? = nil) -> DownloadTask {
-		return downloadTaskBuilder.createTask(resourceAddress: address, destination: destination, downloadTag: downloadTag)
+	func downloadFile(from address: URL, downloadTag: String? = nil, to destination: @escaping (URL) throws -> URL) -> DownloadTask {
+		return downloadTaskBuilder.createTask(resourceAddress: address, downloadTag: downloadTag, destination: destination)
 	}
 }

@@ -195,7 +195,7 @@ public struct Download {
 		/// Cookies to send along the HTTP request.
 		public var cookies: [String: String]
 		
-		public init(resourceAddress: URL, destination: @escaping (URL) throws -> URL, cookies: [String: String] = [:], timeoutInterval: TimeInterval? = nil) {
+		public init(resourceAddress: URL, cookies: [String: String] = [:], timeoutInterval: TimeInterval? = nil, destination: @escaping (URL) throws -> URL) {
 			self.resourceAddress = resourceAddress
 			self.destination = destination
 			self.cookies = cookies

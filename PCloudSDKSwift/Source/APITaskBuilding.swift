@@ -118,16 +118,16 @@ public struct PCloudAPIDownloadTaskBuilder {
 	/// Creates a `DownloadTask` instance for downloading a file from a remote address.
 	///
 	/// - parameter resourceAddress: The location of the file to download.
+	/// - parameter downloadTag: To be passed alongside `FileLink.Metadata` resource addresses. Authenticates this client to the storage servers.
+	/// - parameter timeoutInterval: The timeout interval for this call task. If `nil`, the default timeout interval will be used.
 	/// - parameter destination: A block called with the temporary location of the file on disk. The block must either move
 	/// the file or open it for reading, otherwise the file gets deleted after the block returns.
 	/// The block should return the new path of the file.
-	/// - parameter downloadTag: To be passed alongside `FileLink.Metadata` resource addresses. Authenticates this client to the storage servers.
-	/// - parameter timeoutInterval: The timeout interval for this call task. If `nil`, the default timeout interval will be used.
 	/// - returns: An instance of `DownloadTask` in suspended state.
 	public func createTask(resourceAddress: URL,
-						   destination: @escaping (URL) throws -> URL,
 						   downloadTag: String? = nil,
-						   timeoutInterval: TimeInterval? = nil) -> DownloadTask {
+						   timeoutInterval: TimeInterval? = nil,
+						   destination: @escaping (URL) throws -> URL) -> DownloadTask {
 		let cookies: [String: String] = {
 			if let downloadTag = downloadTag {
 				return ["dwltag": downloadTag]
@@ -137,9 +137,9 @@ public struct PCloudAPIDownloadTaskBuilder {
 		}()
 		
 		let request = Download.Request(resourceAddress: resourceAddress,
-									   destination: destination,
 									   cookies: cookies,
-									   timeoutInterval: timeoutInterval ?? defaultTimeoutInterval)
+									   timeoutInterval: timeoutInterval ?? defaultTimeoutInterval,
+									   destination: destination)
 		
 		let operation = operationBuilder(request)
 		return DownloadTask(operation: operation)
