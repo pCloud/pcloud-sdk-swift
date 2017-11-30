@@ -596,59 +596,64 @@ You can manually create a <code><a href="Classes/PCloudClient.html">PCloudClient
 <h3 id='working-with-the-network-tasks' class='heading'>Working with the network tasks</h3>
 
 <p>The SDK comes with the most common API requests predefined and has exposed them through the <code><a href="Classes/PCloudClient.html">PCloudClient</a></code> instance as methods. Each method returns a non-running task object representing the API request. Once you have obtained a task, you can assign callback blocks to it and start it. Once a task completes it produces a result object defined like this:</p>
-<pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">{</span>
+<pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span> <span class="kt">E</span><span class="o">&gt;</span> <span class="p">{</span>
   <span class="k">case</span> <span class="nf">success</span><span class="p">(</span><span class="kt">T</span><span class="p">)</span>
-  <span class="k">case</span> <span class="nf">failure</span><span class="p">(</span><span class="kt">Error</span><span class="p">)</span>
+  <span class="k">case</span> <span class="nf">failure</span><span class="p">(</span><span class="kt">E</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre>
 
 <p>There are three types of tasks:</p>
 <h5 id='calltask' class='heading'>CallTask</h5>
 
-<p>Performs an RPC request. On success produces the pre-parsed response of the request. On failure, either an API error or an <code>NSError</code> object from the underlying <code>NSURLSessionTask</code>.</p>
+<p>Performs an RPC request. On success produces the pre-parsed response of the request. On failure, produces a <code><a href="Enums/CallError.html">CallError</a></code> value.</p>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PCloudSDKSwift</span>
 
 <span class="n">client</span><span class="o">.</span><span class="nf">createFolder</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"Movies"</span><span class="p">,</span> <span class="nv">inFolder</span><span class="p">:</span> <span class="kt">Folder</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">setCompletionBlock</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+    <span class="o">.</span><span class="n">addCompletionBlock</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
         <span class="c1">// Handle result</span>
     <span class="p">}</span>
     <span class="o">.</span><span class="nf">start</span><span class="p">()</span>
 </code></pre>
 <h5 id='uploadtask' class='heading'>UploadTask</h5>
 
-<p>Performs an upload. On success produces the metadata of the uploaded file. On failure, either an API error or an <code>NSError</code> object from the underlying <code>NSURLSessionTask</code>.</p>
+<p>Performs an upload. On success produces the metadata of the uploaded file. On failure, produces a <code><a href="Enums/CallError.html">CallError</a></code> value.</p>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PCloudSDKSwift</span>
 
 <span class="n">client</span><span class="o">.</span><span class="nf">upload</span><span class="p">(</span><span class="nv">fromFileAt</span><span class="p">:</span> <span class="s">"file:///path/to/file"</span><span class="p">,</span> <span class="nv">toFolder</span><span class="p">:</span> <span class="kt">Folder</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="nv">asFileNamed</span><span class="p">:</span> <span class="s">"song.mp3"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">setProgressBlock</span> <span class="p">{</span> <span class="n">uploaded</span><span class="p">,</span> <span class="n">total</span> <span class="k">in</span>
+    <span class="o">.</span><span class="n">addProgressBlock</span> <span class="p">{</span> <span class="n">uploaded</span><span class="p">,</span> <span class="n">total</span> <span class="k">in</span>
         <span class="c1">// Handle progress</span>
     <span class="p">}</span>
-    <span class="o">.</span><span class="n">setCompletionBlock</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+    <span class="o">.</span><span class="n">addCompletionBlock</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
         <span class="c1">// Handle result</span>
     <span class="p">}</span>
     <span class="o">.</span><span class="nf">start</span><span class="p">()</span>
 </code></pre>
 <h5 id='downloadtask' class='heading'>DownloadTask</h5>
 
-<p>Downloads a file. On success, produces the URL of the downloaded file. On failure, produces an <code>NSError</code> either from the underlying <code>NSURLSessionTask</code>, or a file system related error from the <code>NSFileManager</code>.</p>
+<p>Downloads a file. On success, produces the URL of the downloaded file. On failure, produces a <code><a href="Enums/NetworkOperationError.html">NetworkOperationError</a></code> value.</p>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PCloudSDKSwift</span>
 
-<span class="n">client</span><span class="o">.</span><span class="nf">downloadFile</span><span class="p">(</span><span class="n">aFileId</span><span class="p">,</span> <span class="nv">to</span><span class="p">:</span> <span class="p">{</span> <span class="n">destinationUrl</span> <span class="p">})</span>
-    <span class="o">.</span><span class="n">setProgressBlock</span> <span class="p">{</span> <span class="n">downloaded</span><span class="p">,</span> <span class="n">total</span> <span class="k">in</span>
-        <span class="c1">// Handle progress</span>
-    <span class="p">}</span>
-    <span class="o">.</span><span class="n">setCompletionBlock</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
-        <span class="c1">// Handle result</span>
-    <span class="p">}</span>
-    <span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">link</span><span class="p">:</span> <span class="kt">FileLink</span><span class="o">.</span><span class="kt">Metadata</span>
+
+<span class="n">client</span><span class="o">.</span><span class="nf">downloadFile</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="n">link</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="nv">downloadTag</span><span class="p">:</span> <span class="n">link</span><span class="o">.</span><span class="n">downloadTag</span><span class="p">,</span> <span class="nv">to</span><span class="p">:</span> <span class="p">{</span> <span class="n">path</span> <span class="k">in</span>
+    <span class="c1">// Move the file</span>
+<span class="p">})</span>
+<span class="o">.</span><span class="n">addCompletionBlock</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+    <span class="c1">// Handle completion</span>
+<span class="p">}</span>
+<span class="o">.</span><span class="n">addProgressBlock</span> <span class="p">{</span> <span class="n">written</span><span class="p">,</span> <span class="n">total</span> <span class="k">in</span>
+    <span class="c1">// Handle progress</span>
+<span class="p">}</span>
+<span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+
 </code></pre>
 
 <p>Once started, a task can stop if it succeeds, fails or if it is cancelled. Since tasks are not reusable, once a task stops running in any way, it can no longer be started again.
 The completion block of a task will only be called if a task fails or succeeds, <strong>not</strong> when it is cancelled. Also, all of a task&rsquo;s callback blocks are called on the main queue.
 A task will be retained in memory <strong>while it is running</strong>, so there is no need to manually keep a reference to it, given that you start the task at the time of creation.</p>
-<h3 id='handling-api-errors' class='heading'>Handling API errors</h3>
+<h3 id='handling-errors' class='heading'>Handling errors</h3>
 
-<p>Each API method in the SDK is defined in the <code>PCloudApi</code> namespace as a separate struct. And each method defines its errors within its own namespace. Apart from its own errors a method can fail with a common API error defined in <code>PCloudApi.Error</code>, or a <code>PCloudApi.RawError</code> for any other undefined (within the SDK) error.</p>
+<p>Upload and RPC call tasks fail with a <code><a href="Enums/CallError.html">CallError</a></code>. This enum combines the possible errors from the networking layer and the PCloud API layer. One of the possible errors is <code>CallError&lt;T&gt;.methodError(T)</code> and the suberror there will depend on the API method being executed by the task. All API methods are defined in <code>PCloudAPI.swift</code> and each one has an <code>Error</code> enum defined in its namespace. So, for example, if you are executing a <code>ListFolder</code> API method, the task error would be defined as <code>CallError&lt;ListFolder.Error&gt;</code>. Some API methods (e.g. <code>UserInfo</code>) cannot fail with anything else than generic API errors so they will define their error as <code><a href="Structs/NullError.html">NullError</a></code>. Such tasks can never fail with <code>CallError&lt;T&gt;.methodError(T)</code>.</p>
 
 <hr>
 <h2 id='examples' class='heading'>Examples</h2>

@@ -451,7 +451,7 @@
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
       "line": 198,
-      "symbol": "Download.Request.init(resourceAddress:destination:cookies:timeoutInterval:)",
+      "symbol": "Download.Request.init(resourceAddress:cookies:timeoutInterval:destination:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },

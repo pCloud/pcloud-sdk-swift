@@ -436,9 +436,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A22APIDownloadTaskBuilderV06createD0AA08DownloadD0C10Foundation3URLV15resourceAddress_A2IKc11destinationSSSg11downloadTagSdSg15timeoutIntervaltF"></a>
-                    <a name="//apple_ref/swift/Method/createTask(resourceAddress:destination:downloadTag:timeoutInterval:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A22APIDownloadTaskBuilderV06createD0AA08DownloadD0C10Foundation3URLV15resourceAddress_A2IKc11destinationSSSg11downloadTagSdSg15timeoutIntervaltF">createTask(resourceAddress:destination:downloadTag:timeoutInterval:)</a>
+                    <a name="/s:14PCloudSDKSwift0A22APIDownloadTaskBuilderV06createD0AA08DownloadD0C10Foundation3URLV15resourceAddress_SSSg11downloadTagSdSg15timeoutIntervalA2IKc11destinationtF"></a>
+                    <a name="//apple_ref/swift/Method/createTask(resourceAddress:downloadTag:timeoutInterval:destination:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A22APIDownloadTaskBuilderV06createD0AA08DownloadD0C10Foundation3URLV15resourceAddress_SSSg11downloadTagSdSg15timeoutIntervalA2IKc11destinationtF">createTask(resourceAddress:downloadTag:timeoutInterval:destination:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -454,9 +454,9 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createTask</span><span class="p">(</span><span class="nv">resourceAddress</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span>
-					   <span class="nv">destination</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">URL</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">URL</span><span class="p">,</span>
 					   <span class="nv">downloadTag</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
-					   <span class="nv">timeoutInterval</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/DownloadTask.html">DownloadTask</a></span></code></pre>
+					   <span class="nv">timeoutInterval</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+					   <span class="nv">destination</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">URL</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">URL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/DownloadTask.html">DownloadTask</a></span></code></pre>
 
                         </div>
                       </div>
@@ -473,20 +473,6 @@
                               <td>
                                 <div>
                                   <p>The location of the file to download.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>destination</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A block called with the temporary location of the file on disk. The block must either move
-the file or open it for reading, otherwise the file gets deleted after the block returns.
-The block should return the new path of the file.</p>
                                 </div>
                               </td>
                             </tr>
@@ -511,6 +497,20 @@ The block should return the new path of the file.</p>
                               <td>
                                 <div>
                                   <p>The timeout interval for this call task. If <code>nil</code>, the default timeout interval will be used.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>destination</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A block called with the temporary location of the file on disk. The block must either move
+the file or open it for reading, otherwise the file gets deleted after the block returns.
+The block should return the new path of the file.</p>
                                 </div>
                               </td>
                             </tr>

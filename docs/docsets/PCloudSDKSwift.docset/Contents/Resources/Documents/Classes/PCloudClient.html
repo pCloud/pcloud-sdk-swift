@@ -1589,9 +1589,9 @@ identifiers passed as input to this method. Each file identifier is mapped again
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A6ClientC12downloadFileAA12DownloadTaskC10Foundation3URLV4from_A2IKc2toSSSg0D3TagtF"></a>
-                    <a name="//apple_ref/swift/Method/downloadFile(from:to:downloadTag:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A6ClientC12downloadFileAA12DownloadTaskC10Foundation3URLV4from_A2IKc2toSSSg0D3TagtF">downloadFile(from:to:downloadTag:)</a>
+                    <a name="/s:14PCloudSDKSwift0A6ClientC12downloadFileAA12DownloadTaskC10Foundation3URLV4from_SSSg0D3TagA2IKc2totF"></a>
+                    <a name="//apple_ref/swift/Method/downloadFile(from:downloadTag:to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A6ClientC12downloadFileAA12DownloadTaskC10Foundation3URLV4from_SSSg0D3TagA2IKc2totF">downloadFile(from:downloadTag:to:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1606,7 +1606,7 @@ identifiers passed as input to this method. Each file identifier is mapped again
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">downloadFile</span><span class="p">(</span><span class="n">from</span> <span class="nv">address</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="n">to</span> <span class="nv">destination</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">URL</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">downloadTag</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/DownloadTask.html">DownloadTask</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">downloadFile</span><span class="p">(</span><span class="n">from</span> <span class="nv">address</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">downloadTag</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">to</span> <span class="nv">destination</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">URL</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">URL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/DownloadTask.html">DownloadTask</a></span></code></pre>
 
                         </div>
                       </div>
@@ -1629,6 +1629,18 @@ identifiers passed as input to this method. Each file identifier is mapped again
                             <tr>
                               <td>
                                 <code>
+                                <em>downloadTag</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>To be passed alongside <code><a href="../Structs/FileLink/Metadata.html">FileLink.Metadata</a></code> resource addresses. Authenticates this client to the storage servers.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
                                 <em>destination</em>
                                 </code>
                               </td>
@@ -1637,18 +1649,6 @@ identifiers passed as input to this method. Each file identifier is mapped again
                                   <p>A block called with the temporary location of the downloaded file on disk.
 The block must either move or open the file for reading before it returns, otherwise the file gets deleted.
 The block should return the new location of the file.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>downloadTag</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>To be passed alongside <code><a href="../Structs/FileLink/Metadata.html">FileLink.Metadata</a></code> resource addresses. Authenticates this client to the storage servers.</p>
                                 </div>
                               </td>
                             </tr>
