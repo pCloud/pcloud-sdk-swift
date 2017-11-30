@@ -97,7 +97,6 @@ public extension PCloudClient {
 	/// Creates and returns a task for deleting a folder along with all of its children recursively.
 	///
 	/// - parameter folderId: The unique identifier of the folder to delete.
-	/// - returns: A task producing a `Folder.Metadata` object on success.
 	func deleteFolderRecursively(_ folderId: UInt64) -> CallTask<PCloudAPI.DeleteFolderRecursive> {
 		return callTaskBuilder.createTask(for: PCloudAPI.DeleteFolderRecursive(folderId: folderId))
 	}
@@ -129,6 +128,55 @@ public extension PCloudClient {
 	/// - returns: A task producing a `File.Metadata` object on success.
 	func upload(fromFileAt path: URL, toFolder folderId: UInt64, asFileNamed name: String, withModificationDate date: Date? = nil) -> UploadTask<PCloudAPI.UploadFile> {
 		return uploadTaskBuilder.createTask(for: PCloudAPI.UploadFile(name: name, parentFolderId: folderId, modificationDate: date), with: .file(path))
+	}
+	
+	/// Creates and returns a task for creating an upload session. The upload identifier produced by this method can be used to
+	/// upload a file over multiple requests.
+	///
+	/// - returns: A task producing an upload identifier (`UInt64` value) on success.
+	func createUpload() -> CallTask<PCloudAPI.CreateUpload> {
+		return callTaskBuilder.createTask(for: PCloudAPI.CreateUpload())
+	}
+	
+	/// Creates and returns a task for fetching the current state of an upload session.
+	///
+	/// - parameter uploadId: An upload identifier.
+	/// - returns: A task producing an `UploadInfo` instance on success.
+	func getUploadInfo(forUpload uploadId: UInt64) -> CallTask<PCloudAPI.GetUploadInfo> {
+		return callTaskBuilder.createTask(for: PCloudAPI.GetUploadInfo(uploadId: uploadId))
+	}
+	
+	/// Creates and returns a task for writing the data of a local file to an upload session.
+	///
+	/// - parameter path: The local path of the file to upload.
+	/// - parameter uploadId: An upload identifier.
+	/// - parameter offset: The upload session offset at which to start writing.
+	func upload(fromFileAt path: URL, toUpload uploadId: UInt64, atOffset offset: UInt64) -> UploadTask<PCloudAPI.WriteToUpload> {
+		return uploadTaskBuilder.createTask(for: PCloudAPI.WriteToUpload(uploadId: uploadId, offset: offset), with: .file(path))
+	}
+	
+	/// Creates and returns a task for writing a `Data` instance to an upload session.
+	///
+	/// - parameter data: The data to write.
+	/// - parameter uploadId: An upload identifier.
+	/// - parameter offset: The upload session offset at which to start writing.
+	func upload(_ data: Data, toUpload uploadId: UInt64, atOffset offset: UInt64) -> UploadTask<PCloudAPI.WriteToUpload> {
+		return uploadTaskBuilder.createTask(for: PCloudAPI.WriteToUpload(uploadId: uploadId, offset: offset), with: .data(data))
+	}
+	
+	/// Creates and returns a task for save an upload session as a file in the file system.
+	///
+	/// - parameter id: An identifier of the upload session to save.
+	/// - parameter parentFolderId: The identifier folder in which to save the file.
+	/// - parameter name: The file name to use when saving. Note this might change depending on the conflict resolution.
+	/// - parameter onConflict: An action to take if a file conflict occurs. Please see `PCloudAPI.SaveUpload` for more info.
+	/// - returns: A task producing a `File.Metadata` instance on success.
+	func saveUpload(id: UInt64,
+					toFolder parentFolderId: UInt64,
+					asFileNamed name: String,
+					withModificationDate date: Date? = nil,
+					onConflict: PCloudAPI.SaveUpload.ConflictResolutionPolicy) -> CallTask<PCloudAPI.SaveUpload> {
+		return callTaskBuilder.createTask(for: PCloudAPI.SaveUpload(uploadId: id, parentFolderId: parentFolderId, fileName: name, fileModificationDate: date, onConflict: onConflict))
 	}
 	
 	/// Creates and returns a task for copying a file.
