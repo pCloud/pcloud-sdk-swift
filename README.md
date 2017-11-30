@@ -243,16 +243,16 @@ let client = PCloud.sharedClient // When using the authorization flow
 The SDK comes with the most common API requests predefined and has exposed them through the `PCloudClient` instance as methods. Each method returns a non-running task object representing the API request. Once you have obtained a task, you can assign callback blocks to it and start it. Once a task completes it produces a result object defined like this:
 
 ```swift
-enum Result<T> {
+enum Result<T, E> {
   case success(T)
-  case failure(Error)
+  case failure(E)
 }
 ```
 
 There are three types of tasks:
 
 ##### CallTask
-Performs an RPC request. On success produces the pre-parsed response of the request. On failure, either an API error or an `NSError` object from the underlying `NSURLSessionTask`.
+Performs an RPC request. On success produces the pre-parsed response of the request. On failure, produces a `CallError` value.
 
 ```swift
 import PCloudSDKSwift
@@ -265,7 +265,7 @@ client.createFolder(named: "Movies", inFolder: Folder.root)
 ```
 
 ##### UploadTask
-Performs an upload. On success produces the metadata of the uploaded file. On failure, either an API error or an `NSError` object from the underlying `NSURLSessionTask`.
+Performs an upload. On success produces the metadata of the uploaded file. On failure, produces a `CallError` value.
 
 ```swift
 import PCloudSDKSwift
@@ -281,14 +281,14 @@ client.upload(fromFileAt: "file:///path/to/file", toFolder: Folder.root, asFileN
 ```
 
 ##### DownloadTask
-Downloads a file. On success, produces the URL of the downloaded file. On failure, produces an `NSError` either from the underlying `NSURLSessionTask`, or a file system related error from the `NSFileManager`.
+Downloads a file. On success, produces the URL of the downloaded file. On failure, produces a `NetworkOperationError` value.
 
 ```swift
 import PCloudSDKSwift
 
 let link: FileLink.Metadata
 
-PCloud.sharedClient!.downloadFile(from: link.address, downloadTag: link.downloadTag, to: { path in
+client.downloadFile(from: link.address, downloadTag: link.downloadTag, to: { path in
     // Move the file
 })
 .addCompletionBlock { result in
@@ -305,9 +305,9 @@ Once started, a task can stop if it succeeds, fails or if it is cancelled. Since
 The completion block of a task will only be called if a task fails or succeeds, **not** when it is cancelled. Also, all of a task's callback blocks are called on the main queue.
 A task will be retained in memory **while it is running**, so there is no need to manually keep a reference to it, given that you start the task at the time of creation.
 
-### Handling API errors
+### Handling errors
 
-Each API method in the SDK is defined in the `PCloudApi` namespace as a separate struct. And each method defines its errors within its own namespace. Apart from its own errors a method can fail with a common API error defined in `PCloudApi.Error`, or a `PCloudApi.RawError` for any other undefined (within the SDK) error.
+Upload and RPC call tasks fail with a `CallError`. This enum combines the possible errors from the networking layer and the PCloud API layer. One of the possible errors is `CallError<T>.methodError(T)` and the suberror there will depend on the API method being executed by the task. All API methods are defined in `PCloudAPI.swift` and each one has an `Error` enum defined in its namespace. So, for example, if you are executing a `ListFolder` API method, the task error would be defined as `CallError<ListFolder.Error>`. Some API methods (e.g. `UserInfo`) cannot fail with anything else than generic API errors so they will define their error as `NullError`. Such tasks can never fail with `CallError<T>.methodError(T)`.
 
 ---
 
