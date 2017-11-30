@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ApiResponseView Structure Reference</title>
+    <title>Dictionary Extension Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,11 +10,11 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/ApiResponseView" class="dashAnchor"></a>
-    <a title="ApiResponseView Structure Reference"></a>
+    <a name="//apple_ref/swift/Extension/Dictionary" class="dashAnchor"></a>
+    <a title="Dictionary Extension Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PCloudSDKSwift Docs</a> (83% documented)</p>
+        <p><a href="../index.html">PCloudSDKSwift Docs</a> (81% documented)</p>
         <p class="header-right"><a href="https://github.com/pcloud/pcloud-sdk-swift"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">PCloudSDKSwift Reference</a>
         <img id="carat" src="../img/carat.png" />
-        ApiResponseView Structure Reference
+        Dictionary Extension Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -33,9 +33,6 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Classes/AnyCancellationToken.html">AnyCancellationToken</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/ApiTaskController.html">ApiTaskController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Atomic.html">Atomic</a>
@@ -85,10 +82,16 @@
             <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Enums/CallError.html">CallError</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Enums/Content.html">Content</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/Content/Metadata.html">– Metadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkOperationError.html">NetworkOperationError</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/NetworkOperationState.html">NetworkOperationState</a>
@@ -104,6 +107,12 @@
           <li class="nav-group-name">
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/CharacterSet.html">CharacterSet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
               </li>
@@ -166,7 +175,7 @@
                 <a href="../Protocols/OAuthAuthorizationFlowView.html">OAuthAuthorizationFlowView</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a>
+                <a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Parser.html">Parser</a>
@@ -182,9 +191,6 @@
           <li class="nav-group-name">
             <a href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Structs/ApiResponseView.html">ApiResponseView</a>
-              </li>
               <li class="nav-group-task">
                 <a href="../Structs/AudioMetadataParser.html">AudioMetadataParser</a>
               </li>
@@ -252,6 +258,9 @@
                 <a href="../Structs/Keychain.html">Keychain</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/NullError.html">NullError</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/OAuth.html">OAuth</a>
               </li>
               <li class="nav-group-task">
@@ -264,67 +273,100 @@
                 <a href="../Structs/OAuthAccessTokenBasedAuthenticator.html">OAuthAccessTokenBasedAuthenticator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi.html">PCloudApi</a>
+                <a href="../Structs/PCloudAPI.html">PCloudAPI</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/Error.html">– Error</a>
+                <a href="../Structs/PCloudAPI/AuthError.html">– AuthError</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/RawError.html">– RawError</a>
+                <a href="../Structs/PCloudAPI/PermissionError.html">– PermissionError</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/UserInfo.html">– UserInfo</a>
+                <a href="../Structs/PCloudAPI/Error.html">– Error</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/ListFolder.html">– ListFolder</a>
+                <a href="../Structs/PCloudAPI/UserInfo.html">– UserInfo</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/CreateFolder.html">– CreateFolder</a>
+                <a href="../Structs/PCloudAPI/ListFolder.html">– ListFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/RenameFolder.html">– RenameFolder</a>
+                <a href="../Structs/PCloudAPI/CreateFolder.html">– CreateFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/MoveFolder.html">– MoveFolder</a>
+                <a href="../Structs/PCloudAPI/RenameFolder.html">– RenameFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/CopyFolder.html">– CopyFolder</a>
+                <a href="../Structs/PCloudAPI/MoveFolder.html">– MoveFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/DeleteFolderRecursive.html">– DeleteFolderRecursive</a>
+                <a href="../Structs/PCloudAPI/CopyFolder.html">– CopyFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/UploadFile.html">– UploadFile</a>
+                <a href="../Structs/PCloudAPI/DeleteFolderRecursive.html">– DeleteFolderRecursive</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/CopyFile.html">– CopyFile</a>
+                <a href="../Structs/PCloudAPI/UploadFile.html">– UploadFile</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/RenameFile.html">– RenameFile</a>
+                <a href="../Structs/PCloudAPI/CreateUpload.html">– CreateUpload</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/MoveFile.html">– MoveFile</a>
+                <a href="../Structs/PCloudAPI/GetUploadInfo.html">– GetUploadInfo</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/DeleteFile.html">– DeleteFile</a>
+                <a href="../Structs/PCloudAPI/WriteToUpload.html">– WriteToUpload</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/GetFileLink.html">– GetFileLink</a>
+                <a href="../Structs/PCloudAPI/SaveUpload.html">– SaveUpload</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/GetThumbnailLink.html">– GetThumbnailLink</a>
+                <a href="../Structs/PCloudAPI/CopyFile.html">– CopyFile</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/GetThumbnailsLinks.html">– GetThumbnailsLinks</a>
+                <a href="../Structs/PCloudAPI/RenameFile.html">– RenameFile</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/URLSessionDispatch.html">URLSessionDispatch</a>
+                <a href="../Structs/PCloudAPI/MoveFile.html">– MoveFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/DeleteFile.html">– DeleteFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetFileLink.html">– GetFileLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetThumbnailLink.html">– GetThumbnailLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetThumbnailsLinks.html">– GetThumbnailsLinks</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPICallTaskBuilder.html">PCloudAPICallTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPIDownloadTaskBuilder.html">PCloudAPIDownloadTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPIUploadTaskBuilder.html">PCloudAPIUploadTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLSessionBasedNetworkOperationUtilities.html">URLSessionBasedNetworkOperationUtilities</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLSessionTaskBuilder.html">URLSessionTaskBuilder</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Upload.html">Upload</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Upload/Request.html">– Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UploadInfo.html">UploadInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UploadInfoParser.html">UploadInfoParser</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/User.html">User</a>
@@ -348,15 +390,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>ApiResponseView</h1>
+            <h1>Dictionary</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ApiResponseView</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">Key</span><span class="p">,</span> <span class="kt">Value</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">Collection</span><span class="p">,</span> <span class="kt">ExpressibleByDictionaryLiteral</span> <span class="k">where</span> <span class="kt">Key</span> <span class="p">:</span> <span class="kt">Hashable</span></code></pre>
 
                 </div>
               </div>
-            <p>Utility wrapper around the API response dictionary, providing convenient interface for accessing typed values.</p>
-
+            
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -364,63 +405,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV03rawD0s10DictionaryVySSypGv"></a>
-                    <a name="//apple_ref/swift/Property/rawResponse" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV03rawD0s10DictionaryVySSypGv">rawResponse</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The underlying API response.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">rawResponse</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewVACs10DictionaryVySSypGcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewVACs10DictionaryVySSypGcfc">init(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Initializes a view with an API response.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">rawResponse</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">])</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV5valuexSgSSlF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE5valueqd__SgSSlF"></a>
                     <a name="//apple_ref/swift/Method/value(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV5valuexSgSSlF">value(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE5valueqd__SgSSlF">value(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -435,7 +422,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">value</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="n">value</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -468,9 +455,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV8intOrNilSiSgSSF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE8intOrNilSiSgSSF"></a>
                     <a name="//apple_ref/swift/Method/intOrNil(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV8intOrNilSiSgSSF">intOrNil(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE8intOrNilSiSgSSF">intOrNil(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -485,7 +472,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">intOrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">intOrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -495,9 +482,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV9boolOrNilSbSgSSF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE9boolOrNilSbSgSSF"></a>
                     <a name="//apple_ref/swift/Method/boolOrNil(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV9boolOrNilSbSgSSF">boolOrNil(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE9boolOrNilSbSgSSF">boolOrNil(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -512,7 +499,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">boolOrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">boolOrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -522,9 +509,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV11stringOrNilSSSgSSF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE11stringOrNilSSSgSSF"></a>
                     <a name="//apple_ref/swift/Method/stringOrNil(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV11stringOrNilSSSgSSF">stringOrNil(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE11stringOrNilSSSgSSF">stringOrNil(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -539,7 +526,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stringOrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">stringOrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -549,9 +536,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV10floatOrNilSfSgSSF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE10floatOrNilSfSgSSF"></a>
                     <a name="//apple_ref/swift/Method/floatOrNil(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV10floatOrNilSfSgSSF">floatOrNil(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE10floatOrNilSfSgSSF">floatOrNil(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -566,7 +553,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">floatOrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Float</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">floatOrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Float</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -576,9 +563,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV9uintOrNilSuSgSSF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE9uintOrNilSuSgSSF"></a>
                     <a name="//apple_ref/swift/Method/uintOrNil(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV9uintOrNilSuSgSSF">uintOrNil(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE9uintOrNilSuSgSSF">uintOrNil(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -593,7 +580,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">uintOrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UInt</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">uintOrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UInt</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -603,9 +590,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV11uint32OrNils6UInt32VSgSSF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE11uint32OrNils6UInt32VSgSSF"></a>
                     <a name="//apple_ref/swift/Method/uint32OrNil(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV11uint32OrNils6UInt32VSgSSF">uint32OrNil(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE11uint32OrNils6UInt32VSgSSF">uint32OrNil(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -620,7 +607,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">uint32OrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UInt32</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">uint32OrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UInt32</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -630,9 +617,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV11uint64OrNils6UInt64VSgSSF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE11uint64OrNils6UInt64VSgSSF"></a>
                     <a name="//apple_ref/swift/Method/uint64OrNil(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV11uint64OrNils6UInt64VSgSSF">uint64OrNil(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE11uint64OrNils6UInt64VSgSSF">uint64OrNil(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -647,7 +634,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">uint64OrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UInt64</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">uint64OrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UInt64</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -657,9 +644,36 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV15dictionaryOrNils10DictionaryVySSypGSgSSF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE11numberOrNilSo8NSNumberCSgSSF"></a>
+                    <a name="//apple_ref/swift/Method/numberOrNil(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE11numberOrNilSo8NSNumberCSgSSF">numberOrNil(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">numberOrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">NSNumber</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE15dictionaryOrNilABySSypGSgSSF"></a>
                     <a name="//apple_ref/swift/Method/dictionaryOrNil(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV15dictionaryOrNils10DictionaryVySSypGSgSSF">dictionaryOrNil(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE15dictionaryOrNilABySSypGSgSSF">dictionaryOrNil(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -674,7 +688,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">dictionaryOrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">dictionaryOrNil</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span></code></pre>
 
                         </div>
                       </div>
@@ -684,9 +698,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV3intSiSSF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE3intSiSSF"></a>
                     <a name="//apple_ref/swift/Method/int(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV3intSiSSF">int(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE3intSiSSF">int(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -701,7 +715,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">int</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">int</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
 
                         </div>
                       </div>
@@ -711,9 +725,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV4boolSbSSF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE4boolSbSSF"></a>
                     <a name="//apple_ref/swift/Method/bool(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV4boolSbSSF">bool(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE4boolSbSSF">bool(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -728,7 +742,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">bool</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">bool</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -738,9 +752,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV6stringS2SF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE6stringS2SF"></a>
                     <a name="//apple_ref/swift/Method/string(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV6stringS2SF">string(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE6stringS2SF">string(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -755,7 +769,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">string</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">string</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -765,9 +779,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV5floatSfSSF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE5floatSfSSF"></a>
                     <a name="//apple_ref/swift/Method/float(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV5floatSfSSF">float(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE5floatSfSSF">float(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -782,7 +796,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">float</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Float</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">float</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Float</span></code></pre>
 
                         </div>
                       </div>
@@ -792,9 +806,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV4uintSuSSF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE4uintSuSSF"></a>
                     <a name="//apple_ref/swift/Method/uint(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV4uintSuSSF">uint(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE4uintSuSSF">uint(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -809,7 +823,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">uint</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UInt</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">uint</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UInt</span></code></pre>
 
                         </div>
                       </div>
@@ -819,9 +833,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV6uint32s6UInt32VSSF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE6uint32s6UInt32VSSF"></a>
                     <a name="//apple_ref/swift/Method/uint32(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV6uint32s6UInt32VSSF">uint32(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE6uint32s6UInt32VSSF">uint32(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -836,7 +850,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">uint32</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UInt32</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">uint32</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UInt32</span></code></pre>
 
                         </div>
                       </div>
@@ -846,9 +860,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV6uint64s6UInt64VSSF"></a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE6uint64s6UInt64VSSF"></a>
                     <a name="//apple_ref/swift/Method/uint64(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV6uint64s6UInt64VSSF">uint64(_:)</a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE6uint64s6UInt64VSSF">uint64(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -863,7 +877,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">uint64</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UInt64</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">uint64</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UInt64</span></code></pre>
 
                         </div>
                       </div>
@@ -873,9 +887,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift15ApiResponseViewV10dictionarys10DictionaryVySSypGSSF"></a>
-                    <a name="//apple_ref/swift/Method/dictionary(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift15ApiResponseViewV10dictionarys10DictionaryVySSypGSSF">dictionary(_:)</a>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE6numberSo8NSNumberCSSF"></a>
+                    <a name="//apple_ref/swift/Method/number(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE6numberSo8NSNumberCSSF">number(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -890,7 +904,34 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">dictionary</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">number</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">NSNumber</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE10dictionaryABySSypGSSF"></a>
+                    <a name="//apple_ref/swift/Method/dictionary(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s10DictionaryV14PCloudSDKSwiftSSRszypRs_r0_lE10dictionaryABySSypGSSF">dictionary(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">dictionary</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -902,7 +943,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://pcloud.com" target="_blank" rel="external">pCloud</a>. All rights reserved. (Last updated: 2017-11-24)</p>
+          <p>&copy; 2017 <a class="link" href="http://pcloud.com" target="_blank" rel="external">pCloud</a>. All rights reserved. (Last updated: 2017-11-30)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

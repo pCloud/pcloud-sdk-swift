@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ApiTaskController Class Reference</title>
+    <title>URLSessionBasedNetworkOperationUtilities Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,11 +10,11 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/ApiTaskController" class="dashAnchor"></a>
-    <a title="ApiTaskController Class Reference"></a>
+    <a name="//apple_ref/swift/Struct/URLSessionBasedNetworkOperationUtilities" class="dashAnchor"></a>
+    <a title="URLSessionBasedNetworkOperationUtilities Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PCloudSDKSwift Docs</a> (83% documented)</p>
+        <p><a href="../index.html">PCloudSDKSwift Docs</a> (81% documented)</p>
         <p class="header-right"><a href="https://github.com/pcloud/pcloud-sdk-swift"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">PCloudSDKSwift Reference</a>
         <img id="carat" src="../img/carat.png" />
-        ApiTaskController Class Reference
+        URLSessionBasedNetworkOperationUtilities Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -33,9 +33,6 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Classes/AnyCancellationToken.html">AnyCancellationToken</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/ApiTaskController.html">ApiTaskController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Atomic.html">Atomic</a>
@@ -85,10 +82,16 @@
             <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Enums/CallError.html">CallError</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Enums/Content.html">Content</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/Content/Metadata.html">– Metadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkOperationError.html">NetworkOperationError</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/NetworkOperationState.html">NetworkOperationState</a>
@@ -104,6 +107,12 @@
           <li class="nav-group-name">
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/CharacterSet.html">CharacterSet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
               </li>
@@ -166,7 +175,7 @@
                 <a href="../Protocols/OAuthAuthorizationFlowView.html">OAuthAuthorizationFlowView</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a>
+                <a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Parser.html">Parser</a>
@@ -182,9 +191,6 @@
           <li class="nav-group-name">
             <a href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Structs/ApiResponseView.html">ApiResponseView</a>
-              </li>
               <li class="nav-group-task">
                 <a href="../Structs/AudioMetadataParser.html">AudioMetadataParser</a>
               </li>
@@ -252,6 +258,9 @@
                 <a href="../Structs/Keychain.html">Keychain</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/NullError.html">NullError</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/OAuth.html">OAuth</a>
               </li>
               <li class="nav-group-task">
@@ -264,67 +273,100 @@
                 <a href="../Structs/OAuthAccessTokenBasedAuthenticator.html">OAuthAccessTokenBasedAuthenticator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi.html">PCloudApi</a>
+                <a href="../Structs/PCloudAPI.html">PCloudAPI</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/Error.html">– Error</a>
+                <a href="../Structs/PCloudAPI/AuthError.html">– AuthError</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/RawError.html">– RawError</a>
+                <a href="../Structs/PCloudAPI/PermissionError.html">– PermissionError</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/UserInfo.html">– UserInfo</a>
+                <a href="../Structs/PCloudAPI/Error.html">– Error</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/ListFolder.html">– ListFolder</a>
+                <a href="../Structs/PCloudAPI/UserInfo.html">– UserInfo</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/CreateFolder.html">– CreateFolder</a>
+                <a href="../Structs/PCloudAPI/ListFolder.html">– ListFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/RenameFolder.html">– RenameFolder</a>
+                <a href="../Structs/PCloudAPI/CreateFolder.html">– CreateFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/MoveFolder.html">– MoveFolder</a>
+                <a href="../Structs/PCloudAPI/RenameFolder.html">– RenameFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/CopyFolder.html">– CopyFolder</a>
+                <a href="../Structs/PCloudAPI/MoveFolder.html">– MoveFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/DeleteFolderRecursive.html">– DeleteFolderRecursive</a>
+                <a href="../Structs/PCloudAPI/CopyFolder.html">– CopyFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/UploadFile.html">– UploadFile</a>
+                <a href="../Structs/PCloudAPI/DeleteFolderRecursive.html">– DeleteFolderRecursive</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/CopyFile.html">– CopyFile</a>
+                <a href="../Structs/PCloudAPI/UploadFile.html">– UploadFile</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/RenameFile.html">– RenameFile</a>
+                <a href="../Structs/PCloudAPI/CreateUpload.html">– CreateUpload</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/MoveFile.html">– MoveFile</a>
+                <a href="../Structs/PCloudAPI/GetUploadInfo.html">– GetUploadInfo</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/DeleteFile.html">– DeleteFile</a>
+                <a href="../Structs/PCloudAPI/WriteToUpload.html">– WriteToUpload</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/GetFileLink.html">– GetFileLink</a>
+                <a href="../Structs/PCloudAPI/SaveUpload.html">– SaveUpload</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/GetThumbnailLink.html">– GetThumbnailLink</a>
+                <a href="../Structs/PCloudAPI/CopyFile.html">– CopyFile</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/GetThumbnailsLinks.html">– GetThumbnailsLinks</a>
+                <a href="../Structs/PCloudAPI/RenameFile.html">– RenameFile</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/URLSessionDispatch.html">URLSessionDispatch</a>
+                <a href="../Structs/PCloudAPI/MoveFile.html">– MoveFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/DeleteFile.html">– DeleteFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetFileLink.html">– GetFileLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetThumbnailLink.html">– GetThumbnailLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetThumbnailsLinks.html">– GetThumbnailsLinks</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPICallTaskBuilder.html">PCloudAPICallTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPIDownloadTaskBuilder.html">PCloudAPIDownloadTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPIUploadTaskBuilder.html">PCloudAPIUploadTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLSessionBasedNetworkOperationUtilities.html">URLSessionBasedNetworkOperationUtilities</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLSessionTaskBuilder.html">URLSessionTaskBuilder</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Upload.html">Upload</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Upload/Request.html">– Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UploadInfo.html">UploadInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UploadInfoParser.html">UploadInfoParser</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/User.html">User</a>
@@ -348,14 +390,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>ApiTaskController</h1>
+            <h1>URLSessionBasedNetworkOperationUtilities</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">ApiTaskController</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">URLSessionBasedNetworkOperationUtilities</span></code></pre>
 
                 </div>
               </div>
-            <p>Dispatches network tasks for pCloud API methods.</p>
+            <p>Undocumented</p>
 
           </section>
           <section class="section task-group-section">
@@ -364,9 +406,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift17ApiTaskControllerC14CallDispatchera"></a>
-                    <a name="//apple_ref/swift/Alias/CallDispatcher" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift17ApiTaskControllerC14CallDispatchera">CallDispatcher</a>
+                    <a name="/s:14PCloudSDKSwift40URLSessionBasedNetworkOperationUtilitiesV010createCallF7BuilderAA0iF0_pAA0I0V7RequestVcAA6SchemeO6scheme_So0C0C7sessionAA0C8EventHubC8delegatetFZ"></a>
+                    <a name="//apple_ref/swift/Method/createCallOperationBuilder(scheme:session:delegate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift40URLSessionBasedNetworkOperationUtilitiesV010createCallF7BuilderAA0iF0_pAA0I0V7RequestVcAA6SchemeO6scheme_So0C0C7sessionAA0C8EventHubC8delegatetFZ">createCallOperationBuilder(scheme:session:delegate:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -374,99 +416,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Builds a <code><a href="../Protocols/CallOperation.html">CallOperation</a></code> from a <code><a href="../Structs/Call/Request.html">Call.Request</a></code>.</p>
+                        <p>Creates and returns a block that builds a <code><a href="../Protocols/CallOperation.html">CallOperation</a></code> from a <code><a href="../Structs/Call/Request.html">Call.Request</a></code> using a <code>URLSession</code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">CallDispatcher</span> <span class="o">=</span> <span class="p">(</span><span class="kt"><a href="../Structs/Call.html">Call</a></span><span class="o">.</span><span class="kt">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/CallOperation.html">CallOperation</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift17ApiTaskControllerC16UploadDispatchera"></a>
-                    <a name="//apple_ref/swift/Alias/UploadDispatcher" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift17ApiTaskControllerC16UploadDispatchera">UploadDispatcher</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Builds an <code><a href="../Protocols/UploadOperation.html">UploadOperation</a></code> from an <code><a href="../Structs/Upload/Request.html">Upload.Request</a></code>.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">UploadDispatcher</span> <span class="o">=</span> <span class="p">(</span><span class="kt"><a href="../Structs/Upload.html">Upload</a></span><span class="o">.</span><span class="kt">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/UploadOperation.html">UploadOperation</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift17ApiTaskControllerC18DownloadDispatchera"></a>
-                    <a name="//apple_ref/swift/Alias/DownloadDispatcher" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift17ApiTaskControllerC18DownloadDispatchera">DownloadDispatcher</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Builds a <code><a href="../Protocols/DownloadOperation.html">DownloadOperation</a></code> from a <code><a href="../Structs/Download/Request.html">Download.Request</a></code>.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">DownloadDispatcher</span> <span class="o">=</span> <span class="p">(</span><span class="kt"><a href="../Structs/Download.html">Download</a></span><span class="o">.</span><span class="kt">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/DownloadOperation.html">DownloadOperation</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift17ApiTaskControllerCAcA12HostProvider_p04hostG0_AA13Authenticator_p13authenticatorAA13CallOperation_pAA0K0V7RequestVc14callDispatcherAA06UploadL0_pAA0P0VAKVc06uploadO0AA08DownloadL0_pAA0R0VAKVc08downloadO0tcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(hostProvider:authenticator:callDispatcher:uploadDispatcher:downloadDispatcher:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift17ApiTaskControllerCAcA12HostProvider_p04hostG0_AA13Authenticator_p13authenticatorAA13CallOperation_pAA0K0V7RequestVc14callDispatcherAA06UploadL0_pAA0P0VAKVc06uploadO0AA08DownloadL0_pAA0R0VAKVc08downloadO0tcfc">init(hostProvider:authenticator:callDispatcher:uploadDispatcher:downloadDispatcher:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Initializes a controller with a host provider, command authenticator and network operation builders.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">hostProvider</span><span class="p">:</span> <span class="kt"><a href="../Protocols/HostProvider.html">HostProvider</a></span><span class="p">,</span>
-            <span class="nv">authenticator</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Authenticator.html">Authenticator</a></span><span class="p">,</span>
-            <span class="nv">callDispatcher</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/ApiTaskController.html#/s:14PCloudSDKSwift17ApiTaskControllerC14CallDispatchera">CallDispatcher</a></span><span class="p">,</span>
-            <span class="nv">uploadDispatcher</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/ApiTaskController.html#/s:14PCloudSDKSwift17ApiTaskControllerC16UploadDispatchera">UploadDispatcher</a></span><span class="p">,</span>
-            <span class="nv">downloadDispatcher</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/ApiTaskController.html#/s:14PCloudSDKSwift17ApiTaskControllerC18DownloadDispatchera">DownloadDispatcher</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">createCallOperationBuilder</span><span class="p">(</span><span class="nv">scheme</span><span class="p">:</span> <span class="kt"><a href="../Enums/Scheme.html">Scheme</a></span><span class="p">,</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">URLSession</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Classes/URLSessionEventHub.html">URLSessionEventHub</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="kt"><a href="../Structs/Call.html">Call</a></span><span class="o">.</span><span class="kt">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/CallOperation.html">CallOperation</a></span></code></pre>
 
                         </div>
                       </div>
@@ -477,118 +434,36 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>hostProvider</em>
+                                <em>scheme</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Used to derive the endpoint when dispatching a network task.</p>
+                                  <p>A scheme to use when building the operation.</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>authenticator</em>
+                                <em>session</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Used to attach authentication data to methods that require authentication.</p>
+                                  <p>A session used to create data tasks.</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>callDispatcher</em>
+                                <em>delegate</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>A block creating a <code><a href="../Protocols/CallOperation.html">CallOperation</a></code> from a <code><a href="../Structs/Call/Request.html">Call.Request</a></code>.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>uploadDispatcher</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A block creating an <code><a href="../Protocols/UploadOperation.html">UploadOperation</a></code> from an <code><a href="../Structs/Upload/Request.html">Upload.Request</a></code>.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>downloadDispatcher</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A block creating a <code><a href="../Protocols/DownloadOperation.html">DownloadOperation</a></code> from a <code><a href="../Structs/Download/Request.html">Download.Request</a></code>.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift17ApiTaskControllerC4callAA04CallD0CyxGx_SSSg6onHosttAA0aC6MethodRzlF"></a>
-                    <a name="//apple_ref/swift/Method/call(_:onHost:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift17ApiTaskControllerC4callAA04CallD0CyxGx_SSSg6onHosttAA0aC6MethodRzlF">call(_:onHost:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Dispatches and returns a task for a specific pCloud API method.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">call</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span> <span class="n">onHost</span> <span class="nv">hostName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/CallTask.html">CallTask</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>method</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>An object defining input and output for this call.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>hostName</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>An API host name. When <code>nil</code>, the controller will fall back to its host provider.</p>
+                                  <p>The session delegate.</p>
                                 </div>
                               </td>
                             </tr>
@@ -597,7 +472,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>A non-running task that can execute the call.</p>
+                        <p>A block that builds a <code>URLSessionDataTask</code>-backed <code><a href="../Protocols/CallOperation.html">CallOperation</a></code> from a <code><a href="../Structs/Call/Request.html">Call.Request</a></code>.</p>
                       </div>
                     </section>
                   </div>
@@ -605,9 +480,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift17ApiTaskControllerC6uploadAA06UploadD0CyxGx_AA0G0V7RequestV4BodyO4bodySSSg6onHosttAA0aC6MethodRzlF"></a>
-                    <a name="//apple_ref/swift/Method/upload(_:body:onHost:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift17ApiTaskControllerC6uploadAA06UploadD0CyxGx_AA0G0V7RequestV4BodyO4bodySSSg6onHosttAA0aC6MethodRzlF">upload(_:body:onHost:)</a>
+                    <a name="/s:14PCloudSDKSwift40URLSessionBasedNetworkOperationUtilitiesV012createUploadF7BuilderAA0iF0_pAA0I0V7RequestVcAA6SchemeO6scheme_So0C0C7sessionAA0C8EventHubC8delegatetFZ"></a>
+                    <a name="//apple_ref/swift/Method/createUploadOperationBuilder(scheme:session:delegate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift40URLSessionBasedNetworkOperationUtilitiesV012createUploadF7BuilderAA0iF0_pAA0I0V7RequestVcAA6SchemeO6scheme_So0C0C7sessionAA0C8EventHubC8delegatetFZ">createUploadOperationBuilder(scheme:session:delegate:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -615,14 +490,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Dispatches and returns an upload task using a specific API method.</p>
+                        <p>Creates and returns a block that builds an <code><a href="../Protocols/UploadOperation.html">UploadOperation</a></code> from an <code><a href="../Structs/Upload/Request.html">Upload.Request</a></code> using a <code>URLSession</code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">upload</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span> <span class="nv">body</span><span class="p">:</span> <span class="kt"><a href="../Structs/Upload.html">Upload</a></span><span class="o">.</span><span class="kt">Request</span><span class="o">.</span><span class="kt">Body</span><span class="p">,</span> <span class="n">onHost</span> <span class="nv">hostName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/UploadTask.html">UploadTask</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">createUploadOperationBuilder</span><span class="p">(</span><span class="nv">scheme</span><span class="p">:</span> <span class="kt"><a href="../Enums/Scheme.html">Scheme</a></span><span class="p">,</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">URLSession</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Classes/URLSessionEventHub.html">URLSessionEventHub</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="kt"><a href="../Structs/Upload.html">Upload</a></span><span class="o">.</span><span class="kt">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/UploadOperation.html">UploadOperation</a></span></code></pre>
 
                         </div>
                       </div>
@@ -633,36 +508,36 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>method</em>
+                                <em>scheme</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>An object defining input and output for this call.</p>
+                                  <p>A scheme to use when building the operation.</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>body</em>
+                                <em>session</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The data to upload.</p>
+                                  <p>A session used to create upload tasks.</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>hostName</em>
+                                <em>delegate</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>An API host name. When <code>nil</code>, the controller will fall back to its host provider.</p>
+                                  <p>The session delegate.</p>
                                 </div>
                               </td>
                             </tr>
@@ -671,7 +546,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>A non-running task that can execute the upload.</p>
+                        <p>A block that builds a <code>URLSessionUploadTask</code>-backed <code><a href="../Protocols/UploadOperation.html">UploadOperation</a></code> from an <code><a href="../Structs/Upload/Request.html">Upload.Request</a></code>.</p>
                       </div>
                     </section>
                   </div>
@@ -679,9 +554,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift17ApiTaskControllerC8downloadAA08DownloadD0CAA11Cancellable_pyAA6ResultOy10Foundation3URLVGcc15addressProvider_A2Lc11destinationtF"></a>
-                    <a name="//apple_ref/swift/Method/download(addressProvider:destination:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift17ApiTaskControllerC8downloadAA08DownloadD0CAA11Cancellable_pyAA6ResultOy10Foundation3URLVGcc15addressProvider_A2Lc11destinationtF">download(addressProvider:destination:)</a>
+                    <a name="/s:14PCloudSDKSwift40URLSessionBasedNetworkOperationUtilitiesV014createDownloadF7BuilderAA0iF0_pAA0I0V7RequestVcSo0C0C7session_AA0C8EventHubC8delegatetFZ"></a>
+                    <a name="//apple_ref/swift/Method/createDownloadOperationBuilder(session:delegate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift40URLSessionBasedNetworkOperationUtilitiesV014createDownloadF7BuilderAA0iF0_pAA0I0V7RequestVcSo0C0C7session_AA0C8EventHubC8delegatetFZ">createDownloadOperationBuilder(session:delegate:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -689,14 +564,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Creates and returns a download task given an address provider and a destination.</p>
+                        <p>Creates and returns a block that builds a <code><a href="../Protocols/DownloadOperation.html">DownloadOperation</a></code> from a <code><a href="../Structs/Download/Request.html">Download.Request</a></code> using a <code>URLSession</code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">download</span><span class="p">(</span><span class="nv">addressProvider</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/DownloadTask.html">DownloadTask</a></span><span class="o">.</span><span class="kt">AddressProvider</span><span class="p">,</span> <span class="nv">destination</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">URL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">URL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/DownloadTask.html">DownloadTask</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">createDownloadOperationBuilder</span><span class="p">(</span><span class="nv">session</span><span class="p">:</span> <span class="kt">URLSession</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Classes/URLSessionEventHub.html">URLSessionEventHub</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="kt"><a href="../Structs/Download.html">Download</a></span><span class="o">.</span><span class="kt">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/DownloadOperation.html">DownloadOperation</a></span></code></pre>
 
                         </div>
                       </div>
@@ -707,25 +582,24 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>addressProvider</em>
+                                <em>session</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>A block obtaining a resource address asynchronously. When the task completes, the completion block passed
-as the parameter to this block should be called on the main thread. Referenced strongly by the task.</p>
+                                  <p>A session used to create download tasks.</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>operationBuilder</em>
+                                <em>delegate</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>A block creating a download operation from a resource address. Referenced strongly by the task.</p>
+                                  <p>The session delegate.</p>
                                 </div>
                               </td>
                             </tr>
@@ -734,7 +608,7 @@ as the parameter to this block should be called on the main thread. Referenced s
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>A non-running task that can execute the download.</p>
+                        <p>A block that builds a <code>URLSessionDownloadTask</code>-backed <code><a href="../Protocols/DownloadOperation.html">DownloadOperation</a></code> from a <code><a href="../Structs/Download/Request.html">Download.Request</a></code>.</p>
                       </div>
                     </section>
                   </div>
@@ -744,7 +618,7 @@ as the parameter to this block should be called on the main thread. Referenced s
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://pcloud.com" target="_blank" rel="external">pCloud</a>. All rights reserved. (Last updated: 2017-11-24)</p>
+          <p>&copy; 2017 <a class="link" href="http://pcloud.com" target="_blank" rel="external">pCloud</a>. All rights reserved. (Last updated: 2017-11-30)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

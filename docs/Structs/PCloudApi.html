@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PCloudApi Structure Reference</title>
+    <title>PCloudAPI Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,11 +10,11 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/PCloudApi" class="dashAnchor"></a>
-    <a title="PCloudApi Structure Reference"></a>
+    <a name="//apple_ref/swift/Struct/PCloudAPI" class="dashAnchor"></a>
+    <a title="PCloudAPI Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PCloudSDKSwift Docs</a> (83% documented)</p>
+        <p><a href="../index.html">PCloudSDKSwift Docs</a> (81% documented)</p>
         <p class="header-right"><a href="https://github.com/pcloud/pcloud-sdk-swift"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">PCloudSDKSwift Reference</a>
         <img id="carat" src="../img/carat.png" />
-        PCloudApi Structure Reference
+        PCloudAPI Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -33,9 +33,6 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Classes/AnyCancellationToken.html">AnyCancellationToken</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/ApiTaskController.html">ApiTaskController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Atomic.html">Atomic</a>
@@ -85,10 +82,16 @@
             <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Enums/CallError.html">CallError</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Enums/Content.html">Content</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/Content/Metadata.html">– Metadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkOperationError.html">NetworkOperationError</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/NetworkOperationState.html">NetworkOperationState</a>
@@ -104,6 +107,12 @@
           <li class="nav-group-name">
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/CharacterSet.html">CharacterSet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
               </li>
@@ -166,7 +175,7 @@
                 <a href="../Protocols/OAuthAuthorizationFlowView.html">OAuthAuthorizationFlowView</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a>
+                <a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Parser.html">Parser</a>
@@ -182,9 +191,6 @@
           <li class="nav-group-name">
             <a href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Structs/ApiResponseView.html">ApiResponseView</a>
-              </li>
               <li class="nav-group-task">
                 <a href="../Structs/AudioMetadataParser.html">AudioMetadataParser</a>
               </li>
@@ -252,6 +258,9 @@
                 <a href="../Structs/Keychain.html">Keychain</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/NullError.html">NullError</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/OAuth.html">OAuth</a>
               </li>
               <li class="nav-group-task">
@@ -264,67 +273,100 @@
                 <a href="../Structs/OAuthAccessTokenBasedAuthenticator.html">OAuthAccessTokenBasedAuthenticator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi.html">PCloudApi</a>
+                <a href="../Structs/PCloudAPI.html">PCloudAPI</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/Error.html">– Error</a>
+                <a href="../Structs/PCloudAPI/AuthError.html">– AuthError</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/RawError.html">– RawError</a>
+                <a href="../Structs/PCloudAPI/PermissionError.html">– PermissionError</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/UserInfo.html">– UserInfo</a>
+                <a href="../Structs/PCloudAPI/Error.html">– Error</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/ListFolder.html">– ListFolder</a>
+                <a href="../Structs/PCloudAPI/UserInfo.html">– UserInfo</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/CreateFolder.html">– CreateFolder</a>
+                <a href="../Structs/PCloudAPI/ListFolder.html">– ListFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/RenameFolder.html">– RenameFolder</a>
+                <a href="../Structs/PCloudAPI/CreateFolder.html">– CreateFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/MoveFolder.html">– MoveFolder</a>
+                <a href="../Structs/PCloudAPI/RenameFolder.html">– RenameFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/CopyFolder.html">– CopyFolder</a>
+                <a href="../Structs/PCloudAPI/MoveFolder.html">– MoveFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/DeleteFolderRecursive.html">– DeleteFolderRecursive</a>
+                <a href="../Structs/PCloudAPI/CopyFolder.html">– CopyFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/UploadFile.html">– UploadFile</a>
+                <a href="../Structs/PCloudAPI/DeleteFolderRecursive.html">– DeleteFolderRecursive</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/CopyFile.html">– CopyFile</a>
+                <a href="../Structs/PCloudAPI/UploadFile.html">– UploadFile</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/RenameFile.html">– RenameFile</a>
+                <a href="../Structs/PCloudAPI/CreateUpload.html">– CreateUpload</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/MoveFile.html">– MoveFile</a>
+                <a href="../Structs/PCloudAPI/GetUploadInfo.html">– GetUploadInfo</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/DeleteFile.html">– DeleteFile</a>
+                <a href="../Structs/PCloudAPI/WriteToUpload.html">– WriteToUpload</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/GetFileLink.html">– GetFileLink</a>
+                <a href="../Structs/PCloudAPI/SaveUpload.html">– SaveUpload</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/GetThumbnailLink.html">– GetThumbnailLink</a>
+                <a href="../Structs/PCloudAPI/CopyFile.html">– CopyFile</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/GetThumbnailsLinks.html">– GetThumbnailsLinks</a>
+                <a href="../Structs/PCloudAPI/RenameFile.html">– RenameFile</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/URLSessionDispatch.html">URLSessionDispatch</a>
+                <a href="../Structs/PCloudAPI/MoveFile.html">– MoveFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/DeleteFile.html">– DeleteFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetFileLink.html">– GetFileLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetThumbnailLink.html">– GetThumbnailLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetThumbnailsLinks.html">– GetThumbnailsLinks</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPICallTaskBuilder.html">PCloudAPICallTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPIDownloadTaskBuilder.html">PCloudAPIDownloadTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPIUploadTaskBuilder.html">PCloudAPIUploadTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLSessionBasedNetworkOperationUtilities.html">URLSessionBasedNetworkOperationUtilities</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLSessionTaskBuilder.html">URLSessionTaskBuilder</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Upload.html">Upload</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Upload/Request.html">– Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UploadInfo.html">UploadInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UploadInfoParser.html">UploadInfoParser</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/User.html">User</a>
@@ -348,14 +390,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>PCloudApi</h1>
+            <h1>PCloudAPI</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">PCloudApi</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">PCloudAPI</span></code></pre>
 
                 </div>
               </div>
-            <p>PCloudApi namespace.</p>
+            <p>PCloudAPI namespace.</p>
 
           </section>
           <section class="section task-group-section">
@@ -364,9 +406,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV5ErrorO"></a>
-                    <a name="//apple_ref/swift/Enum/Error" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV5ErrorO">Error</a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV9AuthErrorO"></a>
+                    <a name="//apple_ref/swift/Enum/AuthError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV9AuthErrorO">AuthError</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -374,15 +416,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Common API errors.</p>
+                        <p>Authentication-related API errors.</p>
 
-                        <a href="../Structs/PCloudApi/Error.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/AuthError.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Error</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">Error</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">AuthError</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
 
                         </div>
                       </div>
@@ -392,9 +434,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV8RawErrorV"></a>
-                    <a name="//apple_ref/swift/Struct/RawError" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV8RawErrorV">RawError</a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV15PermissionErrorO"></a>
+                    <a name="//apple_ref/swift/Enum/PermissionError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV15PermissionErrorO">PermissionError</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -402,15 +444,43 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An API error code with a short description of the error. Used for uncommon/unnamed errors.</p>
+                        <p>Permission/access-related API errors.</p>
 
-                        <a href="../Structs/PCloudApi/RawError.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/PermissionError.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RawError</span><span class="p">:</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt"><a href="../Structs/PCloudApi/Error.html">Error</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">PermissionError</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO"></a>
+                    <a name="//apple_ref/swift/Enum/Error" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO">Error</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An API error.</p>
+
+                        <a href="../Structs/PCloudAPI/Error.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Error</span><span class="o">&lt;</span><span class="kt">MethodError</span><span class="p">:</span> <span class="kt">RawRepresentable</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">RawRepresentable</span><span class="p">,</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">Error</span> <span class="k">where</span> <span class="kt">MethodError</span><span class="o">.</span><span class="kt">RawValue</span> <span class="o">==</span> <span class="kt">Int</span></code></pre>
 
                         </div>
                       </div>
@@ -424,9 +494,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV8UserInfoV"></a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV8UserInfoV"></a>
                     <a name="//apple_ref/swift/Struct/UserInfo" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV8UserInfoV">UserInfo</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV8UserInfoV">UserInfo</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -436,13 +506,13 @@
                       <div class="abstract">
                         <p>Returns metadata about the user.</p>
 
-                        <a href="../Structs/PCloudApi/UserInfo.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/UserInfo.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UserInfo</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UserInfo</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
 
                         </div>
                       </div>
@@ -456,9 +526,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV10ListFolderV"></a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV10ListFolderV"></a>
                     <a name="//apple_ref/swift/Struct/ListFolder" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV10ListFolderV">ListFolder</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV10ListFolderV">ListFolder</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -468,13 +538,13 @@
                       <div class="abstract">
                         <p>Returns metadata for a folder and its contents.</p>
 
-                        <a href="../Structs/PCloudApi/ListFolder.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/ListFolder.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ListFolder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ListFolder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
 
                         </div>
                       </div>
@@ -484,9 +554,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV12CreateFolderV"></a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV12CreateFolderV"></a>
                     <a name="//apple_ref/swift/Struct/CreateFolder" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV12CreateFolderV">CreateFolder</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV12CreateFolderV">CreateFolder</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -496,13 +566,13 @@
                       <div class="abstract">
                         <p>Creates a folder and returns its metadata.</p>
 
-                        <a href="../Structs/PCloudApi/CreateFolder.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/CreateFolder.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CreateFolder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CreateFolder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
 
                         </div>
                       </div>
@@ -512,9 +582,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV12RenameFolderV"></a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV12RenameFolderV"></a>
                     <a name="//apple_ref/swift/Struct/RenameFolder" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV12RenameFolderV">RenameFolder</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV12RenameFolderV">RenameFolder</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -524,13 +594,13 @@
                       <div class="abstract">
                         <p>Renames a folder and returns its updated metadata.</p>
 
-                        <a href="../Structs/PCloudApi/RenameFolder.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/RenameFolder.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RenameFolder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RenameFolder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
 
                         </div>
                       </div>
@@ -540,9 +610,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV10MoveFolderV"></a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV10MoveFolderV"></a>
                     <a name="//apple_ref/swift/Struct/MoveFolder" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV10MoveFolderV">MoveFolder</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV10MoveFolderV">MoveFolder</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -552,13 +622,13 @@
                       <div class="abstract">
                         <p>Moves a folder and returns its updated metadata.</p>
 
-                        <a href="../Structs/PCloudApi/MoveFolder.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/MoveFolder.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">MoveFolder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">MoveFolder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
 
                         </div>
                       </div>
@@ -568,9 +638,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV10CopyFolderV"></a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV10CopyFolderV"></a>
                     <a name="//apple_ref/swift/Struct/CopyFolder" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV10CopyFolderV">CopyFolder</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV10CopyFolderV">CopyFolder</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -580,13 +650,13 @@
                       <div class="abstract">
                         <p>Copies a folder and returns the new folder. During copying, folders with the same name will be automatically merged.</p>
 
-                        <a href="../Structs/PCloudApi/CopyFolder.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/CopyFolder.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CopyFolder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CopyFolder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
 
                         </div>
                       </div>
@@ -596,9 +666,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV21DeleteFolderRecursiveV"></a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV21DeleteFolderRecursiveV"></a>
                     <a name="//apple_ref/swift/Struct/DeleteFolderRecursive" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV21DeleteFolderRecursiveV">DeleteFolderRecursive</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV21DeleteFolderRecursiveV">DeleteFolderRecursive</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -608,13 +678,13 @@
                       <div class="abstract">
                         <p>Deletes a folder tree.</p>
 
-                        <a href="../Structs/PCloudApi/DeleteFolderRecursive.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/DeleteFolderRecursive.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DeleteFolderRecursive</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DeleteFolderRecursive</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
 
                         </div>
                       </div>
@@ -628,9 +698,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV10UploadFileV"></a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV10UploadFileV"></a>
                     <a name="//apple_ref/swift/Struct/UploadFile" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV10UploadFileV">UploadFile</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV10UploadFileV">UploadFile</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -640,13 +710,13 @@
                       <div class="abstract">
                         <p>Creates a file from the body of this method and returns its metadata.</p>
 
-                        <a href="../Structs/PCloudApi/UploadFile.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/UploadFile.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UploadFile</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UploadFile</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
 
                         </div>
                       </div>
@@ -656,9 +726,121 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV8CopyFileV"></a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV12CreateUploadV"></a>
+                    <a name="//apple_ref/swift/Struct/CreateUpload" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV12CreateUploadV">CreateUpload</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates an upload session which can be used to upload a file over several requests. Returns the identifier of the upload.</p>
+
+                        <a href="../Structs/PCloudAPI/CreateUpload.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CreateUpload</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A3APIV13GetUploadInfoV"></a>
+                    <a name="//apple_ref/swift/Struct/GetUploadInfo" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV13GetUploadInfoV">GetUploadInfo</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fetches the state of an upload session.</p>
+
+                        <a href="../Structs/PCloudAPI/GetUploadInfo.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">GetUploadInfo</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A3APIV13WriteToUploadV"></a>
+                    <a name="//apple_ref/swift/Struct/WriteToUpload" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV13WriteToUploadV">WriteToUpload</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Writes data to an upload session.</p>
+
+                        <a href="../Structs/PCloudAPI/WriteToUpload.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">WriteToUpload</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A3APIV10SaveUploadV"></a>
+                    <a name="//apple_ref/swift/Struct/SaveUpload" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV10SaveUploadV">SaveUpload</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Commits an upload session into a file and returns the created file metadata.</p>
+
+                        <a href="../Structs/PCloudAPI/SaveUpload.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">SaveUpload</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A3APIV8CopyFileV"></a>
                     <a name="//apple_ref/swift/Struct/CopyFile" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV8CopyFileV">CopyFile</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV8CopyFileV">CopyFile</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -668,13 +850,13 @@
                       <div class="abstract">
                         <p>Copies a file and returns its updated metadata.</p>
 
-                        <a href="../Structs/PCloudApi/CopyFile.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/CopyFile.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CopyFile</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CopyFile</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
 
                         </div>
                       </div>
@@ -684,9 +866,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV10RenameFileV"></a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV10RenameFileV"></a>
                     <a name="//apple_ref/swift/Struct/RenameFile" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV10RenameFileV">RenameFile</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV10RenameFileV">RenameFile</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -696,13 +878,13 @@
                       <div class="abstract">
                         <p>Renames a file and returns its updated metadata.</p>
 
-                        <a href="../Structs/PCloudApi/RenameFile.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/RenameFile.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RenameFile</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RenameFile</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
 
                         </div>
                       </div>
@@ -712,9 +894,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV8MoveFileV"></a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV8MoveFileV"></a>
                     <a name="//apple_ref/swift/Struct/MoveFile" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV8MoveFileV">MoveFile</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV8MoveFileV">MoveFile</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -724,13 +906,13 @@
                       <div class="abstract">
                         <p>Moves a file and returns its updated metadata.</p>
 
-                        <a href="../Structs/PCloudApi/MoveFile.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/MoveFile.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">MoveFile</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">MoveFile</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
 
                         </div>
                       </div>
@@ -740,9 +922,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV10DeleteFileV"></a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV10DeleteFileV"></a>
                     <a name="//apple_ref/swift/Struct/DeleteFile" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV10DeleteFileV">DeleteFile</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV10DeleteFileV">DeleteFile</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -752,13 +934,13 @@
                       <div class="abstract">
                         <p>Deletes a file and returns its metadata.</p>
 
-                        <a href="../Structs/PCloudApi/DeleteFile.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/DeleteFile.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DeleteFile</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DeleteFile</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
 
                         </div>
                       </div>
@@ -768,9 +950,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV11GetFileLinkV"></a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV11GetFileLinkV"></a>
                     <a name="//apple_ref/swift/Struct/GetFileLink" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV11GetFileLinkV">GetFileLink</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV11GetFileLinkV">GetFileLink</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -780,13 +962,13 @@
                       <div class="abstract">
                         <p>Generates and returns links to a file. The first link in the return value is considered the best for this client.</p>
 
-                        <a href="../Structs/PCloudApi/GetFileLink.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/GetFileLink.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">GetFileLink</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">GetFileLink</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
 
                         </div>
                       </div>
@@ -796,9 +978,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV16GetThumbnailLinkV"></a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV16GetThumbnailLinkV"></a>
                     <a name="//apple_ref/swift/Struct/GetThumbnailLink" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV16GetThumbnailLinkV">GetThumbnailLink</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV16GetThumbnailLinkV">GetThumbnailLink</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -808,13 +990,13 @@
                       <div class="abstract">
                         <p>Generates and returns links to a file&rsquo;s thumbnail. The first link in the return value is considered the best for this client.</p>
 
-                        <a href="../Structs/PCloudApi/GetThumbnailLink.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/GetThumbnailLink.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">GetThumbnailLink</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">GetThumbnailLink</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
 
                         </div>
                       </div>
@@ -824,9 +1006,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3ApiV18GetThumbnailsLinksV"></a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV18GetThumbnailsLinksV"></a>
                     <a name="//apple_ref/swift/Struct/GetThumbnailsLinks" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3ApiV18GetThumbnailsLinksV">GetThumbnailsLinks</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV18GetThumbnailsLinksV">GetThumbnailsLinks</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -834,17 +1016,17 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Generates and returns links to thumbnails for multiple files. Logically equivalent to calling <code><a href="../Structs/PCloudApi/GetThumbnailLink.html">GetThumbnailLink</a></code> multiple times.
+                        <p>Generates and returns links to thumbnails for multiple files. Logically equivalent to calling <code><a href="../Structs/PCloudAPI/GetThumbnailLink.html">GetThumbnailLink</a></code> multiple times.
 The return value is a dictionary mapping a file identifier to the result of acquiring thumbnail links for that file.
-All error codes and input parameters from <code><a href="../Structs/PCloudApi/GetThumbnailLink.html">GetThumbnailLink</a></code> apply for this method as well.</p>
+All error codes and input parameters from <code><a href="../Structs/PCloudAPI/GetThumbnailLink.html">GetThumbnailLink</a></code> apply for this method as well.</p>
 
-                        <a href="../Structs/PCloudApi/GetThumbnailsLinks.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/PCloudAPI/GetThumbnailsLinks.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">GetThumbnailsLinks</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">GetThumbnailsLinks</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a></span></code></pre>
 
                         </div>
                       </div>
@@ -856,7 +1038,7 @@ All error codes and input parameters from <code><a href="../Structs/PCloudApi/Ge
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://pcloud.com" target="_blank" rel="external">pCloud</a>. All rights reserved. (Last updated: 2017-11-24)</p>
+          <p>&copy; 2017 <a class="link" href="http://pcloud.com" target="_blank" rel="external">pCloud</a>. All rights reserved. (Last updated: 2017-11-30)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>URLSessionDispatch Structure Reference</title>
+    <title>CharacterSet Extension Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,11 +10,11 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/URLSessionDispatch" class="dashAnchor"></a>
-    <a title="URLSessionDispatch Structure Reference"></a>
+    <a name="//apple_ref/swift/Extension/CharacterSet" class="dashAnchor"></a>
+    <a title="CharacterSet Extension Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PCloudSDKSwift Docs</a> (83% documented)</p>
+        <p><a href="../index.html">PCloudSDKSwift Docs</a> (81% documented)</p>
         <p class="header-right"><a href="https://github.com/pcloud/pcloud-sdk-swift"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">PCloudSDKSwift Reference</a>
         <img id="carat" src="../img/carat.png" />
-        URLSessionDispatch Structure Reference
+        CharacterSet Extension Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -33,9 +33,6 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Classes/AnyCancellationToken.html">AnyCancellationToken</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/ApiTaskController.html">ApiTaskController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Atomic.html">Atomic</a>
@@ -85,10 +82,16 @@
             <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Enums/CallError.html">CallError</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Enums/Content.html">Content</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/Content/Metadata.html">– Metadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkOperationError.html">NetworkOperationError</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/NetworkOperationState.html">NetworkOperationState</a>
@@ -104,6 +107,12 @@
           <li class="nav-group-name">
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/CharacterSet.html">CharacterSet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
               </li>
@@ -166,7 +175,7 @@
                 <a href="../Protocols/OAuthAuthorizationFlowView.html">OAuthAuthorizationFlowView</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/PCloudApiMethod.html">PCloudApiMethod</a>
+                <a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Parser.html">Parser</a>
@@ -182,9 +191,6 @@
           <li class="nav-group-name">
             <a href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Structs/ApiResponseView.html">ApiResponseView</a>
-              </li>
               <li class="nav-group-task">
                 <a href="../Structs/AudioMetadataParser.html">AudioMetadataParser</a>
               </li>
@@ -252,6 +258,9 @@
                 <a href="../Structs/Keychain.html">Keychain</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/NullError.html">NullError</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/OAuth.html">OAuth</a>
               </li>
               <li class="nav-group-task">
@@ -264,67 +273,100 @@
                 <a href="../Structs/OAuthAccessTokenBasedAuthenticator.html">OAuthAccessTokenBasedAuthenticator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi.html">PCloudApi</a>
+                <a href="../Structs/PCloudAPI.html">PCloudAPI</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/Error.html">– Error</a>
+                <a href="../Structs/PCloudAPI/AuthError.html">– AuthError</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/RawError.html">– RawError</a>
+                <a href="../Structs/PCloudAPI/PermissionError.html">– PermissionError</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/UserInfo.html">– UserInfo</a>
+                <a href="../Structs/PCloudAPI/Error.html">– Error</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/ListFolder.html">– ListFolder</a>
+                <a href="../Structs/PCloudAPI/UserInfo.html">– UserInfo</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/CreateFolder.html">– CreateFolder</a>
+                <a href="../Structs/PCloudAPI/ListFolder.html">– ListFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/RenameFolder.html">– RenameFolder</a>
+                <a href="../Structs/PCloudAPI/CreateFolder.html">– CreateFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/MoveFolder.html">– MoveFolder</a>
+                <a href="../Structs/PCloudAPI/RenameFolder.html">– RenameFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/CopyFolder.html">– CopyFolder</a>
+                <a href="../Structs/PCloudAPI/MoveFolder.html">– MoveFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/DeleteFolderRecursive.html">– DeleteFolderRecursive</a>
+                <a href="../Structs/PCloudAPI/CopyFolder.html">– CopyFolder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/UploadFile.html">– UploadFile</a>
+                <a href="../Structs/PCloudAPI/DeleteFolderRecursive.html">– DeleteFolderRecursive</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/CopyFile.html">– CopyFile</a>
+                <a href="../Structs/PCloudAPI/UploadFile.html">– UploadFile</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/RenameFile.html">– RenameFile</a>
+                <a href="../Structs/PCloudAPI/CreateUpload.html">– CreateUpload</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/MoveFile.html">– MoveFile</a>
+                <a href="../Structs/PCloudAPI/GetUploadInfo.html">– GetUploadInfo</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/DeleteFile.html">– DeleteFile</a>
+                <a href="../Structs/PCloudAPI/WriteToUpload.html">– WriteToUpload</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/GetFileLink.html">– GetFileLink</a>
+                <a href="../Structs/PCloudAPI/SaveUpload.html">– SaveUpload</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/GetThumbnailLink.html">– GetThumbnailLink</a>
+                <a href="../Structs/PCloudAPI/CopyFile.html">– CopyFile</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/PCloudApi/GetThumbnailsLinks.html">– GetThumbnailsLinks</a>
+                <a href="../Structs/PCloudAPI/RenameFile.html">– RenameFile</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/URLSessionDispatch.html">URLSessionDispatch</a>
+                <a href="../Structs/PCloudAPI/MoveFile.html">– MoveFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/DeleteFile.html">– DeleteFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetFileLink.html">– GetFileLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetThumbnailLink.html">– GetThumbnailLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetThumbnailsLinks.html">– GetThumbnailsLinks</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPICallTaskBuilder.html">PCloudAPICallTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPIDownloadTaskBuilder.html">PCloudAPIDownloadTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPIUploadTaskBuilder.html">PCloudAPIUploadTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLSessionBasedNetworkOperationUtilities.html">URLSessionBasedNetworkOperationUtilities</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLSessionTaskBuilder.html">URLSessionTaskBuilder</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Upload.html">Upload</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Upload/Request.html">– Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UploadInfo.html">UploadInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UploadInfoParser.html">UploadInfoParser</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/User.html">User</a>
@@ -348,15 +390,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>URLSessionDispatch</h1>
+            <h1>CharacterSet</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">URLSessionDispatch</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">struct</span> <span class="kt">CharacterSet</span> <span class="p">:</span> <span class="kt">ReferenceConvertible</span><span class="p">,</span> <span class="kt">Equatable</span><span class="p">,</span> <span class="kt">Hashable</span><span class="p">,</span> <span class="kt">SetAlgebra</span></code></pre>
 
                 </div>
               </div>
-            <p>Contains logic for building <code>URLSessionTask</code>-backed network operations from network requests.</p>
-
+            
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -364,157 +405,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift18URLSessionDispatchV20callOperationBuilderAA04CallF0_pAA0H0V7RequestVcAA6SchemeO6scheme_So0C0C7sessionAA0C8EventHubC8delegatetFZ"></a>
-                    <a name="//apple_ref/swift/Method/callOperationBuilder(scheme:session:delegate:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift18URLSessionDispatchV20callOperationBuilderAA04CallF0_pAA0H0V7RequestVcAA6SchemeO6scheme_So0C0C7sessionAA0C8EventHubC8delegatetFZ">callOperationBuilder(scheme:session:delegate:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Creates and returns a block that builds a <code><a href="../Protocols/CallOperation.html">CallOperation</a></code> from a <code><a href="../Structs/Call/Request.html">Call.Request</a></code> using a <code>URLSession</code>.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">callOperationBuilder</span><span class="p">(</span><span class="nv">scheme</span><span class="p">:</span> <span class="kt"><a href="../Enums/Scheme.html">Scheme</a></span><span class="p">,</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">URLSession</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Classes/URLSessionEventHub.html">URLSessionEventHub</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="kt"><a href="../Structs/Call.html">Call</a></span><span class="o">.</span><span class="kt">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/CallOperation.html">CallOperation</a></span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>scheme</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A scheme to use when building the operation.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>session</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A session used to create data tasks.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>delegate</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The session delegate.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>A block that builds a <code>URLSessionDataTask</code>-backed <code><a href="../Protocols/CallOperation.html">CallOperation</a></code> from a <code><a href="../Structs/Call/Request.html">Call.Request</a></code>.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift18URLSessionDispatchV22uploadOperationBuilderAA06UploadF0_pAA0H0V7RequestVcAA6SchemeO6scheme_So0C0C7sessionAA0C8EventHubC8delegatetFZ"></a>
-                    <a name="//apple_ref/swift/Method/uploadOperationBuilder(scheme:session:delegate:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift18URLSessionDispatchV22uploadOperationBuilderAA06UploadF0_pAA0H0V7RequestVcAA6SchemeO6scheme_So0C0C7sessionAA0C8EventHubC8delegatetFZ">uploadOperationBuilder(scheme:session:delegate:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Creates and returns a block that builds an <code><a href="../Protocols/UploadOperation.html">UploadOperation</a></code> from an <code><a href="../Structs/Upload/Request.html">Upload.Request</a></code> using a <code>URLSession</code>.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">uploadOperationBuilder</span><span class="p">(</span><span class="nv">scheme</span><span class="p">:</span> <span class="kt"><a href="../Enums/Scheme.html">Scheme</a></span><span class="p">,</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">URLSession</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Classes/URLSessionEventHub.html">URLSessionEventHub</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="kt"><a href="../Structs/Upload.html">Upload</a></span><span class="o">.</span><span class="kt">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/UploadOperation.html">UploadOperation</a></span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>scheme</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A scheme to use when building the operation.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>session</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A session used to create upload tasks.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>delegate</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The session delegate.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>A block that builds a <code>URLSessionUploadTask</code>-backed <code><a href="../Protocols/UploadOperation.html">UploadOperation</a></code> from an <code><a href="../Structs/Upload/Request.html">Upload.Request</a></code>.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift18URLSessionDispatchV24downloadOperationBuilderAA08DownloadF0_pAA0H0V7RequestVcSo0C0C7session_AA0C8EventHubC8delegatetFZ"></a>
-                    <a name="//apple_ref/swift/Method/downloadOperationBuilder(session:delegate:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift18URLSessionDispatchV24downloadOperationBuilderAA08DownloadF0_pAA0H0V7RequestVcSo0C0C7session_AA0C8EventHubC8delegatetFZ">downloadOperationBuilder(session:delegate:)</a>
+                    <a name="/s:10Foundation12CharacterSetV14PCloudSDKSwiftE024urlQueryParameterAllowedbC7RFC3986ACyFZ"></a>
+                    <a name="//apple_ref/swift/Method/urlQueryParameterAllowedCharacterSetRFC3986()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10Foundation12CharacterSetV14PCloudSDKSwiftE024urlQueryParameterAllowedbC7RFC3986ACyFZ">urlQueryParameterAllowedCharacterSetRFC3986()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -529,7 +422,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">downloadOperationBuilder</span><span class="p">(</span><span class="nv">session</span><span class="p">:</span> <span class="kt">URLSession</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Classes/URLSessionEventHub.html">URLSessionEventHub</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="kt"><a href="../Structs/Download.html">Download</a></span><span class="o">.</span><span class="kt">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/DownloadOperation.html">DownloadOperation</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">urlQueryParameterAllowedCharacterSetRFC3986</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">CharacterSet</span></code></pre>
 
                         </div>
                       </div>
@@ -541,7 +434,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://pcloud.com" target="_blank" rel="external">pCloud</a>. All rights reserved. (Last updated: 2017-11-24)</p>
+          <p>&copy; 2017 <a class="link" href="http://pcloud.com" target="_blank" rel="external">pCloud</a>. All rights reserved. (Last updated: 2017-11-30)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

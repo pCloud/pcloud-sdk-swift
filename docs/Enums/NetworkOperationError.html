@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NetworkOperationError Enumeration Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Enum/NetworkOperationError" class="dashAnchor"></a>
+    <a title="NetworkOperationError Enumeration Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">PCloudSDKSwift Docs</a> (81% documented)</p>
+        <p class="header-right"><a href="https://github.com/pcloud/pcloud-sdk-swift"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">PCloudSDKSwift Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        NetworkOperationError Enumeration Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AnyCancellationToken.html">AnyCancellationToken</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Atomic.html">Atomic</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CallTask.html">CallTask</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DownloadTask.html">DownloadTask</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Lock.html">Lock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PCloud.html">PCloud</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PCloudClient.html">PCloudClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/URLSessionBasedCallOperation.html">URLSessionBasedCallOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/URLSessionBasedDownloadOperation.html">URLSessionBasedDownloadOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/URLSessionBasedNetworkOperation.html">URLSessionBasedNetworkOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/URLSessionBasedUploadOperation.html">URLSessionBasedUploadOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/URLSessionEventHub.html">URLSessionEventHub</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UploadTask.html">UploadTask</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/WebViewControllerMobile.html">WebViewControllerMobile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/WebViewControllerPresenterMobile.html">WebViewControllerPresenterMobile</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/CallError.html">CallError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Content.html">Content</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Content/Metadata.html">– Metadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkOperationError.html">NetworkOperationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkOperationState.html">NetworkOperationState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Result.html">Result</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Scheme.html">Scheme</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/CharacterSet.html">CharacterSet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:14PCloudSDKSwift2eeoiSbAA4CallV7CommandV9ParameterO_AHtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:14PCloudSDKSwift2eeoiSbAA4CallV7CommandV_AFtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:14PCloudSDKSwift2eeoiSbAA4CallV7RequestV_AFtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:14PCloudSDKSwift2eeoiSbAA4FileV5MediaO_AFtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:14PCloudSDKSwift2eeoiSbAA4FileV8MetadataC_AFtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:14PCloudSDKSwift2eeoiSbAA4UserV8MetadataC_AFtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:14PCloudSDKSwift2eeoiSbAA6UploadV7RequestV4BodyO_AHtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:14PCloudSDKSwift2eeoiSbAA6UploadV7RequestV_AFtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:14PCloudSDKSwift2eeoiSbAA8FileLinkV8MetadataC_AFtF">==(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Authenticator.html">Authenticator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/CallOperation.html">CallOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Cancellable.html">Cancellable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DownloadOperation.html">DownloadOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/HostProvider.html">HostProvider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NetworkOperation.html">NetworkOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OAuthAuthorizationFlowView.html">OAuthAuthorizationFlowView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PCloudAPIMethod.html">PCloudAPIMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Parser.html">Parser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/URLSessionObserver.html">URLSessionObserver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UploadOperation.html">UploadOperation</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AudioMetadataParser.html">AudioMetadataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Call.html">Call</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Call/Command.html">– Command</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Call/Request.html">– Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ContentListParser.html">ContentListParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Download.html">Download</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Download/Request.html">– Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/File.html">File</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/File/Media.html">– Media</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/File/Metadata.html">– Metadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FileIconParser.html">FileIconParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FileLink.html">FileLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FileLink/Metadata.html">– Metadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FileLinkMetadataParser.html">FileLinkMetadataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FileMetadataParser.html">FileMetadataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Folder.html">Folder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Folder/Permissions.html">– Permissions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Folder/Ownership.html">– Ownership</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Folder/Metadata.html">– Metadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FolderMetadataParser.html">FolderMetadataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ImageMetadataParser.html">ImageMetadataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Keychain.html">Keychain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NullError.html">NullError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/OAuth.html">OAuth</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/OAuth/Result.html">– Result</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/OAuth/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/OAuthAccessTokenBasedAuthenticator.html">OAuthAccessTokenBasedAuthenticator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI.html">PCloudAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/AuthError.html">– AuthError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/PermissionError.html">– PermissionError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/UserInfo.html">– UserInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/ListFolder.html">– ListFolder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/CreateFolder.html">– CreateFolder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/RenameFolder.html">– RenameFolder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/MoveFolder.html">– MoveFolder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/CopyFolder.html">– CopyFolder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/DeleteFolderRecursive.html">– DeleteFolderRecursive</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/UploadFile.html">– UploadFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/CreateUpload.html">– CreateUpload</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetUploadInfo.html">– GetUploadInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/WriteToUpload.html">– WriteToUpload</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/SaveUpload.html">– SaveUpload</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/CopyFile.html">– CopyFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/RenameFile.html">– RenameFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/MoveFile.html">– MoveFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/DeleteFile.html">– DeleteFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetFileLink.html">– GetFileLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetThumbnailLink.html">– GetThumbnailLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPI/GetThumbnailsLinks.html">– GetThumbnailsLinks</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPICallTaskBuilder.html">PCloudAPICallTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPIDownloadTaskBuilder.html">PCloudAPIDownloadTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PCloudAPIUploadTaskBuilder.html">PCloudAPIUploadTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLSessionBasedNetworkOperationUtilities.html">URLSessionBasedNetworkOperationUtilities</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/URLSessionTaskBuilder.html">URLSessionTaskBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Upload.html">Upload</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Upload/Request.html">– Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UploadInfo.html">UploadInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UploadInfoParser.html">UploadInfoParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/User.html">User</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/User/Metadata.html">– Metadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UserMetadataParser.html">UserMetadataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/VideoMetadataParser.html">VideoMetadataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/VoidCancellationToken.html">VoidCancellationToken</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>NetworkOperationError</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NetworkOperationError</span></code></pre>
+
+                </div>
+              </div>
+            <p>An error from a network operation.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift21NetworkOperationErrorO06clientE0ACs0E0_pcACmF"></a>
+                    <a name="//apple_ref/swift/Element/clientError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift21NetworkOperationErrorO06clientE0ACs0E0_pcACmF">clientError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">clientError</span><span class="p">(</span><span class="kt">Error</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift21NetworkOperationErrorO08protocolE0ACs0E0_pcACmF"></a>
+                    <a name="//apple_ref/swift/Element/protocolError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift21NetworkOperationErrorO08protocolE0ACs0E0_pcACmF">protocolError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">protocolError</span><span class="p">(</span><span class="kt">Error</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="http://pcloud.com" target="_blank" rel="external">pCloud</a>. All rights reserved. (Last updated: 2017-11-30)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
