@@ -79,7 +79,7 @@ public struct URLSessionTaskBuilder {
 		
 		let path = resourceAddress.path
 		
-		let cookies = cookiesDictionary.flatMap { name, value in
+		let cookies = cookiesDictionary.compactMap { name, value in
 			HTTPCookie(properties: [.name: name, .value: value, .domain: host, .path: path])
 		}
 		
