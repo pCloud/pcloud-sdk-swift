@@ -134,6 +134,20 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/CallTask.swift",
+      "line": 14,
+      "symbol": "CallTask.Parser",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/CallTask.swift",
+      "line": 15,
+      "symbol": "CallTask.CompletionBlock",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
       "line": null,
       "symbol": "Folder.Ownership",
@@ -688,6 +702,20 @@
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
+      "line": 13,
+      "symbol": "URLSessionBasedNetworkOperation.CompletionHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
+      "line": 14,
+      "symbol": "URLSessionBasedNetworkOperation.ProgressHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
       "line": 16,
       "symbol": "URLSessionBasedNetworkOperation.task",
       "symbol_kind": "source.lang.swift.decl.var.instance",
@@ -1027,6 +1055,20 @@
       "line": 29,
       "symbol": "UploadInfoParser.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/UploadTask.swift",
+      "line": 13,
+      "symbol": "UploadTask.Parser",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/UploadTask.swift",
+      "line": 14,
+      "symbol": "UploadTask.CompletionBlock",
+      "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
