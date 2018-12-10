@@ -40,7 +40,7 @@ In order to use this SDK, you have to register your application in the [pCloud A
 
 ### Set up your application
 
-The SDK uses an OAuth 2.0 access token to authorize requests to the pCloud API. You can obtain a token using the SDK's authorization flow. To allow the SDK to do that, find the 'Redirect URIs' section in your application configuration page and add a URI with the following format: `pclsdk-w-<YOUR_APP_KEY>://oauth2redirect`.
+The SDK uses an OAuth 2.0 access token to authorize requests to the pCloud API. You can obtain a token using the SDK's authorization flow. To allow the SDK to do that, find the 'Redirect URIs' section in your application configuration page and add a URI with the following format: `pclsdk-w-YOUR_APP_KEY://oauth2redirect`.
 
 ---
 
@@ -63,7 +63,7 @@ Then navigate to your project root and run `pod init`. This will create a file c
 ```ruby
 use_frameworks!
 
-target '<YOUR_TARGET_NAME>' do
+target 'YOUR_TARGET_NAME' do
     pod 'PCloudSDKSwift'
 end
 ```
@@ -145,7 +145,7 @@ In the app delegate:
 import PCloudSDKSwift
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    PCloud.setup(appKey: "<YOUR_APP_KEY>")
+    PCloud.setup(appKey: "YOUR_APP_KEY")
 }
 ```
 
@@ -155,7 +155,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 import PCloudSDKSwift
 
 func applicationDidFinishLaunching(_ notification: Notification) {
-    PCloud.setup(appKey: "<YOUR_APP_KEY>")
+    PCloud.setup(appKey: "YOUR_APP_KEY")
 }
 ```
 
@@ -214,7 +214,7 @@ You can manually create a `PCloudClient` instance with an access token. Manually
 
 ```swift
 OAuth.performAuthorizationFlow(view: view,
-                               appKey: "<YOUR_APP_KEY>",
+                               appKey: "YOUR_APP_KEY",
                                storeToken: { accessToken, userId in 
                                    // Store the token in a persistent storage. Or not.
                                },
