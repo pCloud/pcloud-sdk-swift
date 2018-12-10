@@ -115,7 +115,7 @@ class FolderTableViewController: UITableViewController {
 		var name: String
 		var detailText = ""
 		var image: UIImage
-		var selectionStyle: UITableViewCellSelectionStyle = .default
+		var selectionStyle: UITableViewCell.SelectionStyle = .default
 		
 		let content = folderMetadata!.contents[indexPath.row]
 		
