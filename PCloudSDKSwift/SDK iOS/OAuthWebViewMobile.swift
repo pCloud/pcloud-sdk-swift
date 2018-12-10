@@ -51,7 +51,7 @@ public final class WebViewControllerMobile: UIViewController {
 	fileprivate let cancelHandler: () -> Void
 	
 	fileprivate var webView: WKWebView!
-	fileprivate var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray) // Shown during initial page loading.
+	fileprivate var activityIndicator = UIActivityIndicatorView(style: .gray) // Shown during initial page loading.
 	fileprivate var errorLabel: UILabel! // Shown when a page loading error occurs.
 	
 	/// Initializes a new view controller with a web view.

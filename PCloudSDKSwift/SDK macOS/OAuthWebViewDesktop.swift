@@ -35,13 +35,13 @@ public final class WebViewControllerPresenterDesktop: OAuthAuthorizationFlowView
 	public func presentWebView(url: URL, interceptNavigation: @escaping (URL) -> Bool, didCancel: @escaping () -> Void) {
 		let controller = WebViewControllerDesktop(address: url, redirectHandler: interceptNavigation, cancelHandler: didCancel)
 		webViewController = controller
-		presentingViewController.presentViewControllerAsSheet(controller)
+		presentingViewController.presentAsSheet(controller)
 	}
 	
 	public func dismissWebView() {
 		if let webViewController = webViewController {
 			self.webViewController = nil
-			presentingViewController.dismissViewController(webViewController)
+			presentingViewController.dismiss(webViewController)
 		}
 	}
 }
@@ -74,7 +74,7 @@ public final class WebViewControllerDesktop: NSViewController {
 		// Change to Bundle.main when compiling the SDK's source files in your target. Also don't forget to copy the .xib file to your product.
 		let bundle = Bundle(identifier: "com.pcloud.swiftsdk-macos")
 		
-		super.init(nibName: NSNib.Name(rawValue: "WebViewControllerDesktop"), bundle: bundle)
+		super.init(nibName: "WebViewControllerDesktop", bundle: bundle)
 	}
 	
 	required public init?(coder: NSCoder) {
