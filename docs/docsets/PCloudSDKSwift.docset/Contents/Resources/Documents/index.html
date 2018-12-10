@@ -121,31 +121,31 @@
             <a href="Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiSbAA4CallV7CommandV9ParameterO_AHtF">==(_:_:)</a>
+                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiySbAA4CallV7CommandV9ParameterO_AHtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiSbAA4CallV7CommandV_AFtF">==(_:_:)</a>
+                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiySbAA4CallV7CommandV_AFtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiSbAA4CallV7RequestV_AFtF">==(_:_:)</a>
+                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiySbAA4CallV7RequestV_AFtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiSbAA4FileV5MediaO_AFtF">==(_:_:)</a>
+                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiySbAA4FileV5MediaO_AFtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiSbAA4FileV8MetadataC_AFtF">==(_:_:)</a>
+                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiySbAA4FileV8MetadataC_AFtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiSbAA4UserV8MetadataC_AFtF">==(_:_:)</a>
+                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiySbAA4UserV8MetadataC_AFtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiSbAA6UploadV7RequestV4BodyO_AHtF">==(_:_:)</a>
+                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiySbAA6UploadV7RequestV4BodyO_AHtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiSbAA6UploadV7RequestV_AFtF">==(_:_:)</a>
+                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiySbAA6UploadV7RequestV_AFtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiSbAA8FileLinkV8MetadataC_AFtF">==(_:_:)</a>
+                <a href="Functions.html#/s:14PCloudSDKSwift2eeoiySbAA8FileLinkV8MetadataC_AFtF">==(_:_:)</a>
               </li>
             </ul>
           </li>
@@ -444,7 +444,7 @@ You can find the full documentation <a href="https://pcloud.github.io/pcloud-sdk
 <p>In order to use this SDK, you have to register your application in the <a href="https://docs.pcloud.com/my_apps/">pCloud App Console</a>. Take note of the app key in the main page of your application once you create it.</p>
 <h3 id='set-up-your-application' class='heading'>Set up your application</h3>
 
-<p>The SDK uses an OAuth 2.0 access token to authorize requests to the pCloud API. You can obtain a token using the SDK&rsquo;s authorization flow. To allow the SDK to do that, find the &lsquo;Redirect URIs&rsquo; section in your application configuration page and add a URI with the following format: <code>pclsdk-w-&lt;YOUR_APP_KEY&gt;://oauth2redirect</code>.</p>
+<p>The SDK uses an OAuth 2.0 access token to authorize requests to the pCloud API. You can obtain a token using the SDK&rsquo;s authorization flow. To allow the SDK to do that, find the &lsquo;Redirect URIs&rsquo; section in your application configuration page and add a URI with the following format: <code>pclsdk-w-YOUR_APP_KEY://oauth2redirect</code>.</p>
 
 <hr>
 <h2 id='install-the-sdk' class='heading'>Install the SDK</h2>
@@ -461,7 +461,7 @@ You can find the full documentation <a href="https://pcloud.github.io/pcloud-sdk
 <p>Then navigate to your project root and run <code>pod init</code>. This will create a file called <code>Podfile</code>. Open it and add <code>pod &#39;PCloudSDKSwift&#39;</code> to your target. Make sure it also contains <code>use_frameworks!</code>. Your Podfile should look something like this.</p>
 <pre class="highlight ruby"><code><span class="n">use_frameworks!</span>
 
-<span class="n">target</span> <span class="s1">'&lt;YOUR_TARGET_NAME&gt;'</span> <span class="k">do</span>
+<span class="n">target</span> <span class="s1">'YOUR_TARGET_NAME'</span> <span class="k">do</span>
     <span class="n">pod</span> <span class="s1">'PCloudSDKSwift'</span>
 <span class="k">end</span>
 </code></pre>
@@ -517,21 +517,21 @@ You can find the full documentation <a href="https://pcloud.github.io/pcloud-sdk
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PCloudSDKSwift</span>
 
 <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
-    <span class="kt">PCloud</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span><span class="nv">appKey</span><span class="p">:</span> <span class="s">"&lt;YOUR_APP_KEY&gt;"</span><span class="p">)</span>
+    <span class="kt">PCloud</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span><span class="nv">appKey</span><span class="p">:</span> <span class="s">"YOUR_APP_KEY"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre>
 <h5 id='macos' class='heading'>macOS</h5>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PCloudSDKSwift</span>
 
 <span class="kd">func</span> <span class="nf">applicationDidFinishLaunching</span><span class="p">(</span><span class="n">_</span> <span class="nv">notification</span><span class="p">:</span> <span class="kt">Notification</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">PCloud</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span><span class="nv">appKey</span><span class="p">:</span> <span class="s">"&lt;YOUR_APP_KEY&gt;"</span><span class="p">)</span>
+    <span class="kt">PCloud</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span><span class="nv">appKey</span><span class="p">:</span> <span class="s">"YOUR_APP_KEY"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre>
 
 <hr>
 <h4 id='perform-the-authorization-flow' class='heading'>Perform the authorization flow</h4>
 
-<p>To start the authorization flow, call <code><a href="Classes/PCloud.html#/s:14PCloudSDKSwift0A0C9authorizeySo16UIViewControllerC10controller_yAA5OAuthV6ResultOctFZ">PCloud.authorize(controller:_:)</a></code> and provide a view controller and a block to be invoked once authorization completes or is cancelled by the user. The view controller is automatically dismissed before the completion block is called.</p>
+<p>To start the authorization flow, call <code><a href="Classes/PCloud.html#/s:14PCloudSDKSwift0A0C9authorize10controller_ySo16UIViewControllerC_yAA5OAuthV6ResultOctFZ">PCloud.authorize(controller:_:)</a></code> and provide a view controller and a block to be invoked once authorization completes or is cancelled by the user. The view controller is automatically dismissed before the completion block is called.</p>
 
 <p>From your view controller:</p>
 <h5 id='ios' class='heading'>iOS</h5>
@@ -567,13 +567,13 @@ You can find the full documentation <a href="https://pcloud.github.io/pcloud-sdk
 
 <hr>
 
-<p>Once <code><a href="Classes/PCloud.html#/s:14PCloudSDKSwift0A0C9authorizeySo16UIViewControllerC10controller_yAA5OAuthV6ResultOctFZ">PCloud.authorize(controller:_:)</a></code> finishes successfully, you can start making API calls via a global <code><a href="Classes/PCloudClient.html">PCloudClient</a></code> instance accessible via <code><a href="Classes/PCloud.html#/s:14PCloudSDKSwift0A0C12sharedClientAA0aD0CSgvpZ">PCloud.sharedClient</a></code>. Furthermore, your access token is stored in the device&rsquo;s keychain, so the next time your app is launched, the shared client instance will be initialized inside the <code><a href="Classes/PCloud.html#/s:14PCloudSDKSwift0A0C5setupySS6appKey_tFZ">PCloud.setup(appKey:)</a></code> call.</p>
+<p>Once <code><a href="Classes/PCloud.html#/s:14PCloudSDKSwift0A0C9authorize10controller_ySo16UIViewControllerC_yAA5OAuthV6ResultOctFZ">PCloud.authorize(controller:_:)</a></code> finishes successfully, you can start making API calls via a global <code><a href="Classes/PCloudClient.html">PCloudClient</a></code> instance accessible via <code><a href="Classes/PCloud.html#/s:14PCloudSDKSwift0A0C12sharedClientAA0aD0CSgvpZ">PCloud.sharedClient</a></code>. Furthermore, your access token is stored in the device&rsquo;s keychain, so the next time your app is launched, the shared client instance will be initialized inside the <code><a href="Classes/PCloud.html#/s:14PCloudSDKSwift0A0C5setup6appKeyySS_tFZ">PCloud.setup(appKey:)</a></code> call.</p>
 <h3 id='manually-creating-a-client' class='heading'>Manually creating a client</h3>
 
 <p>This is a more flexible approach to using the SDK. However, it requires you to do a bit more work. <strong>Using this approach also delegates management of the access token to you</strong>.
 You can manually create a <code><a href="Classes/PCloudClient.html">PCloudClient</a></code> instance with an access token. Manually managing the lifetime of this instance might be a lot more convenient for you in certain cases. To request an access token without automatically initializing the shared client instance:</p>
 <pre class="highlight swift"><code><span class="kt">OAuth</span><span class="o">.</span><span class="nf">performAuthorizationFlow</span><span class="p">(</span><span class="nv">view</span><span class="p">:</span> <span class="n">view</span><span class="p">,</span>
-                               <span class="nv">appKey</span><span class="p">:</span> <span class="s">"&lt;YOUR_APP_KEY&gt;"</span><span class="p">,</span>
+                               <span class="nv">appKey</span><span class="p">:</span> <span class="s">"YOUR_APP_KEY"</span><span class="p">,</span>
                                <span class="nv">storeToken</span><span class="p">:</span> <span class="p">{</span> <span class="n">accessToken</span><span class="p">,</span> <span class="n">userId</span> <span class="k">in</span> 
                                    <span class="c1">// Store the token in a persistent storage. Or not.</span>
                                <span class="p">},</span>
@@ -671,7 +671,7 @@ A task will be retained in memory <strong>while it is running</strong>, so there
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="http://pcloud.com" target="_blank" rel="external">pCloud</a>. All rights reserved. (Last updated: 2018-04-20)</p>
+          <p>&copy; 2018 <a class="link" href="http://pcloud.com" target="_blank" rel="external">pCloud</a>. All rights reserved. (Last updated: 2018-12-10)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -73,21 +73,21 @@
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/CallError.swift",
       "line": 13,
-      "symbol": "CallError.authError",
+      "symbol": "CallError.authError(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/CallError.swift",
       "line": 14,
-      "symbol": "CallError.permissionError",
+      "symbol": "CallError.permissionError(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/CallError.swift",
       "line": 15,
-      "symbol": "CallError.badInputError",
+      "symbol": "CallError.badInputError(_:_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -101,35 +101,35 @@
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/CallError.swift",
       "line": 17,
-      "symbol": "CallError.methodError",
+      "symbol": "CallError.methodError(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/CallError.swift",
       "line": 18,
-      "symbol": "CallError.serverInternalError",
+      "symbol": "CallError.serverInternalError(_:_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/CallError.swift",
       "line": 19,
-      "symbol": "CallError.otherAPIError",
+      "symbol": "CallError.otherAPIError(_:_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/CallError.swift",
       "line": 20,
-      "symbol": "CallError.clientError",
+      "symbol": "CallError.clientError(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/CallError.swift",
       "line": 21,
-      "symbol": "CallError.protocolError",
+      "symbol": "CallError.protocolError(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -402,14 +402,14 @@
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
       "line": 43,
-      "symbol": "NetworkOperationError.clientError",
+      "symbol": "NetworkOperationError.clientError(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
       "line": 44,
-      "symbol": "NetworkOperationError.protocolError",
+      "symbol": "NetworkOperationError.protocolError(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -423,21 +423,21 @@
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
       "line": 56,
-      "symbol": "Call.Command.Parameter.boolean",
+      "symbol": "Call.Command.Parameter.boolean(name:value:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
       "line": 57,
-      "symbol": "Call.Command.Parameter.number",
+      "symbol": "Call.Command.Parameter.number(name:value:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
       "line": 58,
-      "symbol": "Call.Command.Parameter.string",
+      "symbol": "Call.Command.Parameter.string(name:value:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -507,14 +507,14 @@
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/OAuth.swift",
       "line": 34,
-      "symbol": "OAuth.Result.success",
+      "symbol": "OAuth.Result.success(token:userId:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/OAuth.swift",
       "line": 35,
-      "symbol": "OAuth.Result.failure",
+      "symbol": "OAuth.Result.failure(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
