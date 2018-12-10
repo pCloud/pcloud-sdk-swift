@@ -1,12 +1,16 @@
 PODS:
-  - PCloudSDKSwift (1.1.1)
+  - PCloudSDKSwift (2.0.2)
 
 DEPENDENCIES:
   - PCloudSDKSwift
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - PCloudSDKSwift
+
 SPEC CHECKSUMS:
-  PCloudSDKSwift: fe414f64d283c86f729d9ccf6d0f40e28a0495f3
+  PCloudSDKSwift: 3746ee8abbd5f8a0eaaf1e21972fe4e43bce2a16
 
 PODFILE CHECKSUM: a56fa6b14e22c9ac022b69a3d4bc3c9ddad7563d
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.5.3
