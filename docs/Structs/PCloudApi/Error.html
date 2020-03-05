@@ -14,7 +14,7 @@
     <a title="Error Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../../index.html">PCloudSDKSwift Docs</a> (80% documented)</p>
+        <p><a href="../../index.html">PCloudSDKSwift 2.0.3 Docs</a> (80% documented)</p>
         <p class="header-right"><a href="https://github.com/pcloud/pcloud-sdk-swift"><img src="../../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -393,7 +393,7 @@
             <h1>Error</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Error</span><span class="o">&lt;</span><span class="kt">MethodError</span><span class="p">:</span> <span class="kt">RawRepresentable</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">RawRepresentable</span><span class="p">,</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">Error</span> <span class="k">where</span> <span class="kt">MethodError</span><span class="o">.</span><span class="kt">RawValue</span> <span class="o">==</span> <span class="kt">Int</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Error</span><span class="o">&lt;</span><span class="kt">MethodError</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">RawRepresentable</span><span class="p">,</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">Error</span> <span class="k">where</span> <span class="kt">MethodError</span> <span class="p">:</span> <span class="kt">RawRepresentable</span><span class="p">,</span> <span class="kt">MethodError</span><span class="o">.</span><span class="kt">RawValue</span> <span class="o">==</span> <span class="kt">Int</span></code></pre>
 
                 </div>
               </div>
@@ -406,9 +406,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO06MethodD0xmfp"></a>
-                    <a name="//apple_ref/swift/Parameter/MethodError" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO06MethodD0xmfp">MethodError</a>
+                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO04authD0yAEy_xGAC04AuthD0OcAGmSYRzSi8RawValueRtzlF"></a>
+                    <a name="//apple_ref/swift/Element/authError(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO04authD0yAEy_xGAC04AuthD0OcAGmSYRzSi8RawValueRtzlF">authError(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -416,13 +416,176 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Authentication-related error.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Error</span><span class="o">&lt;</span><span class="kt">MethodError</span><span class="p">:</span> <span class="kt">RawRepresentable</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">RawRepresentable</span><span class="p">,</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">Error</span> <span class="k">where</span> <span class="kt">MethodError</span><span class="o">.</span><span class="kt">RawValue</span> <span class="o">==</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">authError</span><span class="p">(</span><span class="kt"><a href="../../Structs/PCloudAPI/AuthError.html">AuthError</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO010permissionD0yAEy_xGAC010PermissionD0OcAGmSYRzSi8RawValueRtzlF"></a>
+                    <a name="//apple_ref/swift/Element/permissionError(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO010permissionD0yAEy_xGAC010PermissionD0OcAGmSYRzSi8RawValueRtzlF">permissionError(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Permission/access-related error.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">permissionError</span><span class="p">(</span><span class="kt"><a href="../../Structs/PCloudAPI/PermissionError.html">PermissionError</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO08badInputD0yAEy_xGSi_SSSgtcAGmSYRzSi8RawValueRtzlF"></a>
+                    <a name="//apple_ref/swift/Element/badInputError(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO08badInputD0yAEy_xGSi_SSSgtcAGmSYRzSi8RawValueRtzlF">badInputError(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Missing or incorrectly formatted parameters.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">badInputError</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO06methodD0yAEy_xGxcAGmSYRzSi8RawValueRtzlF"></a>
+                    <a name="//apple_ref/swift/Element/methodError(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO06methodD0yAEy_xGxcAGmSYRzSi8RawValueRtzlF">methodError(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Error related to the method.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">methodError</span><span class="p">(</span><span class="kt">MethodError</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO09rateLimitD0yAEy_xGAGmSYRzSi8RawValueRtzlF"></a>
+                    <a name="//apple_ref/swift/Element/rateLimitError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO09rateLimitD0yAEy_xGAGmSYRzSi8RawValueRtzlF">rateLimitError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The API is rate limiting this client.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">rateLimitError</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO014serverInternalD0yAEy_xGSi_SSSgtcAGmSYRzSi8RawValueRtzlF"></a>
+                    <a name="//apple_ref/swift/Element/serverInternalError(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO014serverInternalD0yAEy_xGSi_SSSgtcAGmSYRzSi8RawValueRtzlF">serverInternalError(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The API cannot currently handle the request. Try again later.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">serverInternalError</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO5otheryAEy_xGSi_SSSgtcAGmSYRzSi8RawValueRtzlF"></a>
+                    <a name="//apple_ref/swift/Element/other(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO5otheryAEy_xGSi_SSSgtcAGmSYRzSi8RawValueRtzlF">other(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unspecified API error.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">other</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -448,7 +611,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -476,7 +639,7 @@ Initialization fails if <code>code</code> is 0.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">code</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">code</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -502,234 +665,13 @@ Initialization fails if <code>code</code> is 0.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO04authD0yAEy_xGAC04AuthD0OcAGmSYRzSi8RawValueRtzlF"></a>
-                    <a name="//apple_ref/swift/Element/authError(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO04authD0yAEy_xGAC04AuthD0OcAGmSYRzSi8RawValueRtzlF">authError(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Authentication-related error.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">authError</span><span class="p">(</span><span class="kt"><a href="../../Structs/PCloudAPI/AuthError.html">AuthError</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO010permissionD0yAEy_xGAC010PermissionD0OcAGmSYRzSi8RawValueRtzlF"></a>
-                    <a name="//apple_ref/swift/Element/permissionError(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO010permissionD0yAEy_xGAC010PermissionD0OcAGmSYRzSi8RawValueRtzlF">permissionError(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Permission/access-related error.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">permissionError</span><span class="p">(</span><span class="kt"><a href="../../Structs/PCloudAPI/PermissionError.html">PermissionError</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO08badInputD0yAEy_xGSi_SSSgtcAGmSYRzSi8RawValueRtzlF"></a>
-                    <a name="//apple_ref/swift/Element/badInputError(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO08badInputD0yAEy_xGSi_SSSgtcAGmSYRzSi8RawValueRtzlF">badInputError(_:_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Missing or incorrectly formatted parameters.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">badInputError</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO06methodD0yAEy_xGxcAGmSYRzSi8RawValueRtzlF"></a>
-                    <a name="//apple_ref/swift/Element/methodError(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO06methodD0yAEy_xGxcAGmSYRzSi8RawValueRtzlF">methodError(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Error related to the method.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">methodError</span><span class="p">(</span><span class="kt"><a href="../../Structs/PCloudAPI/Error.html#/s:14PCloudSDKSwift0A3APIV5ErrorO06MethodD0xmfp">MethodError</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO09rateLimitD0yAEy_xGAGmSYRzSi8RawValueRtzlF"></a>
-                    <a name="//apple_ref/swift/Element/rateLimitError" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO09rateLimitD0yAEy_xGAGmSYRzSi8RawValueRtzlF">rateLimitError</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The API is rate limiting this client.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">rateLimitError</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO014serverInternalD0yAEy_xGSi_SSSgtcAGmSYRzSi8RawValueRtzlF"></a>
-                    <a name="//apple_ref/swift/Element/serverInternalError(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO014serverInternalD0yAEy_xGSi_SSSgtcAGmSYRzSi8RawValueRtzlF">serverInternalError(_:_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The API cannot currently handle the request. Try again later.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">serverInternalError</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift0A3APIV5ErrorO5otheryAEy_xGSi_SSSgtcAGmSYRzSi8RawValueRtzlF"></a>
-                    <a name="//apple_ref/swift/Element/other(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift0A3APIV5ErrorO5otheryAEy_xGSi_SSSgtcAGmSYRzSi8RawValueRtzlF">other(_:_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Unspecified API error.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">other</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -751,7 +693,7 @@ Initialization fails if the result code is 0.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">apiResponse</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">])</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">apiResponse</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">])</span></code></pre>
 
                         </div>
                       </div>
@@ -763,8 +705,8 @@ Initialization fails if the result code is 0.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="http://pcloud.com" target="_blank" rel="external">pCloud</a>. All rights reserved. (Last updated: 2018-12-10)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="http://pcloud.com" target="_blank" rel="external">pCloud</a>. All rights reserved. (Last updated: 2020-03-05)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
