@@ -38,9 +38,9 @@ public struct URLSessionTaskBuilder {
 	/// Creates a `URLSessionUploadTask` using a `URLSession` given an `Upload.Request`.
 	public static func createUploadTask(request: Upload.Request, session: URLSession, scheme: Scheme) -> URLSessionUploadTask {
 		// Build a GET query.
-		let query = self.query(from: request.command.parameters, addingPercentEncoding: false)
+		let query = self.query(from: request.command.parameters, addingPercentEncoding: true)
 		// Build the URL.
-		let url = self.url(scheme: scheme.rawValue, host: request.hostName, commandName: request.command.name, query: query)
+		let url = buildURL(withScheme: scheme.rawValue, host: request.hostName, commandName: request.command.name, percentEncodedQuery: query)
 		
 		// Build a POST request.
 		var urlRequest = URLRequest(url: url)
@@ -137,6 +137,16 @@ public struct URLSessionTaskBuilder {
 		components.host = host
 		components.path = "/\(commandName)"
 		components.query = query
+		
+		return components.url!
+	}
+	
+	public static func buildURL(withScheme scheme: String, host: String, commandName: String, percentEncodedQuery: String? = nil) -> URL {
+		var components = URLComponents()
+		components.scheme = scheme
+		components.host = host
+		components.path = "/\(commandName)"
+		components.percentEncodedQuery = percentEncodedQuery
 		
 		return components.url!
 	}
