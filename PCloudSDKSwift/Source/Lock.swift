@@ -37,13 +37,13 @@ public final class Lock {
 	}
 }
 
-public extension Lock {
+extension Lock {
 	/// Executes a block inside a lock/unlock transaction.
 	///
 	/// - parameter block: A block to execute.
 	/// - returns: The value returned by the block (if any).
 	/// - throws: The error thrown by the block (if any).
-	func inCriticalScope<T>(_ block: () throws -> T) rethrows -> T {
+	public func inCriticalScope<T>(_ block: () throws -> T) rethrows -> T {
 		lock()
 		defer { unlock() }
 		return try block()

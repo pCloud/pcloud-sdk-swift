@@ -94,13 +94,13 @@ public struct Keychain {
 
 
 // Utility methods for fetching and storing different types of data in the keychain.
-public extension Keychain {
+extension Keychain {
 	/// Stores a string by converting it to data using UTF8 encoding.
 	///
 	/// - parameter value: The string to store.
 	/// - parameter key: The key to store `value` against.
 	/// - returns: Whether the operation was successful.
-	@discardableResult static func set(_ value: String, forKey key: String) -> Bool {
+	@discardableResult public static func set(_ value: String, forKey key: String) -> Bool {
 		if let data = value.data(using: .utf8) {
 			return set(data, forKey: key)
 		}
@@ -112,7 +112,7 @@ public extension Keychain {
 	///
 	/// - parameter key: The key to check against.
 	/// - returns: The data against `key` as a UTF8 string.
-	static func getString(forKey key: String) -> String? {
+	public static func getString(forKey key: String) -> String? {
 		if let data = getData(forKey: key) {
 			return String(data: data, encoding: .utf8)
 		}

@@ -16,9 +16,9 @@ public enum Result<T, E> {
 	case failure(E)
 }
 
-public extension Result {
+extension Result {
 	/// `true` when this instance represents a success, `false` otherwise.
-	var isSuccess: Bool {
+	public var isSuccess: Bool {
 		if case .success(_) = self {
 			return true
 		}
@@ -27,12 +27,12 @@ public extension Result {
 	}
 	
 	/// `true` when this instance represents a failure, `false` otherwise.
-	var isFailure: Bool {
+	public var isFailure: Bool {
 		return !isSuccess
 	}
 	
 	/// The associated value if this instance represents a success, `nil` otherwise.
-	var payload: T? {
+	public var payload: T? {
 		if case .success(let payload) = self {
 			return payload
 		}
@@ -41,7 +41,7 @@ public extension Result {
 	}
 	
 	/// The associated error if this instance represents a failure, `nil` otherwise.
-	var error: E? {
+	public var error: E? {
 		if case .failure(let error) = self {
 			return error
 		}
@@ -50,10 +50,10 @@ public extension Result {
 	}
 }
 
-public extension Result {
+extension Result {
 	/// If `.success`, replaces the payload in this instance with the one returned by the `transform` block,
 	/// otherwise does nothing.
-	func replacingPayload<T2>(_ transform: (T) throws -> T2) rethrows -> Result<T2, E> {
+	public func replacingPayload<T2>(_ transform: (T) throws -> T2) rethrows -> Result<T2, E> {
 		switch self {
 		case .success(let payload): return .success(try transform(payload))
 		case .failure(let error): return .failure(error)
@@ -62,7 +62,7 @@ public extension Result {
 	
 	/// If `.failure`, replaces the error in this instance with the one returned by the `transform` block,
 	/// otherwise does nothing.
-	func replacingError<E2>(_ transform: (E) throws -> E2) rethrows -> Result<T, E2> {
+	public func replacingError<E2>(_ transform: (E) throws -> E2) rethrows -> Result<T, E2> {
 		switch self {
 		case .success(let payload): return .success(payload)
 		case .failure(let error): return .failure(try transform(error))

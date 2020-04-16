@@ -158,9 +158,9 @@ struct HTTPMethod {
 	static let put = "PUT"
 }
 
-public extension CharacterSet {
+extension CharacterSet {
 	// A character with characters allowed in a URL query as per RFC 3986.
-	static func urlQueryParameterAllowedCharacterSetRFC3986() -> CharacterSet {
+	public static func urlQueryParameterAllowedCharacterSetRFC3986() -> CharacterSet {
 		return self.init(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~/?")
 	}
 }

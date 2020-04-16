@@ -47,9 +47,9 @@ public enum Content {
 	}
 }
 
-public extension Content {
+extension Content {
 	/// `true` if this content item is a folder, `false` otherwise.
-	var isFolder: Bool {
+	public var isFolder: Bool {
 		if case .folder(_) = self {
 			return true
 		}
@@ -58,12 +58,12 @@ public extension Content {
 	}
 	
 	/// `true` if this content item is a file, `false` otherwise.
-	var isFile: Bool {
+	public var isFile: Bool {
 		return !isFolder
 	}
 	
 	/// The folder metadata for this content item. Non-`nil` only when this content item is a folder.
-	var folderMetadata: Folder.Metadata? {
+	public var folderMetadata: Folder.Metadata? {
 		if case .folder(let meta) = self {
 			return meta
 		}
@@ -72,7 +72,7 @@ public extension Content {
 	}
 	
 	// The file metadata for this content item. Non-`nil` only when this content item is a file.
-	var fileMetadata: File.Metadata? {
+	public var fileMetadata: File.Metadata? {
 		if case .file(let meta) = self {
 			return meta
 		}

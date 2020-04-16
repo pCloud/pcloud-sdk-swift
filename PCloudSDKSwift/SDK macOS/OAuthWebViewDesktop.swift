@@ -9,13 +9,13 @@
 import Cocoa
 import WebKit
 
-public extension PCloud {
+extension PCloud {
 	/// Starts the OAuth authorization flow. Expects `setup()` to have been called.
 	///
 	/// - parameter controller: A view controller to present a web view from.
 	/// - parameter completionBlock: A block called on the main thread when authorization completes or is cancelled.
 	/// The global pCloud client will be initialized inside the block if authorization was successful.
-	static func authorize(controller: NSViewController, _ completionBlock: @escaping (OAuth.Result) -> Void) {
+	public static func authorize(controller: NSViewController, _ completionBlock: @escaping (OAuth.Result) -> Void) {
 		authorize(view: WebViewControllerPresenterDesktop(presentingViewController: controller), completionBlock: completionBlock)
 	}
 }
