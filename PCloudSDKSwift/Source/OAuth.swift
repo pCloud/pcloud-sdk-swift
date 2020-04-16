@@ -164,7 +164,7 @@ public struct OAuth {
 	static func createAuthorizationUrl(appKey: String, redirectUrl: String) -> URL {
 		var components = URLComponents()
 		components.scheme = Scheme.https.rawValue
-		components.host = "my.pcloud.com"
+		components.host = "e.pcloud.com"
 		components.path = "/oauth2/authorize"
 		components.queryItems = [
 			URLQueryItem(name: "client_id", value: appKey),

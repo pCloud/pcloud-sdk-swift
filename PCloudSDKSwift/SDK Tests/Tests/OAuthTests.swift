@@ -41,7 +41,7 @@ final class OAuthTests: XCTestCase {
 		
 		// Expect
 		XCTAssert(url.scheme == "https", "invalid scheme")
-		XCTAssert(url.host == "my.pcloud.com", "invalid host")
+		XCTAssert(url.host == "e.pcloud.com", "invalid host")
 		XCTAssert(url.path == "/oauth2/authorize", "invalid path")
 		
 		let query = (url.queryItems ?? []).dictionary(transform: { ($0.name, $0.value!) })
