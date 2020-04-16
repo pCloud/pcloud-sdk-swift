@@ -35,8 +35,9 @@ extension FileLink.Metadata: CustomStringConvertible {
 }
 
 extension FileLink.Metadata: Hashable {
-	open var hashValue: Int {
-		return address.hashValue ^ expirationDate.hashValue
+	open func hash(into hasher: inout Hasher) {
+		hasher.combine(address)
+		hasher.combine(expirationDate)
 	}
 }
 

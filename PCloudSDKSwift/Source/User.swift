@@ -42,8 +42,8 @@ extension User.Metadata: CustomStringConvertible {
 }
 
 extension User.Metadata: Hashable {
-	open var hashValue: Int {
-		return id.hashValue
+	open func hash(into hasher: inout Hasher) {
+		hasher.combine(id)
 	}
 }
 

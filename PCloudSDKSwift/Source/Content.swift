@@ -319,7 +319,7 @@ extension File.Metadata {
 		return nil
 	}
 	
-	/// The video metadata of this file. Non-`nil` only when this file's media is `vidoe`.
+	/// The video metadata of this file. Non-`nil` only when this file's media is `video`.
 	open var videoMetadata: File.Media.VideoMetadata? {
 		if case .video(let meta) = media {
 			return meta
@@ -396,6 +396,15 @@ extension File.Media: CustomStringConvertible {
 	}
 }
 
+extension File.Media.AudioMetadata: Equatable {
+}
+
+extension File.Media.VideoMetadata: Equatable {
+}
+
+extension File.Media.ImageMetadata: Equatable {
+}
+
 extension File.Media: Equatable {
 }
 
@@ -422,8 +431,8 @@ public func ==(lhs: File.Metadata, rhs: File.Metadata) -> Bool {
 }
 
 extension File.Metadata: Hashable {
-	open var hashValue: Int {
-		return id.hashValue
+	open func hash(into hasher: inout Hasher) {
+		hasher.combine(id)
 	}
 }
 
@@ -482,7 +491,7 @@ public struct Folder {
 	
 	/// A pCloud folder.
 	open class Metadata: Content.Metadata {
-		/// The ownerwhip of this folder.
+		/// The ownership of this folder.
 		public let ownership: Ownership
 		/// This folder's immediate children.
 		public let contents: [Content]

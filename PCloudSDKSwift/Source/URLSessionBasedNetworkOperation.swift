@@ -154,6 +154,7 @@ extension NetworkOperationState {
 		case .suspended: self = .suspended
 		case .completed: self = .completed
 		case .canceling: self = .cancelled
+		@unknown default: fatalError("unhandled or invalid url session state \(state.rawValue)")
 		}
 	}
 }

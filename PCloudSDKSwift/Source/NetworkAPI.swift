@@ -230,8 +230,8 @@ public protocol DownloadOperation: NetworkOperation {
 
 // MARK:- Utility protocol conformances.
 
-extension Call.Command.Parameter {
-	var keyValueStyleString: String {
+extension Call.Command.Parameter: CustomStringConvertible {
+	public var description: String {
 		switch self {
 		case let .string(name, value): return "\(name):\(value)"
 		case let .number(name, value): return "\(name):\(value)"
@@ -240,28 +240,7 @@ extension Call.Command.Parameter {
 	}
 }
 
-extension Call.Command.Parameter: CustomStringConvertible {
-	public var description: String {
-		return keyValueStyleString
-	}
-}
-
-extension Call.Command.Parameter: Equatable {
-}
-
-public func ==(lhs: Call.Command.Parameter, rhs: Call.Command.Parameter) -> Bool {
-	switch (lhs, rhs) {
-	case let (.string(lhsName, lhsValue), .string(rhsName, rhsValue)) where lhsName == rhsName && lhsValue == rhsValue: return true
-	case let (.number(lhsName, lhsValue), .number(rhsName, rhsValue)) where lhsName == rhsName && lhsValue == rhsValue: return true
-	case let (.boolean(lhsName, lhsValue), .boolean(rhsName, rhsValue)) where lhsName == rhsName && lhsValue == rhsValue: return true
-	default: return false
-	}
-}
-
 extension Call.Command.Parameter: Hashable {
-	public var hashValue: Int {
-		return keyValueStyleString.hashValue
-	}
 }
 
 
@@ -274,15 +253,6 @@ extension Call.Command: CustomStringConvertible {
 extension Call.Command: Equatable {
 }
 
-public func ==(lhs: Call.Command, rhs: Call.Command) -> Bool {
-	guard lhs.name == rhs.name else {
-		return false
-	}
-	
-	return Set(lhs.parameters) == Set(rhs.parameters)
-}
-
-
 extension Call.Request: CustomStringConvertible {
 	public var description: String {
 		return "\(hostName), \(command)"
@@ -292,20 +262,7 @@ extension Call.Request: CustomStringConvertible {
 extension Call.Request: Equatable {
 }
 
-public func ==(lhs: Call.Request, rhs: Call.Request) -> Bool {
-	return lhs.command == rhs.command && lhs.hostName == rhs.hostName
-}
-
-
 extension Upload.Request.Body: Equatable {
-}
-
-public func ==(lhs: Upload.Request.Body, rhs: Upload.Request.Body) -> Bool {
-	switch (lhs, rhs) {
-	case let (.data(lhsData), .data(rhsData)) where lhsData == rhsData: return true
-	case let (.file(lhsUrl), .file(rhsUrl)) where lhsUrl == rhsUrl: return true
-	default: return false
-	}
 }
 
 extension Upload.Request: CustomStringConvertible {
@@ -323,11 +280,6 @@ extension Upload.Request: CustomStringConvertible {
 
 extension Upload.Request: Equatable {
 }
-
-public func ==(lhs: Upload.Request, rhs: Upload.Request) -> Bool {
-	return lhs.hostName == rhs.hostName && lhs.command == rhs.command && lhs.body == rhs.body
-}
-
 
 extension Download.Request: CustomStringConvertible {
 	public var description: String {
