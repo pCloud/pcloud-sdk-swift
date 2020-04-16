@@ -11,7 +11,7 @@ import Foundation
 /// A wrapper around `DownloadOperation`. Downloads a file to disk.
 public final class DownloadTask: Cancellable {
 	// The underlying download opearation.
-	fileprivate let operation: DownloadOperation
+	private let operation: DownloadOperation
 	
 	/// `true` if `cancel()` has been invoked on this task, `false` otherwise.
 	public var isCancelled: Bool {
@@ -30,8 +30,7 @@ public final class DownloadTask: Cancellable {
 	/// - parameter block: A block called on the main thread with the number of downloaded bytes and the total number of bytes to download as
 	/// first and second arguments, respectively. Called each time the number of downloaded bytes changes.
 	/// - returns: This task.
-	@discardableResult
-	public func addProgressBlock(_ block: @escaping (Int64, Int64) -> Void) -> DownloadTask {
+	@discardableResult public func addProgressBlock(_ block: @escaping (Int64, Int64) -> Void) -> DownloadTask {
 		operation.addProgressBlock(queue: .main, block)
 		return self
 	}
@@ -40,16 +39,14 @@ public final class DownloadTask: Cancellable {
 	///
 	/// - parameter block: A block called on the main thread with the result of the task.
 	/// - returns: This task.
-	@discardableResult
-	public func addCompletionBlock(_ block: @escaping (Download.Response) -> Void) -> DownloadTask {
+	@discardableResult public func addCompletionBlock(_ block: @escaping (Download.Response) -> Void) -> DownloadTask {
 		operation.addCompletionBlock(queue: .main, block)
 		return self
 	}
 	
 	/// Starts the task if it is not already running.
 	/// - returns: This task.
-	@discardableResult
-	public func start() -> DownloadTask {
+	@discardableResult public func start() -> DownloadTask {
 		operation.start()
 		return self
 	}

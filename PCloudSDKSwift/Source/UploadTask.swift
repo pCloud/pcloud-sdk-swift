@@ -14,10 +14,10 @@ public final class UploadTask<Method: PCloudAPIMethod>: Cancellable {
 	public typealias CompletionBlock = (Result<Method.Value, CallError<Method.Error>>) -> Void
 	
 	// The underlying operation executing the upload.
-	fileprivate let operation: UploadOperation
+	private let operation: UploadOperation
 	
-	fileprivate let lock = Lock()
-	fileprivate var completionBlocks: [CompletionBlock] = []
+	private let lock = Lock()
+	private var completionBlocks: [CompletionBlock] = []
 	
 	/// `true` if `cancel()` has been invoked on this instance, `false` otherwise.
 	public var isCancelled: Bool {
@@ -71,8 +71,7 @@ public final class UploadTask<Method: PCloudAPIMethod>: Cancellable {
 	///
 	/// - parameter block: A block called on the main thread with the result of the task.
 	/// - returns: This task.
-	@discardableResult
-	public func addCompletionBlock(_ block: @escaping CompletionBlock) -> UploadTask {
+	@discardableResult public func addCompletionBlock(_ block: @escaping CompletionBlock) -> UploadTask {
 		lock.inCriticalScope {
 			completionBlocks.append(block)
 		}
@@ -85,8 +84,7 @@ public final class UploadTask<Method: PCloudAPIMethod>: Cancellable {
 	/// - parameter block: A block called on the main thread with the number of uploaded bytes and the total number of bytes to upload as
 	/// first and second arguments, respectively. Called each time the number of uploaded bytes changes.
 	/// - returns: This task.
-	@discardableResult
-	public func addProgressBlock(_ block: @escaping (Int64, Int64) -> Void) -> UploadTask {
+	@discardableResult public func addProgressBlock(_ block: @escaping (Int64, Int64) -> Void) -> UploadTask {
 		operation.addProgressBlock(queue: .main, block)
 		return self
 	}
@@ -94,8 +92,7 @@ public final class UploadTask<Method: PCloudAPIMethod>: Cancellable {
 	/// Starts the task if it is not already running.
 	///
 	/// - returns: This task.
-	@discardableResult
-	public func start() -> UploadTask {
+	@discardableResult public func start() -> UploadTask {
 		operation.start()
 		return self
 	}

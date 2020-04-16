@@ -38,7 +38,7 @@ extension NetworkOperationMock: NetworkOperation {
 
 
 class CallOperationMock: NetworkOperationMock {
-	fileprivate(set) var completionBlocks: [((Call.Response) -> Void)] = []
+	private(set) var completionBlocks: [((Call.Response) -> Void)] = []
 	
 	func invokeCompletion(response: Call.Response) {
 		for block in completionBlocks {
@@ -52,8 +52,7 @@ extension CallOperationMock: CallOperation {
 		return nil
 	}
 	
-	@discardableResult
-	func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Call.Response) -> Void) -> Self {
+	@discardableResult func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Call.Response) -> Void) -> Self {
 		completionBlocks.append(block)
 		return self
 	}
@@ -61,8 +60,8 @@ extension CallOperationMock: CallOperation {
 
 
 class UploadOperationMock: NetworkOperationMock {
-	fileprivate(set) var completionBlocks: [((Upload.Response) -> Void)] = []
-	fileprivate(set) var progressBlocks: [((Int64, Int64) -> Void)] = []
+	private(set) var completionBlocks: [((Upload.Response) -> Void)] = []
+	private(set) var progressBlocks: [((Int64, Int64) -> Void)] = []
 	
 	func invokeCompletion(response: Upload.Response) {
 		for block in completionBlocks {
@@ -90,14 +89,12 @@ extension UploadOperationMock: UploadOperation {
 		return 0
 	}
 	
-	@discardableResult
-	func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self {
+	@discardableResult func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self {
 		progressBlocks.append(block)
 		return self
 	}
 	
-	@discardableResult
-	func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Upload.Response) -> Void) -> Self {
+	@discardableResult func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Upload.Response) -> Void) -> Self {
 		completionBlocks.append(block)
 		return self
 	}
@@ -105,8 +102,8 @@ extension UploadOperationMock: UploadOperation {
 
 
 class DownloadOperationMock: NetworkOperationMock {
-	fileprivate(set) var completionBlocks: [((Download.Response) -> Void)] = []
-	fileprivate(set) var progressBlocks: [((Int64, Int64) -> Void)] = []
+	private(set) var completionBlocks: [((Download.Response) -> Void)] = []
+	private(set) var progressBlocks: [((Int64, Int64) -> Void)] = []
 	
 	func invokeCompletion(response: Download.Response) {
 		for block in completionBlocks {
@@ -134,14 +131,12 @@ extension DownloadOperationMock: DownloadOperation {
 		return 0
 	}
 	
-	@discardableResult
-	func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self {
+	@discardableResult func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self {
 		progressBlocks.append(block)
 		return self
 	}
 	
-	@discardableResult
-	func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Download.Response) -> Void) -> Self {
+	@discardableResult func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Download.Response) -> Void) -> Self {
 		completionBlocks.append(block)
 		return self
 	}

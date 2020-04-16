@@ -37,8 +37,7 @@ public final class Atomic<T> {
 	/// - parameter block: A block that takes the current value as the input argument and returns the modified value.
 	/// - returns: The old value.
 	/// - throws: The error thrown by the block (if any).
-	@discardableResult
-	public func modify(_ block: (T) throws -> (T)) rethrows -> T {
+	@discardableResult public func modify(_ block: (T) throws -> (T)) rethrows -> T {
 		return try lock.inCriticalScope {
 			let oldValue = resource
 			resource = try block(resource)

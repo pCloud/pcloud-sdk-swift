@@ -50,15 +50,15 @@ public final class WebViewControllerPresenterDesktop: OAuthAuthorizationFlowView
 /// taps to blocks. The controller does not allow the user to type an address. An initial address is instead provided to instances of this
 /// class which is loaded when an instance is shown.
 public final class WebViewControllerDesktop: NSViewController {
-	fileprivate let address: URL
-	fileprivate let redirectHandler: (URL) -> Bool
-	fileprivate let cancelHandler: () -> Void
+	private let address: URL
+	private let redirectHandler: (URL) -> Bool
+	private let cancelHandler: () -> Void
 	
 	@IBOutlet var webViewContainer: BorderedView!
 	@IBOutlet var progressIndicator: NSProgressIndicator! // Shown during initial page loading.
 	@IBOutlet var errorLabel: NSTextField! // Shown when a page loading error occurs.
 	
-	fileprivate var webView: WKWebView!
+	private var webView: WKWebView!
 	
 	/// Initializes a new view controller with a web view.
 	///
@@ -99,12 +99,12 @@ public final class WebViewControllerDesktop: NSViewController {
 		load(address)
 	}
 	
-	fileprivate func load(_ url: URL) {
+	private func load(_ url: URL) {
 		let request = URLRequest(url: url)
 		webView.load(request)
 	}
 	
-	fileprivate func setProgressIndicatorVisible(_ visible: Bool) {
+	private func setProgressIndicatorVisible(_ visible: Bool) {
 		if visible {
 			progressIndicator.startAnimation(self)
 		} else {
@@ -114,7 +114,7 @@ public final class WebViewControllerDesktop: NSViewController {
 		progressIndicator.isHidden = !visible
 	}
 	
-	fileprivate func showError(_ message: String) {
+	private func showError(_ message: String) {
 		errorLabel.stringValue = message
 		errorLabel.isHidden = message.isEmpty
 	}

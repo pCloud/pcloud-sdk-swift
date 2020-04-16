@@ -10,10 +10,10 @@ import Foundation
 
 /// Utility struct containing logic for building `CallTask` instances for `PCloudAPIMethod`s.
 public struct PCloudAPICallTaskBuilder {
-	fileprivate let hostProvider: HostProvider
-	fileprivate let authenticator: Authenticator
-	fileprivate let operationBuilder: (Call.Request) -> CallOperation
-	fileprivate let defaultTimeoutInterval: TimeInterval?
+	private let hostProvider: HostProvider
+	private let authenticator: Authenticator
+	private let operationBuilder: (Call.Request) -> CallOperation
+	private let defaultTimeoutInterval: TimeInterval?
 	
 	public init(hostProvider: HostProvider,
 				authenticator: Authenticator,
@@ -54,10 +54,10 @@ public struct PCloudAPICallTaskBuilder {
 
 /// Utility struct containing logic for building `UploadTask` instances for `PCloudAPIMethod`s.
 public struct PCloudAPIUploadTaskBuilder {
-	fileprivate let hostProvider: HostProvider
-	fileprivate let authenticator: Authenticator
-	fileprivate let operationBuilder: (Upload.Request) -> UploadOperation
-	fileprivate let defaultTimeoutInterval: TimeInterval?
+	private let hostProvider: HostProvider
+	private let authenticator: Authenticator
+	private let operationBuilder: (Upload.Request) -> UploadOperation
+	private let defaultTimeoutInterval: TimeInterval?
 	
 	public init(hostProvider: HostProvider,
 				authenticator: Authenticator,
@@ -100,10 +100,10 @@ public struct PCloudAPIUploadTaskBuilder {
 
 /// Utility struct containing logic for building `DownloadTask` instances.
 public struct PCloudAPIDownloadTaskBuilder {
-	fileprivate let hostProvider: HostProvider
-	fileprivate let authenticator: Authenticator
-	fileprivate let defaultTimeoutInterval: TimeInterval?
-	fileprivate let operationBuilder: (Download.Request) -> DownloadOperation
+	private let hostProvider: HostProvider
+	private let authenticator: Authenticator
+	private let defaultTimeoutInterval: TimeInterval?
+	private let operationBuilder: (Download.Request) -> DownloadOperation
 	
 	public init(hostProvider: HostProvider,
 				authenticator: Authenticator,

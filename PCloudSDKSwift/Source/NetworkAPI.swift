@@ -100,8 +100,7 @@ public protocol CallOperation: NetworkOperation {
 	///
 	/// - parameter queue: A queue to call `block` on. If `nil`, the queue on which `block` will be called is undefined.
 	/// - parameter block: Called as soon as the operation receives its response. Referenced strongly by the operation.
-	@discardableResult
-	func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Call.Response) -> Void) -> Self
+	@discardableResult func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Call.Response) -> Void) -> Self
 }
 
 
@@ -161,15 +160,13 @@ public protocol UploadOperation: NetworkOperation {
 	/// - parameter queue: A queue to call `block` on. If `nil`, the queue on which `block` will be called is undefined.
 	/// - parameter block: A block called with the number of bytes currently uploaded and the total number of bytes to upload as first
 	/// and second input arguments respectivly. Referenced strongly by the operation.
-	@discardableResult
-	func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self
+	@discardableResult func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self
 	
 	/// Adds a block to be called on a specific queue when the operation receives its response.
 	///
 	/// - parameter queue: A queue to call `block` on. If `nil`, the queue on which `block` will be called is undefined.
 	/// - parameter block: Called as soon as the operation receives its response. Referenced strongly by the operation.
-	@discardableResult
-	func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Upload.Response) -> Void) -> Self
+	@discardableResult func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Upload.Response) -> Void) -> Self
 }
 
 
@@ -221,15 +218,13 @@ public protocol DownloadOperation: NetworkOperation {
 	/// - parameter queue: A queue to call `block` on. If `nil`, the queue on which `block` will be called is undefined.
 	/// - parameter block: A block called with the number of bytes currently uploaded and the total number of bytes to upload as first
 	/// and second input arguments respectivly. Referenced strongly by the operation.
-	@discardableResult
-	func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self
+	@discardableResult func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self
 	
 	/// Adds a block to be called on a specific queue when the operation receives its response.
 	///
 	/// - parameter queue: A queue to call `block` on. If `nil`, the queue on which `block` will be called is undefined.
 	/// - parameter block: Called as soon as the operation receives its response. Referenced strongly by the operation.
-	@discardableResult
-	func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Download.Response) -> Void) -> Self
+	@discardableResult func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Download.Response) -> Void) -> Self
 }
 
 

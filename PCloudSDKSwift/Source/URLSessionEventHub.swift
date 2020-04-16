@@ -26,10 +26,10 @@ public protocol URLSessionObserver {
 /// receives all callbacks associated with that task.
 public final class URLSessionEventHub: NSObject {
 	// URLSessionTask identifiers mapped to observers.
-	fileprivate var observers = Atomic<[Int: URLSessionObserver]>([:])
+	private var observers = Atomic<[Int: URLSessionObserver]>([:])
 	
 	// Returns an observer for a task.
-	fileprivate subscript(_ task: URLSessionTask) -> URLSessionObserver? {
+	private subscript(_ task: URLSessionTask) -> URLSessionObserver? {
 		return observers.value[task.taskIdentifier]
 	}
 	
@@ -57,8 +57,7 @@ public final class URLSessionEventHub: NSObject {
 	}
 	
 	// Assigns an observer for a task and returns the old observer, if any.
-	@discardableResult
-	fileprivate func set(_ observer: URLSessionObserver?, for task: URLSessionTask) -> URLSessionObserver? {
+	@discardableResult private func set(_ observer: URLSessionObserver?, for task: URLSessionTask) -> URLSessionObserver? {
 		let key = task.taskIdentifier
 		
 		return observers.modify {

@@ -12,10 +12,10 @@ import libkern
 /// Concrete type-erased implementation of `Cancellable`. It forwards its `cancel()` invocation to a block.
 public final class AnyCancellationToken {
 	// The block to call when cancel() is invoked.
-	fileprivate var body: (() -> Void)?
+	private var body: (() -> Void)?
 	
 	// Used for an atomic swap in cancel(). 0 indicates cancel() has not been called and 1 indicates otherwise.
-	fileprivate var cancellationPredicate: Int32 = 0
+	private var cancellationPredicate: Int32 = 0
 	
 	/// Creates a new token.
 	///

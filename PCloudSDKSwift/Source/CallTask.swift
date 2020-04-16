@@ -15,10 +15,10 @@ public final class CallTask<Method: PCloudAPIMethod>: Cancellable {
 	public typealias CompletionBlock = (Result<Method.Value, CallError<Method.Error>>) -> Void
 	
 	// The underlying operation executing the network call.
-	fileprivate let operation: CallOperation
+	private let operation: CallOperation
 	
-	fileprivate let lock = Lock()
-	fileprivate var completionBlocks: [CompletionBlock] = []
+	private let lock = Lock()
+	private var completionBlocks: [CompletionBlock] = []
 	
 	/// `true` if `cancel()` has been invoked on this instance, `false` otherwise.
 	public var isCancelled: Bool {
@@ -72,8 +72,7 @@ public final class CallTask<Method: PCloudAPIMethod>: Cancellable {
 	///
 	/// - parameter block: A block called on the main thread with the result of the task.
 	/// - returns: This task.
-	@discardableResult
-	public func addCompletionBlock(_ block: @escaping CompletionBlock) -> CallTask {
+	@discardableResult public func addCompletionBlock(_ block: @escaping CompletionBlock) -> CallTask {
 		lock.inCriticalScope {
 			completionBlocks.append(block)
 		}
@@ -84,8 +83,7 @@ public final class CallTask<Method: PCloudAPIMethod>: Cancellable {
 	/// Starts the task if it is not already running.
 	///
 	/// - returns: This task.
-	@discardableResult
-	public func start() -> CallTask {
+	@discardableResult public func start() -> CallTask {
 		operation.start()
 		return self
 	}

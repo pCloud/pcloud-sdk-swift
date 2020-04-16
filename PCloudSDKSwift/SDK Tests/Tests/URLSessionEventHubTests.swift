@@ -126,11 +126,11 @@ final class URLSessionEventHubTests: XCTestCase {
 
 
 final class EventHubSpy {
-	fileprivate(set) var didSendBodyDataCalled = false
-	fileprivate(set) var didCompleteWithErrorCalled = false
-	fileprivate(set) var didReceiveDataCalled = false
-	fileprivate(set) var didFinishDownloadingCalled = false
-	fileprivate(set) var didWriteDataCalled = false
+	private(set) var didSendBodyDataCalled = false
+	private(set) var didCompleteWithErrorCalled = false
+	private(set) var didReceiveDataCalled = false
+	private(set) var didFinishDownloadingCalled = false
+	private(set) var didWriteDataCalled = false
 }
 
 extension EventHubSpy: URLSessionObserver {

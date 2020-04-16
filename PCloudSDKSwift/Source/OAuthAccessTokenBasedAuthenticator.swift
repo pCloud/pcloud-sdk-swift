@@ -10,7 +10,7 @@ import Foundation
 
 /// Concrete implementation of `Authenticator` using an OAuth2 access token.
 public struct OAuthAccessTokenBasedAuthenticator {
-	fileprivate let accessToken: String
+	private let accessToken: String
 	
 	/// Initializes a new authenticator with an access token.
 	///

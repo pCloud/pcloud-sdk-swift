@@ -39,8 +39,7 @@ public struct Keychain {
 	/// - parameter value: The data to store.
 	/// - parameter key: The key to store `value` against.
 	/// - returns: Whether the operation was successful.
-	@discardableResult
-	public static func set(_ value: Data, forKey key: String) -> Bool {
+	@discardableResult public static func set(_ value: Data, forKey key: String) -> Bool {
 		let query = self.query(attributes: [
 			kSecAttrAccount as String: key,
 			kSecValueData as String: value
@@ -55,8 +54,7 @@ public struct Keychain {
 	///
 	/// - parameter key: The key identifying the entry to remove.
 	/// - returns: Whether the operation was successful.
-	@discardableResult
-	public static func deleteData(forKey key: String) -> Bool {
+	@discardableResult public static func deleteData(forKey key: String) -> Bool {
 		let query = self.query(attributes: [kSecAttrAccount as String: key])
 		return SecItemDelete(query) == noErr
 	}
@@ -102,8 +100,7 @@ public extension Keychain {
 	/// - parameter value: The string to store.
 	/// - parameter key: The key to store `value` against.
 	/// - returns: Whether the operation was successful.
-	@discardableResult
-	static func set(_ value: String, forKey key: String) -> Bool {
+	@discardableResult static func set(_ value: String, forKey key: String) -> Bool {
 		if let data = value.data(using: .utf8) {
 			return set(data, forKey: key)
 		}

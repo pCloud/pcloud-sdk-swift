@@ -13,9 +13,9 @@ public struct PCloudAPI {
 	// Default parameters for all commands.
 	
 	// Makes all date-related fields in the response unix timestamps.
-	fileprivate static let defaultTimeFormatParameter = Call.Command.Parameter.string(name: "timeformat", value: "timestamp")
+	private static let defaultTimeFormatParameter = Call.Command.Parameter.string(name: "timeformat", value: "timestamp")
 	// Makes all "icon" fields in the response integers.
-	fileprivate static let defaultIconFormatParameter = Call.Command.Parameter.string(name: "iconformat", value: "id")
+	private static let defaultIconFormatParameter = Call.Command.Parameter.string(name: "iconformat", value: "id")
 	
 	/// Authentication-related API errors.
 	public enum AuthError: Int {

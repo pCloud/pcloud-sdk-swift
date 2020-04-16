@@ -46,13 +46,13 @@ public final class WebViewControllerPresenterMobile: OAuthAuthorizationFlowView 
 /// taps to blocks. The controller does not allow the user to type an address. An initial address is instead provided to instances of this
 /// class which is loaded when an instance is shown.
 public final class WebViewControllerMobile: UIViewController {
-	fileprivate let address: URL
-	fileprivate let redirectHandler: (URL) -> Bool
-	fileprivate let cancelHandler: () -> Void
+	private let address: URL
+	private let redirectHandler: (URL) -> Bool
+	private let cancelHandler: () -> Void
 	
-	fileprivate var webView: WKWebView!
-	fileprivate var activityIndicator = UIActivityIndicatorView(style: .gray) // Shown during initial page loading.
-	fileprivate var errorLabel: UILabel! // Shown when a page loading error occurs.
+	private var webView: WKWebView!
+	private var activityIndicator = UIActivityIndicatorView(style: .gray) // Shown during initial page loading.
+	private var errorLabel: UILabel! // Shown when a page loading error occurs.
 	
 	/// Initializes a new view controller with a web view.
 	///
@@ -112,12 +112,12 @@ public final class WebViewControllerMobile: UIViewController {
 		load(address)
 	}
 	
-	fileprivate func load(_ url: URL) {
+	private func load(_ url: URL) {
 		let request = URLRequest(url: url)
 		webView.load(request)
 	}
 	
-	fileprivate func setActivityIndicatorVisible(_ visible: Bool) {
+	private func setActivityIndicatorVisible(_ visible: Bool) {
 		if visible {
 			activityIndicator.startAnimating()
 		} else {
@@ -127,7 +127,7 @@ public final class WebViewControllerMobile: UIViewController {
 		activityIndicator.isHidden = !visible
 	}
 	
-	fileprivate func showError(_ message: String?) {
+	private func showError(_ message: String?) {
 		errorLabel.text = message
 		errorLabel.isHidden = message == nil
 	}
@@ -153,7 +153,7 @@ extension WebViewControllerMobile: WKNavigationDelegate {
 }
 
 extension WebViewControllerMobile {
-	@objc fileprivate func cancelButtonTapped(_ sender: UIBarButtonItem) {
+	@objc private func cancelButtonTapped(_ sender: UIBarButtonItem) {
 		cancelHandler()
 	}
 }
