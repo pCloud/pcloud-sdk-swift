@@ -17,7 +17,7 @@ public struct Keychain {
 	public static func getData(forKey key: String) -> Data? {
 		let query = self.query(attributes: [
 			kSecAttrAccount as String: key,
-			kSecReturnData as String: kCFBooleanTrue,
+			kSecReturnData as String: kCFBooleanTrue!,
 			kSecMatchLimit as String: kSecMatchLimitOne
 		])
 		
@@ -64,7 +64,7 @@ public struct Keychain {
 	/// - returns: An array of all keys stored in the namespace defined by an instance of this keychain or an empty array on error.
 	public static func getAllKeys() -> [String] {
 		let query = self.query(attributes: [
-			kSecReturnAttributes as String: kCFBooleanTrue,
+			kSecReturnAttributes as String: kCFBooleanTrue!,
 			kSecMatchLimit as String: kSecMatchLimitAll
 		])
 		
