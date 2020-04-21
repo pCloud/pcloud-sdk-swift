@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum APIServerRegion: Int {
+public enum APIServerRegion: UInt {
 	case unitedStates = 1
 	case europe = 2
 }
