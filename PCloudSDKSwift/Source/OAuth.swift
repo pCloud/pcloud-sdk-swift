@@ -36,6 +36,24 @@ public struct OAuth {
 		case cancel
 	}
 	
+	/// An authenticated user.
+	public struct User: Codable {
+		/// A unique user identifier.
+		public var id: UInt64
+		
+		/// An OAuth access token.
+		public var token: String
+		
+		/// Uniquely identifies the server region hosting the user's account.
+		public var serverRegionId: UInt
+		
+		public init(id: UInt64, token: String, serverRegionId: UInt) {
+			self.id = id
+			self.token = token
+			self.serverRegionId = serverRegionId
+		}
+	}
+	
 	/// A failed authorization as per RFC 6749.
 	public enum Error: String, Swift.Error {
 		/// The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than
@@ -124,12 +142,27 @@ public struct OAuth {
 		return Keychain.getString(forKey: keychainKeyForUser(userId))
 	}
 	
+	/// Fetches the User object from the keychain mapped to a user id.
+	///
+	/// - parameter id: A unique user identifier.
+	/// - returns: A User object, or `nil`, if there is no user mapped to the provided user id.
+	public static func fetchUser(withId id: UInt64) -> User? {
+		return Keychain.getData(forKey: keychainKeyForUser(id)).flatMap(User.init)
+	}
+	
 	/// Updates an access token in the keychain for a user.
 	///
 	/// - parameter token: An OAuth access token.
 	/// - parameter userId: A unique identifier of a user to store `token` against.
 	public static func storeToken(_ token: String, forUser userId: UInt64) {
 		Keychain.set(token, forKey: keychainKeyForUser(userId))
+	}
+	
+	/// Stores a User object in the keychain against its unique identifier.
+	///
+	/// - parameter user: The user to store in the keychain.
+	public static func store(_ user: User) {
+		Keychain.set(user.jsonRepresentation, forKey: keychainKeyForUser(user.id))
 	}
 	
 	/// Deletes a token for a user from the keychain.
@@ -139,6 +172,13 @@ public struct OAuth {
 		Keychain.deleteData(forKey: keychainKeyForUser(userId))
 	}
 	
+	/// Deletes the data associated with a specific user.
+	///
+	/// - parameter id: The unique user identifier.
+	public static func deleteUser(withId id: UInt64) {
+		Keychain.deleteData(forKey: keychainKeyForUser(id))
+	}
+	
 	/// Deletes all tokens from the keychain.
 	public static func deleteAllTokens() {
 		for key in Keychain.getAllKeys() {
@@ -146,9 +186,11 @@ public struct OAuth {
 		}
 	}
 	
-	// Computes keychain key from a user id.
-	static func keychainKeyForUser(_ userId: UInt64) -> String {
-		return "\(userId)"
+	/// Deletes all users from the keychain.
+	public static func deleteAllUsers() {
+		for key in Keychain.getAllKeys() {
+			Keychain.deleteData(forKey: key)
+		}
 	}
 	
 	// Creates a redirect URL using and app key.
@@ -216,6 +258,11 @@ public struct OAuth {
 		
 		return .success(token: token, userId: UInt64(userId)!)
 	}
+	
+	// Computes keychain key from a user id.
+	private static func keychainKeyForUser(_ userId: UInt64) -> String {
+		return "\(userId)"
+	}
 }
 
 extension OAuth.Result: CustomStringConvertible {
@@ -224,6 +271,20 @@ extension OAuth.Result: CustomStringConvertible {
 		case let .success(token, userId): return "SUCCESS: token=\(token), userid=\(userId)"
 		case let .failure(error): return "FAILURE: \(error)"
 		case .cancel: return "CANCELLED"
+		}
+	}
+}
+
+private extension OAuth.User {
+	var jsonRepresentation: Data {
+		try! JSONEncoder().encode(self)
+	}
+	
+	init?(jsonRepresentation: Data) {
+		do {
+			self = try JSONDecoder().decode(OAuth.User.self, from: jsonRepresentation)
+		} catch {
+			return nil
 		}
 	}
 }
