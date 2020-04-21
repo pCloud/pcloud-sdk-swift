@@ -30,29 +30,25 @@ public enum PCloud {
 		self.appKey = appKey
 		
 		if let accessToken = OAuth.getAnyToken() {
-			initializeClient(accessToken: accessToken)
+			initializeClient(accessToken: accessToken, serverRegion: .unitedStates)
 		}
 	}
 	
 	/// Creates a client object and sets it to the `sharedClient` property.
 	///
 	/// - parameter accessToken: The access token to initialize the client with.
-	public static func initializeClient(accessToken: String) {
+	public static func initializeClient(accessToken: String, serverRegion: APIServerRegion) {
 		guard sharedClient == nil else {
 			assertionFailure("Attempting to initialize the global PCloudClient instance, but there already is a global instance.")
 			return
 		}
 		
-		sharedClient = createClient(accessToken: accessToken)
+		sharedClient = createClient(withAccessToken: accessToken, serverRegion: serverRegion)
 	}
 	
 	/// Releases the `sharedClient`. After this call, you may call
 	public static func clearClient() {
 		sharedClient = nil
-	}
-	
-	public static func createClient(accessToken: String) -> PCloudClient {
-		return createClient(withAccessToken: accessToken, serverRegion: .unitedStates)
 	}
 	
 	/// Creates a pCloud client. Does not update the `sharedClient` property. Use if you want to more directly control the lifetime of the
