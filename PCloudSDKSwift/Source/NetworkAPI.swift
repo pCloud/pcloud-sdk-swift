@@ -253,6 +253,10 @@ extension Call.Command: CustomStringConvertible {
 extension Call.Command: Equatable {
 }
 
+public func ==(lhs: Call.Command, rhs: Call.Command) -> Bool {
+	return lhs.name == rhs.name && Set(lhs.parameters) == Set(rhs.parameters)
+}
+
 extension Call.Request: CustomStringConvertible {
 	public var description: String {
 		return "\(hostName), \(command)"

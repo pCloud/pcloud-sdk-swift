@@ -14,7 +14,7 @@ final class PCloudAPITests: XCTestCase {
 	let iconFormatParameter = Call.Command.Parameter.string(name: "iconformat", value: "id")
 	
 	func validate(_ command: Call.Command, against expected: Call.Command) {
-		XCTAssert(command == expected, "incorrect command; expected \(expected), got \(command)")
+		XCTAssertEqual(command, expected, "invalid command")
 	}
 }
 
