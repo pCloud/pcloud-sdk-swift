@@ -10,10 +10,10 @@ import Foundation
 
 /// Convenience namespace for the SDK. Hosts a global `PCloudClient` instance.
 public enum PCloud {
-	/// A global client instance. Automatically initialized either inside `setup()` or `authorize()`.
+	/// A global client instance. Automatically initialized either inside `setUp()` or `authorize()`.
 	private(set) public static var sharedClient: PCloudClient?
 	
-	/// The app key provided in `setup()`.
+	/// The app key provided in `setUp()`.
 	private(set) public static var appKey: String?
 	
 	/// Attempts to initialize a pCloud client instance by checking for an existing user in the keychain.
@@ -21,7 +21,7 @@ public enum PCloud {
 	/// This method is not thread-safe. Only call
 	///
 	/// - parameter appKey: The app key to initialize the client with.
-	public static func setup(appKey: String) {
+	public static func setUp(withAppKey appKey: String) {
 		precondition(self.appKey == nil, "PCloud client has already been set up")
 		self.appKey = appKey
 		
