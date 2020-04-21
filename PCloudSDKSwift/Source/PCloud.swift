@@ -29,7 +29,10 @@ public enum PCloud {
 		
 		self.appKey = appKey
 		
-		if let accessToken = OAuth.getAnyToken() {
+		if let user = OAuth.getAnyUser() {
+			let serverRegion = APIServerRegion(rawValue: user.serverRegionId) ?? .unitedStates
+			initializeClient(accessToken: user.token, serverRegion: serverRegion)
+		} else if let accessToken = OAuth.getAnyToken() {
 			initializeClient(accessToken: accessToken, serverRegion: .unitedStates)
 		}
 	}
@@ -46,7 +49,7 @@ public enum PCloud {
 		sharedClient = createClient(withAccessToken: accessToken, serverRegion: serverRegion)
 	}
 	
-	/// Releases the `sharedClient`. After this call, you may call
+	/// Releases the `sharedClient`. You may call `initializeClient()` again after calling this method.
 	public static func clearClient() {
 		sharedClient = nil
 	}
@@ -75,7 +78,8 @@ public enum PCloud {
 		
 		OAuth.performAuthorizationFlow(view: view, appKey: appKey, storeToken: OAuth.storeToken) { result in
 			if case .success(let token, _) = result {
-				self.initializeClient(accessToken: token)
+				// TODO: pass user in result
+				self.initializeClient(accessToken: token, serverRegion: .unitedStates)
 			}
 			
 			completionBlock(result)
