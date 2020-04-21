@@ -76,7 +76,7 @@ public enum PCloud {
 	/// Clears the global pCloud client and deletes all tokens. Only call this method on the main thread.
 	public static func unlinkAllUsers() {
 		clearClient()
-		OAuth.deleteAllTokens()
+		OAuth.deleteAllUsers()
 	}
 	
 	/// Creates a pCloud client. Does not update the `sharedClient` property. Use if you want to more directly control the lifetime of the

@@ -136,28 +136,12 @@ public struct OAuth {
 		return nil
 	}
 	
-	/// Fetches an access token for a specific user.
-	///
-	/// - parameter userId: The unique identifier of a user.
-	/// - returns: An OAuth access token, or `nil` if there is no access token for this user in the keychain.
-	public static func getToken(forUser userId: UInt64) -> String? {
-		return Keychain.getString(forKey: keychainKeyForUser(userId))
-	}
-	
 	/// Fetches the User object from the keychain mapped to a user id.
 	///
 	/// - parameter id: A unique user identifier.
 	/// - returns: A User object, or `nil`, if there is no user mapped to the provided user id.
 	public static func getUser(withId id: UInt64) -> User? {
 		return Keychain.getData(forKey: keychainKeyForUser(id)).flatMap(User.init)
-	}
-	
-	/// Updates an access token in the keychain for a user.
-	///
-	/// - parameter token: An OAuth access token.
-	/// - parameter userId: A unique identifier of a user to store `token` against.
-	public static func storeToken(_ token: String, forUser userId: UInt64) {
-		Keychain.set(token, forKey: keychainKeyForUser(userId))
 	}
 	
 	/// Stores a User object in the keychain against its unique identifier.
@@ -167,13 +151,6 @@ public struct OAuth {
 		Keychain.set(user.jsonRepresentation, forKey: keychainKeyForUser(user.id))
 	}
 	
-	/// Deletes a token for a user from the keychain.
-	///
-	/// - parameter userId: A unique identifier of a user to delete the token for.
-	public static func deleteToken(forUser userId: UInt64) {
-		Keychain.deleteData(forKey: keychainKeyForUser(userId))
-	}
-	
 	/// Deletes the data associated with a specific user.
 	///
 	/// - parameter id: The unique user identifier.
@@ -181,18 +158,26 @@ public struct OAuth {
 		Keychain.deleteData(forKey: keychainKeyForUser(id))
 	}
 	
-	/// Deletes all tokens from the keychain.
-	public static func deleteAllTokens() {
-		for key in Keychain.getAllKeys() {
-			Keychain.deleteData(forKey: key)
-		}
-	}
-	
 	/// Deletes all users from the keychain.
 	public static func deleteAllUsers() {
 		for key in Keychain.getAllKeys() {
 			Keychain.deleteData(forKey: key)
 		}
+	}
+	
+	/// Fetches an access token for a specific user.
+	///
+	/// - parameter userId: The unique identifier of a user.
+	/// - returns: An OAuth access token, or `nil` if there is no access token for this user in the keychain.
+	public static func getToken(forUser userId: UInt64) -> String? {
+		return Keychain.getString(forKey: keychainKeyForUser(userId))
+	}
+	
+	/// Deletes a token for a user from the keychain.
+	///
+	/// - parameter userId: A unique identifier of a user to delete the token for.
+	public static func deleteToken(forUser userId: UInt64) {
+		Keychain.deleteData(forKey: keychainKeyForUser(userId))
 	}
 	
 	// Creates a redirect URL using and app key.
