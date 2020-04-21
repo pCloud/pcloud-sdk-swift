@@ -8,15 +8,17 @@
 
 import Foundation
 
-/// Convenience static class providing a global `PCloudClient` instance.
-public final class PCloud {
+/// Convenience namespace for the SDK. Hosts a global `PCloudClient` instance.
+public enum PCloud {
 	/// A global client instance. Automatically initialized either inside `setup()` or `authorize()`.
 	private(set) public static var sharedClient: PCloudClient?
 	
 	/// The app key provided in `setup()`.
 	private(set) public static var appKey: String?
 	
-	/// Attempts to initialize a pCloud client instance by checking for an existing access token in the keychain.
+	/// Attempts to initialize a pCloud client instance by checking for an existing user in the keychain.
+	/// The `sharedClient` property will be non-nil if there is a user in the keychain. Only call this method once for each instance of your app!
+	/// This method is not thread-safe. Only call
 	///
 	/// - parameter appKey: The app key to initialize the client with.
 	public static func setup(appKey: String) {
@@ -28,36 +30,35 @@ public final class PCloud {
 		}
 	}
 	
-	/// Initializes the global pCloud client instance.
+	/// Creates a client object and sets it to the `sharedClient` property.
 	///
 	/// - parameter accessToken: The access token to initialize the client with.
 	public static func initializeClient(accessToken: String) {
+		guard sharedClient == nil else {
+			assertionFailure("Attempting to initialize the global PCloudClient instance, but there already is a global instance.")
+			return
+		}
+		
 		sharedClient = createClient(accessToken: accessToken)
 	}
 	
-	/// Sets the global pCloud client instance to `nil`.
+	/// Releases the `sharedClient`. After this call, you may call
 	public static func clearClient() {
 		sharedClient = nil
 	}
 	
-	/// Creates a pCloud client with an access token.
+	public static func createClient(accessToken: String) -> PCloudClient {
+		return createClient(withAccessToken: accessToken, serverRegion: .unitedStates)
+	}
+	
+	/// Creates a pCloud client. Does not update the `sharedClient` property. Use if you want to more directly control the lifetime of the
+	/// `PCloudClient` object. Multiple clients can exist simultaneously.
 	///
 	/// - parameter accessToken: An OAuth access token.
+	/// - parameter apiHostName: Host name of the API server to connect to.
 	/// - returns: An instance of a pCloud client using the access token to authenticate network calls.
-	public static func createClient(accessToken: String) -> PCloudClient {
-		let authenticator = OAuthAccessTokenBasedAuthenticator(accessToken: accessToken)
-		let eventHub = URLSessionEventHub()
-		let session = URLSession(configuration: .default, delegate: eventHub, delegateQueue: nil)
-		let callOperationBuilder = URLSessionBasedNetworkOperationUtilities.createCallOperationBuilder(scheme: .https, session: session, delegate: eventHub)
-		let uploadOperationBuilder = URLSessionBasedNetworkOperationUtilities.createUploadOperationBuilder(scheme: .https, session: session, delegate: eventHub)
-		let downloadOperationBuilder = URLSessionBasedNetworkOperationUtilities.createDownloadOperationBuilder(session: session, delegate: eventHub)
-		let hostName = "api.pcloud.com"
-		
-		let callTaskBuilder = PCloudAPICallTaskBuilder(hostProvider: hostName, authenticator: authenticator, operationBuilder: callOperationBuilder)
-		let uploadTaskBuilder = PCloudAPIUploadTaskBuilder(hostProvider: hostName, authenticator: authenticator, operationBuilder: uploadOperationBuilder)
-		let downloadTaskBuilder = PCloudAPIDownloadTaskBuilder(hostProvider: hostName, authenticator: authenticator, operationBuilder: downloadOperationBuilder)
-		
-		return PCloudClient(callTaskBuilder: callTaskBuilder, uploadTaskBuilder: uploadTaskBuilder, downloadTaskBuilder: downloadTaskBuilder)
+	public static func createClient(withAccessToken accessToken: String, serverRegion: APIServerRegion) -> PCloudClient {
+		return createClient(withAccessToken: accessToken, apiHostName: apiHostName(for: serverRegion))
 	}
 	
 	/// Clears the global pCloud client and deletes all tokens.
@@ -78,6 +79,42 @@ public final class PCloud {
 			}
 			
 			completionBlock(result)
+		}
+	}
+	
+	private static func createClient(withAccessToken accessToken: String, apiHostName: String) -> PCloudClient {
+		let authenticator = OAuthAccessTokenBasedAuthenticator(accessToken: accessToken)
+		let eventHub = URLSessionEventHub()
+		let session = URLSession(configuration: .default, delegate: eventHub, delegateQueue: nil)
+		let callOperationBuilder = URLSessionBasedNetworkOperationUtilities.createCallOperationBuilder(scheme: .https,
+																									   session: session,
+																									   delegate: eventHub)
+		
+		let uploadOperationBuilder = URLSessionBasedNetworkOperationUtilities.createUploadOperationBuilder(scheme: .https,
+																										   session: session,
+																										   delegate: eventHub)
+		
+		let downloadOperationBuilder = URLSessionBasedNetworkOperationUtilities.createDownloadOperationBuilder(session: session, delegate: eventHub)
+		
+		let callTaskBuilder = PCloudAPICallTaskBuilder(hostProvider: apiHostName,
+													   authenticator: authenticator,
+													   operationBuilder: callOperationBuilder)
+		
+		let uploadTaskBuilder = PCloudAPIUploadTaskBuilder(hostProvider: apiHostName,
+														   authenticator: authenticator,
+														   operationBuilder: uploadOperationBuilder)
+		
+		let downloadTaskBuilder = PCloudAPIDownloadTaskBuilder(hostProvider: apiHostName,
+															   authenticator: authenticator,
+															   operationBuilder: downloadOperationBuilder)
+		
+		return PCloudClient(callTaskBuilder: callTaskBuilder, uploadTaskBuilder: uploadTaskBuilder, downloadTaskBuilder: downloadTaskBuilder)
+	}
+	
+	private static func apiHostName(for region: APIServerRegion) -> String {
+		switch region {
+		case .unitedStates: return "api.pcloud.com"
+		case .europe: return "eapi.pcloud.com"
 		}
 	}
 }
