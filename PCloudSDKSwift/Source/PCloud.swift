@@ -11,6 +11,7 @@ import Foundation
 /// Convenience namespace for the SDK. Hosts a global `PCloudClient` instance.
 public enum PCloud {
 	/// A global client instance. Automatically initialized either inside `setUp()` or `authorize()`.
+	/// Access on the main thread only.
 	private(set) public static var sharedClient: PCloudClient?
 	
 	/// The app key provided in `setUp()`.
@@ -18,7 +19,7 @@ public enum PCloud {
 	
 	/// Attempts to initialize a pCloud client instance by checking for an existing user in the keychain.
 	/// The `sharedClient` property will be non-nil if there is a user in the keychain. Only call this method once for each instance of your app!
-	/// This method is not thread-safe. Only call
+	/// Only call this method on the main thread.
 	///
 	/// - parameter appKey: The app key to initialize the client with.
 	public static func setUp(withAppKey appKey: String) {
@@ -37,7 +38,7 @@ public enum PCloud {
 		}
 	}
 	
-	/// Creates a client object and sets it to the `sharedClient` property.
+	/// Creates a client object and sets it to the `sharedClient` property. Only call this method on the main thread.
 	///
 	/// - parameter accessToken: The access token to initialize the client with.
 	public static func initializeClient(accessToken: String, serverRegion: APIServerRegion) {
@@ -49,9 +50,15 @@ public enum PCloud {
 		sharedClient = createClient(withAccessToken: accessToken, serverRegion: serverRegion)
 	}
 	
-	/// Releases the `sharedClient`. You may call `initializeClient()` again after calling this method.
+	/// Releases the `sharedClient`. You may call `initializeClient()` again after calling this method. Only call this method on the main thread.
 	public static func clearClient() {
 		sharedClient = nil
+	}
+	
+	/// Clears the global pCloud client and deletes all tokens. Only call this method on the main thread.
+	public static func unlinkAllUsers() {
+		clearClient()
+		OAuth.deleteAllTokens()
 	}
 	
 	/// Creates a pCloud client. Does not update the `sharedClient` property. Use if you want to more directly control the lifetime of the
@@ -64,21 +71,16 @@ public enum PCloud {
 		return createClient(withAccessToken: accessToken, apiHostName: apiHostName(for: serverRegion))
 	}
 	
-	/// Clears the global pCloud client and deletes all tokens.
-	public static func unlinkAllUsers() {
-		clearClient()
-		OAuth.deleteAllTokens()
-	}
-	
 	// Starts an authorization flow and initializes the global client on success.
 	static func authorize(view: OAuthAuthorizationFlowView, completionBlock: @escaping (OAuth.Result) -> Void) {
 		guard let appKey = self.appKey else {
 			preconditionFailure("Please set up client by calling PCloud.setup(appKey: <YOUR_APP_KEY>)")
 		}
 		
-		OAuth.performAuthorizationFlow(view: view, appKey: appKey, storeToken: OAuth.storeToken) { result in
-			if case .success(let token, _) = result {
+		OAuth.performAuthorizationFlow(view: view, appKey: appKey) { result in
+			if case let .success(token, userId) = result {
 				// TODO: pass user in result
+				OAuth.storeToken(token, forUser: userId)
 				self.initializeClient(accessToken: token, serverRegion: .unitedStates)
 			}
 			

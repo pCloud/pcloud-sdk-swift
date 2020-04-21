@@ -16,7 +16,9 @@ public protocol OAuthAuthorizationFlowView {
 	/// - parameter url: The address to open in the web view.
 	/// - parameter interceptNavigation: A block to be called when the web view attempts a redirection. The block should
 	/// be invoked with the destination address. Returns `true` when the web view should cancel the redirection, and `false` otherwise.
+	/// The block must be called on the main thread.
 	/// - parameter didCancel: A block to be called when the user attempts to exit the web view by means of a button, gesture, etc.
+	/// The block must be called on the main thread.
 	func presentWebView(url: URL, interceptNavigation: @escaping (URL) -> Bool, didCancel: @escaping () -> Void)
 	
 	/// Dismisses the web view presented using
@@ -83,17 +85,12 @@ public struct OAuth {
 		case unknown = "unknown"
 	}
 	
-	/// Attempts to authorize.
+	/// Attempts to authorize via OAuth.
 	///
 	/// - parameter view: An object handling UI-specific actions related to the authorization flow.
 	/// - parameter appKey: An app key.
-	/// - parameter storeToken: A block called with an access token and a user id as the first and second arguments, respectively.
-	/// It should store the token in a persistent storage.
-	/// - parameter completionToken: A block called when authorization completes.
-	public static func performAuthorizationFlow(view: OAuthAuthorizationFlowView,
-	                                            appKey: String,
-	                                            storeToken: @escaping (String, UInt64) -> Void,
-	                                            _ completionBlock: @escaping (Result) -> Void) {
+	/// - parameter completionToken: A block called when authorization completes. Called on the main thread.
+	public static func performAuthorizationFlow(view: OAuthAuthorizationFlowView, appKey: String, completionBlock: @escaping (Result) -> Void) {
 		// Create URL.
 		let authorizationUrl = createAuthorizationUrl(appKey: appKey, redirectUrl: createRedirectUrl(appKey: appKey))
 		
@@ -102,11 +99,6 @@ public struct OAuth {
 			if let result = handleRedirectUrl(url, appKey: appKey) {
 				// This is an OAuth redirect.
 				view.dismissWebView()
-				
-				if case let .success(token, userId) = result {
-					storeToken(token, userId)
-				}
-				
 				completionBlock(result)
 				return true
 			}
