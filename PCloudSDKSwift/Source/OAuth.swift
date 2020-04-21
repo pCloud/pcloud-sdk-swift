@@ -123,12 +123,22 @@ public struct OAuth {
 		view.presentWebView(url: authorizationUrl, interceptNavigation: interceptBlock, didCancel: cancelBlock)
 	}
 	
+	// TODO: handle legacy keys and make old token-related methods non-public.
+	
 	/// Fetches the first access token found in the keychain.
 	///
 	/// - returns: An OAuth access token, or `nil` if there are no access tokens in the keychain.
 	public static func getAnyToken() -> String? {
 		if let key = Keychain.getAllKeys().first {
 			return Keychain.getString(forKey: key)
+		}
+		
+		return nil
+	}
+	
+	public static func getAnyUser() -> User? {
+		if let userId = Keychain.getAllKeys().first.flatMap(userId) {
+			return getUser(withId: userId)
 		}
 		
 		return nil
@@ -146,7 +156,7 @@ public struct OAuth {
 	///
 	/// - parameter id: A unique user identifier.
 	/// - returns: A User object, or `nil`, if there is no user mapped to the provided user id.
-	public static func fetchUser(withId id: UInt64) -> User? {
+	public static func getUser(withId id: UInt64) -> User? {
 		return Keychain.getData(forKey: keychainKeyForUser(id)).flatMap(User.init)
 	}
 	
@@ -262,6 +272,10 @@ public struct OAuth {
 	// Computes keychain key from a user id.
 	private static func keychainKeyForUser(_ userId: UInt64) -> String {
 		return "\(userId)"
+	}
+	
+	private static func userId(fromKey key: String) -> UInt64? {
+		return UInt64(key)
 	}
 }
 
