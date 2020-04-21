@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9848DD31244F01E60003FDFA /* APIServerRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9848DD30244F01E60003FDFA /* APIServerRegion.swift */; };
+		9848DD32244F01E60003FDFA /* APIServerRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9848DD30244F01E60003FDFA /* APIServerRegion.swift */; };
 		98A4D90F1FCD60B300847B5B /* CallError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D90E1FCD60B300847B5B /* CallError.swift */; };
 		98A4D9111FCD89CB00847B5B /* URLSessionTaskBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D9101FCD89CB00847B5B /* URLSessionTaskBuilder.swift */; };
 		98A4D9141FCDAB9900847B5B /* APITaskBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D9131FCDAB9900847B5B /* APITaskBuilding.swift */; };
@@ -99,6 +101,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9848DD30244F01E60003FDFA /* APIServerRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIServerRegion.swift; path = Source/APIServerRegion.swift; sourceTree = "<group>"; };
 		98A4D90E1FCD60B300847B5B /* CallError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CallError.swift; path = Source/CallError.swift; sourceTree = "<group>"; };
 		98A4D9101FCD89CB00847B5B /* URLSessionTaskBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLSessionTaskBuilder.swift; path = Source/URLSessionTaskBuilder.swift; sourceTree = "<group>"; };
 		98A4D9131FCDAB9900847B5B /* APITaskBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APITaskBuilding.swift; path = Source/APITaskBuilding.swift; sourceTree = "<group>"; };
@@ -260,6 +263,7 @@
 				D05BE9CC1E1670B10021E7F3 /* Parser.swift */,
 				D05BE9CD1E1670B10021E7F3 /* PCloud.swift */,
 				D05BE9CE1E1670B10021E7F3 /* PCloudAPI.swift */,
+				9848DD30244F01E60003FDFA /* APIServerRegion.swift */,
 				D05BE9CF1E1670B10021E7F3 /* PCloudClient.swift */,
 				D05BEA1A1E1B97660021E7F3 /* PCloudSDKSwift.h */,
 				D05BE9D01E1670B10021E7F3 /* Result.swift */,
@@ -484,6 +488,7 @@
 				D05BE9DC1E1670B10021E7F3 /* Atomic.swift in Sources */,
 				D05BE9F21E1670B10021E7F3 /* URLSessionBasedUploadOperation.swift in Sources */,
 				D05BE9E11E1670B10021E7F3 /* DownloadTask.swift in Sources */,
+				9848DD31244F01E60003FDFA /* APIServerRegion.swift in Sources */,
 				98A4D90F1FCD60B300847B5B /* CallError.swift in Sources */,
 				D05BE9E91E1670B10021E7F3 /* Parser.swift in Sources */,
 				D05BE9ED1E1670B10021E7F3 /* Result.swift in Sources */,
@@ -540,6 +545,7 @@
 				D05BEA151E1670D30021E7F3 /* URLSessionBasedUploadOperation.swift in Sources */,
 				D05BEA041E1670D30021E7F3 /* DownloadTask.swift in Sources */,
 				D05BEA0C1E1670D30021E7F3 /* Parser.swift in Sources */,
+				9848DD32244F01E60003FDFA /* APIServerRegion.swift in Sources */,
 				98A4D91E1FCF1DB500847B5B /* CallError.swift in Sources */,
 				D05BEA101E1670D30021E7F3 /* Result.swift in Sources */,
 				98A4D91F1FCF1DB800847B5B /* UploadInfo.swift in Sources */,
