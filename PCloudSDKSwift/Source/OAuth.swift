@@ -39,7 +39,7 @@ public struct OAuth {
 	}
 	
 	/// An authenticated user.
-	public struct User: Codable {
+	public struct User: Codable, Equatable {
 		/// A unique user identifier.
 		public var id: UInt64
 		
