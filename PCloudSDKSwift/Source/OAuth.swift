@@ -115,7 +115,7 @@ public struct OAuth {
 		view.presentWebView(url: authorizationUrl, interceptNavigation: interceptBlock, didCancel: cancelBlock)
 	}
 	
-	// TODO: handle legacy keys and make old token-related methods non-public.
+	// TODO: comments
 	
 	/// Fetches the first access token found in the keychain.
 	///
@@ -141,7 +141,30 @@ public struct OAuth {
 	/// - parameter id: A unique user identifier.
 	/// - returns: A User object, or `nil`, if there is no user mapped to the provided user id.
 	public static func getUser(withId id: UInt64) -> User? {
-		return Keychain.getData(forKey: keychainKeyForUser(id)).flatMap(User.init)
+		let key = keychainKeyForUser(id)
+		
+		guard let data = Keychain.getData(forKey: key) else {
+			return nil
+		}
+		
+		if let user = User(jsonRepresentation: data) {
+			return user
+		}
+		
+		// There is data in the keychain for this user but is not a JSON object.
+		// This should be an access token from v2 of the SDK.
+		
+		guard let token = String(bytes: data, encoding: .utf8) else {
+			// Corrupted data maybe? This shouldn't really happen. Anyway, we can't do anything with this entry. Delete it.
+			Keychain.deleteData(forKey: key)
+			return nil
+		}
+		
+		// Since this token is stored using v2 of the SDK, this must be a US user.
+		let user = User(id: id, token: token, serverRegionId: APIServerRegion.unitedStates.rawValue)
+		store(user) // Overwrite the keychain entry.
+		
+		return user
 	}
 	
 	/// Stores a User object in the keychain against its unique identifier.
@@ -163,21 +186,6 @@ public struct OAuth {
 		for key in Keychain.getAllKeys() {
 			Keychain.deleteData(forKey: key)
 		}
-	}
-	
-	/// Fetches an access token for a specific user.
-	///
-	/// - parameter userId: The unique identifier of a user.
-	/// - returns: An OAuth access token, or `nil` if there is no access token for this user in the keychain.
-	public static func getToken(forUser userId: UInt64) -> String? {
-		return Keychain.getString(forKey: keychainKeyForUser(userId))
-	}
-	
-	/// Deletes a token for a user from the keychain.
-	///
-	/// - parameter userId: A unique identifier of a user to delete the token for.
-	public static func deleteToken(forUser userId: UInt64) {
-		Keychain.deleteData(forKey: keychainKeyForUser(userId))
 	}
 	
 	// Creates a redirect URL using and app key.
