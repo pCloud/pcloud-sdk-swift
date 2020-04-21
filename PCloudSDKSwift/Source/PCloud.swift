@@ -22,7 +22,11 @@ public enum PCloud {
 	///
 	/// - parameter appKey: The app key to initialize the client with.
 	public static func setUp(withAppKey appKey: String) {
-		precondition(self.appKey == nil, "PCloud client has already been set up")
+		guard self.appKey == nil else {
+			assertionFailure("PCloud client has already been set up")
+			return
+		}
+		
 		self.appKey = appKey
 		
 		if let accessToken = OAuth.getAnyToken() {
