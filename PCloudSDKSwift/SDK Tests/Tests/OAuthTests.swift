@@ -75,13 +75,13 @@ final class OAuthTests: XCTestCase {
 	
 	func testHandleRedirectUrlReturnsTokenOnAccessTokenResponse() {
 		// Given
-		let url = createRedirectUrl(appKey: "foo", fragment: "access_token=thetoken&userid=42")
+		let url = createRedirectUrl(appKey: "foo", fragment: "access_token=thetoken&userid=42&locationid=1")
 		
 		// When
 		let result = OAuth.handleRedirectUrl(url, appKey: "foo")!
 		
 		// Expect
-		validate(result, against: .success(token: "thetoken", userId: 42))
+		validate(result, against: .success(OAuth.User(id: 42, token: "thetoken", serverRegionId: 1)))
 	}
 	
 	func testHandleRedirectUrlReturnsErrorOnErrorResponse() {
@@ -113,7 +113,7 @@ final class OAuthTests: XCTestCase {
 		let view = AuthorizationFlowViewMock()
 		
 		// When
-		OAuth.performAuthorizationFlow(view: view, appKey: "", storeToken: { _,_  in }) { _ in }
+		OAuth.performAuthorizationFlow(view: view, appKey: "") { _ in }
 		
 		// Expect
 		XCTAssert(view.presentInvoked, "should present web view")
@@ -125,7 +125,7 @@ final class OAuthTests: XCTestCase {
 		let url = URL(string: "https://google.com")!
 		
 		// When
-		OAuth.performAuthorizationFlow(view: view, appKey: "", storeToken: { _,_  in }) { _ in
+		OAuth.performAuthorizationFlow(view: view, appKey: "") { _ in
 			// Expect
 			XCTFail("should not invoke completion block")
 		}
@@ -143,7 +143,7 @@ final class OAuthTests: XCTestCase {
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
 		// When
-		OAuth.performAuthorizationFlow(view: view, appKey: "", storeToken: { _,_  in }) { result in
+		OAuth.performAuthorizationFlow(view: view, appKey: "") { result in
 			// Expect
 			invokeExpectation.fulfill()
 			
@@ -160,12 +160,12 @@ final class OAuthTests: XCTestCase {
 	
 	func testAuthorizationFlowInvokesCompletionBlockWhenInterceptingOAuthRedirect() {
 		// Given
-		let url = createRedirectUrl(appKey: "foo", fragment: "access_token=thetoken&userid=42")
+		let url = createRedirectUrl(appKey: "foo", fragment: "access_token=thetoken&userid=42&locationid=1")
 		let view = AuthorizationFlowViewMock()
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
 		// When
-		OAuth.performAuthorizationFlow(view: view, appKey: "foo", storeToken: { _,_  in }) { _ in
+		OAuth.performAuthorizationFlow(view: view, appKey: "foo") { _ in
 			// Expect
 			invokeExpectation.fulfill()
 		}
@@ -174,24 +174,6 @@ final class OAuthTests: XCTestCase {
 		
 		// Expect
 		XCTAssert(result, "should handle url")
-		
-		waitForExpectations(timeout: 1, handler: nil)
-	}
-	
-	func testAuthorizationFlowStoresTokenOnAccessTokenResponse() {
-		// Given
-		let url = createRedirectUrl(appKey: "foo", fragment: "access_token=thetoken&userid=42")
-		let view = AuthorizationFlowViewMock()
-		let invokeExpectation = expectation(description: "to invoke store token block")
-		
-		let storeBlock: (String, UInt64) -> Void = { token, user in
-			// Expect
-			invokeExpectation.fulfill()
-		}
-		
-		// When
-		OAuth.performAuthorizationFlow(view: view, appKey: "foo", storeToken: storeBlock, { _ in })
-		_ = view.invokeInterceptBlock(url: url)
 		
 		waitForExpectations(timeout: 1, handler: nil)
 	}
