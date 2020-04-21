@@ -31,17 +31,35 @@ public enum PCloud {
 		self.appKey = appKey
 		
 		if let user = OAuth.getAnyUser() {
-			let serverRegion = APIServerRegion(rawValue: user.serverRegionId) ?? .unitedStates
-			initializeClient(accessToken: user.token, serverRegion: serverRegion)
+			initializeClient(with: user)
 		} else if let accessToken = OAuth.getAnyToken() {
-			initializeClient(accessToken: accessToken, serverRegion: .unitedStates)
+			// This is a user logged in using version 2 of the SDK. Assume US for data region.
+			initializeClient(withAccessToken: accessToken, serverRegion: .unitedStates)
 		}
 	}
 	
 	/// Creates a client object and sets it to the `sharedClient` property. Only call this method on the main thread.
 	///
-	/// - parameter accessToken: The access token to initialize the client with.
-	public static func initializeClient(accessToken: String, serverRegion: APIServerRegion) {
+	/// - parameter user: A user value obtained from the keychain or from the OAuth flow.
+	public static func initializeClient(with user: OAuth.User) {
+		let serverRegion: APIServerRegion = {
+			if let region = APIServerRegion(rawValue: user.serverRegionId) {
+				return region
+			}
+			
+			// Unrecognized server region id.
+			// TODO: add error log
+			return .unitedStates
+		}()
+		
+		initializeClient(withAccessToken: user.token, serverRegion: serverRegion)
+	}
+	
+	/// Creates a client object and sets it to the `sharedClient` property. Only call this method on the main thread.
+	///
+	/// - parameter accessToken: An OAuth access token.
+	/// - parameter serverRegion: The server region that granted the access token.
+	public static func initializeClient(withAccessToken accessToken: String, serverRegion: APIServerRegion) {
 		guard sharedClient == nil else {
 			assertionFailure("Attempting to initialize the global PCloudClient instance, but there already is a global instance.")
 			return
@@ -74,14 +92,14 @@ public enum PCloud {
 	// Starts an authorization flow and initializes the global client on success.
 	static func authorize(view: OAuthAuthorizationFlowView, completionBlock: @escaping (OAuth.Result) -> Void) {
 		guard let appKey = self.appKey else {
-			assertionFailure("Please set up client by calling PCloud.setUp(withAppKey: <YOUR_APP_KEY>)")
+			assertionFailure("Please set up client by calling PCloud.setUp(withAppKey: <YOUR_APP_KEY>) before attempting to authorize using OAuth")
 			return
 		}
 		
 		OAuth.performAuthorizationFlow(view: view, appKey: appKey) { result in
 			if case let .success(user) = result {
 				OAuth.store(user)
-				self.initializeClient(accessToken: user.token, serverRegion: APIServerRegion(rawValue: user.serverRegionId) ?? .unitedStates)
+				self.initializeClient(with: user)
 			}
 			
 			completionBlock(result)
