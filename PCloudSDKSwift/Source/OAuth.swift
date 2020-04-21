@@ -117,17 +117,6 @@ public struct OAuth {
 	
 	// TODO: comments
 	
-	/// Fetches the first access token found in the keychain.
-	///
-	/// - returns: An OAuth access token, or `nil` if there are no access tokens in the keychain.
-	public static func getAnyToken() -> String? {
-		if let key = Keychain.getAllKeys().first {
-			return Keychain.getString(forKey: key)
-		}
-		
-		return nil
-	}
-	
 	public static func getAnyUser() -> User? {
 		if let userId = Keychain.getAllKeys().first.flatMap(userId) {
 			return getUser(withId: userId)

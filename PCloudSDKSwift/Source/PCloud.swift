@@ -32,9 +32,6 @@ public enum PCloud {
 		
 		if let user = OAuth.getAnyUser() {
 			initializeClient(with: user)
-		} else if let accessToken = OAuth.getAnyToken() {
-			// This is a user logged in using version 2 of the SDK. Assume US for data region.
-			initializeClient(withAccessToken: accessToken, serverRegion: .unitedStates)
 		}
 	}
 	
