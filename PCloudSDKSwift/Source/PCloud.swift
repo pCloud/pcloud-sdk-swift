@@ -74,14 +74,14 @@ public enum PCloud {
 	// Starts an authorization flow and initializes the global client on success.
 	static func authorize(view: OAuthAuthorizationFlowView, completionBlock: @escaping (OAuth.Result) -> Void) {
 		guard let appKey = self.appKey else {
-			preconditionFailure("Please set up client by calling PCloud.setup(appKey: <YOUR_APP_KEY>)")
+			assertionFailure("Please set up client by calling PCloud.setUp(withAppKey: <YOUR_APP_KEY>)")
+			return
 		}
 		
 		OAuth.performAuthorizationFlow(view: view, appKey: appKey) { result in
-			if case let .success(token, userId) = result {
-				// TODO: pass user in result
-				OAuth.storeToken(token, forUser: userId)
-				self.initializeClient(accessToken: token, serverRegion: .unitedStates)
+			if case let .success(user) = result {
+				OAuth.store(user)
+				self.initializeClient(accessToken: user.token, serverRegion: APIServerRegion(rawValue: user.serverRegionId) ?? .unitedStates)
 			}
 			
 			completionBlock(result)

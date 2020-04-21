@@ -33,7 +33,7 @@ public protocol OAuthAuthorizationFlowView {
 public struct OAuth {
 	/// The result of an authorization attempt.
 	public enum Result {
-		case success(token: String, userId: UInt64)
+		case success(User)
 		case failure(Error)
 		case cancel
 	}
@@ -257,8 +257,10 @@ public struct OAuth {
 		// Expect that if there is no error, there must be an access token.
 		let token = parameters["access_token"]!
 		let userId = parameters["userid"]!
+		let locationId = parameters["locationid"]!
+		let user = User(id: UInt64(userId)!, token: token, serverRegionId: UInt(locationId)!)
 		
-		return .success(token: token, userId: UInt64(userId)!)
+		return .success(user)
 	}
 	
 	// Computes keychain key from a user id.
@@ -274,7 +276,7 @@ public struct OAuth {
 extension OAuth.Result: CustomStringConvertible {
 	public var description: String {
 		switch self {
-		case let .success(token, userId): return "SUCCESS: token=\(token), userid=\(userId)"
+		case let .success(user): return "SUCCESS: \(user)"
 		case let .failure(error): return "FAILURE: \(error)"
 		case .cancel: return "CANCELLED"
 		}
