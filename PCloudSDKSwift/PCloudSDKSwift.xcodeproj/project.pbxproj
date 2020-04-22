@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		983AD9D62450681D0023305D /* PCloud+OAuthMobile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983AD9D52450681D0023305D /* PCloud+OAuthMobile.swift */; };
 		9848DD31244F01E60003FDFA /* APIServerRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9848DD30244F01E60003FDFA /* APIServerRegion.swift */; };
 		9848DD32244F01E60003FDFA /* APIServerRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9848DD30244F01E60003FDFA /* APIServerRegion.swift */; };
 		98A4D90F1FCD60B300847B5B /* CallError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D90E1FCD60B300847B5B /* CallError.swift */; };
@@ -101,6 +102,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		983AD9D52450681D0023305D /* PCloud+OAuthMobile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PCloud+OAuthMobile.swift"; path = "SDK iOS/PCloud+OAuthMobile.swift"; sourceTree = SOURCE_ROOT; };
 		9848DD30244F01E60003FDFA /* APIServerRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIServerRegion.swift; path = Source/APIServerRegion.swift; sourceTree = "<group>"; };
 		98A4D90E1FCD60B300847B5B /* CallError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CallError.swift; path = Source/CallError.swift; sourceTree = "<group>"; };
 		98A4D9101FCD89CB00847B5B /* URLSessionTaskBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLSessionTaskBuilder.swift; path = Source/URLSessionTaskBuilder.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			children = (
 				D05BEA1D1E1B99180021E7F3 /* Info.plist */,
 				D05BEA1E1E1B99180021E7F3 /* OAuthWebViewMobile.swift */,
+				983AD9D52450681D0023305D /* PCloud+OAuthMobile.swift */,
 			);
 			name = "SDK iOS";
 			path = PCloudSDK;
@@ -490,6 +493,7 @@
 				D05BE9E11E1670B10021E7F3 /* DownloadTask.swift in Sources */,
 				9848DD31244F01E60003FDFA /* APIServerRegion.swift in Sources */,
 				98A4D90F1FCD60B300847B5B /* CallError.swift in Sources */,
+				983AD9D62450681D0023305D /* PCloud+OAuthMobile.swift in Sources */,
 				D05BE9E91E1670B10021E7F3 /* Parser.swift in Sources */,
 				D05BE9ED1E1670B10021E7F3 /* Result.swift in Sources */,
 				D05BE9DA1E1670B10021E7F3 /* AnyCancellationToken.swift in Sources */,
