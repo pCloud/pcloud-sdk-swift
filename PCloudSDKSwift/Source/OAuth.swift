@@ -22,9 +22,7 @@ public protocol OAuthAuthorizationFlowView {
 	func presentWebView(url: URL, interceptNavigation: @escaping (URL) -> Bool, didCancel: @escaping () -> Void)
 	
 	/// Dismisses the web view presented using
-	/// ```
-	/// presentWebView(:interceptNavigation:didCancel:)
-	/// ```
+	/// `presentWebView(:interceptNavigation:didCancel:)`
 	func dismissWebView()
 }
 
@@ -112,8 +110,10 @@ public struct OAuth {
 		view.presentWebView(url: authorizationUrl, interceptNavigation: interceptBlock, didCancel: cancelBlock)
 	}
 	
-	// TODO: comments
-	
+	/// Fetches the first `OAuth.User` found in the keychain. Do not rely on which, specifically, that user is.
+	/// If you're looking for a specific user, use `getUser(withId:)`.
+	///
+	/// - returns: A `OAuth.User`.
 	public static func getAnyUser() -> User? {
 		if let userId = Keychain.getAllKeys().first.flatMap(userId) {
 			return getUser(withId: userId)
@@ -122,7 +122,7 @@ public struct OAuth {
 		return nil
 	}
 	
-	/// Fetches the User object from the keychain mapped to a user id.
+	/// Fetches a `OAuth.User` object from the keychain using a user id.
 	///
 	/// - parameter id: A unique user identifier.
 	/// - returns: A User object, or `nil`, if there is no user mapped to the provided user id.
@@ -153,7 +153,7 @@ public struct OAuth {
 		return user
 	}
 	
-	/// Stores a User object in the keychain against its unique identifier.
+	/// Stores a `OAuth.User` object in the keychain against its unique identifier.
 	///
 	/// - parameter user: The user to store in the keychain.
 	public static func store(_ user: User) {

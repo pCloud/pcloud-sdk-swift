@@ -52,23 +52,24 @@ public enum PCloud {
 	}
 	
 	/// Releases the `sharedClient`. You may call `initializeSharedClient()` again after calling this method.
-	/// Note that this will not stop any running / pending tasks you've started. Only call this method on the main thread.
+	/// Note that this will not stop any running / pending tasks you've created using the client. Only call this method on the main thread.
 	public static func clearSharedClient() {
 		sharedClient = nil
 	}
 	
 	/// Releases the `sharedClient` and deletes all user data in the keychain. You may call `initializeSharedClient()` again after calling
-	/// this method. Note that this will not stop any running / pending tasks you've started. Only call this method on the main thread.
+	/// this method. Note that this will not stop any running / pending tasks you've created using the client.
+	/// Only call this method on the main thread.
 	public static func unlinkAllUsers() {
 		clearSharedClient()
 		OAuth.deleteAllUsers()
 	}
 	
-	/// Creates a pCloud client. Does not update the `sharedClient` property. Use if you want a more direct control over the lifetime of the
-	/// `PCloudClient` object. Multiple clients can exist simultaneously.
+	/// Creates a pCloud client. Does not update the `sharedClient` property. You are responsible for storing it and keeping it alive. Use if
+	/// you want a more direct control over the lifetime of the `PCloudClient` object. Multiple clients can exist simultaneously.
 	///
 	/// - parameter user: A `OAuth.User` value obtained from the keychain or the OAuth flow.
-	/// - returns: An instance of a pCloud client using the access token to authenticate network calls.
+	/// - returns: An instance of a `PCloudClient` ready to take requests.
 	public static func createClient(with user: OAuth.User) -> PCloudClient {
 		return createClient(withAccessToken: user.token, apiHostName: user.httpAPIHostName)
 	}
@@ -94,6 +95,9 @@ public enum PCloud {
 		let authenticator = OAuthAccessTokenBasedAuthenticator(accessToken: accessToken)
 		let eventHub = URLSessionEventHub()
 		let session = URLSession(configuration: .default, delegate: eventHub, delegateQueue: nil)
+		
+		// The event hub is expected to be kept in memory by the operation builder blocks.
+		
 		let callOperationBuilder = URLSessionBasedNetworkOperationUtilities.createCallOperationBuilder(scheme: .https,
 																									   session: session,
 																									   delegate: eventHub)
