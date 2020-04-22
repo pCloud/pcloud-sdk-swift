@@ -396,30 +396,6 @@ extension File.Media: CustomStringConvertible {
 	}
 }
 
-extension File.Media.AudioMetadata: Equatable {
-}
-
-extension File.Media.VideoMetadata: Equatable {
-}
-
-extension File.Media.ImageMetadata: Equatable {
-}
-
-extension File.Media: Equatable {
-}
-
-public func ==(lhs: File.Media, rhs: File.Media) -> Bool {
-	switch (lhs, rhs) {
-	case (.uncategorized, .uncategorized): return true
-	case (.image(_), .image(_)): return true
-	case (.video(_), .video(_)): return true
-	case (.audio(_), .audio(_)): return true
-	case (.document, .document): return true
-	case (.archive, .archive): return true
-	default: return false
-	}
-}
-
 extension File.Metadata: CustomStringConvertible {
 	open var description: String {
 		return "id=\(id), name=\(name), parent=\(parentFolderId), hash=\(hash), size=\(size), \(media)"
