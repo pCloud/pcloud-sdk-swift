@@ -75,13 +75,13 @@ final class OAuthTests: XCTestCase {
 	
 	func testHandleRedirectUrlReturnsTokenOnAccessTokenResponse() {
 		// Given
-		let url = createRedirectUrl(appKey: "foo", fragment: "access_token=thetoken&userid=42&locationid=1")
+		let url = createRedirectUrl(appKey: "foo", fragment: "access_token=thetoken&userid=42&locationid=1&hostname=api.pcloud.com")
 		
 		// When
 		let result = OAuth.handleRedirectUrl(url, appKey: "foo")!
 		
 		// Expect
-		validate(result, against: .success(OAuth.User(id: 42, token: "thetoken", serverRegionId: 1)))
+		validate(result, against: .success(OAuth.User(id: 42, token: "thetoken", serverRegionId: 1, httpAPIHostName: "api.pcloud.com")))
 	}
 	
 	func testHandleRedirectUrlReturnsErrorOnErrorResponse() {
@@ -160,7 +160,7 @@ final class OAuthTests: XCTestCase {
 	
 	func testAuthorizationFlowInvokesCompletionBlockWhenInterceptingOAuthRedirect() {
 		// Given
-		let url = createRedirectUrl(appKey: "foo", fragment: "access_token=thetoken&userid=42&locationid=1")
+		let url = createRedirectUrl(appKey: "foo", fragment: "access_token=thetoken&userid=42&locationid=1&hostname=api.pcloud.com")
 		let view = AuthorizationFlowViewMock()
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		

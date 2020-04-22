@@ -41,19 +41,16 @@ public struct OAuth {
 	/// An authenticated user.
 	public struct User: Codable, Equatable {
 		/// A unique user identifier.
-		public var id: UInt64
+		public let id: UInt64
 		
 		/// An OAuth access token.
-		public var token: String
+		public let token: String
 		
-		/// Uniquely identifies the server region hosting the user's account.
-		public var serverRegionId: UInt
+		/// Uniquely identifies the server region hosting the user's account. You can use the `APIServerRegion` enum to make sense of these.
+		public let serverRegionId: UInt
 		
-		public init(id: UInt64, token: String, serverRegionId: UInt) {
-			self.id = id
-			self.token = token
-			self.serverRegionId = serverRegionId
-		}
+		/// The host name of the primary HTTP API at the user's server region.
+		public let httpAPIHostName: String
 	}
 	
 	/// A failed authorization as per RFC 6749.
@@ -150,7 +147,7 @@ public struct OAuth {
 		}
 		
 		// Since this token is stored using v2 of the SDK, this must be a US user.
-		let user = User(id: id, token: token, serverRegionId: APIServerRegion.unitedStates.rawValue)
+		let user = User(id: id, token: token, serverRegionId: APIServerRegion.unitedStates.rawValue, httpAPIHostName: "api.pcloud.com")
 		store(user) // Overwrite the keychain entry.
 		
 		return user
@@ -240,7 +237,8 @@ public struct OAuth {
 		let token = parameters["access_token"]!
 		let userId = parameters["userid"]!
 		let locationId = parameters["locationid"]!
-		let user = User(id: UInt64(userId)!, token: token, serverRegionId: UInt(locationId)!)
+		let httpHostName = parameters["hostname"]!
+		let user = User(id: UInt64(userId)!, token: token, serverRegionId: UInt(locationId)!, httpAPIHostName: httpHostName)
 		
 		return .success(user)
 	}
