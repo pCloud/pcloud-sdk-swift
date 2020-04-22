@@ -34,17 +34,6 @@ extension FileLink.Metadata: CustomStringConvertible {
 	}
 }
 
-extension FileLink.Metadata: Hashable {
-	open func hash(into hasher: inout Hasher) {
-		hasher.combine(address)
-		hasher.combine(expirationDate)
-	}
-}
-
-public func ==(lhs: FileLink.Metadata, rhs: FileLink.Metadata) -> Bool {
-	return lhs.address == rhs.address && lhs.expirationDate == rhs.expirationDate
-}
-
 
 /// Parses `Array<FileLink.Metadata>` from a pCloud API response dictionary.
 public struct FileLinkMetadataParser: Parser {

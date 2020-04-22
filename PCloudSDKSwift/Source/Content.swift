@@ -402,16 +402,6 @@ extension File.Metadata: CustomStringConvertible {
 	}
 }
 
-public func ==(lhs: File.Metadata, rhs: File.Metadata) -> Bool {
-	return lhs.id == rhs.id
-}
-
-extension File.Metadata: Hashable {
-	open func hash(into hasher: inout Hasher) {
-		hasher.combine(id)
-	}
-}
-
 
 /// Folder namespace.
 public struct Folder {
