@@ -41,16 +41,6 @@ extension User.Metadata: CustomStringConvertible {
 	}
 }
 
-extension User.Metadata: Hashable {
-	open func hash(into hasher: inout Hasher) {
-		hasher.combine(id)
-	}
-}
-
-public func ==(lhs: User.Metadata, rhs: User.Metadata) -> Bool {
-	return lhs.id == rhs.id
-}
-
 
 /// Parses `User.Metadata` from a pCloud API response dictionary.
 public struct UserMetadataParser: Parser {
