@@ -263,12 +263,6 @@ extension Call.Request: CustomStringConvertible {
 	}
 }
 
-extension Call.Request: Equatable {
-}
-
-extension Upload.Request.Body: Equatable {
-}
-
 extension Upload.Request: CustomStringConvertible {
 	public var description: String {
 		var result = "\(hostName), \(command), "
@@ -280,9 +274,6 @@ extension Upload.Request: CustomStringConvertible {
 		
 		return result
 	}
-}
-
-extension Upload.Request: Equatable {
 }
 
 extension Download.Request: CustomStringConvertible {
