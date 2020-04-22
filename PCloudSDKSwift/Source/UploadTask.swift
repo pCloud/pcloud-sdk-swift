@@ -44,7 +44,7 @@ public final class UploadTask<Method: PCloudAPIMethod>: Cancellable {
 					
 				case .success(let payload):
 					do {
-						return try responseParser(payload).replacingError { error in
+						return try responseParser(payload).mapError { error in
 							CallError<Method.Error>(apiError: error)
 						}
 					} catch {

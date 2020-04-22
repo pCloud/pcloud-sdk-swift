@@ -51,21 +51,31 @@ extension Result {
 }
 
 extension Result {
-	/// If `.success`, replaces the payload in this instance with the one returned by the `transform` block,
-	/// otherwise does nothing.
-	public func replacingPayload<T2>(_ transform: (T) throws -> T2) rethrows -> Result<T2, E> {
+	public func map<T2>(_ transform: (T) throws -> T2) rethrows -> Result<T2, E> {
 		switch self {
 		case .success(let payload): return .success(try transform(payload))
 		case .failure(let error): return .failure(error)
 		}
 	}
 	
-	/// If `.failure`, replaces the error in this instance with the one returned by the `transform` block,
-	/// otherwise does nothing.
-	public func replacingError<E2>(_ transform: (E) throws -> E2) rethrows -> Result<T, E2> {
+	public func mapError<E2>(_ transform: (E) throws -> E2) rethrows -> Result<T, E2> {
 		switch self {
 		case .success(let payload): return .success(payload)
 		case .failure(let error): return .failure(try transform(error))
+		}
+	}
+	
+	public func flatMap<T2>(_ transform: (T) throws -> Result<T2, E>) rethrows -> Result<T2, E> {
+		switch self {
+		case .success(let payload): return try transform(payload)
+		case .failure(let error): return .failure(error)
+		}
+	}
+	
+	public func flatMapError<E2>(_ transform: (E) throws -> Result<T, E2>) rethrows -> Result<T, E2> {
+		switch self {
+		case .success(let payload): return .success(payload)
+		case .failure(let error): return try transform(error)
 		}
 	}
 }
