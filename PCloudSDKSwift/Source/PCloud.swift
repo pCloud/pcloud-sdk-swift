@@ -31,32 +31,33 @@ public enum PCloud {
 		self.appKey = appKey
 		
 		if let user = OAuth.getAnyUser() {
-			initializeClient(with: user)
+			initializeSharedClient(with: user)
 		}
 	}
 	
 	/// Creates a client object and sets it to the `sharedClient` property. Only call this method on the main thread.
+	/// Will do nothing if the shared client is already initialized.
 	///
 	/// - parameter user: A user value obtained from the keychain or from the OAuth flow.
-	public static func initializeClient(with user: OAuth.User) {
-		let serverRegion: APIServerRegion = {
-			if let region = APIServerRegion(rawValue: user.serverRegionId) {
-				return region
-			}
-			
+	public static func initializeSharedClient(with user: OAuth.User) {
+		guard let region = APIServerRegion(rawValue: user.serverRegionId) else {
 			// Unrecognized server region id.
-			// TODO: add error log
-			return .unitedStates
-		}()
+			#if DEBUG
+			print("‼️ [pCloud SDK] Unrecognized server region id (\(user.serverRegionId))! This may either be a bug or you might be using an outdated version of the pCloud SDK. Please check the source repo to see if there is a version of the SDK with support for this region id. If not, please create an issue there.‼️")
+			#endif
+			assertionFailure()
+			return
+		}
 		
-		initializeClient(withAccessToken: user.token, serverRegion: serverRegion)
+		initializeSharedClient(withAccessToken: user.token, serverRegion: region)
 	}
 	
 	/// Creates a client object and sets it to the `sharedClient` property. Only call this method on the main thread.
+	/// Will do nothing if the shared client is already initialized.
 	///
 	/// - parameter accessToken: An OAuth access token.
 	/// - parameter serverRegion: The server region that granted the access token.
-	public static func initializeClient(withAccessToken accessToken: String, serverRegion: APIServerRegion) {
+	public static func initializeSharedClient(withAccessToken accessToken: String, serverRegion: APIServerRegion) {
 		guard sharedClient == nil else {
 			assertionFailure("Attempting to initialize the global PCloudClient instance, but there already is a global instance.")
 			return
@@ -65,12 +66,14 @@ public enum PCloud {
 		sharedClient = createClient(withAccessToken: accessToken, serverRegion: serverRegion)
 	}
 	
-	/// Releases the `sharedClient`. You may call `initializeClient()` again after calling this method. Only call this method on the main thread.
+	/// Releases the `sharedClient`. You may call `initializeSharedClient()` again after calling this method.
+	/// Only call this method on the main thread.
 	public static func clearClient() {
 		sharedClient = nil
 	}
 	
-	/// Clears the global pCloud client and deletes all tokens. Only call this method on the main thread.
+	/// Releases the `sharedClient` and deletes all user data in the keychain. You may call `initializeSharedClient()` again after calling
+	/// this method. Only call this method on the main thread.
 	public static func unlinkAllUsers() {
 		clearClient()
 		OAuth.deleteAllUsers()
@@ -96,7 +99,7 @@ public enum PCloud {
 		OAuth.performAuthorizationFlow(view: view, appKey: appKey) { result in
 			if case let .success(user) = result {
 				OAuth.store(user)
-				self.initializeClient(with: user)
+				self.initializeSharedClient(with: user)
 			}
 			
 			completionBlock(result)
