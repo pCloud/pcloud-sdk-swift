@@ -40,42 +40,24 @@ public enum PCloud {
 	///
 	/// - parameter user: A user value obtained from the keychain or from the OAuth flow.
 	public static func initializeSharedClient(with user: OAuth.User) {
-		guard let region = APIServerRegion(rawValue: user.serverRegionId) else {
-			// Unrecognized server region id.
-			#if DEBUG
-			print("‼️ [pCloud SDK] Unrecognized server region id (\(user.serverRegionId))! This may either be a bug or you might be using an outdated version of the pCloud SDK. Please check the source repo to see if there is a version of the SDK with support for this region id. If not, please create an issue there.‼️")
-			#endif
-			assertionFailure()
-			return
-		}
-		
-		initializeSharedClient(withAccessToken: user.token, serverRegion: region)
-	}
-	
-	/// Creates a client object and sets it to the `sharedClient` property. Only call this method on the main thread.
-	/// Will do nothing if the shared client is already initialized.
-	///
-	/// - parameter accessToken: An OAuth access token.
-	/// - parameter serverRegion: The server region that granted the access token.
-	public static func initializeSharedClient(withAccessToken accessToken: String, serverRegion: APIServerRegion) {
 		guard sharedClient == nil else {
 			assertionFailure("Attempting to initialize the global PCloudClient instance, but there already is a global instance.")
 			return
 		}
 		
-		sharedClient = createClient(withAccessToken: accessToken, serverRegion: serverRegion)
+		sharedClient = createClient(with: user)
 	}
 	
 	/// Releases the `sharedClient`. You may call `initializeSharedClient()` again after calling this method.
 	/// Only call this method on the main thread.
-	public static func clearClient() {
+	public static func clearSharedClient() {
 		sharedClient = nil
 	}
 	
 	/// Releases the `sharedClient` and deletes all user data in the keychain. You may call `initializeSharedClient()` again after calling
 	/// this method. Only call this method on the main thread.
 	public static func unlinkAllUsers() {
-		clearClient()
+		clearSharedClient()
 		OAuth.deleteAllUsers()
 	}
 	
@@ -85,8 +67,8 @@ public enum PCloud {
 	/// - parameter accessToken: An OAuth access token.
 	/// - parameter apiHostName: Host name of the API server to connect to.
 	/// - returns: An instance of a pCloud client using the access token to authenticate network calls.
-	public static func createClient(withAccessToken accessToken: String, serverRegion: APIServerRegion) -> PCloudClient {
-		return createClient(withAccessToken: accessToken, apiHostName: apiHostName(for: serverRegion))
+	public static func createClient(with user: OAuth.User) -> PCloudClient {
+		return createClient(withAccessToken: user.token, apiHostName: user.httpAPIHostName)
 	}
 	
 	// Starts an authorization flow and initializes the global client on success.
