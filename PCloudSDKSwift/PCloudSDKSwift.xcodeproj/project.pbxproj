@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		983AD9D62450681D0023305D /* PCloud+OAuthMobile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983AD9D52450681D0023305D /* PCloud+OAuthMobile.swift */; };
+		983AD9D824506A0F0023305D /* PCloud+OAuthDesktop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983AD9D724506A0F0023305D /* PCloud+OAuthDesktop.swift */; };
 		9848DD31244F01E60003FDFA /* APIServerRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9848DD30244F01E60003FDFA /* APIServerRegion.swift */; };
 		9848DD32244F01E60003FDFA /* APIServerRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9848DD30244F01E60003FDFA /* APIServerRegion.swift */; };
 		98A4D90F1FCD60B300847B5B /* CallError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4D90E1FCD60B300847B5B /* CallError.swift */; };
@@ -103,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		983AD9D52450681D0023305D /* PCloud+OAuthMobile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PCloud+OAuthMobile.swift"; path = "SDK iOS/PCloud+OAuthMobile.swift"; sourceTree = SOURCE_ROOT; };
+		983AD9D724506A0F0023305D /* PCloud+OAuthDesktop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PCloud+OAuthDesktop.swift"; path = "SDK macOS/PCloud+OAuthDesktop.swift"; sourceTree = SOURCE_ROOT; };
 		9848DD30244F01E60003FDFA /* APIServerRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIServerRegion.swift; path = Source/APIServerRegion.swift; sourceTree = "<group>"; };
 		98A4D90E1FCD60B300847B5B /* CallError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CallError.swift; path = Source/CallError.swift; sourceTree = "<group>"; };
 		98A4D9101FCD89CB00847B5B /* URLSessionTaskBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLSessionTaskBuilder.swift; path = Source/URLSessionTaskBuilder.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			children = (
 				D05BEA211E1B999B0021E7F3 /* Info.plist */,
 				D05BEA221E1B999B0021E7F3 /* OAuthWebViewDesktop.swift */,
+				983AD9D724506A0F0023305D /* PCloud+OAuthDesktop.swift */,
 				D05BEA231E1B999B0021E7F3 /* WebViewControllerDesktop.xib */,
 			);
 			name = "SDK macOS";
@@ -522,6 +525,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				983AD9D824506A0F0023305D /* PCloud+OAuthDesktop.swift in Sources */,
 				D05BEA191E1670D30021E7F3 /* VoidCancellationToken.swift in Sources */,
 				D05BEA021E1670D30021E7F3 /* Cancellable.swift in Sources */,
 				D05BEA0B1E1670D30021E7F3 /* OAuthAccessTokenBasedAuthenticator.swift in Sources */,
