@@ -20,5 +20,7 @@ Pod::Spec.new do |s|
   s.osx.source_files = "PCloudSDKSwift/Source/**/*.{swift,h}", "PCloudSDKSwift/SDK\ macOS/**/*.swift"
   s.ios.source_files = "PCloudSDKSwift/Source/**/*.{swift,h}", "PCloudSDKSwift/SDK\ iOS/**/*.swift"
 
+  s.osx.resource_bundle = { 'PCloudSDKSwiftResources' => "PCloudSDKSwift/SDK\ macOS/*.xib" }
+
   s.requires_arc = true
 end
