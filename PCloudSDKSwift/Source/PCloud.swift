@@ -49,6 +49,7 @@ public enum PCloud {
 	}
 	
 	/// Releases the `sharedClient`. You may call `initializeSharedClient()` again after calling this method.
+	/// Note that this will not stop any running / pending tasks you've started.
 	/// Only call this method on the main thread.
 	public static func clearSharedClient() {
 		sharedClient = nil
