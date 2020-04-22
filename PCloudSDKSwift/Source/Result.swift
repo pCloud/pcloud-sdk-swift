@@ -78,3 +78,6 @@ extension Result: CustomStringConvertible {
 		}
 	}
 }
+
+extension Result: Equatable where T: Equatable, E: Equatable {
+}
