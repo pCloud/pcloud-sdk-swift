@@ -17,9 +17,12 @@ public enum PCloud {
 	/// The app key provided in `setUp()`.
 	private(set) public static var appKey: String?
 	
-	/// Attempts to initialize a pCloud client instance by checking for an existing user in the keychain.
-	/// The `sharedClient` property will be non-nil if there is a user in the keychain. Only call this method once for each instance of your app!
-	/// Only call this method on the main thread.
+	/// Stores the app key and attempts to initialize a pCloud client instance by checking for an existing user in the keychain.
+	/// The app key is used for the OAuth authorization flow.
+	/// Generally you should always call this method sometime during app launch. You don't need to call it if you do not intend to use the OAuth
+	/// authorization methods provided in this namespace.
+	/// After this method returns, the `sharedClient` property will be non-nil if there is a user in the keychain.
+	/// Only call this method once for each instance of your app and only on the main thread.
 	///
 	/// - parameter appKey: The app key to initialize the client with.
 	public static func setUp(withAppKey appKey: String) {
@@ -38,7 +41,7 @@ public enum PCloud {
 	/// Creates a client object and sets it to the `sharedClient` property. Only call this method on the main thread.
 	/// Will do nothing if the shared client is already initialized.
 	///
-	/// - parameter user: A user value obtained from the keychain or from the OAuth flow.
+	/// - parameter user: A `OAuth.User` value obtained from the keychain or from the OAuth flow.
 	public static func initializeSharedClient(with user: OAuth.User) {
 		guard sharedClient == nil else {
 			assertionFailure("Attempting to initialize the global PCloudClient instance, but there already is a global instance.")
@@ -49,24 +52,22 @@ public enum PCloud {
 	}
 	
 	/// Releases the `sharedClient`. You may call `initializeSharedClient()` again after calling this method.
-	/// Note that this will not stop any running / pending tasks you've started.
-	/// Only call this method on the main thread.
+	/// Note that this will not stop any running / pending tasks you've started. Only call this method on the main thread.
 	public static func clearSharedClient() {
 		sharedClient = nil
 	}
 	
 	/// Releases the `sharedClient` and deletes all user data in the keychain. You may call `initializeSharedClient()` again after calling
-	/// this method. Only call this method on the main thread.
+	/// this method. Note that this will not stop any running / pending tasks you've started. Only call this method on the main thread.
 	public static func unlinkAllUsers() {
 		clearSharedClient()
 		OAuth.deleteAllUsers()
 	}
 	
-	/// Creates a pCloud client. Does not update the `sharedClient` property. Use if you want to more directly control the lifetime of the
+	/// Creates a pCloud client. Does not update the `sharedClient` property. Use if you want a more direct control over the lifetime of the
 	/// `PCloudClient` object. Multiple clients can exist simultaneously.
 	///
-	/// - parameter accessToken: An OAuth access token.
-	/// - parameter apiHostName: Host name of the API server to connect to.
+	/// - parameter user: A `OAuth.User` value obtained from the keychain or the OAuth flow.
 	/// - returns: An instance of a pCloud client using the access token to authenticate network calls.
 	public static func createClient(with user: OAuth.User) -> PCloudClient {
 		return createClient(withAccessToken: user.token, apiHostName: user.httpAPIHostName)
@@ -116,12 +117,5 @@ public enum PCloud {
 															   operationBuilder: downloadOperationBuilder)
 		
 		return PCloudClient(callTaskBuilder: callTaskBuilder, uploadTaskBuilder: uploadTaskBuilder, downloadTaskBuilder: downloadTaskBuilder)
-	}
-	
-	private static func apiHostName(for region: APIServerRegion) -> String {
-		switch region {
-		case .unitedStates: return "api.pcloud.com"
-		case .europe: return "eapi.pcloud.com"
-		}
 	}
 }
