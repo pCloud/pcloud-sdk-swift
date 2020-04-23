@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -37,18 +37,15 @@ Gw
                         <action selector="cancelButtonTapped:" target="-2" id="Pgg-hw-p7G"/>
                     </connections>
                 </button>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="PD7-En-wr6" customClass="BorderedView" customModule="PCloudSDKSwift" customModuleProvider="target">
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="PD7-En-wr6" customClass="BorderedView" customModule="PCloudSDKSwift">
                     <rect key="frame" x="20" y="61" width="460" height="419"/>
                     <subviews>
                         <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="uFS-u1-5Hm">
                             <rect key="frame" x="222" y="202" width="16" height="16"/>
                         </progressIndicator>
                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="420" translatesAutoresizingMaskIntoConstraints="NO" id="VMG-S7-SaZ">
-                            <rect key="frame" x="18" y="160" width="424" height="100"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="100" id="WvD-IP-4bJ"/>
-                            </constraints>
-                            <textFieldCell key="cell" controlSize="mini" truncatesLastVisibleLine="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" id="yeH-0d-Dnx">
+                            <rect key="frame" x="18" y="200" width="424" height="19"/>
+                            <textFieldCell key="cell" controlSize="mini" truncatesLastVisibleLine="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" placeholderString="Something went wrong. Try again later." id="yeH-0d-Dnx">
                                 <font key="font" metaFont="system" size="15"/>
                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -72,7 +69,7 @@ Gw
                 <constraint firstAttribute="trailing" secondItem="PD7-En-wr6" secondAttribute="trailing" constant="20" id="tfr-qC-dWv"/>
                 <constraint firstItem="UcM-0g-vFY" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="wOn-LR-VYZ"/>
             </constraints>
-            <point key="canvasLocation" x="271" y="67"/>
+            <point key="canvasLocation" x="124" y="44"/>
         </customView>
     </objects>
 </document>
