@@ -61,7 +61,7 @@ public final class WebViewControllerDesktop: NSViewController {
 		self.cancelHandler = cancelHandler
 		
 		// Try to find our .nib file in the following places:
-		// - The PCloudSDKSwiftResources.bundle (will exists if we're managed by CocoaPods).
+		// - The PCloudSDKSwiftResources.bundle (will exist if we're managed by CocoaPods).
 		// - Our parent bundle.
 		// - The main bundle.
 		
