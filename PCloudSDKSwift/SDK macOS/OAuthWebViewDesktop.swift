@@ -60,10 +60,16 @@ public final class WebViewControllerDesktop: NSViewController {
 		self.redirectHandler = redirectHandler
 		self.cancelHandler = cancelHandler
 		
-		// Change to Bundle.main when compiling the SDK's source files in your target. Also don't forget to copy the .xib file to your product.
-		let bundle = Bundle(identifier: "com.pcloud.swiftsdk-macos")
+		let parentBundle = Bundle(for: WebViewControllerDesktop.self)
 		
-		super.init(nibName: "WebViewControllerDesktop", bundle: bundle)
+		// Expecting the bundle that contains this class, to contain a child bundle PCloudSDKSwiftResources.
+		guard let resourceBundlePath = parentBundle.path(forResource: "PCloudSDKSwiftResources", ofType: "bundle") else {
+			fatalError("Cannot find PCloudSDKSwiftResources.bundle in \(parentBundle)")
+		}
+		
+		let resourceBundle = Bundle(path: resourceBundlePath)!
+		
+		super.init(nibName: "WebViewControllerDesktop", bundle: resourceBundle)
 	}
 	
 	required public init?(coder: NSCoder) {
