@@ -60,14 +60,24 @@ public final class WebViewControllerDesktop: NSViewController {
 		self.redirectHandler = redirectHandler
 		self.cancelHandler = cancelHandler
 		
-		let parentBundle = Bundle(for: WebViewControllerDesktop.self)
+		// Try to find our .nib file in the following places:
+		// - The PCloudSDKSwiftResources.bundle (will exists if we're managed by CocoaPods).
+		// - Our parent bundle.
+		// - The main bundle.
 		
-		// Expecting the bundle that contains this class, to contain a child bundle PCloudSDKSwiftResources.
-		guard let resourceBundlePath = parentBundle.path(forResource: "PCloudSDKSwiftResources", ofType: "bundle") else {
-			fatalError("Cannot find PCloudSDKSwiftResources.bundle in \(parentBundle)")
-		}
-		
-		let resourceBundle = Bundle(path: resourceBundlePath)!
+		let resourceBundle: Bundle = {
+			let parentBundle = Bundle(for: WebViewControllerDesktop.self)
+			
+			if let resourceBundlePath = parentBundle.path(forResource: "PCloudSDKSwiftResources", ofType: "bundle") {
+				return Bundle(path: resourceBundlePath)!
+			}
+			
+			if let bundle = [parentBundle, .main].first(where: { $0.path(forResource: "WebViewControllerDesktop", ofType: "nib") != nil }) {
+				return bundle
+			}
+			
+			fatalError("Cannot find WebViewControllerDesktop.nib")
+		}()
 		
 		super.init(nibName: "WebViewControllerDesktop", bundle: resourceBundle)
 	}
