@@ -73,7 +73,6 @@ public final class WebViewControllerDesktop: NSViewController {
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		title = "Link to pCloud"
 		preferredContentSize = view.bounds.size
 		
 		webViewContainer.borderWidth = 1
@@ -82,6 +81,8 @@ public final class WebViewControllerDesktop: NSViewController {
 		webView = WKWebView(frame: webViewContainer.bounds)
 		webView.navigationDelegate = self
 		webViewContainer.addSubview(webView, positioned: .below, relativeTo: nil)
+		
+		progressIndicator.controlTint = .graphiteControlTint
 		
 		setProgressIndicatorVisible(true)
 		showError("")
