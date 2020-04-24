@@ -39,7 +39,7 @@ public protocol NetworkOperation: Cancellable {
 
 
 /// An error from a network operation.
-public enum NetworkOperationError {
+public enum NetworkOperationError: Error {
 	case clientError(Error)
 	case protocolError(Error)
 }
