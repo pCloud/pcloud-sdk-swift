@@ -14,7 +14,7 @@ extension PCloud {
 	/// - parameter controller: A view controller to present a web view from.
 	/// - parameter completionBlock: A block called on the main thread when authorization completes or is cancelled.
 	/// The global pCloud client will be initialized inside the block if authorization was successful.
-	public static func authorize(controller: UIViewController, _ completionBlock: @escaping (OAuth.Result) -> Void) {
+	public static func authorize(with controller: UIViewController, _ completionBlock: @escaping (OAuth.Result) -> Void) {
 		authorize(with: WebViewControllerPresenterMobile(presentingViewController: controller), completionBlock: completionBlock)
 	}
 }
