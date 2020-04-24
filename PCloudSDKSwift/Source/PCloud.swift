@@ -81,7 +81,7 @@ public enum PCloud {
 			return
 		}
 		
-		OAuth.performAuthorizationFlow(view: view, appKey: appKey) { result in
+		OAuth.performAuthorizationFlow(with: view, appKey: appKey) { result in
 			if case let .success(user) = result {
 				OAuth.store(user)
 				self.initializeSharedClient(with: user)

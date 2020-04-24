@@ -85,9 +85,9 @@ public struct OAuth {
 	/// - parameter view: An object handling UI-specific actions related to the authorization flow.
 	/// - parameter appKey: An app key.
 	/// - parameter completionToken: A block called when authorization completes. Called on the main thread.
-	public static func performAuthorizationFlow(view: OAuthAuthorizationFlowView, appKey: String, completionBlock: @escaping (Result) -> Void) {
+	public static func performAuthorizationFlow(with view: OAuthAuthorizationFlowView, appKey: String, completionBlock: @escaping (Result) -> Void) {
 		// Create URL.
-		let authorizationURL = createAuthorizationURL(appKey: appKey, redirectURL: createRedirectURL(appKey: appKey))
+		let authorizationURL = createAuthorizationURL(withAppKey: appKey, redirectURL: createRedirectURL(withAppKey: appKey))
 		
 		// Define callbacks.
 		let interceptBlock: (URL) -> Bool = { url in
@@ -175,7 +175,7 @@ public struct OAuth {
 	}
 	
 	// Creates a redirect URL using and app key.
-	static func createRedirectURL(appKey: String) -> URL {
+	static func createRedirectURL(withAppKey appKey: String) -> URL {
 		var components = URLComponents()
 		components.scheme = "pclsdk-w-\(appKey.lowercased())"
 		components.host = "oauth2redirect"
@@ -184,7 +184,7 @@ public struct OAuth {
 	}
 	
 	// Creates an authorization URL from an app key for the implicit grant flow.
-	static func createAuthorizationURL(appKey: String, redirectURL: URL) -> URL {
+	static func createAuthorizationURL(withAppKey appKey: String, redirectURL: URL) -> URL {
 		var components = URLComponents()
 		components.scheme = URLScheme.https.rawValue
 		components.host = "e.pcloud.com"
@@ -200,7 +200,7 @@ public struct OAuth {
 	
 	// Checks if the provided url is a redirect url and if it is, tries to extract a result from its fragment.
 	static func handleRedirectURL(_ url: URL, appKey: String) -> Result? {
-		let redirectURL = createRedirectURL(appKey: appKey)
+		let redirectURL = createRedirectURL(withAppKey: appKey)
 		
 		guard url.scheme == redirectURL.scheme && url.host == redirectURL.host else {
 			return nil

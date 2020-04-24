@@ -10,7 +10,7 @@ import XCTest
 @testable import PCloudSDKSwift
 
 final class OAuthTests: XCTestCase {
-	func createRedirectURL(appKey: String, fragment: String?) -> URL {
+	func createRedirectURL(withAppKey appKey: String, fragment: String?) -> URL {
 		var components = URLComponents()
 		components.scheme = "pclsdk-w-\(appKey)"
 		components.host = "oauth2redirect"
@@ -24,20 +24,20 @@ final class OAuthTests: XCTestCase {
 		let appKey = "foo"
 		
 		// When
-		let url = OAuth.createRedirectURL(appKey: appKey)
+		let url = OAuth.createRedirectURL(withAppKey: appKey)
 		
 		// Expect
-		let expectedURL = createRedirectURL(appKey: appKey, fragment: nil)
+		let expectedURL = createRedirectURL(withAppKey: appKey, fragment: nil)
 		XCTAssert(url == expectedURL, "invalid redirect url, expected \(expectedURL), got \(url)")
 	}
 	
 	func testCreatesCorrectAuthorizationURL() {
 		// Given
 		let appKey = "foo"
-		let redirectURL = createRedirectURL(appKey: appKey, fragment: nil)
+		let redirectURL = createRedirectURL(withAppKey: appKey, fragment: nil)
 		
 		// When
-		let url = URLComponents(string: OAuth.createAuthorizationURL(appKey: appKey, redirectURL: redirectURL).absoluteString)!
+		let url = URLComponents(string: OAuth.createAuthorizationURL(withAppKey: appKey, redirectURL: redirectURL).absoluteString)!
 		
 		// Expect
 		XCTAssert(url.scheme == "https", "invalid scheme")
@@ -64,7 +64,7 @@ final class OAuthTests: XCTestCase {
 	
 	func testHandleRedirectURLReturnsAccessDeniedErrorWhenURLDoesNotContainFragment() {
 		// Given
-		let url = createRedirectURL(appKey: "foo", fragment: nil)
+		let url = createRedirectURL(withAppKey: "foo", fragment: nil)
 		
 		// When
 		let result = OAuth.handleRedirectURL(url, appKey: "foo")!
@@ -75,7 +75,7 @@ final class OAuthTests: XCTestCase {
 	
 	func testHandleRedirectURLReturnsTokenOnAccessTokenResponse() {
 		// Given
-		let url = createRedirectURL(appKey: "foo", fragment: "access_token=thetoken&userid=42&locationid=1&hostname=api.pcloud.com")
+		let url = createRedirectURL(withAppKey: "foo", fragment: "access_token=thetoken&userid=42&locationid=1&hostname=api.pcloud.com")
 		
 		// When
 		let result = OAuth.handleRedirectURL(url, appKey: "foo")!
@@ -87,7 +87,7 @@ final class OAuthTests: XCTestCase {
 	func testHandleRedirectURLReturnsErrorOnErrorResponse() {
 		for (code, error) in oAuth2ErrorCodes() {
 			// Given
-			let url = createRedirectURL(appKey: "foo", fragment: "error=\(code)")
+			let url = createRedirectURL(withAppKey: "foo", fragment: "error=\(code)")
 			
 			// When
 			let result = OAuth.handleRedirectURL(url, appKey: "foo")!
@@ -99,7 +99,7 @@ final class OAuthTests: XCTestCase {
 	
 	func testHandleRedirectURLReturnsUnknownErrorOnUnknownErrorResponse() {
 		// Given
-		let url = createRedirectURL(appKey: "foo", fragment: "error=krokodil")
+		let url = createRedirectURL(withAppKey: "foo", fragment: "error=krokodil")
 		
 		// When
 		let result = OAuth.handleRedirectURL(url, appKey: "foo")!
@@ -113,7 +113,7 @@ final class OAuthTests: XCTestCase {
 		let view = AuthorizationFlowViewMock()
 		
 		// When
-		OAuth.performAuthorizationFlow(view: view, appKey: "") { _ in }
+		OAuth.performAuthorizationFlow(with: view, appKey: "") { _ in }
 		
 		// Expect
 		XCTAssert(view.presentInvoked, "should present web view")
@@ -125,7 +125,7 @@ final class OAuthTests: XCTestCase {
 		let url = URL(string: "https://google.com")!
 		
 		// When
-		OAuth.performAuthorizationFlow(view: view, appKey: "") { _ in
+		OAuth.performAuthorizationFlow(with: view, appKey: "") { _ in
 			// Expect
 			XCTFail("should not invoke completion block")
 		}
@@ -143,7 +143,7 @@ final class OAuthTests: XCTestCase {
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
 		// When
-		OAuth.performAuthorizationFlow(view: view, appKey: "") { result in
+		OAuth.performAuthorizationFlow(with: view, appKey: "") { result in
 			// Expect
 			invokeExpectation.fulfill()
 			
@@ -160,12 +160,12 @@ final class OAuthTests: XCTestCase {
 	
 	func testAuthorizationFlowInvokesCompletionBlockWhenInterceptingOAuthRedirect() {
 		// Given
-		let url = createRedirectURL(appKey: "foo", fragment: "access_token=thetoken&userid=42&locationid=1&hostname=api.pcloud.com")
+		let url = createRedirectURL(withAppKey: "foo", fragment: "access_token=thetoken&userid=42&locationid=1&hostname=api.pcloud.com")
 		let view = AuthorizationFlowViewMock()
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
 		// When
-		OAuth.performAuthorizationFlow(view: view, appKey: "foo") { _ in
+		OAuth.performAuthorizationFlow(with: view, appKey: "foo") { _ in
 			// Expect
 			invokeExpectation.fulfill()
 		}
