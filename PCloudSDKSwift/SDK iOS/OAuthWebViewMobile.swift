@@ -40,8 +40,10 @@ public final class WebViewControllerMobile: UIViewController {
 	private let cancelHandler: () -> Void
 	
 	private var webView: WKWebView!
-	private var activityIndicator = UIActivityIndicatorView(style: .gray) // Shown during initial page loading.
+	private var activityIndicator: UIActivityIndicatorView! // Shown during initial page loading.
 	private var errorLabel: UILabel! // Shown when a page loading error occurs.
+	
+	private var didStartLoading = false
 	
 	/// Initializes a new view controller with a web view.
 	///
@@ -60,7 +62,7 @@ public final class WebViewControllerMobile: UIViewController {
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		title = "Link to pCloud"
+		title = "pCloud"
 		
 		view.backgroundColor = .white
 		
@@ -68,6 +70,7 @@ public final class WebViewControllerMobile: UIViewController {
 		webView.navigationDelegate = self
 		view.addSubview(webView)
 		
+		activityIndicator = UIActivityIndicatorView(style: .gray)
 		view.addSubview(activityIndicator)
 		
 		errorLabel = UILabel()
@@ -96,9 +99,12 @@ public final class WebViewControllerMobile: UIViewController {
 	public override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		showError(nil)
-		setActivityIndicatorVisible(true)
-		load(address)
+		if !didStartLoading {
+			didStartLoading = true
+			showError(nil)
+			setActivityIndicatorVisible(true)
+			load(address)
+		}
 	}
 	
 	private func load(_ url: URL) {
