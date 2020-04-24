@@ -32,16 +32,14 @@ final class Atomic<T> {
 		resource = value
 	}
 	
-	/// Atomically modifies this instance's value and returns the old one.
+	/// Atomically modifies this instance's value and returns the value returned from the block.
 	///
-	/// - parameter block: A block that takes the current value as the input argument and returns the modified value.
-	/// - returns: The old value.
+	/// - parameter block: A block that takes the current value as the input argument.
+	/// - returns: The return value, if any, of the `block` parameter.
 	/// - throws: The error thrown by the block (if any).
-	@discardableResult func modify(_ block: (T) throws -> (T)) rethrows -> T {
+	@discardableResult func withValue<R>(_ block: (inout T) throws -> (R)) rethrows -> R {
 		return try lock.inCriticalScope {
-			let oldValue = resource
-			resource = try block(resource)
-			return oldValue
+			return try block(&resource)
 		}
 	}
 }

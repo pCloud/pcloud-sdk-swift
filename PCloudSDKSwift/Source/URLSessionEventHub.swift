@@ -60,11 +60,11 @@ public final class URLSessionEventHub: NSObject {
 	@discardableResult private func set(_ observer: URLSessionObserver?, for task: URLSessionTask) -> URLSessionObserver? {
 		let key = task.taskIdentifier
 		
-		return observers.modify {
-			var copy = $0
-			copy[key] = observer
-			return copy
-		}[key]
+		return observers.withValue {
+			let oldObserver = $0[key]
+			$0[key] = observer
+			return oldObserver
+		}
 	}
 }
 
