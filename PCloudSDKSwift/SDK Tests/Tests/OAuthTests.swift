@@ -27,14 +27,14 @@ final class OAuthTests: XCTestCase {
 		let url = OAuth.createRedirectURL(appKey: appKey)
 		
 		// Expect
-		let expectedURL = createRedirectURL(appKey: appKey, fragment: nil).absoluteString
+		let expectedURL = createRedirectURL(appKey: appKey, fragment: nil)
 		XCTAssert(url == expectedURL, "invalid redirect url, expected \(expectedURL), got \(url)")
 	}
 	
 	func testCreatesCorrectAuthorizationURL() {
 		// Given
 		let appKey = "foo"
-		let redirectURL = createRedirectURL(appKey: appKey, fragment: nil).absoluteString
+		let redirectURL = createRedirectURL(appKey: appKey, fragment: nil)
 		
 		// When
 		let url = URLComponents(string: OAuth.createAuthorizationURL(appKey: appKey, redirectURL: redirectURL).absoluteString)!
@@ -48,7 +48,7 @@ final class OAuthTests: XCTestCase {
 		
 		XCTAssert(query["client_id"] == appKey, "invalid client id")
 		XCTAssert(query["response_type"] == "token", "invalid response type")
-		XCTAssert(query["redirect_uri"] == redirectURL, "invalid redirect url")
+		XCTAssert(query["redirect_uri"] == redirectURL.absoluteString, "invalid redirect url")
 	}
 	
 	func testHandleRedirectURLReturnsNilWhenProvidedURLIsNotARedirectURL() {
@@ -85,7 +85,7 @@ final class OAuthTests: XCTestCase {
 	}
 	
 	func testHandleRedirectURLReturnsErrorOnErrorResponse() {
-		for (code, error) in oauth2ErrorCodes() {
+		for (code, error) in oAuth2ErrorCodes() {
 			// Given
 			let url = createRedirectURL(appKey: "foo", fragment: "error=\(code)")
 			
@@ -178,7 +178,7 @@ final class OAuthTests: XCTestCase {
 		waitForExpectations(timeout: 1, handler: nil)
 	}
 	
-	func oauth2ErrorCodes() -> [String: OAuth.Error] {
+	func oAuth2ErrorCodes() -> [String: OAuth.Error] {
 		return [
 			"invalid_request": .invalidRequest,
 			"unauthorized_client": .unauthorizedClient,

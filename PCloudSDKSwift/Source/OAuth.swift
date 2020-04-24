@@ -175,16 +175,16 @@ public struct OAuth {
 	}
 	
 	// Creates a redirect URL using and app key.
-	static func createRedirectURL(appKey: String) -> String {
+	static func createRedirectURL(appKey: String) -> URL {
 		var components = URLComponents()
 		components.scheme = "pclsdk-w-\(appKey.lowercased())"
 		components.host = "oauth2redirect"
 		
-		return components.url!.absoluteString
+		return components.url!
 	}
 	
 	// Creates an authorization URL from an app key for the implicit grant flow.
-	static func createAuthorizationURL(appKey: String, redirectURL: String) -> URL {
+	static func createAuthorizationURL(appKey: String, redirectURL: URL) -> URL {
 		var components = URLComponents()
 		components.scheme = URLScheme.https.rawValue
 		components.host = "e.pcloud.com"
@@ -192,7 +192,7 @@ public struct OAuth {
 		components.queryItems = [
 			URLQueryItem(name: "client_id", value: appKey),
 			URLQueryItem(name: "response_type", value: "token"),
-			URLQueryItem(name: "redirect_uri", value: redirectURL)
+			URLQueryItem(name: "redirect_uri", value: redirectURL.absoluteString)
 		]
 		
 		return components.url!
@@ -200,7 +200,7 @@ public struct OAuth {
 	
 	// Checks if the provided url is a redirect url and if it is, tries to extract a result from its fragment.
 	static func handleRedirectURL(_ url: URL, appKey: String) -> Result? {
-		let redirectURL = URL(string: createRedirectURL(appKey: appKey))!
+		let redirectURL = createRedirectURL(appKey: appKey)
 		
 		guard url.scheme == redirectURL.scheme && url.host == redirectURL.host else {
 			return nil
