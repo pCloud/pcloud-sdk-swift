@@ -10,40 +10,43 @@ import Foundation
 
 /// Base class for network operations backed by `URLSessionTask`. Conforms to `NetworkOperation`. Forwards `URLSessionObserver` callbacks to blocks.
 public class URLSessionBasedNetworkOperation<T> {
-	public typealias CompletionHandler = (callback: (T) -> Void, queue: DispatchQueue?)
-	public typealias ProgressHandler = (callback: (Int64, Int64) -> Void, queue: DispatchQueue?)
-	
-	public let task: URLSessionTask // The backing task.
+	typealias CompletionHandler = (callback: (T) -> Void, queue: DispatchQueue?)
+	typealias ProgressHandler = (callback: (Int64, Int64) -> Void, queue: DispatchQueue?)
 	
 	// The task response. Non-nil when the task completes.
-	public var taskResponse: T? {
+	var taskResponse: T? {
 		return lock.inCriticalScope { _taskResponse }
 	}
 	
-	public var _taskResponse: T? // The backing storage for taskResponse. Do not access directly.
+	let task: URLSessionTask // The backing task.
+	
+	// Blocks corresponding to URLSessionObserver callbacks. Each one is named after the method it is called inside.
+	var didSendBodyData: ((Int64, Int64) -> Void)?
+	var didComplete: ((Error?) -> Void)?
+	var didReceiveData: ((Data) -> Void)?
+	var didFinishDownloading: ((URL) -> Void)?
+	var didWriteData: ((Int64, Int64) -> Void)?
+	
+	
+	private var _taskResponse: T? // The backing storage for taskResponse. Always access via the lock.
 	
 	// Blocks to call on a specific queue when notifyCompletion() is called by subclasses.
 	// Do not access directly and use the addCompletionHandler() and notifyCompletion() methods instead.
-	public var completionHandlers: [CompletionHandler] = []
+	private var completionHandlers: [CompletionHandler] = []
+	
 	// Blocks to call on a specific queue when notifyProgress() is called by subclasses.
 	// Do not access directly and use the addProgressHandler() and notifyProgress() methods instead.
-	public var progressHandlers: [ProgressHandler] = []
+	private var progressHandlers: [ProgressHandler] = []
+	
 	private let lock = Lock() // Used to protect completion and progress handlers.
 	
-	// Blocks corresponding to URLSessionObserver callbacks. Each one is named after the method it is called inside.
-	public var didSendBodyData: ((Int64, Int64) -> Void)?
-	public var didComplete: ((Error?) -> Void)?
-	public var didReceiveData: ((Data) -> Void)?
-	public var didFinishDownloading: ((URL) -> Void)?
-	public var didWriteData: ((Int64, Int64) -> Void)?
-	
-	public init(task: URLSessionTask) {
+	init(task: URLSessionTask) {
 		self.task = task
 	}
 	
 	// Assigns the response to the taskResponse property, removes all completion and progress handlers and
 	// calls all completion handler blocks either on the handler's queue or on the main queue if the handler's queue is nil.
-	public func complete(response: T) {
+	func complete(response: T) {
 		let completionHandlers: [CompletionHandler] = lock.inCriticalScope {
 			defer {
 				self.completionHandlers.removeAll()
@@ -63,7 +66,7 @@ public class URLSessionBasedNetworkOperation<T> {
 	
 	// Calls all progress handler blocks with the provided arguments either on the handler's queue
 	// or on the main queue if the handler's queue is nil.
-	public func notifyProgress(units: Int64, outOf totalUnits: Int64) {
+	func notifyProgress(units: Int64, outOf totalUnits: Int64) {
 		let progressHandlers = lock.inCriticalScope {
 			self.progressHandlers
 		}
@@ -75,19 +78,19 @@ public class URLSessionBasedNetworkOperation<T> {
 		}
 	}
 	
-	public func addCompletionHandler(_ handler: CompletionHandler) {
+	func addCompletionHandler(_ handler: CompletionHandler) {
 		lock.inCriticalScope {
 			completionHandlers.append(handler)
 		}
 	}
 	
-	public func addProgressHandler(_ handler: ProgressHandler) {
+	func addProgressHandler(_ handler: ProgressHandler) {
 		lock.inCriticalScope {
 			progressHandlers.append(handler)
 		}
 	}
 	
-	public func errorIsCancellation(_ err: Error) -> Bool {
+	func errorIsCancellation(_ err: Error) -> Bool {
 		let error = err as NSError
 		return error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled
 	}
