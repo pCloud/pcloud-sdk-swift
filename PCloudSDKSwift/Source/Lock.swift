@@ -10,7 +10,7 @@ import Foundation
 import Darwin
 
 /// A non-recursive implementation of a mutex. Coordinates the operation of multiple threads of execution.
-public final class Lock {
+final class Lock {
 	// The underlying mutex.
 	private var mutex = pthread_mutex_t()
 	
@@ -20,18 +20,18 @@ public final class Lock {
 	}
 	
 	/// Initializes a new instance.
-	public init() {
+	init() {
 		pthread_mutex_init(&mutex, nil)
 	}
 	
 	/// Locks this mutex.
-	public func lock() {
+	func lock() {
 		let result = pthread_mutex_lock(&mutex)
 		assert(result == 0)
 	}
 	
 	/// Unlocks this mutex.
-	public func unlock() {
+	func unlock() {
 		let result = pthread_mutex_unlock(&mutex)
 		assert(result == 0)
 	}
@@ -43,7 +43,7 @@ extension Lock {
 	/// - parameter block: A block to execute.
 	/// - returns: The value returned by the block (if any).
 	/// - throws: The error thrown by the block (if any).
-	public func inCriticalScope<T>(_ block: () throws -> T) rethrows -> T {
+	func inCriticalScope<T>(_ block: () throws -> T) rethrows -> T {
 		lock()
 		defer { unlock() }
 		return try block()

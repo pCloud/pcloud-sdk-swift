@@ -28,7 +28,7 @@ public class URLSessionBasedNetworkOperation<T> {
 	// Blocks to call on a specific queue when notifyProgress() is called by subclasses.
 	// Do not access directly and use the addProgressHandler() and notifyProgress() methods instead.
 	public var progressHandlers: [ProgressHandler] = []
-	public let lock = Lock() // Used to protect completion and progress handlers.
+	private let lock = Lock() // Used to protect completion and progress handlers.
 	
 	// Blocks corresponding to URLSessionObserver callbacks. Each one is named after the method it is called inside.
 	public var didSendBodyData: ((Int64, Int64) -> Void)?
