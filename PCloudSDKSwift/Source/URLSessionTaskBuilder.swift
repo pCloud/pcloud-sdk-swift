@@ -71,7 +71,7 @@ public enum URLSessionTaskBuilder {
 		return session.downloadTask(with: urlRequest)
 	}
 	
-	public static func buildHTTPHeaderFields(withCookies cookies: [String: String], resourceAddress: URL) -> [String: String] {
+	private static func buildHTTPHeaderFields(withCookies cookies: [String: String], resourceAddress: URL) -> [String: String] {
 		guard let host = resourceAddress.host else {
 			return [:]
 		}
@@ -87,22 +87,22 @@ public enum URLSessionTaskBuilder {
 	
 	// Functions for encoding command parameter values to percent encoded strings.
 	
-	public static func encode(_ value: String) -> String {
+	private static func encode(_ value: String) -> String {
 		return value.addingPercentEncoding(withAllowedCharacters: .urlQueryParameterAllowedCharacterSetRFC3986())!
 	}
 	
-	public static func encode(_ value: Bool) -> String {
+	private static func encode(_ value: Bool) -> String {
 		return value ? "1" : "0"
 	}
 	
-	public static func encode(_ value: UInt64) -> String {
+	private static func encode(_ value: UInt64) -> String {
 		return "\(value)"
 	}
 	
 	
 	// Functions for building a query string from command parameters.
 	
-	public static func rawQueryComponent(from parameter: Call.Command.Parameter) -> String {
+	private static func rawQueryComponent(from parameter: Call.Command.Parameter) -> String {
 		switch parameter {
 		case let .boolean(name, value): return "\(name)=\(encode(value))"
 		case let .number(name, value): return "\(name)=\(encode(value))"
@@ -110,7 +110,7 @@ public enum URLSessionTaskBuilder {
 		}
 	}
 	
-	public static func percentEncodedQueryComponent(from parameter: Call.Command.Parameter) -> String {
+	private static func percentEncodedQueryComponent(from parameter: Call.Command.Parameter) -> String {
 		switch parameter {
 		case let .boolean(name, value): return "\(encode(name))=\(encode(value))"
 		case let .number(name, value): return "\(encode(name))=\(encode(value))"
@@ -118,7 +118,7 @@ public enum URLSessionTaskBuilder {
 		}
 	}
 	
-	public static func buildQuery(with parameters: [Call.Command.Parameter], addingPercentEncoding encode: Bool) -> String {
+	private static func buildQuery(with parameters: [Call.Command.Parameter], addingPercentEncoding encode: Bool) -> String {
 		let components: [String]
 		
 		if encode {
@@ -130,7 +130,7 @@ public enum URLSessionTaskBuilder {
 		return components.joined(separator: "&")
 	}
 	
-	public static func buildURL(withScheme scheme: String, host: String, commandName: String, query: String?) -> URL {
+	private static func buildURL(withScheme scheme: String, host: String, commandName: String, query: String?) -> URL {
 		var components = URLComponents()
 		components.scheme = scheme
 		components.host = host
@@ -140,7 +140,7 @@ public enum URLSessionTaskBuilder {
 		return components.url!
 	}
 	
-	public static func buildURL(withScheme scheme: String, host: String, commandName: String, percentEncodedQuery: String?) -> URL {
+	private static func buildURL(withScheme scheme: String, host: String, commandName: String, percentEncodedQuery: String?) -> URL {
 		var components = URLComponents()
 		components.scheme = scheme
 		components.host = host
@@ -151,15 +151,15 @@ public enum URLSessionTaskBuilder {
 	}
 }
 
-struct HTTPMethod {
+private struct HTTPMethod {
 	static let get = "GET"
 	static let post = "POST"
 	static let put = "PUT"
 }
 
-extension CharacterSet {
+private extension CharacterSet {
 	// A character with characters allowed in a URL query as per RFC 3986.
-	public static func urlQueryParameterAllowedCharacterSetRFC3986() -> CharacterSet {
+	static func urlQueryParameterAllowedCharacterSetRFC3986() -> CharacterSet {
 		return self.init(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~/?")
 	}
 }
