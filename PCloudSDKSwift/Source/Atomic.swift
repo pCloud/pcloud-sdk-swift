@@ -9,14 +9,14 @@
 import Foundation
 
 /// An object providing atomic access to an underlying value.
-public final class Atomic<T> {
+final class Atomic<T> {
 	// The lock controlling access to this instance's value.
 	private let lock = Lock()
 	// The underlying value of this instance.
 	private var resource: T
 	
 	/// The underlying value of this instance. Getting and setting the value is done atomically.
-	public var value: T {
+	var value: T {
 		get {
 			return lock.inCriticalScope { self.resource }
 		}
@@ -28,7 +28,7 @@ public final class Atomic<T> {
 	/// Initializes a new instance with a value.
 	///
 	/// - parameter value: The initial underlying value of this instance.
-	public init(_ value: T) {
+	init(_ value: T) {
 		resource = value
 	}
 	
@@ -37,7 +37,7 @@ public final class Atomic<T> {
 	/// - parameter block: A block that takes the current value as the input argument and returns the modified value.
 	/// - returns: The old value.
 	/// - throws: The error thrown by the block (if any).
-	@discardableResult public func modify(_ block: (T) throws -> (T)) rethrows -> T {
+	@discardableResult func modify(_ block: (T) throws -> (T)) rethrows -> T {
 		return try lock.inCriticalScope {
 			let oldValue = resource
 			resource = try block(resource)
