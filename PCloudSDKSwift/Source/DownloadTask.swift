@@ -31,7 +31,7 @@ public final class DownloadTask: Cancellable {
 	/// first and second arguments, respectively. Called each time the number of downloaded bytes changes.
 	/// - returns: This task.
 	@discardableResult public func addProgressBlock(_ block: @escaping (Int64, Int64) -> Void) -> DownloadTask {
-		operation.addProgressBlock(queue: .main, block)
+		operation.addProgressBlock(with: .main, block)
 		return self
 	}
 	
@@ -40,7 +40,7 @@ public final class DownloadTask: Cancellable {
 	/// - parameter block: A block called on the main thread with the result of the task.
 	/// - returns: This task.
 	@discardableResult public func addCompletionBlock(_ block: @escaping (Download.Response) -> Void) -> DownloadTask {
-		operation.addCompletionBlock(queue: .main, block)
+		operation.addCompletionBlock(with: .main, block)
 		return self
 	}
 	

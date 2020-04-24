@@ -124,7 +124,7 @@ public struct PCloudAPIDownloadTaskBuilder {
 	/// the file or open it for reading, otherwise the file gets deleted after the block returns.
 	/// The block should return the new path of the file.
 	/// - returns: An instance of `DownloadTask` in suspended state.
-	public func createTask(resourceAddress: URL,
+	public func createTask(with resourceAddress: URL,
 						   downloadTag: String? = nil,
 						   timeoutInterval: TimeInterval? = nil,
 						   destination: @escaping (URL) throws -> URL) -> DownloadTask {

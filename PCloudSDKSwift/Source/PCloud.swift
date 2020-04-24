@@ -75,7 +75,7 @@ public enum PCloud {
 	}
 	
 	// Starts an authorization flow and initializes the global client on success.
-	static func authorize(view: OAuthAuthorizationFlowView, completionBlock: @escaping (OAuth.Result) -> Void) {
+	static func authorize(with view: OAuthAuthorizationFlowView, completionBlock: @escaping (OAuth.Result) -> Void) {
 		guard let appKey = self.appKey else {
 			assertionFailure("Please set up client by calling PCloud.setUp(withAppKey: <YOUR_APP_KEY>) before attempting to authorize using OAuth")
 			return
@@ -98,15 +98,15 @@ public enum PCloud {
 		
 		// The event hub is expected to be kept in memory by the operation builder blocks.
 		
-		let callOperationBuilder = URLSessionBasedNetworkOperationUtilities.createCallOperationBuilder(scheme: .https,
+		let callOperationBuilder = URLSessionBasedNetworkOperationUtilities.createCallOperationBuilder(with: .https,
 																									   session: session,
 																									   delegate: eventHub)
 		
-		let uploadOperationBuilder = URLSessionBasedNetworkOperationUtilities.createUploadOperationBuilder(scheme: .https,
+		let uploadOperationBuilder = URLSessionBasedNetworkOperationUtilities.createUploadOperationBuilder(with: .https,
 																										   session: session,
 																										   delegate: eventHub)
 		
-		let downloadOperationBuilder = URLSessionBasedNetworkOperationUtilities.createDownloadOperationBuilder(session: session, delegate: eventHub)
+		let downloadOperationBuilder = URLSessionBasedNetworkOperationUtilities.createDownloadOperationBuilder(with: session, delegate: eventHub)
 		
 		let callTaskBuilder = PCloudAPICallTaskBuilder(hostProvider: apiHostName,
 													   authenticator: authenticator,

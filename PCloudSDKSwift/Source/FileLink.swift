@@ -47,7 +47,7 @@ public struct FileLinkMetadataParser: Parser {
 		
 		return hosts.map { host in
 			var components = URLComponents()
-			components.scheme = Scheme.https.rawValue
+			components.scheme = URLScheme.https.rawValue
 			components.host = host
 			components.path = path
 			

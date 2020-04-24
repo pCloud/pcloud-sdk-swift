@@ -61,13 +61,13 @@ final class URLSessionTaskBuilderTests: XCTestCase {
 		let command = method.createCommand()
 		let body = Upload.Request.Body.data("texty text".data(using: .utf8)!)
 		let request = Upload.Request(command: command, body: body, hostName: "api.pcloud.com")
-		return URLSessionTaskBuilder.createUploadTask(request: request, session: session, scheme: .http)
+		return URLSessionTaskBuilder.createUploadTask(with: request, session: session, scheme: .http)
 	}
 	
 	private func createDataTask<Method: PCloudAPIMethod>(with method: Method) -> URLSessionDataTask {
 		let command = method.createCommand()
 		let request = Call.Request(command: command, hostName: "api.pcloud.com")
-		return URLSessionTaskBuilder.createDataTask(request: request, session: session, scheme: .http)
+		return URLSessionTaskBuilder.createDataTask(with: request, session: session, scheme: .http)
 	}
 	
 	private func createDictionary(fromQueryString query: String) -> [String: String?] {

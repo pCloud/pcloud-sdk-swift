@@ -87,11 +87,11 @@ public struct OAuth {
 	/// - parameter completionToken: A block called when authorization completes. Called on the main thread.
 	public static func performAuthorizationFlow(view: OAuthAuthorizationFlowView, appKey: String, completionBlock: @escaping (Result) -> Void) {
 		// Create URL.
-		let authorizationUrl = createAuthorizationUrl(appKey: appKey, redirectUrl: createRedirectUrl(appKey: appKey))
+		let authorizationURL = createAuthorizationURL(appKey: appKey, redirectURL: createRedirectURL(appKey: appKey))
 		
 		// Define callbacks.
 		let interceptBlock: (URL) -> Bool = { url in
-			if let result = handleRedirectUrl(url, appKey: appKey) {
+			if let result = handleRedirectURL(url, appKey: appKey) {
 				// This is an OAuth redirect.
 				view.dismissWebView()
 				completionBlock(result)
@@ -107,7 +107,7 @@ public struct OAuth {
 		}
 		
 		// Present the web view.
-		view.presentWebView(url: authorizationUrl, interceptNavigation: interceptBlock, didCancel: cancelBlock)
+		view.presentWebView(url: authorizationURL, interceptNavigation: interceptBlock, didCancel: cancelBlock)
 	}
 	
 	/// Fetches the first `OAuth.User` found in the keychain. Do not rely on which, specifically, that user is.
@@ -175,7 +175,7 @@ public struct OAuth {
 	}
 	
 	// Creates a redirect URL using and app key.
-	static func createRedirectUrl(appKey: String) -> String {
+	static func createRedirectURL(appKey: String) -> String {
 		var components = URLComponents()
 		components.scheme = "pclsdk-w-\(appKey.lowercased())"
 		components.host = "oauth2redirect"
@@ -184,25 +184,25 @@ public struct OAuth {
 	}
 	
 	// Creates an authorization URL from an app key for the implicit grant flow.
-	static func createAuthorizationUrl(appKey: String, redirectUrl: String) -> URL {
+	static func createAuthorizationURL(appKey: String, redirectURL: String) -> URL {
 		var components = URLComponents()
-		components.scheme = Scheme.https.rawValue
+		components.scheme = URLScheme.https.rawValue
 		components.host = "e.pcloud.com"
 		components.path = "/oauth2/authorize"
 		components.queryItems = [
 			URLQueryItem(name: "client_id", value: appKey),
 			URLQueryItem(name: "response_type", value: "token"),
-			URLQueryItem(name: "redirect_uri", value: redirectUrl)
+			URLQueryItem(name: "redirect_uri", value: redirectURL)
 		]
 		
 		return components.url!
 	}
 	
 	// Checks if the provided url is a redirect url and if it is, tries to extract a result from its fragment.
-	static func handleRedirectUrl(_ url: URL, appKey: String) -> Result? {
-		let redirectUrl = URL(string: createRedirectUrl(appKey: appKey))!
+	static func handleRedirectURL(_ url: URL, appKey: String) -> Result? {
+		let redirectURL = URL(string: createRedirectURL(appKey: appKey))!
 		
-		guard url.scheme == redirectUrl.scheme && url.host == redirectUrl.host else {
+		guard url.scheme == redirectURL.scheme && url.host == redirectURL.host else {
 			return nil
 		}
 		

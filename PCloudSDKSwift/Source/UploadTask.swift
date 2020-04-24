@@ -32,7 +32,7 @@ public final class UploadTask<Method: PCloudAPIMethod>: Cancellable {
 		self.operation = operation
 		
 		// Parse the response on a background queue.
-		operation.addCompletionBlock(queue: .global()) { response in
+		operation.addCompletionBlock(with: .global()) { response in
 			// Compute the response.
 			let result: Result<Method.Value, CallError<Method.Error>> = {
 				switch response {
@@ -85,7 +85,7 @@ public final class UploadTask<Method: PCloudAPIMethod>: Cancellable {
 	/// first and second arguments, respectively. Called each time the number of uploaded bytes changes.
 	/// - returns: This task.
 	@discardableResult public func addProgressBlock(_ block: @escaping (Int64, Int64) -> Void) -> UploadTask {
-		operation.addProgressBlock(queue: .main, block)
+		operation.addProgressBlock(with: .main, block)
 		return self
 	}
 	

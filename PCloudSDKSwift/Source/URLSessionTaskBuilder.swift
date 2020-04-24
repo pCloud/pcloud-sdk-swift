@@ -8,19 +8,18 @@
 
 import Foundation
 
-/// A URL scheme.
-public enum Scheme: String {
+public enum URLScheme: String {
 	case http = "http"
 	case https = "https"
 }
 
-public struct URLSessionTaskBuilder {
+public enum URLSessionTaskBuilder {
 	/// Creates a `URLSessionDataTask` using a `URLSession` given a `Call.Request`.
-	public static func createDataTask(request: Call.Request, session: URLSession, scheme: Scheme) -> URLSessionDataTask {
+	public static func createDataTask(with request: Call.Request, session: URLSession, scheme: URLScheme) -> URLSessionDataTask {
 		// Build the URL.
-		let url = self.url(scheme: scheme.rawValue, host: request.hostName, commandName: request.command.name)
+		let url = buildURL(withScheme: scheme.rawValue, host: request.hostName, commandName: request.command.name, query: nil)
 		// Build a form data encoded query.
-		let query = self.query(from: request.command.parameters, addingPercentEncoding: true)
+		let query = buildQuery(with: request.command.parameters, addingPercentEncoding: true)
 		
 		// Build a POST request.
 		var urlRequest = URLRequest(url: url)
@@ -36,9 +35,9 @@ public struct URLSessionTaskBuilder {
 	}
 	
 	/// Creates a `URLSessionUploadTask` using a `URLSession` given an `Upload.Request`.
-	public static func createUploadTask(request: Upload.Request, session: URLSession, scheme: Scheme) -> URLSessionUploadTask {
+	public static func createUploadTask(with request: Upload.Request, session: URLSession, scheme: URLScheme) -> URLSessionUploadTask {
 		// Build a GET query.
-		let query = self.query(from: request.command.parameters, addingPercentEncoding: true)
+		let query = buildQuery(with: request.command.parameters, addingPercentEncoding: true)
 		// Build the URL.
 		let url = buildURL(withScheme: scheme.rawValue, host: request.hostName, commandName: request.command.name, percentEncodedQuery: query)
 		
@@ -58,28 +57,28 @@ public struct URLSessionTaskBuilder {
 	}
 	
 	/// Creates a `URLSessionDownloadTask` using a `URLSession` given a `Download.Request`.
-	public static func createDownloadTask(request: Download.Request, session: URLSession) -> URLSessionDownloadTask {
+	public static func createDownloadTask(with request: Download.Request, session: URLSession) -> URLSessionDownloadTask {
 		var urlRequest = URLRequest(url: request.resourceAddress)
 		
 		if let timeoutInterval = request.timeoutInterval {
 			urlRequest.timeoutInterval = timeoutInterval
 		}
 		
-		for (name, value) in buildHTTPHeaderFields(cookiesDictionary: request.cookies, resourceAddress: request.resourceAddress) {
+		for (name, value) in buildHTTPHeaderFields(withCookies: request.cookies, resourceAddress: request.resourceAddress) {
 			urlRequest.addValue(value, forHTTPHeaderField: name)
 		}
 		
 		return session.downloadTask(with: urlRequest)
 	}
 	
-	public static func buildHTTPHeaderFields(cookiesDictionary: [String: String], resourceAddress: URL) -> [String: String] {
+	public static func buildHTTPHeaderFields(withCookies cookies: [String: String], resourceAddress: URL) -> [String: String] {
 		guard let host = resourceAddress.host else {
 			return [:]
 		}
 		
 		let path = resourceAddress.path
 		
-		let cookies = cookiesDictionary.compactMap { name, value in
+		let cookies = cookies.compactMap { name, value in
 			HTTPCookie(properties: [.name: name, .value: value, .domain: host, .path: path])
 		}
 		
@@ -119,7 +118,7 @@ public struct URLSessionTaskBuilder {
 		}
 	}
 	
-	public static func query(from parameters: [Call.Command.Parameter], addingPercentEncoding encode: Bool) -> String {
+	public static func buildQuery(with parameters: [Call.Command.Parameter], addingPercentEncoding encode: Bool) -> String {
 		let components: [String]
 		
 		if encode {
@@ -131,7 +130,7 @@ public struct URLSessionTaskBuilder {
 		return components.joined(separator: "&")
 	}
 	
-	public static func url(scheme: String, host: String, commandName: String, query: String? = nil) -> URL {
+	public static func buildURL(withScheme scheme: String, host: String, commandName: String, query: String?) -> URL {
 		var components = URLComponents()
 		components.scheme = scheme
 		components.host = host
@@ -141,7 +140,7 @@ public struct URLSessionTaskBuilder {
 		return components.url!
 	}
 	
-	public static func buildURL(withScheme scheme: String, host: String, commandName: String, percentEncodedQuery: String? = nil) -> URL {
+	public static func buildURL(withScheme scheme: String, host: String, commandName: String, percentEncodedQuery: String?) -> URL {
 		var components = URLComponents()
 		components.scheme = scheme
 		components.host = host

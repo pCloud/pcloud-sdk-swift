@@ -10,7 +10,7 @@ import XCTest
 @testable import PCloudSDKSwift
 
 final class OAuthTests: XCTestCase {
-	func createRedirectUrl(appKey: String, fragment: String?) -> URL {
+	func createRedirectURL(appKey: String, fragment: String?) -> URL {
 		var components = URLComponents()
 		components.scheme = "pclsdk-w-\(appKey)"
 		components.host = "oauth2redirect"
@@ -19,25 +19,25 @@ final class OAuthTests: XCTestCase {
 		return components.url!
 	}
 	
-	func testCreatesCorrectRedirectionUrl() {
+	func testCreatesCorrectRedirectionURL() {
 		// Given
 		let appKey = "foo"
 		
 		// When
-		let url = OAuth.createRedirectUrl(appKey: appKey)
+		let url = OAuth.createRedirectURL(appKey: appKey)
 		
 		// Expect
-		let expectedUrl = createRedirectUrl(appKey: appKey, fragment: nil).absoluteString
-		XCTAssert(url == expectedUrl, "invalid redirect url, expected \(expectedUrl), got \(url)")
+		let expectedURL = createRedirectURL(appKey: appKey, fragment: nil).absoluteString
+		XCTAssert(url == expectedURL, "invalid redirect url, expected \(expectedURL), got \(url)")
 	}
 	
-	func testCreatesCorrectAuthorizationUrl() {
+	func testCreatesCorrectAuthorizationURL() {
 		// Given
 		let appKey = "foo"
-		let redirectUrl = createRedirectUrl(appKey: appKey, fragment: nil).absoluteString
+		let redirectURL = createRedirectURL(appKey: appKey, fragment: nil).absoluteString
 		
 		// When
-		let url = URLComponents(string: OAuth.createAuthorizationUrl(appKey: appKey, redirectUrl: redirectUrl).absoluteString)!
+		let url = URLComponents(string: OAuth.createAuthorizationURL(appKey: appKey, redirectURL: redirectURL).absoluteString)!
 		
 		// Expect
 		XCTAssert(url.scheme == "https", "invalid scheme")
@@ -48,61 +48,61 @@ final class OAuthTests: XCTestCase {
 		
 		XCTAssert(query["client_id"] == appKey, "invalid client id")
 		XCTAssert(query["response_type"] == "token", "invalid response type")
-		XCTAssert(query["redirect_uri"] == redirectUrl, "invalid redirect url")
+		XCTAssert(query["redirect_uri"] == redirectURL, "invalid redirect url")
 	}
 	
-	func testHandleRedirectUrlReturnsNilWhenProvidedUrlIsNotARedirectUrl() {
+	func testHandleRedirectURLReturnsNilWhenProvidedURLIsNotARedirectURL() {
 		// Given
 		let url = URL(string: "https://dummy.com")!
 		
 		// When
-		let result = OAuth.handleRedirectUrl(url, appKey: "foo")
+		let result = OAuth.handleRedirectURL(url, appKey: "foo")
 		
 		// Expect
 		XCTAssert(result == nil, "unexpected redirect result")
 	}
 	
-	func testHandleRedirectUrlReturnsAccessDeniedErrorWhenUrlDoesNotContainFragment() {
+	func testHandleRedirectURLReturnsAccessDeniedErrorWhenURLDoesNotContainFragment() {
 		// Given
-		let url = createRedirectUrl(appKey: "foo", fragment: nil)
+		let url = createRedirectURL(appKey: "foo", fragment: nil)
 		
 		// When
-		let result = OAuth.handleRedirectUrl(url, appKey: "foo")!
+		let result = OAuth.handleRedirectURL(url, appKey: "foo")!
 		
 		// Expect
 		validate(result, against: .failure(OAuth.Error.accessDenied))
 	}
 	
-	func testHandleRedirectUrlReturnsTokenOnAccessTokenResponse() {
+	func testHandleRedirectURLReturnsTokenOnAccessTokenResponse() {
 		// Given
-		let url = createRedirectUrl(appKey: "foo", fragment: "access_token=thetoken&userid=42&locationid=1&hostname=api.pcloud.com")
+		let url = createRedirectURL(appKey: "foo", fragment: "access_token=thetoken&userid=42&locationid=1&hostname=api.pcloud.com")
 		
 		// When
-		let result = OAuth.handleRedirectUrl(url, appKey: "foo")!
+		let result = OAuth.handleRedirectURL(url, appKey: "foo")!
 		
 		// Expect
 		validate(result, against: .success(OAuth.User(id: 42, token: "thetoken", serverRegionId: 1, httpAPIHostName: "api.pcloud.com")))
 	}
 	
-	func testHandleRedirectUrlReturnsErrorOnErrorResponse() {
+	func testHandleRedirectURLReturnsErrorOnErrorResponse() {
 		for (code, error) in oauth2ErrorCodes() {
 			// Given
-			let url = createRedirectUrl(appKey: "foo", fragment: "error=\(code)")
+			let url = createRedirectURL(appKey: "foo", fragment: "error=\(code)")
 			
 			// When
-			let result = OAuth.handleRedirectUrl(url, appKey: "foo")!
+			let result = OAuth.handleRedirectURL(url, appKey: "foo")!
 			
 			// Expect
 			validate(result, against: .failure(error))
 		}
 	}
 	
-	func testHandleRedirectUrlReturnsUnknownErrorOnUnknownErrorResponse() {
+	func testHandleRedirectURLReturnsUnknownErrorOnUnknownErrorResponse() {
 		// Given
-		let url = createRedirectUrl(appKey: "foo", fragment: "error=krokodil")
+		let url = createRedirectURL(appKey: "foo", fragment: "error=krokodil")
 		
 		// When
-		let result = OAuth.handleRedirectUrl(url, appKey: "foo")!
+		let result = OAuth.handleRedirectURL(url, appKey: "foo")!
 		
 		// Expect
 		validate(result, against: .failure(OAuth.Error.unknown))
@@ -160,7 +160,7 @@ final class OAuthTests: XCTestCase {
 	
 	func testAuthorizationFlowInvokesCompletionBlockWhenInterceptingOAuthRedirect() {
 		// Given
-		let url = createRedirectUrl(appKey: "foo", fragment: "access_token=thetoken&userid=42&locationid=1&hostname=api.pcloud.com")
+		let url = createRedirectURL(appKey: "foo", fragment: "access_token=thetoken&userid=42&locationid=1&hostname=api.pcloud.com")
 		let view = AuthorizationFlowViewMock()
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		

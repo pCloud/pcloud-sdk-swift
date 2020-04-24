@@ -24,7 +24,9 @@ public final class PCloudClient {
 	/// - parameter callTaskBuilder: Will be used to create call tasks.
 	/// - parameter uploadTaskBuilder: Will be used to create upload tasks.
 	/// - parameter downloadTaskBuilder: Will be used to create download tasks.
-	public init(callTaskBuilder: PCloudAPICallTaskBuilder, uploadTaskBuilder: PCloudAPIUploadTaskBuilder, downloadTaskBuilder: PCloudAPIDownloadTaskBuilder) {
+	public init(callTaskBuilder: PCloudAPICallTaskBuilder,
+				uploadTaskBuilder: PCloudAPIUploadTaskBuilder,
+				downloadTaskBuilder: PCloudAPIDownloadTaskBuilder) {
 		self.callTaskBuilder = callTaskBuilder
 		self.uploadTaskBuilder = uploadTaskBuilder
 		self.downloadTaskBuilder = downloadTaskBuilder
@@ -279,6 +281,6 @@ extension PCloudClient {
 	/// The block should return the new location of the file.
 	/// - returns: A task producing a `URL` on success which is the local path of the downloaded file.
 	public func downloadFile(from address: URL, downloadTag: String? = nil, to destination: @escaping (URL) throws -> URL) -> DownloadTask {
-		return downloadTaskBuilder.createTask(resourceAddress: address, downloadTag: downloadTag, destination: destination)
+		return downloadTaskBuilder.createTask(with: address, downloadTag: downloadTag, destination: destination)
 	}
 }

@@ -92,7 +92,7 @@ final class URLSessionBasedCallOperationTests: XCTestCase, URLSessionBasedOperat
 		let task = createDataTask(session: session)
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
-		operation.addCompletionBlock(queue: .main) { _ in
+		operation.addCompletionBlock(with: .main) { _ in
 			invokeExpectation.fulfill()
 		}
 		
@@ -111,7 +111,7 @@ final class URLSessionBasedCallOperationTests: XCTestCase, URLSessionBasedOperat
 		let task = createDataTask(session: session)
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
-		operation.addCompletionBlock(queue: .main) { _ in
+		operation.addCompletionBlock(with: .main) { _ in
 			invokeExpectation.fulfill()
 		}
 		
@@ -169,7 +169,7 @@ final class URLSessionBasedUploadOperationTests: XCTestCase, URLSessionBasedOper
 		let task = createDataTask(session: session)
 		let invokeExpectation = expectation(description: "to invoke progress block")
 		
-		operation.addProgressBlock(queue: .main) { _,_  in
+		operation.addProgressBlock(with: .main) { _,_  in
 			invokeExpectation.fulfill()
 		}
 		
@@ -224,7 +224,7 @@ final class URLSessionBasedUploadOperationTests: XCTestCase, URLSessionBasedOper
 		let task = createDataTask(session: session)
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
-		operation.addCompletionBlock(queue: .main) { _ in
+		operation.addCompletionBlock(with: .main) { _ in
 			invokeExpectation.fulfill()
 		}
 		
@@ -243,7 +243,7 @@ final class URLSessionBasedUploadOperationTests: XCTestCase, URLSessionBasedOper
 		let task = createDataTask(session: session)
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
-		operation.addCompletionBlock(queue: .main) { _ in
+		operation.addCompletionBlock(with: .main) { _ in
 			invokeExpectation.fulfill()
 		}
 		
@@ -343,7 +343,7 @@ final class URLSessionBasedDownloadOperationTests: XCTestCase, URLSessionBasedOp
 		let task = createDownloadTask(session: session)
 		let invokeExpectation = expectation(description: "to invoke progress block")
 		
-		operation.addProgressBlock(queue: .main) { _,_  in
+		operation.addProgressBlock(with: .main) { _,_  in
 			invokeExpectation.fulfill()
 		}
 		
@@ -373,7 +373,7 @@ final class URLSessionBasedDownloadOperationTests: XCTestCase, URLSessionBasedOp
 		createFile(at: downloadFilePath())
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
-		operation.addCompletionBlock(queue: .main) { _ in
+		operation.addCompletionBlock(with: .main) { _ in
 			invokeExpectation.fulfill()
 		}
 		
@@ -391,7 +391,7 @@ final class URLSessionBasedDownloadOperationTests: XCTestCase, URLSessionBasedOp
 		let task = createDownloadTask(session: session)
 		let invokeExpectation = expectation(description: "to invoke completion block")
 		
-		operation.addCompletionBlock(queue: .main) { _ in
+		operation.addCompletionBlock(with: .main) { _ in
 			invokeExpectation.fulfill()
 		}
 		

@@ -61,7 +61,7 @@ extension URLSessionBasedCallOperation: CallOperation {
 	}
 	
 	@discardableResult
-	public func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Call.Response) -> Void) -> URLSessionBasedCallOperation {
+	public func addCompletionBlock(with queue: DispatchQueue?, _ block: @escaping (Call.Response) -> Void) -> URLSessionBasedCallOperation {
 		addCompletionHandler((block, queue))
 		return self
 	}

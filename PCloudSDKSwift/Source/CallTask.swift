@@ -33,7 +33,7 @@ public final class CallTask<Method: PCloudAPIMethod>: Cancellable {
 		self.operation = operation
 		
 		// Parse the response on a background queue.
-		operation.addCompletionBlock(queue: .global()) { response in
+		operation.addCompletionBlock(with: .global()) { response in
 			// Compute the response.
 			let result: Result<Method.Value, CallError<Method.Error>> = {
 				switch response {

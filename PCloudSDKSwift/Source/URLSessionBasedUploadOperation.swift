@@ -72,13 +72,13 @@ extension URLSessionBasedUploadOperation: UploadOperation {
 	}
 	
 	@discardableResult
-	public func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Upload.Response) -> Void) -> URLSessionBasedUploadOperation {
+	public func addCompletionBlock(with queue: DispatchQueue?, _ block: @escaping (Upload.Response) -> Void) -> URLSessionBasedUploadOperation {
 		addCompletionHandler((block, queue))
 		return self
 	}
 	
 	@discardableResult
-	public func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> URLSessionBasedUploadOperation {
+	public func addProgressBlock(with queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> URLSessionBasedUploadOperation {
 		addProgressHandler((block, queue))
 		return self
 	}

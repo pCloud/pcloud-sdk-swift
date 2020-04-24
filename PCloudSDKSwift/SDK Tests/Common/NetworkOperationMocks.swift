@@ -52,7 +52,7 @@ extension CallOperationMock: CallOperation {
 		return nil
 	}
 	
-	@discardableResult func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Call.Response) -> Void) -> Self {
+	@discardableResult func addCompletionBlock(with queue: DispatchQueue?, _ block: @escaping (Call.Response) -> Void) -> Self {
 		completionBlocks.append(block)
 		return self
 	}
@@ -89,12 +89,12 @@ extension UploadOperationMock: UploadOperation {
 		return 0
 	}
 	
-	@discardableResult func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self {
+	@discardableResult func addProgressBlock(with queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self {
 		progressBlocks.append(block)
 		return self
 	}
 	
-	@discardableResult func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Upload.Response) -> Void) -> Self {
+	@discardableResult func addCompletionBlock(with queue: DispatchQueue?, _ block: @escaping (Upload.Response) -> Void) -> Self {
 		completionBlocks.append(block)
 		return self
 	}
@@ -131,12 +131,12 @@ extension DownloadOperationMock: DownloadOperation {
 		return 0
 	}
 	
-	@discardableResult func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self {
+	@discardableResult func addProgressBlock(with queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> Self {
 		progressBlocks.append(block)
 		return self
 	}
 	
-	@discardableResult func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Download.Response) -> Void) -> Self {
+	@discardableResult func addCompletionBlock(with queue: DispatchQueue?, _ block: @escaping (Download.Response) -> Void) -> Self {
 		completionBlocks.append(block)
 		return self
 	}

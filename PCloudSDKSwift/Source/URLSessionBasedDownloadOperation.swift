@@ -75,13 +75,13 @@ extension URLSessionBasedDownloadOperation: DownloadOperation {
 	}
 	
 	@discardableResult
-	public func addCompletionBlock(queue: DispatchQueue?, _ block: @escaping (Download.Response) -> Void) -> URLSessionBasedDownloadOperation {
+	public func addCompletionBlock(with queue: DispatchQueue?, _ block: @escaping (Download.Response) -> Void) -> URLSessionBasedDownloadOperation {
 		addCompletionHandler((block, queue))
 		return self
 	}
 	
 	@discardableResult
-	public func addProgressBlock(queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> URLSessionBasedDownloadOperation {
+	public func addProgressBlock(with queue: DispatchQueue?, _ block: @escaping (Int64, Int64) -> Void) -> URLSessionBasedDownloadOperation {
 		addProgressHandler((block, queue))
 		return self
 	}
