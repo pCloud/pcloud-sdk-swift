@@ -299,44 +299,40 @@ private extension OAuth.User {
 
 @available(iOS 13, OSX 10.15, *)
 private final class WebAuthenticationSession: ASWebAuthenticationSession, ASWebAuthenticationPresentationContextProviding {
+	private final class Box {
+		var value: Any?
+	}
+	
 	var anchor: ASPresentationAnchor?
 	
-	private var me: WebAuthenticationSession?
+	private let selfStorage: Box
 	
 	override init(url URL: URL, callbackURLScheme: String?, completionHandler: @escaping ASWebAuthenticationSession.CompletionHandler) {
 		// Even though the documentation states that from iOS 13 and above, instances of this class retain themselves when the session starts,
 		// I've observed that that is not the case. We keep a strong reference to ourselves until we end the session.
 		
-		var _self: WebAuthenticationSession!
+		let selfStorage = Box()
+		self.selfStorage = selfStorage
 		
-		super.init(url: URL, callbackURLScheme: callbackURLScheme, completionHandler: { [weak _self] url, error in
+		super.init(url: URL, callbackURLScheme: callbackURLScheme, completionHandler: { url, error in
 			// Couldn't find any information as to on which thread this block is called. So, Justin Case.
 			Thread.onMainThread {
 				completionHandler(url, error)
-				_self?.releaseSelf()
+				selfStorage.value = nil
 			}
 		})
 		
-		_self = self
 		presentationContextProvider = self
 	}
 	
 	@discardableResult override func start() -> Bool {
-		retainSelf()
+		selfStorage.value = self
 		return super.start()
 	}
 	
 	override func cancel() {
 		super.cancel()
-		releaseSelf()
-	}
-	
-	private func retainSelf() {
-		me = self
-	}
-	
-	private func releaseSelf() {
-		me = nil
+		selfStorage.value = nil
 	}
 	
 	func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
