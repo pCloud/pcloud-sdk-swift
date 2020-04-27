@@ -15,6 +15,15 @@ extension PCloud {
 	/// - parameter completionBlock: A block called on the main thread when authorization completes or is cancelled.
 	/// The global pCloud client will be initialized inside the block if authorization was successful.
 	public static func authorize(with controller: UIViewController, _ completionBlock: @escaping (OAuth.Result) -> Void) {
-		authorize(with: WebViewControllerPresenterMobile(presentingViewController: controller), completionBlock: completionBlock)
+		if #available(iOS 13, *) {
+			guard let window = controller.view.window else {
+				assertionFailure("Cannot present from a view controller that is not part of the view hierarchy.")
+				return
+			}
+			
+			authorize(with: window, completionBlock: completionBlock)
+		} else {
+			authorize(with: WebViewControllerPresenterMobile(presentingViewController: controller), completionBlock: completionBlock)
+		}
 	}
 }

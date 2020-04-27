@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AuthenticationServices
 
 /// Convenience namespace for the SDK. Hosts a global `PCloudClient` instance.
 public enum PCloud {
@@ -74,6 +75,19 @@ public enum PCloud {
 		return createClient(withAccessToken: user.token, apiHostName: user.httpAPIHostName)
 	}
 	
+	@available(iOS 13, OSX 10.15, *)
+	static func authorize(with anchor: ASPresentationAnchor, completionBlock: @escaping (OAuth.Result) -> Void) {
+		guard let appKey = self.appKey else {
+			assertionFailure("Please set up client by calling PCloud.setUp(withAppKey: <YOUR_APP_KEY>) before attempting to authorize using OAuth")
+			return
+		}
+		
+		OAuth.performAuthorizationFlow(with: anchor, appKey: appKey) { result in
+			self.handleAuthorizationFlowResult(result)
+			completionBlock(result)
+		}
+	}
+	
 	// Starts an authorization flow and initializes the global client on success.
 	static func authorize(with view: OAuthAuthorizationFlowView, completionBlock: @escaping (OAuth.Result) -> Void) {
 		guard let appKey = self.appKey else {
@@ -82,12 +96,15 @@ public enum PCloud {
 		}
 		
 		OAuth.performAuthorizationFlow(with: view, appKey: appKey) { result in
-			if case let .success(user) = result {
-				OAuth.store(user)
-				self.initializeSharedClient(with: user)
-			}
-			
+			self.handleAuthorizationFlowResult(result)
 			completionBlock(result)
+		}
+	}
+	
+	private static func handleAuthorizationFlowResult(_ result: OAuth.Result) {
+		if case let .success(user) = result {
+			OAuth.store(user)
+			self.initializeSharedClient(with: user)
 		}
 	}
 	
