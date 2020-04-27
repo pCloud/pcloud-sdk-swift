@@ -86,26 +86,17 @@ public struct OAuth {
 		let redirectURL = createRedirectURL(withAppKey: appKey)
 		let authURL = createAuthorizationURL(withAppKey: appKey, redirectURL: redirectURL)
 		
-		let session = ASWebAuthenticationSession(url: authURL, callbackURLScheme: redirectURL.scheme!, completionHandler: { url, error in
-			// Couldn't find any information as to on which thread this block is called. So, Justin Case.
-			Thread.onMainThread {
-				guard let url = url else {
-					// Ignore errors. One is about the user cancelling authentication, the others are about invalid session setup.
-					completionBlock(.cancel)
-					return
-				}
-				
-				completionBlock(handleRedirectURL(url, appKey: appKey)!)
+		let session = WebAuthenticationSession(url: authURL, callbackURLScheme: redirectURL.scheme!, completionHandler: { url, error in
+			guard let url = url else {
+				// Ignore errors. One is about the user cancelling authentication, the others are about invalid session setup.
+				completionBlock(.cancel)
+				return
 			}
+			
+			completionBlock(handleRedirectURL(url, appKey: appKey)!)
 		})
 		
-		let context = WebAuthenticationPresentationContextProvider(anchor: anchor)
-		session.presentationContextProvider = context
-		
-		// Bind the lifetime of the context provider to the lifetime of the session.
-		var key: UInt8 = 0
-		objc_setAssociatedObject(session, &key, context, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-		
+		session.anchor = anchor
 		session.start()
 	}
 	
@@ -306,6 +297,53 @@ private extension OAuth.User {
 	}
 }
 
+@available(iOS 13, OSX 10.15, *)
+private final class WebAuthenticationSession: ASWebAuthenticationSession, ASWebAuthenticationPresentationContextProviding {
+	var anchor: ASPresentationAnchor?
+	
+	private var me: WebAuthenticationSession?
+	
+	override init(url URL: URL, callbackURLScheme: String?, completionHandler: @escaping ASWebAuthenticationSession.CompletionHandler) {
+		// Even though the documentation states that from iOS 13 and above, instances of this class retain themselves when the session starts,
+		// I've observed that that is not the case. We keep a strong reference to ourselves until we end the session.
+		
+		var _self: WebAuthenticationSession!
+		
+		super.init(url: URL, callbackURLScheme: callbackURLScheme, completionHandler: { [weak _self] url, error in
+			// Couldn't find any information as to on which thread this block is called. So, Justin Case.
+			Thread.onMainThread {
+				completionHandler(url, error)
+				_self?.releaseSelf()
+			}
+		})
+		
+		_self = self
+		presentationContextProvider = self
+	}
+	
+	@discardableResult override func start() -> Bool {
+		retainSelf()
+		return super.start()
+	}
+	
+	override func cancel() {
+		super.cancel()
+		releaseSelf()
+	}
+	
+	private func retainSelf() {
+		me = self
+	}
+	
+	private func releaseSelf() {
+		me = nil
+	}
+	
+	func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+		anchor!
+	}
+}
+
 private extension Thread {
 	static func onMainThread(_ block: @escaping () -> Void) {
 		if Thread.isMainThread {
@@ -313,18 +351,5 @@ private extension Thread {
 		} else {
 			DispatchQueue.main.async(execute: block)
 		}
-	}
-}
-
-@available(iOS 13, OSX 10.15, *)
-private final class WebAuthenticationPresentationContextProvider: NSObject, ASWebAuthenticationPresentationContextProviding {
-	private let anchor: ASPresentationAnchor
-	
-	init(anchor: ASPresentationAnchor) {
-		self.anchor = anchor
-	}
-	
-	func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-		anchor
 	}
 }
