@@ -28,7 +28,7 @@ You can find the full documentation [here](https://pcloud.github.io/pcloud-sdk-s
 
 - iOS 9.0+
 - macOS 10.11+
-- Xcode 10.0+
+- Xcode 10.2+
 
 ---
 
@@ -40,7 +40,7 @@ In order to use this SDK, you have to register your application in the [pCloud A
 
 ### Set up your application
 
-The SDK uses an OAuth 2.0 access token to authorize requests to the pCloud API. You can obtain a token using the SDK's authorization flow. To allow the SDK to do that, find the 'Redirect URIs' section in your application configuration page and add a URI with the following format: `pclsdk-w-YOUR_APP_KEY://oauth2redirect`.
+The SDK uses an OAuth 2.0 access token to authorize requests to the pCloud API. You can obtain a token using the SDK's authorization flow. To allow the SDK to do that, find the 'Redirect URIs' section in your application configuration page and add a URI with the following format: `pclsdk-w-YOUR_APP_KEY://oauth2redirect` where `YOUR_APP_KEY` is the app key from your app console.
 
 ---
 
@@ -58,7 +58,7 @@ First you should install CocoaPods:
 $ gem install cocoapods
 ```
 
-Then navigate to your project root and run `pod init`. This will create a file called `Podfile`. Open it and add `pod 'PCloudSDKSwift'` to your target. Make sure it also contains `use_frameworks!`. Your Podfile should look something like this.
+Then navigate to your project root and run `pod init`. This will create a file called `Podfile`. Open it and add `pod 'PCloudSDKSwift'` to your target. Your Podfile should look something like this.
 
 ```ruby
 use_frameworks!
@@ -129,11 +129,11 @@ Then, on your application target’s **Build Phases** settings tab, click the **
 
 ## Initializing the SDK
 
-Once integrated into your project, the SDK needs an access token in order to make API calls.
+Once integrated into your project, the SDK needs to authenticate a user in order to make API calls.
 
 ### Using the authorization flow
 
-The SDK has a pre-defined flow for obtaining an access token. It opens a web view inside your app and loads the pCloud authorization page where the user can login and authorize your app. To use the authorization flow:
+The SDK has a pre-defined flow for obtaining a user. It attempts to authenticate the user via a `ASWebAuthenticationSession` if the current OS version allows it. Otherwise it opens a web view inside your app and loads the pCloud authorization page where the user can log in and authorize your app. To use the authorization flow:
 
 #### Initialize the `PCloud` instance
 
@@ -145,7 +145,7 @@ In the app delegate:
 import PCloudSDKSwift
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    PCloud.setup(appKey: "YOUR_APP_KEY")
+    PCloud.setUp(withAppKey: "YOUR_APP_KEY")
 }
 ```
 
@@ -155,7 +155,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 import PCloudSDKSwift
 
 func applicationDidFinishLaunching(_ notification: Notification) {
-    PCloud.setup(appKey: "YOUR_APP_KEY")
+    PCloud.setUp(withAppKey: "YOUR_APP_KEY")
 }
 ```
 
@@ -163,7 +163,7 @@ func applicationDidFinishLaunching(_ notification: Notification) {
 
 #### Perform the authorization flow
 
-To start the authorization flow, call `PCloud.authorize(controller:_:)` and provide a view controller and a block to be invoked once authorization completes or is cancelled by the user. The view controller is automatically dismissed before the completion block is called.
+To start the authorization flow, call `PCloud.authorize(with:_:)` and provide a view controller and a block to be invoked once authorization completes or is cancelled by the user. The view controller is automatically dismissed before the completion block is called.
 
 From your view controller:
 
@@ -174,8 +174,8 @@ import PCloudSDKSwift
 
 // Inside a UIViewController subclass.
 
-func loginButtonTapped(sender: UIButton) {
-    PCloud.authorize(controller: self) { result in
+func logInButtonTapped(_ sender: UIButton) {
+    PCloud.authorize(with: self) { result in
         if case .success(_) = result {
             // You can make calls via the SDK.   
         }
@@ -183,7 +183,7 @@ func loginButtonTapped(sender: UIButton) {
 }
 ```
 
-This will present a view controller with a web view from `self`.
+This will either attempt to authenticate using `ASWebAuthenticationSession` or will present a view controller with a web view from the view controller passed to the method.
 
 ##### macOS
 
@@ -192,8 +192,8 @@ import PCloudSDKSwift
 
 // Inside an NSViewController subclass.
 
-func loginButtonTapped(sender: NSButton) {
-    PCloud.authorize(controller: self) { result in
+func logInButtonTapped(_ sender: NSButton) {
+    PCloud.authorize(with: self) { result in
         if case .success(_) = result {
             // You can make calls via the SDK.   
         }
@@ -201,11 +201,11 @@ func loginButtonTapped(sender: NSButton) {
 }
 ```
 
-This will present a view controller with a web view from `self` as a sheet.
+This will either attempt to authenticate using `ASWebAuthenticationSession` or will present a view controller with a web view as a sheet from the view controller passed to the method.
 
 ---
 
-Once `PCloud.authorize(controller:_:)` finishes successfully, you can start making API calls via a global `PCloudClient` instance accessible via `PCloud.sharedClient`. Furthermore, your access token is stored in the device's keychain, so the next time your app is launched, the shared client instance will be initialized inside the `PCloud.setup(appKey:)` call.
+Once `PCloud.authorize(with:_:)` finishes successfully, you can start making API calls via a global `PCloudClient` instance accessible via `PCloud.sharedClient`. Furthermore, your access token is stored in the device's keychain, so the next time your app is launched, the shared client instance will be initialized inside the `PCloud.setUp(withAppKey:)` call.
 
 ### Manually creating a client
 
@@ -213,17 +213,23 @@ This is a more flexible approach to using the SDK. However, it requires you to d
 You can manually create a `PCloudClient` instance with an access token. Manually managing the lifetime of this instance might be a lot more convenient for you in certain cases. To request an access token without automatically initializing the shared client instance:
 
 ```swift
-OAuth.performAuthorizationFlow(view: view,
-                               appKey: "YOUR_APP_KEY",
-                               storeToken: { accessToken, userId in 
-                                   // Store the token in a persistent storage. Or not.
-                               },
-                               completionBlock: { result in
-                                   if case .success(let token, _) = result {
-                                       let client = PCloud.createClient(accessToken: token)
-                                       // Use the client.
-                                   }
-                               })
+OAuth.performAuthorizationFlow(with: anchor, appKey: "YOUR_APP_KEY") { result in
+    if case .success(let user) = result {
+        let client = PCloud.createClient(with: user)
+        // Use the client.
+    }
+}
+```
+
+where `anchor` would be an instance of `UIWindow` on iOS or `NSWindow` on macOS. This method will attempt to authenticate via a `ASWebAuthenticationSession`, which is the recommended way of authenticating. It requires, however, iOS 13 / macOS 10.15. Another option is to use:
+
+```swift
+OAuth.performAuthorizationFlow(with: view, appKey: "YOUR_APP_KEY") { result in
+    if case .success(let user) = result {
+        let client = PCloud.createClient(with: user)
+        // Use the client.
+    }
+}
 ```
 
 where `view` would be an instance of `WebViewControllerPresenterMobile` on iOS or `WebViewControllerPresenterDesktop` on macOS. 
@@ -240,14 +246,7 @@ let client = PCloud.sharedClient // When using the authorization flow
 
 ### Working with the network tasks
 
-The SDK comes with the most common API requests predefined and has exposed them through the `PCloudClient` instance as methods. Each method returns a non-running task object representing the API request. Once you have obtained a task, you can assign callback blocks to it and start it. Once a task completes it produces a result object defined like this:
-
-```swift
-enum Result<T, E> {
-  case success(T)
-  case failure(E)
-}
-```
+The SDK comes with the most common API requests predefined and has exposed them through the `PCloudClient` instance as methods. Each method returns a non-running task object representing the API request. Once you have obtained a task, you can assign callback blocks to it and start it. Once a task completes it produces a `Result` value.
 
 There are three types of tasks:
 
@@ -313,7 +312,7 @@ Upload and RPC call tasks fail with a `CallError`. This enum combines the possib
 
 ## Examples
 
-An example app can be found in the [Example_iOS](https://github.com/pcloud/pcloud-sdk-swift/tree/master/Example_iOS) folder. The example app demonstrates how to authenticate a user and how to list a user`s files and folders.
+An example app can be found in the [Example_iOS](https://github.com/pcloud/pcloud-sdk-swift/tree/master/Example_iOS) folder. The example app demonstrates how to authenticate a user and how to list a user's files and folders.
 
 ---
 
