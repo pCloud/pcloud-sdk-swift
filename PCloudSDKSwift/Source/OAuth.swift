@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AuthenticationServices
 
 /// Executes UI-specific actions related to the OAuth authorization flow.
 public protocol OAuthAuthorizationFlowView {
@@ -78,6 +79,34 @@ public struct OAuth {
 		
 		/// Unexpected error.
 		case unknown = "unknown"
+	}
+	
+	@available(iOS 13, OSX 10.15, *)
+	public static func performAuthorizationFlow(with anchor: ASPresentationAnchor, appKey: String, completionBlock: @escaping (Result) -> Void) {
+		let redirectURL = createRedirectURL(withAppKey: appKey)
+		let authURL = createAuthorizationURL(withAppKey: appKey, redirectURL: redirectURL)
+		
+		let session = ASWebAuthenticationSession(url: authURL, callbackURLScheme: redirectURL.scheme!, completionHandler: { url, error in
+			// Couldn't find any information as to on which thread this block is called. So, Justin Case.
+			Thread.onMainThread {
+				guard let url = url else {
+					// Ignore errors. One is about the user cancelling authentication, the others are about invalid session setup.
+					completionBlock(.cancel)
+					return
+				}
+				
+				completionBlock(handleRedirectURL(url, appKey: appKey)!)
+			}
+		})
+		
+		let context = WebAuthenticationPresentationContextProvider(anchor: anchor)
+		session.presentationContextProvider = context
+		
+		// Bind the lifetime of the context provider to the lifetime of the session.
+		var key: UInt8 = 0
+		objc_setAssociatedObject(session, &key, context, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+		
+		session.start()
 	}
 	
 	/// Attempts to authorize via OAuth.
@@ -274,5 +303,28 @@ private extension OAuth.User {
 		} catch {
 			return nil
 		}
+	}
+}
+
+private extension Thread {
+	static func onMainThread(_ block: @escaping () -> Void) {
+		if Thread.isMainThread {
+			block()
+		} else {
+			DispatchQueue.main.async(execute: block)
+		}
+	}
+}
+
+@available(iOS 13, OSX 10.15, *)
+private final class WebAuthenticationPresentationContextProvider: NSObject, ASWebAuthenticationPresentationContextProviding {
+	private let anchor: ASPresentationAnchor
+	
+	init(anchor: ASPresentationAnchor) {
+		self.anchor = anchor
+	}
+	
+	func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+		anchor
 	}
 }
