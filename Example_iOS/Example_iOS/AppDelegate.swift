@@ -18,8 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Override point for customization after application launch.
 		window = UIWindow(frame: UIScreen.main.bounds)
 		
+		// Enter your app key here.
 		let appKey = "wU1vJ4PFk0J"
-		PCloud.setup(appKey: appKey)
+		PCloud.setUp(withAppKey: appKey)
 		
 		if let _ = PCloud.sharedClient {
 			let folderViewController = FolderTableViewController()

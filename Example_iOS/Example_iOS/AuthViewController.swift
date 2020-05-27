@@ -28,7 +28,7 @@ class AuthViewController: UIViewController {
 		authButton = UIButton(type: .system)
 		authButton.setTitle("Authorize", for: .normal)
 		authButton.titleLabel!.font = UIFont.systemFont(ofSize: 24)
-		authButton.addTarget(self, action: #selector(AuthViewController.didTapAuthorizeButton(_:)), for: .touchUpInside)
+		authButton.addTarget(self, action: #selector(didTapAuthorizeButton), for: .touchUpInside)
 		view.addSubview(authButton)
 
         view.backgroundColor = .white
@@ -42,8 +42,8 @@ class AuthViewController: UIViewController {
 	}
 	
 	@objc func didTapAuthorizeButton(_: UIButton) {
-		PCloud.authorize(controller: self) { result in
-			if case .success(_, _) = result {
+		PCloud.authorize(with: self) { result in
+			if case .success(_) = result {
 				self.switchToAccountContentInterface()
 			}
 		}
