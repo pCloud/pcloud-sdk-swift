@@ -2,51 +2,72 @@
   "warnings": [
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/SDK iOS/OAuthWebViewMobile.swift",
-      "line": 71,
+      "line": 62,
       "symbol": "WebViewControllerMobile.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/SDK iOS/OAuthWebViewMobile.swift",
-      "line": 95,
+      "line": 87,
       "symbol": "WebViewControllerMobile.viewDidLayoutSubviews()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/SDK iOS/OAuthWebViewMobile.swift",
-      "line": 103,
+      "line": 95,
       "symbol": "WebViewControllerMobile.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/SDK iOS/OAuthWebViewMobile.swift",
-      "line": 107,
+      "line": 99,
       "symbol": "WebViewControllerMobile.viewWillAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/SDK iOS/OAuthWebViewMobile.swift",
-      "line": 137,
+      "line": 132,
       "symbol": "WebViewControllerMobile.webView(_:decidePolicyFor:decisionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/SDK iOS/OAuthWebViewMobile.swift",
-      "line": 145,
+      "line": 140,
       "symbol": "WebViewControllerMobile.webView(_:didFinish:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/SDK iOS/OAuthWebViewMobile.swift",
-      "line": 149,
+      "line": 144,
       "symbol": "WebViewControllerMobile.webView(_:didFailProvisionalNavigation:withError:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/APIServerRegion.swift",
+      "line": 11,
+      "symbol": "APIServerRegion",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/APIServerRegion.swift",
+      "line": 12,
+      "symbol": "APIServerRegion.unitedStates",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/APIServerRegion.swift",
+      "line": 13,
+      "symbol": "APIServerRegion.europe",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
@@ -254,133 +275,112 @@
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 402,
-      "symbol": "==(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 420,
-      "symbol": "==(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 453,
+      "line": 428,
       "symbol": "Folder.Permissions.init(canRead:canCreate:canModify:canDelete:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 476,
+      "line": 451,
       "symbol": "Folder.Ownership",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 533,
+      "line": 508,
       "symbol": "Folder.Permissions.canRead",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 537,
+      "line": 512,
       "symbol": "Folder.Permissions.canCreate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 541,
+      "line": 516,
       "symbol": "Folder.Permissions.canModify",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 545,
+      "line": 520,
       "symbol": "Folder.Permissions.canDelete",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 550,
+      "line": 525,
       "symbol": "Folder.Permissions.canEdit",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 568,
+      "line": 543,
       "symbol": "Folder.Ownership",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 585,
+      "line": 560,
       "symbol": "FileIconParser.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 617,
+      "line": 592,
       "symbol": "ImageMetadataParser.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 634,
+      "line": 609,
       "symbol": "VideoMetadataParser.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 659,
+      "line": 634,
       "symbol": "AudioMetadataParser.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 672,
+      "line": 647,
       "symbol": "FileMetadataParser.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 705,
+      "line": 680,
       "symbol": "ContentListParser.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/Content.swift",
-      "line": 723,
+      "line": 698,
       "symbol": "FolderMetadataParser.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/FileLink.swift",
-      "line": 43,
-      "symbol": "==(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/FileLink.swift",
-      "line": 50,
+      "line": 40,
       "symbol": "FileLinkMetadataParser.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -443,93 +443,65 @@
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
-      "line": 138,
+      "line": 137,
       "symbol": "Upload.Request.init(command:body:hostName:timeoutInterval:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
-      "line": 198,
+      "line": 195,
       "symbol": "Download.Request.init(resourceAddress:cookies:timeoutInterval:destination:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
-      "line": 248,
+      "line": 236,
       "symbol": "Call.Command.Parameter",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
-      "line": 254,
+      "line": 246,
       "symbol": "Call.Command.Parameter",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
-      "line": 257,
+      "line": 259,
       "symbol": "==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
-      "line": 266,
-      "symbol": "Call.Command.Parameter",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
-      "line": 282,
-      "symbol": "==(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
-      "line": 300,
-      "symbol": "==(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
-      "line": 308,
-      "symbol": "==(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/NetworkAPI.swift",
-      "line": 332,
-      "symbol": "==(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/OAuth.swift",
-      "line": 34,
-      "symbol": "OAuth.Result.success(token:userId:)",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/OAuth.swift",
       "line": 35,
-      "symbol": "OAuth.Result.failure(_:)",
+      "symbol": "OAuth.Result.success(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/OAuth.swift",
       "line": 36,
+      "symbol": "OAuth.Result.failure(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/OAuth.swift",
+      "line": 37,
       "symbol": "OAuth.Result.cancel",
       "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/OAuth.swift",
+      "line": 85,
+      "symbol": "OAuth.performAuthorizationFlow(with:appKey:completionBlock:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
@@ -709,175 +681,42 @@
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 13,
-      "symbol": "URLSessionBasedNetworkOperation.CompletionHandler",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 14,
-      "symbol": "URLSessionBasedNetworkOperation.ProgressHandler",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 16,
-      "symbol": "URLSessionBasedNetworkOperation.task",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 19,
-      "symbol": "URLSessionBasedNetworkOperation.taskResponse",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 23,
-      "symbol": "URLSessionBasedNetworkOperation._taskResponse",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 27,
-      "symbol": "URLSessionBasedNetworkOperation.completionHandlers",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 30,
-      "symbol": "URLSessionBasedNetworkOperation.progressHandlers",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 31,
-      "symbol": "URLSessionBasedNetworkOperation.lock",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 34,
-      "symbol": "URLSessionBasedNetworkOperation.didSendBodyData",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 35,
-      "symbol": "URLSessionBasedNetworkOperation.didComplete",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 36,
-      "symbol": "URLSessionBasedNetworkOperation.didReceiveData",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 37,
-      "symbol": "URLSessionBasedNetworkOperation.didFinishDownloading",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 38,
-      "symbol": "URLSessionBasedNetworkOperation.didWriteData",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 40,
-      "symbol": "URLSessionBasedNetworkOperation.init(task:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 46,
-      "symbol": "URLSessionBasedNetworkOperation.complete(response:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 66,
-      "symbol": "URLSessionBasedNetworkOperation.notifyProgress(units:outOf:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 78,
-      "symbol": "URLSessionBasedNetworkOperation.addCompletionHandler(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 84,
-      "symbol": "URLSessionBasedNetworkOperation.addProgressHandler(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 90,
-      "symbol": "URLSessionBasedNetworkOperation.errorIsCancellation(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 125,
+      "line": 128,
       "symbol": "URLSessionBasedNetworkOperation.urlSession(_:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 129,
+      "line": 132,
       "symbol": "URLSessionBasedNetworkOperation.urlSession(_:task:didCompleteWithError:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 133,
+      "line": 136,
       "symbol": "URLSessionBasedNetworkOperation.urlSession(_:dataTask:didReceive:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 137,
+      "line": 140,
       "symbol": "URLSessionBasedNetworkOperation.urlSession(_:downloadTask:didFinishDownloadingTo:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 141,
+      "line": 144,
       "symbol": "URLSessionBasedNetworkOperation.urlSession(_:downloadTask:didWriteData:totalBytesWritten:totalBytesExpectedToWrite:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionBasedNetworkOperation.swift",
-      "line": 151,
+      "line": 154,
       "symbol": "NetworkOperationState.init(state:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -933,128 +772,65 @@
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionEventHub.swift",
-      "line": 76,
+      "line": 75,
       "symbol": "URLSessionEventHub.urlSession(_:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionEventHub.swift",
-      "line": 80,
+      "line": 79,
       "symbol": "URLSessionEventHub.urlSession(_:task:didCompleteWithError:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionEventHub.swift",
-      "line": 87,
+      "line": 86,
       "symbol": "URLSessionEventHub.urlSession(_:dataTask:didReceive:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionEventHub.swift",
-      "line": 93,
+      "line": 92,
       "symbol": "URLSessionEventHub.urlSession(_:downloadTask:didFinishDownloadingTo:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionEventHub.swift",
-      "line": 97,
+      "line": 96,
       "symbol": "URLSessionEventHub.urlSession(_:downloadTask:didWriteData:totalBytesWritten:totalBytesExpectedToWrite:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionTaskBuilder.swift",
+      "line": 11,
+      "symbol": "URLScheme",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionTaskBuilder.swift",
+      "line": 12,
+      "symbol": "URLScheme.http",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionTaskBuilder.swift",
       "line": 13,
-      "symbol": "Scheme.http",
+      "symbol": "URLScheme.https",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionTaskBuilder.swift",
-      "line": 14,
-      "symbol": "Scheme.https",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionTaskBuilder.swift",
-      "line": 17,
+      "line": 16,
       "symbol": "URLSessionTaskBuilder",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionTaskBuilder.swift",
-      "line": 75,
-      "symbol": "URLSessionTaskBuilder.buildHTTPHeaderFields(cookiesDictionary:resourceAddress:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionTaskBuilder.swift",
-      "line": 91,
-      "symbol": "URLSessionTaskBuilder.encode(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionTaskBuilder.swift",
-      "line": 95,
-      "symbol": "URLSessionTaskBuilder.encode(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionTaskBuilder.swift",
-      "line": 99,
-      "symbol": "URLSessionTaskBuilder.encode(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionTaskBuilder.swift",
-      "line": 106,
-      "symbol": "URLSessionTaskBuilder.rawQueryComponent(from:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionTaskBuilder.swift",
-      "line": 114,
-      "symbol": "URLSessionTaskBuilder.percentEncodedQueryComponent(from:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionTaskBuilder.swift",
-      "line": 122,
-      "symbol": "URLSessionTaskBuilder.query(from:addingPercentEncoding:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionTaskBuilder.swift",
-      "line": 134,
-      "symbol": "URLSessionTaskBuilder.url(scheme:host:commandName:query:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionTaskBuilder.swift",
-      "line": 144,
-      "symbol": "URLSessionTaskBuilder.buildURL(withScheme:host:commandName:percentEncodedQuery:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/URLSessionTaskBuilder.swift",
-      "line": 163,
-      "symbol": "CharacterSet.urlQueryParameterAllowedCharacterSetRFC3986()",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
@@ -1087,14 +863,7 @@
     },
     {
       "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/User.swift",
-      "line": 50,
-      "symbol": "==(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/todor.pitekov/Documents/Projects/pcloud-sdk-swift/PCloudSDKSwift/Source/User.swift",
-      "line": 57,
+      "line": 47,
       "symbol": "UserMetadataParser.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

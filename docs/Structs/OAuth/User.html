@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Metadata Class Reference</title>
+    <title>User Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/Metadata" class="dashAnchor"></a>
-    <a title="Metadata Class Reference"></a>
+    <a name="//apple_ref/swift/Struct/User" class="dashAnchor"></a>
+    <a title="User Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../../index.html">PCloudSDKSwift 3.0.0 Docs</a> (83% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../../index.html">PCloudSDKSwift Reference</a>
         <img id="carat" src="../../img/carat.png" />
-        Metadata Class Reference
+        User Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -357,14 +357,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Metadata</h1>
+            <h1>User</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Metadata</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">User</span> <span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
 
                 </div>
               </div>
-            <p>Base class for a folder content item in pCloud with common fields for files and folders.</p>
+            <p>An authenticated user.</p>
 
           </section>
           <section class="section task-group-section">
@@ -373,9 +373,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift7ContentO8MetadataC2ids6UInt64Vvp"></a>
+                    <a name="/s:14PCloudSDKSwift5OAuthV4UserV2ids6UInt64Vvp"></a>
                     <a name="//apple_ref/swift/Property/id" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift7ContentO8MetadataC2ids6UInt64Vvp">id</a>
+                    <a class="token" href="#/s:14PCloudSDKSwift5OAuthV4UserV2ids6UInt64Vvp">id</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -383,7 +383,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The unique identifier of this content item.</p>
+                        <p>A unique user identifier.</p>
 
                       </div>
                       <div class="declaration">
@@ -400,9 +400,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift7ContentO8MetadataC4nameSSvp"></a>
-                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift7ContentO8MetadataC4nameSSvp">name</a>
+                    <a name="/s:14PCloudSDKSwift5OAuthV4UserV5tokenSSvp"></a>
+                    <a name="//apple_ref/swift/Property/token" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift5OAuthV4UserV5tokenSSvp">token</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -410,14 +410,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The name of this content item as it appears in the file system.</p>
+                        <p>An OAuth access token.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">token</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -427,9 +427,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift7ContentO8MetadataC14parentFolderIds6UInt64Vvp"></a>
-                    <a name="//apple_ref/swift/Property/parentFolderId" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift7ContentO8MetadataC14parentFolderIds6UInt64Vvp">parentFolderId</a>
+                    <a name="/s:14PCloudSDKSwift5OAuthV4UserV14serverRegionIdSuvp"></a>
+                    <a name="//apple_ref/swift/Property/serverRegionId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift5OAuthV4UserV14serverRegionIdSuvp">serverRegionId</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -437,14 +437,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The unique identifier of the parent folder of this item.</p>
+                        <p>Uniquely identifies the server region hosting the user&rsquo;s account. You can use the <code><a href="../../Enums/APIServerRegion.html">APIServerRegion</a></code> enum to make sense of these.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">parentFolderId</span><span class="p">:</span> <span class="kt">UInt64</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">serverRegionId</span><span class="p">:</span> <span class="kt">UInt</span></code></pre>
 
                         </div>
                       </div>
@@ -454,9 +454,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14PCloudSDKSwift7ContentO8MetadataC11createdTimes6UInt32Vvp"></a>
-                    <a name="//apple_ref/swift/Property/createdTime" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift7ContentO8MetadataC11createdTimes6UInt32Vvp">createdTime</a>
+                    <a name="/s:14PCloudSDKSwift5OAuthV4UserV15httpAPIHostNameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/httpAPIHostName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14PCloudSDKSwift5OAuthV4UserV15httpAPIHostNameSSvp">httpAPIHostName</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -464,100 +464,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The unix timestamp of the creation time of this content item. This is the time the file was created in the pCloud file system.</p>
+                        <p>The host name of the primary HTTP API at the user&rsquo;s server region.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">createdTime</span><span class="p">:</span> <span class="kt">UInt32</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift7ContentO8MetadataC12modifiedTimes6UInt32Vvp"></a>
-                    <a name="//apple_ref/swift/Property/modifiedTime" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift7ContentO8MetadataC12modifiedTimes6UInt32Vvp">modifiedTime</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The unix timestamp of the last modification time of this content item&rsquo;s metadata or content (for files).</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">modifiedTime</span><span class="p">:</span> <span class="kt">UInt32</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift7ContentO8MetadataC8isSharedSbvp"></a>
-                    <a name="//apple_ref/swift/Property/isShared" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift7ContentO8MetadataC8isSharedSbvp">isShared</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><code>true</code> if this content item is accessible to other people through folder sharing, <code>false</code> otherwise.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">isShared</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14PCloudSDKSwift7ContentO8MetadataC2id4name14parentFolderId11createdTime08modifiedK08isSharedAEs6UInt64V_SSAMs6UInt32VAOSbtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(id:name:parentFolderId:createdTime:modifiedTime:isShared:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14PCloudSDKSwift7ContentO8MetadataC2id4name14parentFolderId11createdTime08modifiedK08isSharedAEs6UInt64V_SSAMs6UInt32VAOSbtcfc">init(id:name:parentFolderId:createdTime:modifiedTime:isShared:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Initializes a content item with all fields of this class.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="kt">UInt64</span><span class="p">,</span>
-            <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
-            <span class="nv">parentFolderId</span><span class="p">:</span> <span class="kt">UInt64</span><span class="p">,</span>
-            <span class="nv">createdTime</span><span class="p">:</span> <span class="kt">UInt32</span><span class="p">,</span>
-            <span class="nv">modifiedTime</span><span class="p">:</span> <span class="kt">UInt32</span><span class="p">,</span>
-            <span class="nv">isShared</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">httpAPIHostName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
