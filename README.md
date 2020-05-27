@@ -6,6 +6,7 @@ You can find the full documentation [here](https://pcloud.github.io/pcloud-sdk-s
 ---
 
 ## Table of Contents
+* [Migration to v3](#migration-to-v3)
 * [System requirements](#system-requirements)
 * [Get started](#get-started)
   * [Register your application](#register-your-application)
@@ -21,6 +22,12 @@ You can find the full documentation [here](https://pcloud.github.io/pcloud-sdk-s
   * [Handling API errors](#handling-api-errors)
 * [Examples](#examples)
 * [Documentation](#documentation)
+
+---
+
+## Migration to v3
+
+For instructions on how to migrate to v3 of the SDK, please refer to the release notes of v3.0.0 in the source repository.
 
 ---
 
