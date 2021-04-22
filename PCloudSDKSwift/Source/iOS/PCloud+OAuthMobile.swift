@@ -8,7 +8,7 @@
 
 #if canImport(UIKit)
 
-import Foundation
+import UIKit
 
 extension PCloud {
 	/// Starts the OAuth authorization flow. Expects `setUp()` to have been called. Call on the main thread.

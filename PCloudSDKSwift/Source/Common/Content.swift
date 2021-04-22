@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics.CGGeometry
 
 /// A folder content item.
 public enum Content {
