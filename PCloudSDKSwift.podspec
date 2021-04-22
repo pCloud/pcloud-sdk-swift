@@ -18,10 +18,10 @@ Pod::Spec.new do |s|
   s.ios.public_header_files = 'PCloudSDKSwift/Source/**/*.h'
   s.osx.public_header_files = 'PCloudSDKSwift/Source/**/*.h'
 
-  s.osx.source_files = "PCloudSDKSwift/Source/**/*.{swift,h}", "PCloudSDKSwift/SDK\ macOS/**/*.swift"
-  s.ios.source_files = "PCloudSDKSwift/Source/**/*.{swift,h}", "PCloudSDKSwift/SDK\ iOS/**/*.swift"
+  s.osx.source_files = "PCloudSDKSwift/Source/Common/**/*.{swift,h}", "PCloudSDKSwift/Source/macOS/**/*.swift"
+  s.ios.source_files = "PCloudSDKSwift/Source/Common/**/*.{swift,h}", "PCloudSDKSwift/Source/iOS/**/*.swift"
 
-  s.osx.resource_bundle = { 'PCloudSDKSwiftResources' => "PCloudSDKSwift/SDK\ macOS/*.xib" }
+  s.osx.resource_bundle = { 'PCloudSDKSwiftResources' => "PCloudSDKSwift/Source/macOS/*.xib" }
 
   s.requires_arc = true
 end
