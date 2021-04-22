@@ -6,6 +6,8 @@
 //  Copyright © 2020 pCloud LTD. All rights reserved.
 //
 
+#if canImport(AppKit)
+
 import AppKit
 
 extension PCloud {
@@ -27,3 +29,5 @@ extension PCloud {
 		}
 	}
 }
+
+#endif
