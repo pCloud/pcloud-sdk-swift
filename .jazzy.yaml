@@ -8,7 +8,7 @@ theme: 'apple'
 readme: 'README.md'
 github_url: 'https://github.com/pcloud/pcloud-sdk-swift'
 
-source_directory: 'PCloudSDKSwift'
+source_directory: 'PCloudSDKSwift/Source'
 exclude: '**/*.h'
 # swift_version: 3.0
 clean: true
