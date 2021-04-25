@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics.CGGeometry
 
 /// Utility class providing convenient interface to common API methods.
 public final class PCloudClient {

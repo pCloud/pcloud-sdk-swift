@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics.CGGeometry
 
 /// PCloudAPI namespace.
 public struct PCloudAPI {
