@@ -892,6 +892,46 @@ extension PCloudAPI {
 		}
 	}
 	
+	/// Returns metadata for a file.
+	public struct Stat: PCloudAPIMethod {
+		/// The unique identifier of the file to get the metadata.
+		public let fileId: UInt64
+		
+		public var requiresAuthentication: Bool {
+			return true
+		}
+		
+		/// - parameter fileId: The unique identifier of the file to get the metadata.
+		public init(fileId: UInt64) {
+			self.fileId = fileId
+		}
+		
+		public func createCommand() -> Call.Command {
+			return Call.Command(name: "stat", parameters: [
+				defaultIconFormatParameter,
+				defaultTimeFormatParameter,
+				.number(name: "fileid", value: fileId),
+			])
+		}
+		
+		public func createResponseParser() -> ([String : Any]) throws -> Result<File.Metadata, PCloudAPI.Error<Error>> {
+			return {
+				if let error = self.tryParseError(in: $0) {
+					return .failure(error)
+				}
+				
+				let meta = $0.dictionary("metadata")
+				return .success(try FileMetadataParser().parse(meta))
+			}
+		}
+		
+		/// Errors specific to getting the metadata of a file.
+		public enum Error: Int {
+			/// The requested name is invalid.
+			case invalidName = 2001
+		}
+	}
+	
 	/// Generates and returns links to a file. The first link in the return value is considered the best for this client.
 	public struct GetFileLink: PCloudAPIMethod {
 		/// The unique identifier of the file to get a link to.
