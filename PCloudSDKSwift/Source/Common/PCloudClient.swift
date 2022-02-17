@@ -232,6 +232,14 @@ extension PCloudClient {
 		return callTaskBuilder.createTask(for: PCloudAPI.DeleteFile(fileId: fileId))
 	}
 	
+	/// Creates and returns a task for getting the metadata of a file.
+	///
+	/// - parameter fileId: The unique identifier of the file to get the metadata.
+	/// - returns: A task producing a `File.Metadata` object on success.
+	public func stat(_ fileId: UInt64) -> CallTask<PCloudAPI.Stat> {
+		return callTaskBuilder.createTask(for: PCloudAPI.Stat(fileId: fileId))
+	}
+	
 	/// Creates and returns a task for generating a link from which a file can be downloaded.
 	///
 	/// - parameter fileId: The unique identifier of the file.
