@@ -14,6 +14,7 @@ You can find the full documentation [here](https://pcloud.github.io/pcloud-sdk-s
 * [Install the SDK](#install-the-sdk)
   * [CocoaPods](#cocoapods)
   * [Carthage](#carthage)
+  * [Swift Package Manager](#swift-package-manager)
 * [Initializing the SDK](#initializing-the-sdk) 
   * [Using the authorization flow](#using-the-authorization-flow) 
   * [Manually creating a client](#manually-creating-a-client)
@@ -131,6 +132,17 @@ In the Project Navigator in Xcode, select your project, and then navigate to **G
 
 Then, on your application target’s **Build Phases** settings tab, click the **+** icon and choose **New Copy Files Phase**. In the newly-created **Copy Files** section, click the **Destination** drop-down menu and select **Products Director**, then drag and drop `PCloudSDKSwift.framework.dSYM` from `Carthage/Build/Mac`.
 
+
+
+### Swift Package Manager
+
+The pCloud SDK can be integrated into your project using the [Swift Package Manager](https://swift.org/package-manager/). **Currently, SPM support has only been added for the iOS platform**. To integrate the SDK into your project, you need to specify the repository's URL:
+
+```bash
+https://github.com/pCloud/pcloud-sdk-swift
+```
+
+For more information, please refer to [the official documentation](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
 
 ---
 
@@ -311,7 +323,7 @@ Once started, a task can stop if it succeeds, fails or if it is cancelled. Since
 The completion block of a task will only be called if a task fails or succeeds, **not** when it is cancelled. Also, all of a task's callback blocks are called on the main queue.
 A task will be retained in memory **while it is running**, so there is no need to manually keep a reference to it, given that you start the task at the time of creation.
 
-### Handling errors
+### Handling API errors
 
 Upload and RPC call tasks fail with a `CallError`. This enum combines the possible errors from the networking layer and the PCloud API layer. One of the possible errors is `CallError<T>.methodError(T)` and the suberror there will depend on the API method being executed by the task. All API methods are defined in `PCloudAPI.swift` and each one has an `Error` enum defined in its namespace. So, for example, if you are executing a `ListFolder` API method, the task error would be defined as `CallError<ListFolder.Error>`. Some API methods (e.g. `UserInfo`) cannot fail with anything else than generic API errors so they will define their error as `NullError`. Such tasks can never fail with `CallError<T>.methodError(T)`.
 

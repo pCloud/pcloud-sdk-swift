@@ -6,6 +6,8 @@
 //  Copyright © 2017 pCloud LTD. All rights reserved.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 import WebKit
 
@@ -152,3 +154,5 @@ extension WebViewControllerMobile {
 		cancelHandler()
 	}
 }
+
+#endif

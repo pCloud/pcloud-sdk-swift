@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics.CGGeometry
 
 /// A folder content item.
 public enum Content {
@@ -413,7 +414,7 @@ public struct Folder {
 	public struct Permissions: OptionSet {
 		public let rawValue: Int
 		/// Users can access this folder's metadata and the metadata of its children recursively.
-		public static let read = Permissions(rawValue: 0)
+		public static let read: Permissions = []
 		/// Users can create folders, upload files and copy files and folders to this folder.
 		public static let create = Permissions(rawValue: 1 << 0)
 		/// Users can modify the content of files inside this folder. Files and folders can also be renamed.

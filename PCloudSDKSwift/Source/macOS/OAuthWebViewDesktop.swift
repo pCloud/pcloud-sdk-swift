@@ -6,6 +6,8 @@
 //  Copyright © 2017 pCloud LTD. All rights reserved.
 //
 
+#if canImport(AppKit)
+
 import Cocoa
 import WebKit
 
@@ -183,3 +185,5 @@ public final class BorderedView: NSView {
 		layer!.borderColor = borderColor?.cgColor
 	}
 }
+
+#endif
