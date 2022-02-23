@@ -59,6 +59,13 @@ public struct PCloudAPI {
 		/// Unspecified API error.
 		case other(Int, String?)
 		
+		/*
+		 This was added due to a change to the .rateLimitError case. Up to version 3.0.1 it had no associated value.
+		 Adding an associated value is not a breaking change as long as clients only use switch or if/guard-case statements
+		 to compare values. In those cases, the compiler will interpret `.rateLimitError` as `.rateLimitError(_)` which is great.
+		 However, clients may also be doing `if error == .rateLimitError` which will raise a compiler error. The following
+		 definition allows those equality checks to go through. Sprinkle a nice warning for good measure.
+		 */
 		@available(*, deprecated, message: "Use the new .rateLimitError(RateLimitError) instead")
 		public static var rateLimitError: Error { .rateLimitError(.tooManyLoginAttempts) }
 		
