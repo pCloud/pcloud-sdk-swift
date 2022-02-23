@@ -222,6 +222,54 @@ extension PCloudAPI {
 		}
 	}
 	
+	/// Attempts to create a folder if it doesn't already exist at the destination. It returns either the metadata of the new folder,
+	/// or the metadata of the existing one.
+	public struct CreateFolderIfNotExists: PCloudAPIMethod {
+		/// The name of the new folder.
+		public let name: String
+		/// The unique identifier of the parent folder.
+		public let parentFolderId: UInt64
+		
+		public var requiresAuthentication: Bool {
+			true
+		}
+		
+		/// - parameter name: The name for the new folder.
+		/// - parameter parentFolderId: The unique identifier of the parent folder.
+		public init(name: String, parentFolderId: UInt64) {
+			self.name = name
+			self.parentFolderId = parentFolderId
+		}
+		
+		public func createResponseParser() -> ([String : Any]) throws -> Result<Folder.Metadata, PCloudAPI.Error<Error>> {
+			return {
+				if let error = self.tryParseError(in: $0) {
+					return .failure(error)
+				}
+				
+				let meta = $0.dictionary("metadata")
+				return .success(try FolderMetadataParser().parse(meta))
+			}
+		}
+		
+		public func createCommand() -> Call.Command {
+			return Call.Command(name: "createfolderifnotexists", parameters: [
+				defaultIconFormatParameter,
+				defaultTimeFormatParameter,
+				.string(name: "name", value: name),
+				.number(name: "folderid", value: parentFolderId)
+			])
+		}
+		
+		/// Errors specific to the `CreateFolderIfNotExists` method.
+		public enum Error: Int {
+			/// The requested name is invalid.
+			case invalidName = 2001
+			/// The parent folder does not exist.
+			case componentOfParentDirectoryDoesNotExist = 2002
+		}
+	}
+	
 	
 	/// Renames a folder and returns its updated metadata.
 	public struct RenameFolder: PCloudAPIMethod {

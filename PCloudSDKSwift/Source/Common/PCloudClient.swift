@@ -68,6 +68,14 @@ extension PCloudClient {
 		return callTaskBuilder.createTask(for: PCloudAPI.CreateFolder(name: name, parentFolderId: folderId))
 	}
 	
+	/// Creates and returns a task for creating a folder if one with the same name doesn't already exist at the destination folder.
+	/// - parameter name: A name for the new folder.
+	/// - parameter folderId: The unique identifier of the parent folder.
+	/// - returns: A task producing a `Folder.Metadata` object on success.
+	public func createFolderIfNotExists(named name: String, inFolder folderId: UInt64) -> CallTask<PCloudAPI.CreateFolderIfNotExists> {
+		return callTaskBuilder.createTask(for: PCloudAPI.CreateFolderIfNotExists(name: name, parentFolderId: folderId))
+	}
+	
 	/// Creates and returns a task for renaming a folder.
 	///
 	/// - parameter folderId: The unique identifier of the folder to rename.
