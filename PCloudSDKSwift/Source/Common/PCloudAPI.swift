@@ -59,6 +59,9 @@ public struct PCloudAPI {
 		/// Unspecified API error.
 		case other(Int, String?)
 		
+		@available(*, deprecated, message: "Use the new .rateLimitError(RateLimitError) instead")
+		public static var rateLimitError: Error { .rateLimitError(.tooManyLoginAttempts) }
+		
 		public var rawValue: Int {
 			switch self {
 			case .authError(let error): return error.rawValue
