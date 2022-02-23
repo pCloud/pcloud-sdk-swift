@@ -667,7 +667,7 @@ extension PCloudAPI {
 			/// Overwrite the existing file only if its hash matches the one provided. If the hashes don't match, then
 			/// save the file by appending "{CONFLICTED}" to the file name stem. If the resulting name produces
 			/// a conflict, begin appending the conflict number to the file name stem until an available name is found.
-			/// This can be usefil in cases where you want to avoid race conditions in which more than one client tries to
+			/// This can be useful in cases where you want to avoid race conditions in which more than one client tries to
 			/// modify the content of one file at the same time.
 			case overwriteFileHashOrRename(UInt64)
 		}
