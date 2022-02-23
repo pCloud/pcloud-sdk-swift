@@ -44,7 +44,7 @@ public enum URLSessionTaskBuilder {
 		// Build a POST request.
 		var urlRequest = URLRequest(url: url)
 		urlRequest.httpMethod = HTTPMethod.post
-		urlRequest.setValue("applicaton/octet-stream", forHTTPHeaderField: "Content-Type")
+		urlRequest.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
 		
 		if let timeoutInterval = request.timeoutInterval {
 			urlRequest.timeoutInterval = timeoutInterval
