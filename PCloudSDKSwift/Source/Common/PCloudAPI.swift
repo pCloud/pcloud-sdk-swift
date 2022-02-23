@@ -34,6 +34,14 @@ public struct PCloudAPI {
 		case userIsOverQuota = 2008
 	}
 	
+	/// Rate limiting-related API errors.
+	public enum RateLimitError: Int {
+		/// The API has received too many login attempts from your IP address in quick succession.
+		case tooManyLoginAttempts = 4000
+		/// The API has received too many requests from your IP address in quick succession.
+		case tooManyActions = 4010
+	}
+	
 	/// An API error.
 	public enum Error<MethodError: RawRepresentable>: RawRepresentable, Swift.Error where MethodError.RawValue == Int {
 		/// Authentication-related error.
@@ -45,7 +53,7 @@ public struct PCloudAPI {
 		/// Error related to the method.
 		case methodError(MethodError)
 		/// The API is rate limiting this client.
-		case rateLimitError
+		case rateLimitError(RateLimitError)
 		/// The API cannot currently handle the request. Try again later.
 		case serverInternalError(Int, String?)
 		/// Unspecified API error.
@@ -57,7 +65,7 @@ public struct PCloudAPI {
 			case .permissionError(let error): return error.rawValue
 			case .badInputError(let code, _): return code
 			case .methodError(let error): return error.rawValue
-			case .rateLimitError: return 4000
+			case .rateLimitError(let error): return error.rawValue
 			case .serverInternalError(let code, _): return code
 			case .other(let code, _): return code
 			}
@@ -78,8 +86,8 @@ public struct PCloudAPI {
 				self = .methodError(methodError)
 			} else if 1000...1999 ~= code {
 				self = .badInputError(code, message)
-			} else if code == 4000 {
-				self = .rateLimitError
+			} else if let rateLimitError = RateLimitError(rawValue: code) {
+				self = .rateLimitError(rateLimitError)
 			} else if 5000...5999 ~= code {
 				self = .serverInternalError(code, message)
 			} else {
