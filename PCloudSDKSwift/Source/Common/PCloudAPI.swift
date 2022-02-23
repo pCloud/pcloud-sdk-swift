@@ -94,7 +94,7 @@ public struct PCloudAPI {
 }
 
 
-// MARK:- User/account-related methods.
+// MARK: - User/account-related methods.
 
 extension PCloudAPI {
 	/// Returns metadata about the user.
@@ -122,7 +122,7 @@ extension PCloudAPI {
 }
 
 
-// MARK:- Methods related to folder operations.
+// MARK: - Methods related to folder operations.
 
 extension PCloudAPI {
 	/// Returns metadata for a folder and its contents.
@@ -437,7 +437,7 @@ extension PCloudAPI {
 }
 
 
-// MARK:- Methods related to file operations.
+// MARK: - Methods related to file operations.
 
 extension PCloudAPI {
 	/// Creates a file from the body of this method and returns its metadata.

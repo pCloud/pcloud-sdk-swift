@@ -35,7 +35,7 @@ public final class PCloudClient {
 }
 
 
-// MARK:- User/Account-related methods.
+// MARK: - User/Account-related methods.
 
 extension PCloudClient {
 	/// Creates and returns a task for fetching user metadata.
@@ -47,7 +47,7 @@ extension PCloudClient {
 }
 
 
-// MARK:- Folder operation methods.
+// MARK: - Folder operation methods.
 
 extension PCloudClient {
 	/// Creates and returns a task for fetching folder metadata along with metadata of its contents.
@@ -106,7 +106,7 @@ extension PCloudClient {
 }
 
 
-// MARK:- File operation methods.
+// MARK: - File operation methods.
 
 extension PCloudClient {
 	/// Creates and returns a task for uploading a file from a `Data` object.

@@ -18,7 +18,7 @@ final class PCloudAPITests: XCTestCase {
 	}
 }
 
-// MARK:- Command construction tests
+// MARK: - Command construction tests
 extension PCloudAPITests {
 	func testCreatesCorrectUserInfoCommand() {
 		// When
@@ -238,7 +238,7 @@ extension PCloudAPITests {
 }
 
 
-// MARK:- Commands
+// MARK: - Commands
 extension PCloudAPITests {
 	func userInfoCommand() -> Call.Command {
 		return Call.Command(name: "userinfo", parameters: [])

@@ -69,7 +69,7 @@ public final class URLSessionEventHub: NSObject {
 }
 
 
-// MARK:- Conforming to URLSession delegate protocols.
+// MARK: - Conforming to URLSession delegate protocols.
 
 extension URLSessionEventHub: URLSessionTaskDelegate {
 	@objc public func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
