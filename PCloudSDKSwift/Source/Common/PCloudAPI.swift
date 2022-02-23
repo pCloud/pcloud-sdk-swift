@@ -893,7 +893,7 @@ extension PCloudAPI {
 	}
 	
 	/// Returns metadata for a file.
-	public struct Stat: PCloudAPIMethod {
+	public struct GetFileMetadata: PCloudAPIMethod {
 		/// The unique identifier of the file to get the metadata.
 		public let fileId: UInt64
 		

@@ -236,8 +236,8 @@ extension PCloudClient {
 	///
 	/// - parameter fileId: The unique identifier of the file to get the metadata.
 	/// - returns: A task producing a `File.Metadata` object on success.
-	public func stat(_ fileId: UInt64) -> CallTask<PCloudAPI.Stat> {
-		return callTaskBuilder.createTask(for: PCloudAPI.Stat(fileId: fileId))
+	public func getFileMetadata(_ fileId: UInt64) -> CallTask<PCloudAPI.GetFileMetadata> {
+		return callTaskBuilder.createTask(for: PCloudAPI.GetFileMetadata(fileId: fileId))
 	}
 	
 	/// Creates and returns a task for generating a link from which a file can be downloaded.
