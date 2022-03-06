@@ -230,8 +230,9 @@ extension PCloudClient {
 	/// - parameter fileId: The unique identifier of the file to move.
 	/// - parameter destinationFolderId: The unique identifier of the destination folder.
 	/// - returns: A task producing a `File.Metadata` object on success.
-	public func moveFile(_ fileId: UInt64, toFolder destinationFolderId: UInt64) -> CallTask<PCloudAPI.MoveFile> {
-		return callTaskBuilder.createTask(for: PCloudAPI.MoveFile(fileId: fileId, destinationFolderId: destinationFolderId))
+	public func moveFile(_ fileId: UInt64, toFolder destinationFolderId: UInt64, newName: String? = nil) -> CallTask<PCloudAPI.MoveFile> {
+		let method = PCloudAPI.MoveFile(fileId: fileId, destinationFolderId: destinationFolderId, newName: newName)
+		return callTaskBuilder.createTask(for: method)
 	}
 	
 	/// Creates and returns a task for deleting a file.

@@ -889,6 +889,8 @@ extension PCloudAPI {
 		public let fileId: UInt64
 		/// The unique identifier of the destination folder.
 		public let destinationFolderId: UInt64
+		/// If non-nil, the file will also be renamed when moved to its new location.
+		public let newName: String?
 		
 		public var requiresAuthentication: Bool {
 			return true
@@ -896,18 +898,26 @@ extension PCloudAPI {
 		
 		/// - parameter fileId: The unique identifier of the file to move.
 		/// - parameter destinationFolderId: The unique identifier of the destination folder.
-		public init(fileId: UInt64, destinationFolderId: UInt64) {
+		/// - parameter newName: A new name for the file.
+		public init(fileId: UInt64, destinationFolderId: UInt64, newName: String? = nil) {
 			self.fileId = fileId
 			self.destinationFolderId = destinationFolderId
+			self.newName = newName
 		}
 		
 		public func createCommand() -> Call.Command {
-			return Call.Command(name: "renamefile", parameters: [
+			var parameters: [Call.Command.Parameter] = [
 				defaultIconFormatParameter,
 				defaultTimeFormatParameter,
 				.number(name: "fileid", value: fileId),
 				.number(name: "tofolderid", value: destinationFolderId)
-			])
+			]
+			
+			if let newName = newName {
+				parameters.append(.string(name: "toname", value: newName))
+			}
+			
+			return Call.Command(name: "renamefile", parameters: parameters)
 		}
 		
 		public func createResponseParser() -> ([String : Any]) throws -> Result<File.Metadata, PCloudAPI.Error<Error>> {
@@ -923,6 +933,8 @@ extension PCloudAPI {
 		
 		/// Errors specific to moving a file.
 		public enum Error: Int {
+			/// The requested name is invalid.
+			case invalidName = 2001
 			/// The parent folder does not exist.
 			case componentOfParentDirectoryDoesNotExist = 2002
 			/// The requested destination folder does not exist.
