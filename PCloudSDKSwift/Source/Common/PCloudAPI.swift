@@ -265,11 +265,10 @@ extension PCloudAPI {
 					return .failure(error)
 				}
 				
-				let meta = response.dictionary("metadata")
 				let created = response.bool("created")
-				let folder = try FolderMetadataParser().parse(meta)
+				let folder = try FolderMetadataParser().parse(response.dictionary("metadata"))
 				
-				return .success(Response(folder: folder, didCreateFolder: created))
+				return .success(Response(folder: folder, createdFolder: created))
 			}
 		}
 		
@@ -294,11 +293,11 @@ extension PCloudAPI {
 		public struct Response {
 			public let folder: Folder.Metadata
 			/// Whether `folder` was created (`true`) or it already existed at the destination (`false`).
-			public let didCreateFolder: Bool
+			public let createdFolder: Bool
 			
-			public init(folder: Folder.Metadata, didCreateFolder: Bool) {
+			public init(folder: Folder.Metadata, createdFolder: Bool) {
 				self.folder = folder
-				self.didCreateFolder = didCreateFolder
+				self.createdFolder = createdFolder
 			}
 		}
 	}
