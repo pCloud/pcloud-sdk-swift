@@ -14,7 +14,7 @@ let package = Package(
         .library(name: "PCloudSDKSwift", targets: ["PCloudSDKSwift"]),
     ],
     targets: [
-		.target(name: "PCloudSDKSwift", dependencies: [], path: "PCloudSDKSwift/Source", exclude: ["macOS"]),
-		.testTarget(name: "PCloudSDKSwiftTests", dependencies: ["PCloudSDKSwift"], path: "PCloudSDKSwift/Tests"),
+		.target(name: "PCloudSDKSwift", dependencies: [], path: "PCloudSDKSwift/Source", exclude: ["macOS", "iOS/Info.plist"]),
+		.testTarget(name: "PCloudSDKSwiftTests", dependencies: ["PCloudSDKSwift"], path: "PCloudSDKSwift/Tests", exclude: ["Info.plist"]),
     ]
 )
