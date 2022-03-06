@@ -347,6 +347,8 @@ extension PCloudAPI {
 		public let folderId: UInt64
 		/// The unique identifier of the destination folder.
 		public let destinationFolderId: UInt64
+		/// If non-nil, the folder will also be renamed when moved to its new location.
+		public let newName: String?
 		
 		public var requiresAuthentication: Bool {
 			return true
@@ -354,18 +356,26 @@ extension PCloudAPI {
 		
 		/// - parameter folderId: The unique identifier of the folder to move.
 		/// - parameter destinationFolderId: The unique identifier of the destination folder.
-		public init(folderId: UInt64, destinationFolderId: UInt64) {
+		/// - parameter newName: A new name for the folder.
+		public init(folderId: UInt64, destinationFolderId: UInt64, newName: String? = nil) {
 			self.folderId = folderId
 			self.destinationFolderId = destinationFolderId
+			self.newName = newName
 		}
 		
 		public func createCommand() -> Call.Command {
-			return Call.Command(name: "renamefolder", parameters: [
+			var parameters: [Call.Command.Parameter] = [
 				defaultIconFormatParameter,
 				defaultTimeFormatParameter,
 				.number(name: "folderid", value: folderId),
 				.number(name: "tofolderid", value: destinationFolderId)
-			])
+			]
+			
+			if let newName = newName {
+				parameters.append(.string(name: "toname", value: newName))
+			}
+			
+			return Call.Command(name: "renamefolder", parameters: parameters)
 		}
 		
 		public func createResponseParser() -> ([String : Any]) throws -> Result<Folder.Metadata, PCloudAPI.Error<Error>> {
@@ -381,12 +391,16 @@ extension PCloudAPI {
 		
 		/// Errors specific to moving a folder.
 		public enum Error: Int {
+			/// The requested name is invalid.
+			case invalidName = 2001
 			/// A folder with the same name already exists.
 			case folderAlreadyExists = 2004
 			/// The folder does not exist.
 			case folderDoesNotExist = 2005
 			/// Cannot move a shared folder into another shared folder.
 			case cannotMoveSharedFolderIntoAnotherSharedFolder = 2023
+			/// One does not simply rename the root folder.
+			case cannotRenameRootFolder = 2042
 			/// Cannot move a folder into a subfolder of itself.
 			case cannotMoveFolderToSubfolderOfItself = 2043
 		}
