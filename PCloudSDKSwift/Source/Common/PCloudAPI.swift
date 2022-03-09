@@ -242,6 +242,69 @@ extension PCloudAPI {
 	
 	/// Attempts to create a folder if it doesn't already exist at the destination. It returns either the metadata of the new folder,
 	/// or the metadata of the existing one.
+	public struct CreateFolderIfDoesNotExist: PCloudAPIMethod {
+		/// The name of the new folder.
+		public let name: String
+		/// The unique identifier of the parent folder.
+		public let parentFolderId: UInt64
+		
+		public var requiresAuthentication: Bool {
+			true
+		}
+		
+		/// - parameter name: The name for the new folder.
+		/// - parameter parentFolderId: The unique identifier of the parent folder.
+		public init(name: String, parentFolderId: UInt64) {
+			self.name = name
+			self.parentFolderId = parentFolderId
+		}
+		
+		public func createResponseParser() -> ([String : Any]) throws -> Result<Response, PCloudAPI.Error<Error>> {
+			return { response in
+				if let error = self.tryParseError(in: response) {
+					return .failure(error)
+				}
+				
+				let created = response.bool("created")
+				let folder = try FolderMetadataParser().parse(response.dictionary("metadata"))
+				
+				return .success(Response(folder: folder, folderWasCreated: created))
+			}
+		}
+		
+		public func createCommand() -> Call.Command {
+			return Call.Command(name: "createfolderifnotexists", parameters: [
+				defaultIconFormatParameter,
+				defaultTimeFormatParameter,
+				.string(name: "name", value: name),
+				.number(name: "folderid", value: parentFolderId)
+			])
+		}
+		
+		/// Errors specific to the `CreateFolderIfNotExists` method.
+		public enum Error: Int {
+			/// The requested name is invalid.
+			case invalidName = 2001
+			/// The parent folder does not exist.
+			case componentOfParentDirectoryDoesNotExist = 2002
+		}
+		
+		/// A successful API response from the `CreateFolderIfDoesNotExist` method.
+		public struct Response {
+			public let folder: Folder.Metadata
+			/// Whether `folder` was created (`true`) or it already existed at the destination (`false`).
+			public let folderWasCreated: Bool
+			
+			public init(folder: Folder.Metadata, folderWasCreated: Bool) {
+				self.folder = folder
+				self.folderWasCreated = folderWasCreated
+			}
+		}
+	}
+	
+	/// Attempts to create a folder if it doesn't already exist at the destination. It returns either the metadata of the new folder,
+	/// or the metadata of the existing one.
+	@available(*, deprecated, message: "It will be removed in the next major version. Use CreateFolderIfDoesNotExist instead.")
 	public struct CreateFolderIfNotExists: PCloudAPIMethod {
 		/// The name of the new folder.
 		public let name: String
