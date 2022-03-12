@@ -1082,8 +1082,8 @@ extension PCloudAPI {
 		
 		/// Errors specific to getting the metadata of a file.
 		public enum Error: Int {
-			/// The requested name is invalid.
-			case invalidName = 2001
+			/// The requested file does not exist.
+			case fileDoesNotExist = 2009
 		}
 	}
 	
