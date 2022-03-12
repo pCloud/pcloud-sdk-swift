@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = 'PCloudSDKSwift'
-  s.version               = '3.1.0'
+  s.version               = '3.2.0'
   s.summary               = 'Swift SDK for the pCloud API'
   s.homepage              = 'https://github.com/pcloud/pcloud-sdk-swift'
   s.license               = 'MIT'
