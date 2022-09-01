@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,7 +14,7 @@
 		29D645A91E1503F400A80A1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29D645A71E1503F400A80A1B /* LaunchScreen.storyboard */; };
 		29D6463A1E15350700A80A1B /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D646391E15350700A80A1B /* AuthViewController.swift */; };
 		29D6463D1E154D3100A80A1B /* FolderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D6463C1E154D3100A80A1B /* FolderTableViewController.swift */; };
-		C79CFF964FBBAFE8000B4316 /* Pods_Example_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAEB7E27C1742702940D6AF /* Pods_Example_iOS.framework */; };
+		98991E7C28C09B4D00EB8468 /* PCloudSDKSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 98991E7B28C09B4D00EB8468 /* PCloudSDKSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,9 +40,6 @@
 		29D645AA1E1503F400A80A1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29D646391E15350700A80A1B /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		29D6463C1E154D3100A80A1B /* FolderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderTableViewController.swift; sourceTree = "<group>"; };
-		7BAEB7E27C1742702940D6AF /* Pods_Example_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6474A9DDF6572DE39798123 /* Pods-Example_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example_iOS/Pods-Example_iOS.release.xcconfig"; sourceTree = "<group>"; };
-		D8839456F7146371B380E226 /* Pods-Example_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example_iOS/Pods-Example_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C79CFF964FBBAFE8000B4316 /* Pods_Example_iOS.framework in Frameworks */,
+				98991E7C28C09B4D00EB8468 /* PCloudSDKSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,8 +59,6 @@
 			children = (
 				29D6459D1E1503F300A80A1B /* Example_iOS */,
 				29D6459C1E1503F300A80A1B /* Products */,
-				D044B7491E251393004E0B40 /* Frameworks */,
-				D6FAFF0164D7CD7422B5E606 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,23 +85,6 @@
 			path = Example_iOS;
 			sourceTree = "<group>";
 		};
-		D044B7491E251393004E0B40 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7BAEB7E27C1742702940D6AF /* Pods_Example_iOS.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D6FAFF0164D7CD7422B5E606 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D8839456F7146371B380E226 /* Pods-Example_iOS.debug.xcconfig */,
-				B6474A9DDF6572DE39798123 /* Pods-Example_iOS.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -114,18 +92,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29D645AD1E1503F400A80A1B /* Build configuration list for PBXNativeTarget "Example_iOS" */;
 			buildPhases = (
-				784330807D080A538DA7D1EF /* [CP] Check Pods Manifest.lock */,
 				29D645971E1503F300A80A1B /* Sources */,
 				29D645981E1503F300A80A1B /* Frameworks */,
 				29D645991E1503F300A80A1B /* Resources */,
 				D044B7511E251683004E0B40 /* Embed Frameworks */,
-				BC8E9F99CD150DB1E8C56B1B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Example_iOS;
+			packageProductDependencies = (
+				98991E7B28C09B4D00EB8468 /* PCloudSDKSwift */,
+			);
 			productName = Example_iOS;
 			productReference = 29D6459B1E1503F300A80A1B /* Example_iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -152,10 +131,14 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
 			mainGroup = 29D645921E1503F300A80A1B;
+			packageReferences = (
+				98991E7A28C09B4D00EB8468 /* XCRemoteSwiftPackageReference "pcloud-sdk-swift" */,
+			);
 			productRefGroup = 29D6459C1E1503F300A80A1B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -176,45 +159,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		784330807D080A538DA7D1EF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example_iOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BC8E9F99CD150DB1E8C56B1B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example_iOS/Pods-Example_iOS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/PCloudSDKSwift/PCloudSDKSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PCloudSDKSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example_iOS/Pods-Example_iOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		29D645971E1503F300A80A1B /* Sources */ = {
@@ -341,14 +285,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		29D645AE1E1503F400A80A1B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8839456F7146371B380E226 /* Pods-Example_iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
@@ -358,8 +302,11 @@
 				);
 				INFOPLIST_FILE = Example_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mobileinno.Example-iOS";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pcloud.Example-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -367,7 +314,6 @@
 		};
 		29D645AF1E1503F400A80A1B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6474A9DDF6572DE39798123 /* Pods-Example_iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
@@ -377,8 +323,11 @@
 				);
 				INFOPLIST_FILE = Example_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mobileinno.Example-iOS";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pcloud.Example-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -406,6 +355,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		98991E7A28C09B4D00EB8468 /* XCRemoteSwiftPackageReference "pcloud-sdk-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pCloud/pcloud-sdk-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		98991E7B28C09B4D00EB8468 /* PCloudSDKSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98991E7A28C09B4D00EB8468 /* XCRemoteSwiftPackageReference "pcloud-sdk-swift" */;
+			productName = PCloudSDKSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 29D645931E1503F300A80A1B /* Project object */;
 }
