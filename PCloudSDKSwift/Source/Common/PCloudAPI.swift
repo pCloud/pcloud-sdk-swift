@@ -617,7 +617,7 @@ extension PCloudAPI {
 			]
 			
 			if let modificationDate = modificationDate {
-				parameters.append(.number(name: "mtime", value: UInt64(modificationDate.timeIntervalSince1970)))
+				parameters.append(.number(name: "mtime", value: UInt64(clamping: modificationDate.timeIntervalSince1970)))
 			}
 			
 			return Call.Command(name: "uploadfile", parameters: parameters)
@@ -805,7 +805,7 @@ extension PCloudAPI {
 														.string(name: "name", value: fileName)]
 			
 			if let date = fileModificationDate {
-				parameters.append(.number(name: "mtime", value: UInt64(date.timeIntervalSince1970)))
+				parameters.append(.number(name: "mtime", value: UInt64(clamping: date.timeIntervalSince1970)))
 			}
 			
 			switch conflictResolutionPolicy {
