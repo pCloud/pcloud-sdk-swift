@@ -35,7 +35,7 @@ public struct User {
 }
 
 extension User.Metadata: CustomStringConvertible {
-	open var description: String {
+	public var description: String {
 		let quotaProgress = (Float(usedQuota) / Float(availableQuota)) * 100
 		return "id=\(id), email=\(emailAddress), verified=\(isEmailVerified), quota=\(usedQuota) / \(availableQuota); \(quotaProgress)%"
 	}

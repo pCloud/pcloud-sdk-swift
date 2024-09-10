@@ -29,7 +29,7 @@ public struct FileLink {
 }
 
 extension FileLink.Metadata: CustomStringConvertible {
-	open var description: String {
+	public var description: String {
 		return address.description
 	}
 }

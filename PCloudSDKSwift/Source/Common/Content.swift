@@ -249,7 +249,7 @@ public struct File {
 
 extension File.Metadata {
 	/// `true` if this file's media is `Media.uncategorized`, `false` otherwise.
-	open var isUncategorized: Bool {
+	public var isUncategorized: Bool {
 		if case .uncategorized = media {
 			return true
 		}
@@ -258,7 +258,7 @@ extension File.Metadata {
 	}
 	
 	/// `true` if this file's media is `Media.audio`, `false` otherwise.
-	open var isAudio: Bool {
+	public var isAudio: Bool {
 		if case .audio(_) = media {
 			return true
 		}
@@ -267,7 +267,7 @@ extension File.Metadata {
 	}
 	
 	/// `true` if this file's media is `Media.image`, `false` otherwise.
-	open var isImage: Bool {
+	public var isImage: Bool {
 		if case .image(_) = media {
 			return true
 		}
@@ -276,7 +276,7 @@ extension File.Metadata {
 	}
 	
 	/// `true` if this file's media is `Media.video`, `false` otherwise.
-	open var isVideo: Bool {
+	public var isVideo: Bool {
 		if case .video(_) = media {
 			return true
 		}
@@ -285,7 +285,7 @@ extension File.Metadata {
 	}
 	
 	/// `true` if this file's media is `Media.document`, `false` otherwise.
-	open var isDocument: Bool {
+	public var isDocument: Bool {
 		if case .document = media {
 			return true
 		}
@@ -294,7 +294,7 @@ extension File.Metadata {
 	}
 	
 	/// `true` if this file's media is `Media.archive`, `false` otherwise.
-	open var isArchive: Bool {
+	public var isArchive: Bool {
 		if case .archive = media {
 			return true
 		}
@@ -303,7 +303,7 @@ extension File.Metadata {
 	}
 	
 	/// The audio metadata of this file. Non-`nil` only when this file's media is `Media.audio`.
-	open var audioMetadata: File.Media.AudioMetadata? {
+	public var audioMetadata: File.Media.AudioMetadata? {
 		if case .audio(let meta) = media {
 			return meta
 		}
@@ -312,7 +312,7 @@ extension File.Metadata {
 	}
 	
 	/// The image metadata of this file. Non-`nil` only when this file's media is `image`.
-	open var imageMetadata: File.Media.ImageMetadata? {
+	public var imageMetadata: File.Media.ImageMetadata? {
 		if case .image(let meta) = media {
 			return meta
 		}
@@ -321,7 +321,7 @@ extension File.Metadata {
 	}
 	
 	/// The video metadata of this file. Non-`nil` only when this file's media is `video`.
-	open var videoMetadata: File.Media.VideoMetadata? {
+	public var videoMetadata: File.Media.VideoMetadata? {
 		if case .video(let meta) = media {
 			return meta
 		}
@@ -398,7 +398,7 @@ extension File.Media: CustomStringConvertible {
 }
 
 extension File.Metadata: CustomStringConvertible {
-	open var description: String {
+	public var description: String {
 		return "id=\(id), name=\(name), parent=\(parentFolderId), hash=\(hash), size=\(size), \(media)"
 	}
 }
@@ -487,7 +487,7 @@ public struct Folder {
 
 extension Folder.Metadata {
 	/// `true` if the user accessing this folder is its owner, `false` otherwise.
-	open var isOwnedByUser: Bool {
+	public var isOwnedByUser: Bool {
 		if case .ownedByUser = ownership {
 			return true
 		}
@@ -496,7 +496,7 @@ extension Folder.Metadata {
 	}
 	
 	/// The folder permissions assigned to this folder by its owner. Non-`nil` only when the user accessing this folder is not its owner.
-	open var permissions: Folder.Permissions? {
+	public var permissions: Folder.Permissions? {
 		if case .notOwnedByUser(let permissions) = ownership {
 			return permissions
 		}
@@ -551,7 +551,7 @@ extension Folder.Ownership: CustomStringConvertible {
 }
 
 extension Folder.Metadata: CustomStringConvertible {
-	open var description: String {
+	public var description: String {
 		return "id=\(id), name=\(name), parent=\(parentFolderId), \(ownership), contains \(contents.count) items"
 	}
 }
