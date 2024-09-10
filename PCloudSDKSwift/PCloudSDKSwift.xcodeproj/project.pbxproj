@@ -91,6 +91,8 @@
 		98685FBD26317B8B00D458D2 /* WebViewControllerDesktop.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98685F1A26317B4F00D458D2 /* WebViewControllerDesktop.xib */; };
 		98AC68BA2456CA6200DC9B12 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AC68B92456CA6200DC9B12 /* AuthenticationServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		98AC68BB2456CA6900DC9B12 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AC68B92456CA6200DC9B12 /* AuthenticationServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		98FE912C2C90082D0092C11A /* UInt64+Clamping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FE912B2C90082D0092C11A /* UInt64+Clamping.swift */; };
+		98FE912D2C90082D0092C11A /* UInt64+Clamping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FE912B2C90082D0092C11A /* UInt64+Clamping.swift */; };
 		A5B4F5EB1DB6295C0081F125 /* PCloudSDKSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B4F5E11DB6295C0081F125 /* PCloudSDKSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -157,6 +159,7 @@
 		98685F4326317B4F00D458D2 /* PCloudSDKSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCloudSDKSwift.h; sourceTree = "<group>"; };
 		98685F4426317B4F00D458D2 /* UploadInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadInfo.swift; sourceTree = "<group>"; };
 		98AC68B92456CA6200DC9B12 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AuthenticationServices.framework; sourceTree = DEVELOPER_DIR; };
+		98FE912B2C90082D0092C11A /* UInt64+Clamping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt64+Clamping.swift"; sourceTree = "<group>"; };
 		A5B4F5E11DB6295C0081F125 /* PCloudSDKSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PCloudSDKSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B4F5EA1DB6295C0081F125 /* SDK Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SDK Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01340DF1DF9889D0098A0A7 /* PCloudSDKSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PCloudSDKSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -297,8 +300,9 @@
 				98685F4026317B4F00D458D2 /* HostProvider.swift */,
 				98685F4126317B4F00D458D2 /* CallError.swift */,
 				98685F4226317B4F00D458D2 /* ResultUtilities.swift */,
-				98685F4326317B4F00D458D2 /* PCloudSDKSwift.h */,
 				98685F4426317B4F00D458D2 /* UploadInfo.swift */,
+				98FE912B2C90082D0092C11A /* UInt64+Clamping.swift */,
+				98685F4326317B4F00D458D2 /* PCloudSDKSwift.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -476,6 +480,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98FE912C2C90082D0092C11A /* UInt64+Clamping.swift in Sources */,
 				98685F6A26317B4F00D458D2 /* PCloud.swift in Sources */,
 				98685F6626317B4F00D458D2 /* Cancellable.swift in Sources */,
 				98685F5326317B4F00D458D2 /* OAuthWebViewMobile.swift in Sources */,
@@ -534,6 +539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98FE912D2C90082D0092C11A /* UInt64+Clamping.swift in Sources */,
 				98685FA126317B6700D458D2 /* PCloud+OAuthDesktop.swift in Sources */,
 				98685F8D26317B5A00D458D2 /* UploadTask.swift in Sources */,
 				98685F9B26317B5A00D458D2 /* VoidCancellationToken.swift in Sources */,
