@@ -34,8 +34,8 @@ For instructions on how to migrate to v3 of the SDK, please refer to the release
 
 ## System requirements
 
-- iOS 9.0+
-- macOS 10.11+
+- iOS 12.0+
+- macOS 10.13+
 - Xcode 10.2+
 
 ---
