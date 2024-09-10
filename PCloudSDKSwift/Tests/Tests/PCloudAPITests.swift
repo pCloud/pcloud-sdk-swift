@@ -151,6 +151,19 @@ extension PCloudAPITests {
 		validate(command, against: uploadFileCommand(name: name, parentFolderId: folderId, modificationDate: date))
 	}
 	
+	func testCreatesCorrectUploadFileCommandWithModificationDateBefore1970() {
+		// Given
+		let folderId: UInt64 = 123
+		let name = "the file name"
+		let date = Date(timeIntervalSince1970: -1)
+		
+		// When
+		let command = PCloudAPI.UploadFile(name: name, parentFolderId: folderId, modificationDate: date).createCommand()
+		
+		// Expect
+		validate(command, against: uploadFileCommand(name: name, parentFolderId: folderId, modificationDate: date))
+	}
+	
 	func testCreatesCorrectCopyFileCommand() {
 		// Given
 		let fileId: UInt64 = 54
@@ -313,7 +326,7 @@ extension PCloudAPITests {
 		]
 		
 		if let modificationDate = modificationDate {
-			parameters.append(.number(name: "mtime", value: UInt64(modificationDate.timeIntervalSince1970)))
+			parameters.append(.number(name: "mtime", value: UInt64(clamping: modificationDate.timeIntervalSince1970)))
 		}
 		
 		return Call.Command(name: "uploadfile", parameters: parameters)
