@@ -10,7 +10,7 @@ import Foundation
 
 extension Result {
 	var isSuccess: Bool {
-		if case .success(_) = self {
+		if case .success = self {
 			return true
 		}
 		
