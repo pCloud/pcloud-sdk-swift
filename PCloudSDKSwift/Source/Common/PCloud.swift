@@ -73,16 +73,16 @@ public enum PCloud {
 	/// - returns: An instance of a `PCloudClient` ready to take requests.
 	public static func createClient(with user: OAuth.User) -> PCloudClient {
 		let authenticator = OAuthAccessTokenBasedAuthenticator(accessToken: user.token)
-		return createClient(with: authenticator, apiHostName: user.httpAPIHostName)
+		return createClient(with: authenticator, hostProvider: user.httpAPIHostName)
 	}
 	
 	/// Creates a pCloud client. Does not update the `sharedClient` property. You are responsible for storing it and keeping it alive. Use if
 	/// you want a more direct control over the lifetime of the `PCloudClient` object. Multiple clients can exist simultaneously.
 	///
 	/// - parameter authenticator: An `Authenticator` used to authenticate the requests to the API.
-	/// - parameter apiHostName: The endpoint to connect to.
+	/// - parameter hostProvider: A `HostProvider` defining the endpoint to connect to.
 	/// - returns: An instance of a `PCloudClient` ready to take requests.
-	public static func createClient(with authenticator: Authenticator, apiHostName: String) -> PCloudClient {
+	public static func createClient(with authenticator: Authenticator, hostProvider: HostProvider) -> PCloudClient {
 		let eventHub = URLSessionEventHub()
 		let session = URLSession(configuration: .default, delegate: eventHub, delegateQueue: nil)
 		
@@ -98,15 +98,15 @@ public enum PCloud {
 		
 		let downloadOperationBuilder = URLSessionBasedNetworkOperationUtilities.createDownloadOperationBuilder(with: session, delegate: eventHub)
 		
-		let callTaskBuilder = PCloudAPICallTaskBuilder(hostProvider: apiHostName,
+		let callTaskBuilder = PCloudAPICallTaskBuilder(hostProvider: hostProvider,
 													   authenticator: authenticator,
 													   operationBuilder: callOperationBuilder)
 		
-		let uploadTaskBuilder = PCloudAPIUploadTaskBuilder(hostProvider: apiHostName,
+		let uploadTaskBuilder = PCloudAPIUploadTaskBuilder(hostProvider: hostProvider,
 														   authenticator: authenticator,
 														   operationBuilder: uploadOperationBuilder)
 		
-		let downloadTaskBuilder = PCloudAPIDownloadTaskBuilder(hostProvider: apiHostName,
+		let downloadTaskBuilder = PCloudAPIDownloadTaskBuilder(hostProvider: hostProvider,
 															   authenticator: authenticator,
 															   operationBuilder: downloadOperationBuilder)
 		
