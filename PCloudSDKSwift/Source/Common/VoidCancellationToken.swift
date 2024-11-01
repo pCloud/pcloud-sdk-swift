@@ -17,6 +17,5 @@ public struct VoidCancellationToken: Cancellable {
 	}
 	
 	public func cancel() {
-		
 	}
 }
