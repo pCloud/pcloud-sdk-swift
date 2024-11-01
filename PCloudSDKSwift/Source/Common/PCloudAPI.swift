@@ -828,7 +828,7 @@ extension PCloudAPI {
 					return .failure(error)
 				}
 				
-				return .success(try FileMetadataParser().parse(response))
+				return .success(try FileMetadataParser().parse(response.dictionary("metadata")))
 			}
 		}
 		
